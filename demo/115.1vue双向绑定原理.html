@@ -8,22 +8,26 @@
 	</body>
 </html>
 <script type="text/javascript">
-	var Book = {}
-	var name = '';
-	Object.defineProperty(Book, 'name', {
-	  set: function (value) {
-	    name = value;
-	    console.log('你取了一个书名叫做' + value);
-	  },
-	  get: function () {
-	    return '《' + name + '》'
-	  }
-	})
-	 
-	Book.name = 'vue权威指南';  // 你取了一个书名叫做vue权威指南
-	console.log(Book.name);  // 《vue权威指南》
+	function pro(k){
+		var obj = {};
+		var key = k;
+		Object.defineProperty(obj, key, {
+		  	set: function (value) {
+		    	key = value;
+		    	console.log('你取了一个书名叫做' + value);
+		  	},
+		  	get: function () {
+		    	return '《' + key + '》'
+		  	}
+		})
+		return obj;
+	}
+	var obj1 = pro("name");
+	obj1.name = "2333333";
+	console.log(obj1.name);
+	
 	setTimeout(function(){
-		Book.name = '23232232';
-		console.log(Book.name);
+		obj1.name = "555555555555";
+		console.log(obj1.name);
 	},2000);
 </script>
