@@ -1,0 +1,27 @@
+.line{width: 100%;border-bottom: 1px solid #ebebeb;}
+#main{padding-top: 50px;width: 1200px;margin: 0 auto;padding-bottom: 50px;}
+.left,.right{float: left;}
+#main .left{padding-left: 25px;width: 530px;}
+#main .left h2{display: inline-block;padding-right: 56px;font-weight: normal;font-size: 3rem;color: #333333;line-height: 4rem;}
+#main .student h2{background: url(../img/download/student.png) no-repeat right center;}
+#main .teacher h2{background: url(../img/download/teacher.png) no-repeat right center;}
+#main .merchant h2{background: url(../img/download/merchant.png) no-repeat right center;}
+#main .student{padding: 50px 0 60px;}
+#main .teacher{padding: 0 0 60px;}
+ul.content{text-align: center;padding-top: 30px;}
+ul.content li{float: left;}
+ul.content li p:nth-child(2){font-size: 1.4rem;color: #666666;}
+ul.content div{text-align: left;}
+.iphone{margin-right: 100px;}
+.iphone div{padding-left: 44px;background: url(../img/download/iphone.png) no-repeat left center;}
+.android div{padding-left: 44px;background: url(../img/download/android.png) no-repeat left center;}
+.ver {font-size: 2rem;color: #333333;font-weight: 550;padding-bottom: 5px;}
+.content .downLoad{display: inline-block;border: none;margin-top: 18px;cursor: pointer;width: 210px; height: 43px;text-align: center;line-height: 43px;color: white;background: #4aa9f6;font-size: 1.6rem;letter-spacing: 1px;}
+.content .downLoad:hover{background: #7ecfff;}
+.content img{border: 1px solid #EEEEEE;margin-bottom: 10px;width: 101px;padding: 5px;}
+#main .right{position: relative;left: 30px;top: 100px;}
+.right img{position: absolute;opacity: 0;}
+.right img:nth-child(1){top: 525px;left: 190px;}
+.right img:nth-child(2){top: 320px;left: 130px;}
+.right img:nth-child(3){top: 110px;left: 80px;}
+.right img:nth-child(4){top: -100px;left: 40px;}

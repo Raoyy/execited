@@ -1,0 +1,39 @@
+.video{padding-top: 30px;margin: 0 auto;width: 1170px;}
+.functions{padding-bottom: 70px;}
+.functions .card{display: inline-block;position: relative;left: 50%;transform: translateX(-50%);}
+.functions .card>li:nth-child(4){margin-right: 0;}
+.functions .card>li .move_warp{position: absolute;width: 100%;height: 100%;top: 85px;transition: all 1s;}
+.functions .card>li h4{font-size: 1.8rem;color: white;text-align: center;margin-top: 47px;}
+.functions .deso{text-align: center;margin-top: 23px;font-size: 1.4rem;color: #333333;padding-left: 20px;padding-right: 15px;}
+.functions .deso li{padding-bottom: 10px;}
+.functions .deso li p{text-align: left;padding-left: 20px}
+.functions .deso li p:nth-child(1){font-weight: bold;font-size: 1.4rem;line-height: 2rem;}
+.painPoint .card{width: 750px;margin: 0 auto;}
+.painPoint .card>li h4{font-size: 1.8rem;color: white;text-align: center;margin-top: 35px;}
+.painPoint .card>li{overflow: initial;position: relative;top: 50px;opacity: 0;transition: all 1s;float: left;border: 1px solid #ebebeb;width: 312px;height: 260px;margin-right: 120px;margin-bottom: 40px;}
+.painPoint .card>li:nth-child(4){margin-right: 0;}
+.painPoint .card>li:nth-child(2){margin-right: 0;}
+.painPoint .card>li .move_warp{position: absolute;width: 100%;height: 100%;top: 80px;transition: all 1s;}
+.painPoint .deso{padding-top: 18px;}
+.painPoint .deso>li{margin-top: 10px;}
+.painPoint .deso>li>p{color: #fff;font-size: 1.4rem;padding-left: 35px;line-height: 2.3rem;}
+.painPoint .deso span{display: inline;font-family: monospace;padding: 0 25px;font-weight: bold;font-size: 2rem;}
+.card>li ul{opacity: 0;transition: all 1s;}
+.card>li{overflow: hidden;transition: all 1s;float: left;width: 260px;height: 300px;position: relative;top: 50px;opacity: 0;background-size: cover;background-position: center;background-repeat: no-repeat;}
+.card>li .grey{background: rgba(0,0,0,.4);position: relative;width: 100%;height: 100%;transition: all 1s;}
+.card>li:hover .move_warp{top: 0px;}
+.card>li:hover ul{opacity: 1;}
+.card>li:hover .grey{background: rgba(196,0,28,.8);}
+.grey>img{position: absolute;right: -45px;bottom: -45px;width: 100px;opacity: 0;transition: 1s;}
+.card>li:hover .grey>img{opacity: 1;right: -15px;bottom: -15px;}
+
+
+.spread{padding: 50px 0px;}
+.spread ul{display: inline-block;position: relative;left:50%;transform: translateX(-50%);}
+.spread li{display: inline-block;text-align: center;}
+.spread li:nth-child(1){margin-right: 415px;}
+.spread p{margin-top: 20px;font-size: 1.8rem;color: #333333;}
+.commentXN{width: 404px;padding: 0px 13px;color: #000000;font-size: 1.7rem;line-height: 2.3rem;text-align: center;}
+.commentXN li{padding: 10px 0 10px;}
+.commentXN li p:nth-child(2){color: #999999;font-size: 1.6rem;text-align: right;margin-top: 20px;}
+.video_right img{width: 22px;}

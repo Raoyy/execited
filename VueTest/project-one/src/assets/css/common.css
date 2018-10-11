@@ -1,0 +1,46 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+html{
+	font-size: 62.5%;
+	overflow-x: hidden;
+	font-family: "微软雅黑";
+	color: #999999;
+	/*background: #333333;*/
+}
+ul>li{
+	list-style: none;
+}
+a{
+	text-decoration: none;
+}
+.clear{
+	clear: both;
+}
+#container {
+	width: 100%;
+}
+#main>div{width: 1200px;margin: 0 auto;}
+.title{
+	font-size: 3rem;
+	color: #333333;
+	text-align: center;
+	font-weight: normal;
+}
+.title_5000{
+	padding-top: 50px;
+}
+.title_5050{
+	padding: 50px 0 50px;
+}
+.title_7070{
+	padding: 70px 0 70px;
+}
+.title_7000{
+	padding: 70px 0 0;
+}
+.title_7050{
+	padding: 70px 0 50px;
+}
+#main>img{width: 100%;display: block;}
