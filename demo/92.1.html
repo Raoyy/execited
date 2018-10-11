@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<!--<script src="js/jquery-2.1.4.min.js"></script>-->
+	</head>
+	<body>
+		<a href="javascript:location.href='9.2.html?randomtring='+getRandomString(8);">测试跳转</a>
+	</body>
+	<script type="text/javascript">
+//		$.ajax({
+//			type:"get",
+//			url:"http://192.168.31.72/voy_cms/vol/activityTop.do",
+//			async:true,
+//			dataType:"jsonp",
+//			success:function(data){
+//				console.log(data);
+//			},
+//			error:function(err){
+//				console.log("err",err);
+//			}
+//		});
+		function getRandomString(len) {  
+		    len = len || 32;  
+		    var $chars = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678'; // 默认去掉了容易混淆的字符oOLl,9gq,Vv,Uu,I1  
+		    var maxPos = $chars.length;  
+		    var pwd = '';  
+		    for (i = 0; i < len; i++) {  
+		        pwd += $chars.charAt(Math.floor(Math.random() * maxPos));  
+		    }  
+		    return pwd;  
+		}
+		console.log(getRandomString(12));
+	</script>
+</html>

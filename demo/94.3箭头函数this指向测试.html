@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		window.color = "black";
+		let color = "grey";                //let 声明的函数不具有全局属性，即不能用window访问
+		let obj = {
+			color : "blue",
+			sayColor : () => {                       //箭头函数this指向外层函数
+				console.log(this.color);
+			},
+			sayColorEs5: function(){
+				console.log(this.color);
+			}
+		}
+		let sayColor = () => {
+			console.log(this.color);
+		}
+		
+		obj.sayColor();     //black
+		obj.sayColorEs5();  //blue
+		sayColor();         //black
+	</script>
+</html>

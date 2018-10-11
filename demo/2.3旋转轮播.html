@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			body{
+				perspective: 2000px;
+			}
+			#warp{
+				margin: 200px;
+				margin-left: 600px;
+				width: 200px;
+				height: 130px;
+				position: relative;
+				transform: rotateX(-10deg);
+				transform-style: preserve-3d;
+				animation-name: xuanzhuan;
+				animation-duration: 5s;
+				animation-delay: 0s;
+				animation-iteration-count: infinite;
+				transform-origin: 50% 50% -400px;
+				transition: 1s;
+			}
+			img{
+				width: 200px;
+				height: 130px;
+				position: absolute;
+				box-shadow: 0 0 5px #cccccc;
+				transform-origin: 50% 50% -500px;
+				cursor: pointer;
+			}
+			img:nth-child(1){
+				transform: translateZ(100px) rotateY(0deg);
+			}
+			img:nth-child(2){
+				transform: translateZ(100px) rotateY(30deg);
+			}
+			img:nth-child(3){
+				transform: translateZ(100px) rotateY(60deg);
+			}
+			img:nth-child(4){
+				transform: translateZ(100px) rotateY(90deg);
+			}
+			img:nth-child(5){
+				transform: translateZ(100px) rotateY(120deg);
+			}
+			img:nth-child(6){
+				transform: translateZ(100px) rotateY(150deg);
+			}
+			img:nth-child(7){
+				transform: translateZ(100px) rotateY(180deg);
+			}
+			img:nth-child(8){
+				transform: translateZ(100px) rotateY(210deg);
+			}
+			img:nth-child(9){
+				transform: translateZ(100px) rotateY(240deg);
+			}
+			img:nth-child(10){
+				transform: translateZ(100px) rotateY(270deg);
+			}
+			img:nth-child(11){
+				transform: translateZ(100px) rotateY(300deg);
+			}
+			img:nth-child(12){
+				transform: translateZ(100px) rotateY(330deg);
+			}
+		</style>
+		<script type="text/javascript" src="js/jquery.js"></script>
+		<script type="text/javascript">
+			window.onload = function(){
+				var aImg = document.getElementsByTagName('img');
+				var oWarp = document.getElementById('warp');
+				var oLength = aImg.length;
+				var i = 0;
+				var inow = 0;
+				var j = 1;
+				var timer = null;
+				var oDeg = 360 / oLength;
+				for(i = 0; i < oLength; i++){
+					aImg[i].index = i;
+				}
+				$('#warp img').click(function(){
+					j = this.index; 
+					oWarp.style.transform = 'rotateX(-10deg)' + 'rotateY( ' + -oDeg*this.index + 'deg)';
+				});
+				function move(){
+					oWarp.style.transform = 'rotateX(-10deg)' + 'rotateY( ' + -oDeg*j + 'deg)';
+				}
+				function autoPlay(){
+					oWarp.style.transition = 1 + 's';
+					move();
+					j++;
+					if(j == 14){
+						j = 1;
+						oWarp.style.transition = 0 + 's';
+						oWarp.style.transform = 'rotateX(-10deg)' + 'rotateY( ' + 0 + 'deg)';
+					}
+				}
+				timer = setInterval(autoPlay,1000);
+				$('#warp').hover(function(){
+					clearInterval(timer);
+				},function(){
+					timer = setInterval(autoPlay,1000);
+				});
+			}
+		</script>
+	</head>
+	<body>
+		<div id="warp">
+			<img src="img/30c1e84c-f7db-407b-8dbe-479269558c9d.jpg"/>
+			<img src="img/3278c1dc-f84e-4e83-bc29-4d4e7b2ef748.jpg"/>
+			<img src="img/33.jpg"/>
+			<img src="img/3798c2a7-ed4a-430b-8662-9c5d27d38db0.jpg"/>
+			<img src="img/4.jpg"/>
+			<img src="img/59b82b8a-1afc-43bb-80b5-c27ed9debfa4.jpg"/>
+			<img src="img/59cac271-ec4d-4b73-a30c-6dc5481ca6c7.jpg"/>
+			<img src="img/66.jpg"/>
+			<img src="img/69c0d609-881a-4a72-916e-390821164edf.jpg"/>
+			<img src="img/7567fd2e-a5ef-4d1f-a0cf-db9460653cae.jpg"/>
+			<img src="img/6ab7a290-5e29-4ef1-a1c5-9139afb97ecd.jpg"/>
+			<img src="img/888.jpg"/>
+		</div>
+	</body>
+</html>

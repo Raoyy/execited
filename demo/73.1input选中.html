@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="checkbox" name="check" id="check" value="fuxuan" />
+	</body>
+	<script src="js/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript">
+		var check = document.getElementById("check");
+		check.onclick = function(){
+			console.log(this.checked);
+		}
+		$("#check").click(function(){
+			console.log($(this).is(':checked'));
+		});
+		$("#check").click(function(){
+			console.log($(this)[0].checked);
+		});
+	</script>
+</html>

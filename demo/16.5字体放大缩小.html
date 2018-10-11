@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#warp{
+			width: 300px;
+			margin: 0 auto;
+		}
+		.content{
+			border: 1px solid black;
+			font-size: 18px;
+		}
+		input{
+			cursor: pointer;
+		}
+	</style>
+	<body>
+		<div id="warp">
+			<input type="button" id="btn1" value="缩小" />
+			<input type="button" id="btn2" value="放大" />
+			<div class="content">
+				字体放大和缩小。字体放大和缩小。字体放大和缩小。字体放大和缩小。字体放大和缩小。
+				字体放大和缩小。字体放大和缩小。字体放大和缩小。字体放大和缩小。字体放大和缩小。
+				字体放大和缩小。字体放大和缩小。字体放大和缩小。字体放大和缩小。字体放大和缩小。
+				字体放大和缩小。字体放大和缩小。字体放大和缩小。字体放大和缩小。字体放大和缩小。
+				字体放大和缩小。字体放大和缩小。字体放大和缩小。字体放大和缩小。字体放大和缩小。
+			</div>
+		</div>
+	</body>
+	<script src="js/jquery.js"></script>
+	<script type="text/javascript">
+		var i = 0;
+		$('#btn1').click(function(){
+			if(i == 6){
+				i = 6;
+				return false;
+			}
+			i++;
+			$('.content').css({'font-size':18 - i});
+		});
+		$('#btn2').click(function(){
+			i--;
+			$('.content').css({'font-size':18 - i});
+		});
+	</script>
+</html>

@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="jquery-1.7.1.min.js"></script>
+	    <script src="easyui/jquery.easyui.min.js"></script>
+	    <link rel="stylesheet" href="easyui/themes/default/easyui.css">
+	    <link rel="stylesheet" href="easyui/themes/icon.css">
+	</head>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		body{
+			padding-left: 100px;
+			padding-top: 50px;
+		}
+		.easyui-layout{
+			width: 950px;
+			height: 500px;
+		}
+		.add_win_name{
+			margin: 15px 8px;
+		}
+		.choose_box{
+			width: 70px;
+			height: 20px;
+			line-height: 20px;
+		}
+		.choose_box *{
+			float: left;
+		}
+		#choose_all{
+			margin: 4px 3px 0;
+		}
+		.btn_warp{
+			width: 200px;
+			position: relative;
+			top: 10px;
+			left: 136px;
+		}
+		.btn_warp2{
+			width: 170px;
+			position: relative;
+			top: 10px;
+			left: 70px;
+		}
+		.choose_point table{
+			border-collapse:collapse;
+			border: 1px solid lightblue;
+		}
+		.choose_point tr{
+			line-height: 20px;
+		}
+		.choose_point th{
+			text-align: left;
+			padding-left: 7px;
+		}
+		.choose_point td{
+			padding: 0 5px;
+		}
+		.choose_point tr>*{
+			border: 1px dashed #CCCCCC;
+		}
+		#worker_window{
+			padding-right: 35px;
+			text-align: right;
+		}
+		#worker_window>div{
+			margin-top: 10px;
+		}
+		#worker_window select{
+			width: 173px;
+			
+		}
+	</style>
+	<body>
+		<div id="add_window" class="easyui-window" minimizable="false" maximizable="false" collapsible="false" title="角色"  closed="true" style="width:478px;height:400px">
+			<div class="add_win_name">
+				角色名称：<input type="text" id="newrole_name" />
+			</div>
+			<div class="choose_point">
+				<div class="choose_box">
+					<input type="checkbox" id="choose_all" /><span>全部</span>
+				</div>
+				<table cellspacing="0" cellpadding="0">
+					<tr>
+						<th colspan="6">设置权限</th>
+					</tr>
+					<tr>
+						<td>商品</td>
+						<td>
+							<input type="checkbox" id="choose_all" /><span>管理</span>
+						</td>
+						<td>
+							<input type="checkbox" id="choose_all" /><span>查看</span>
+						</td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>发票</td>
+						<td>
+							<input type="checkbox" id="choose_all" /><span>管理</span>
+						</td>
+						<td>
+							<input type="checkbox" id="choose_all" /><span>查看</span>
+						</td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>订单</td>
+						<td>
+							<input type="checkbox" id="choose_all" /><span>管理</span>
+						</td>
+						<td>
+							<input type="checkbox" id="choose_all" /><span>查看</span>
+						</td>
+						<td>
+							<input type="checkbox" id="choose_all" /><span>销售员查看</span>
+						</td>
+						<td>
+							<input type="checkbox" id="choose_all" /><span>打印</span>
+						</td>
+						<td>
+							<input type="checkbox" id="choose_all" /><span>后台下单</span>
+						</td>
+					</tr>
+					<tr>
+						<td>对账单</td>
+						<td>
+							<input type="checkbox" id="choose_all" /><span>管理</span>
+						</td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>协议客户</td>
+						<td>
+							<input type="checkbox" id="choose_all" /><span>管理</span>
+						</td>
+						<td>
+							<input type="checkbox" id="choose_all" /><span>查看</span>
+						</td>
+						<td>
+							<input type="checkbox" id="choose_all" /><span>账期修改</span>
+						</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>客户</td>
+						<td>
+							<input type="checkbox" id="choose_all" /><span>管理</span>
+						</td>
+						<td>
+							<input type="checkbox" id="choose_all" /><span>查看</span>
+						</td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>内容</td>
+						<td>
+							<input type="checkbox" id="choose_all" /><span>页面管理</span>
+						</td>
+						<td>
+							<input type="checkbox" id="choose_all" /><span>新闻管理</span>
+						</td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>系统</td>
+						<td>
+							<input type="checkbox" id="choose_all" /><span>统计查询</span>
+						</td>
+						<td>
+							<input type="checkbox" id="choose_all" /><span>员工管理</span>
+						</td>
+						<td>
+							<input type="checkbox" id="choose_all" /><span>来电管理</span>
+						</td>
+						<td>
+							<input type="checkbox" id="choose_all" /><span>企业折扣</span>
+						</td>
+						<td>
+							<input type="checkbox" id="choose_all" /><span>参数设置</span>
+						</td>
+					</tr>
+					<tr>
+						<td>仓库</td>
+						<td>
+							<input type="checkbox" id="choose_all" /><span>管理</span>
+						</td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+				</table>
+				<div class="btn_warp">
+					<a href="###" id="addrole" class="easyui-linkbutton" iconCls='icon-add'>新增</a>
+					<a href="###" id="canclerole" class="easyui-linkbutton" iconCls='icon-cancel'>取消</a>
+				</div>
+			</div>
+		</div>
+		<div id="worker_window" class="easyui-window" minimizable="false" maximizable="false" collapsible="false" title="员工"  closed="true" style="width:308px;height:290px">
+			<div>
+				账号：<input type="text" />
+			</div>
+			<div>
+				姓名：<input type="text" />
+			</div>
+			<div>
+				角色：
+				<select class="role">
+					<option value="">未选择</option>
+				</select>
+			</div>
+			<div>
+				状态：
+				<select class="state">
+					<option value="">正常</option>
+					<option value="">异常</option>
+				</select>
+			</div>
+			<div>
+				配送中心：
+				<select class="place">
+					<option value="">无</option>
+					<option value="">地点1</option>
+					<option value="">地点2</option>
+				</select>
+			</div>
+			<div>
+				<div class="btn_warp2">
+					<a href="###" id="addworker" class="easyui-linkbutton" iconCls='icon-add'>新增</a>
+					<a href="###" id="cancleworker" class="easyui-linkbutton" iconCls='icon-cancel'>取消</a>
+				</div>
+			</div>
+		</div>
+		<div class="easyui-layout">
+			<div id="west" region="west" split="true" title="角色" style="width:181px">
+				<table id="newrole_warp"></table>
+			</div>
+			<div id="center" region="center" title="员工列表">
+				<table id="woker_warp"></table>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		var o = 1;
+		function edit_row(x){    //修改
+			tr = null;
+			tr = $(x).parents('tr');
+			$('#worker_window').window('open');
+			o = 0;
+		}
+		$('#addworker').click(function(){
+			if(o == 0){
+				var account = $('#worker_window input:eq(0)').val();  //账号
+				var name = $('#worker_window input:eq(1)').val();  //姓名
+				var orole = $('.role option:selected').html();  //角色
+				var ostate = $('.state option:selected').html();  //状态
+				var oplace = $('.place option:selected').html();   //地点
+				var otime = new Date();   //获取时间
+				var year = otime.getFullYear();
+				var mouth = otime.getMonth()+1;
+				var day = otime.getDay();
+				var h = otime.getHours();
+				var m = otime.getMinutes();
+				var s = otime.getSeconds();
+				var time = year+'-'+mouth+'-'+day+' '+h+':'+m+':'+s;		
+				tr.find('td').eq(1).find('div').html(account);
+				tr.find('td').eq(2).find('div').html(name);
+				tr.find('td').eq(3).find('div').html(orole);
+				tr.find('td').eq(4).find('div').html(ostate);
+				tr.find('td').eq(5).find('div').html(oplace);
+				tr.find('td').eq(6).find('div').html(time);
+			}
+		});
+		function del_row(x){
+			var tr = $(x).parents('tr');
+	        var index = tr.index();   //获取当前行数
+	        $("#woker_warp").datagrid('deleteRow',index);
+		}
+		function reset_row(x){
+			alert('ok')
+		}
+		$(function(){
+			$('#woker_warp').datagrid({   //员工栏数据绑定
+				toolbar:[
+	                 {iconCls:'icon-add',text:'添加',handler:function(){
+	                	worker_add();
+	                 }},
+	                 {iconCls:'icon-edit',text:'编辑',disabled:true,handler:function(){
+	                    worker_edit();
+	                 }},
+	                 {iconCls:'icon-cut',text:'删除',handler:function(){
+	                    worker_delete();
+	                 }}
+	             ],
+                 columns:[[
+                 	{field:'select',title:'<input type="checkbox" id="woker_check_all" />',width:20,
+                 		formatter:function(){
+	                         var s='<input type="checkbox" id="woker_all" />';
+	                         return s;
+	                     }
+                 	},
+	                {field:'ac',title:'登陆账号',width:120},
+	                {field:'na',title:'姓名',width:80},
+	                {field:'c',title:'角色',width:100},
+	                {field:'d',title:'状态',width:40},
+	                {field:'e',title:'所属配送中心',width:100},
+	                {field:'f',title:'最后登陆时间',width:110},
+	                {field:'g',title:'操作',width:150,
+		                formatter:function(){
+	                         var s='<a onclick="edit_row(this)" style="color:blue;padding-right: 10px;">编辑</a><a onclick="del_row(this)" style="color: blue;padding-right: 10px;">删除</a><a onclick="reset_row(this)" style="color:blue;">重置密码</a>';
+	                         return s;
+	                    }
+		            }
+	            ]]
+			});
+			var num = 0;
+			var arr = [];
+			function workerrole(){    //获取已有角色
+				var role = document.getElementsByClassName('role')[0];
+				role.innerHTML = '<option value="">未选择</option>';
+				for(var i = 0; i < num; i++){
+					role.options.add(new Option(arr[i]));
+				}
+			}
+			var k = 1;
+			function worker_add(){    //员工添加
+				$('#worker_window').window('open');
+				workerrole();
+				o = 1;
+			}
+			$('#addworker').click(function(){
+				if(o){
+					var account = $('#worker_window input:eq(0)').val();  //账号
+					var name = $('#worker_window input:eq(1)').val();  //姓名
+					var orole = $('.role option:selected').html();  //角色
+					var ostate = $('.state option:selected').html();  //状态
+					var oplace = $('.place option:selected').html();   //地点
+					var otime = new Date();   //获取时间
+					var year = otime.getFullYear();
+					var mouth = otime.getMonth()+1;
+					var day = otime.getDay();
+					var h = otime.getHours();
+					var m = otime.getMinutes();
+					var s = otime.getSeconds();
+					var time = year+'-'+mouth+'-'+day+' '+h+':'+m+':'+s;
+					$("#woker_warp").datagrid("insertRow",{//添加行
+			            row:{ac:account,na:name,c:orole,d:ostate,e:oplace,f:time}//添加数据
+			       })
+				}
+			});
+			function worker_edit(){
+				alert('这儿没做。。。');
+			}
+			function worker_delete(){    //角色删除
+				$('#center .datagrid-row-selected').each(function(){
+					var index = $('#center .datagrid-row-selected').index()/2;
+					if(parseInt(index) != index){
+						return false;
+					}
+					$("#woker_warp").datagrid('deleteRow',index);
+				});
+			}
+			$('#cancleworker').click(function(){   //角色栏点击关闭
+				$('#worker_window').window('close');
+			});
+			$('#newrole_warp').datagrid({  //角色数据绑定
+				toolbar:[
+	                 {iconCls:'icon-add',text:'添加',handler:function(){
+	                	data_add();
+	                 }},
+	                 {iconCls:'icon-edit',text:'编辑',handler:function(){
+	                    data_edit();
+	                 }},
+	                 {iconCls:'icon-cut',text:'删除',handler:function(){
+	                    data_delete();
+	                 }}
+	             ],
+	             columns:[[
+	                 {field:'a',title:'角色名',width:100},
+	                 {field:'b',title:'权限'}
+	             ]]
+			});
+			var j = 1;
+			function data_add(){    //角色添加
+				$('#add_window').window('open');
+				j = 1;
+			}
+			$('#addrole').first().click(function(){
+				if(j){
+					num++;
+					var newrole = $('#newrole_name').val();
+					arr.push(newrole);
+					var apower = '';
+					$('.choose_point table input:checked').each(function(){
+						apower+=$(this).parents('tr').find('td:eq(0)').html()+$(this).parent().find('span').html()+' ';
+					});
+					if(newrole != ''){
+						$("#newrole_warp").datagrid("insertRow",{//添加行
+				             row:{a:newrole,b:apower}//添加数据
+				       })
+					}else{
+						alert('请输入角色名！');
+						return false;
+					}
+				}
+			});
+			function data_edit(){   //角色栏点击修改
+				j = 0;
+				$('#add_window').window('open');
+				$('#newrole_name').val($('#west .datagrid-row-selected td:eq(0) div').html());
+			}
+			$('#addrole').first().click(function(){
+				if($('#west .datagrid-row-selected').length > 2){
+					return false;
+				}
+				if(j == 0){
+					var newrole = $('#newrole_name').val();
+					var apower = '';
+					$('.choose_point table input:checked').each(function(){
+						apower+=$(this).parents('tr').find('td:eq(0)').html()+$(this).parent().find('span').html()+' ';
+					});
+					var index = $('#west .datagrid-row').length/2 - 1;
+					$('#west .datagrid-row-selected td:eq(0)').html('<div style="width:92px;text-align:left;height:auto;" class="datagrid-cell ">'+newrole+'</div>');
+					$('#west .datagrid-row-selected td:eq(1)').html('<div style="width:NaNpx;text-align:left;height:auto;" class="datagrid-cell ">'+apower+'</div>');
+				}
+			});
+			function data_delete(){   //角色栏点击删除
+				$('#west .datagrid-row-selected').each(function(){
+					var index = $('#west .datagrid-row-selected').index()/2;
+					if(parseInt(index) != index){
+						return false;
+					}
+					$("#newrole_warp").datagrid('deleteRow',index);
+				});
+			}
+			$('#canclerole').click(function(){   //取消时删除数据
+				$('#newrole_name').val('');
+				$('#add_window').window('close').find('input').attr('checked',false);
+			});
+			function choose(obj1,obj2){    //全选
+				obj1.click(function(){  
+					if($(this).is(':checked')){
+						obj2.attr('checked',true);
+					}else{
+						obj2.attr('checked',false);
+					}
+				});
+			}
+			choose($('#choose_all'),$('.choose_point table input'));
+			choose($('#woker_check_all'),$('#center table input'));
+		});
+	</script>
+</html>

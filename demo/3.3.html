@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			window.onload = function(){
+				var fenshu = document.getElementById('fenshu');
+				var btn = document.getElementById('chaxun');
+				var num = 0;
+				var x = 0;
+				btn.onclick = function(){
+					num = fenshu.value;
+					var pingfen = num>= 90 ? 'A' : (x = num < 60 ? 'C' : 'B');
+					var pin = document.createElement('div');
+					pin.style.display = 'inline-block';
+					pin.innerHTML = pingfen;
+					document.getElementById('jieguo').appendChild(pin);
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<p style="display: inline-block;">请输入分数：</p>
+		<input type="text" name="" id="fenshu" value="" />
+		<input type="button" name="" id="chaxun" value="查询" />
+		<p id="jieguo">评分为：</p>
+	</body>
+</html>

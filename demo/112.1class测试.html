@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script type="text/javascript">
+	class testFn1{
+		constructor(content = "string"){
+			this.fn1Return = `fn1返回值:${content} 1`;
+			this.fn2Return = `fn2返回值:${content} 2`;
+		}
+		fn1(){
+			return this.fn1Return;
+		}
+		fn2(){
+			return this.fn2Return;
+		}
+		fn5(){
+			return "fn5啊";
+		}
+	}
+	class testFn2 extends testFn1 {
+		constructor(content = "number"){
+			super(content);                   //调用父类constructor，创建this对象，否则报错
+			this.fn1Return = `test2的fn1返回值:${content} 1`;
+			this.fn2Return = `test2的fn2返回值:${content} 2`;
+			this.fn3Return = `fn3返回值:${content} 3`;
+		}
+		fn1(){
+		//	super(content);         // super()只能用在子类的构造函数之中，用在其他地方就会报错。
+			return this.fn1Return;
+		}
+		pfn1(){
+			return super.fn1();
+		}
+		fn2(){
+			return this.fn2Return;
+		}
+		fn3(){
+			return this.fn3Return;
+		}
+		fn4(){
+			return `这是fn4的返回值: ${this.content}`;
+		}
+		fn6(){
+			return super.fn5();
+		}
+	}
+	const test1 = new testFn1("哈哈哈");   //class写法必须以new方式调用
+	const test2 = new testFn1();
+	console.log(test1.fn1());    //fn1返回值:哈哈哈 1
+	console.log(test2.fn1());    //fn1返回值:string 1
+	
+	const test2_1 = new testFn2(2222);
+	console.log(test2_1.fn1());              //test2的fn1返回值:2222 1
+	console.log(test2_1.pfn1());             //test2的fn1返回值:2222 1     super虽然代表了父类A的构造函数，但是返回的是子类B的实例
+	
+	console.log(test2_1.fn5());              //fn5啊        当前类也可指向父类
+	console.log(test2_1.fn6());              //fn5啊        super指向父类
+</script>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/jquery-2.1.4.min.js"></script>
+	</head>
+	<body>
+		<input type="file" name="file" id="file" multiple="multiple" value="" />
+		<input type="button" value="提交" onclick="check()" />
+	</body>
+	<script type="text/javascript">
+		function check(){
+			var target = $("input[name=file]")[0];
+			var fileSize = 0;
+			if (isIE() && !target.files) {     
+		    	var filePath = target.value;     
+		    	var fileSystem = new ActiveXObject("Scripting.FileSystemObject");        
+		    	var file = fileSystem.GetFile (filePath);     
+		    	fileSize = file.Size;
+			} else {
+				$(target.files).each(function(index){
+					fileSize = target.files[index].size;
+					var oSize = Math.ceil(fileSize / 1024 / 1024 * 100) / 100;
+					console.log(oSize);
+				});
+			}
+			var size = Math.ceil(fileSize / 1024 / 1024 * 100) / 100;
+			
+		}
+		function isIE(){
+			if (window.navigator.userAgent.indexOf("MSIE")>=1) 
+				return true; 
+			else
+				return false; 
+		}
+	</script>
+</html>

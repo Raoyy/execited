@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		ul{
+			list-style: none;
+			display: none;
+		}
+		.show{
+			display: block;
+		}
+		a{
+			text-decoration: none;
+			margin-left: 10px;
+			color: black;
+		}
+		a:hover{
+			color: lightcoral;
+		}
+		#warp{
+			width: 500px;
+			height: 600px;
+			border: 2px solid black;
+			margin: 0 auto;
+			border-radius: 5px;
+		}
+		.content{
+			width: 100%;
+			height: 570px;
+			position: relative;
+		}
+		.handle{
+			width: calc(100%-10);
+			padding-left: 10px;
+			height: 28px;
+			border-top: 2px solid black;
+			line-height: 28px;
+			font-size: 14px;
+		}
+		.handle *{
+			display: inline-block;
+		}
+		#select{
+			cursor: pointer;
+			width: 50px;
+		}
+		#txt{
+			width: 30px;
+		}
+		#btn{
+			cursor: pointer;
+			margin-left: 10px;
+		}
+		.before,.last{
+			margin-right: 10px;
+		}
+		.content li{
+			border-bottom: 1px solid #CCCCCC;
+		}
+		#btn1{
+			margin-left: 450px;
+			cursor: pointer;
+		}
+		.pages{
+			padding: 0 3px;
+		}
+	</style>
+	<body>
+		<input type="button" value="load" onclick="addDate()" id="btn1"/>
+		<div id="warp">
+			<div class="content"></div>
+			<div class="handle">
+				<p>分</p>
+				<select id="select">
+					<option value="">10</option>
+					<option value="">20</option>
+					<option value="">50</option>
+					<option value="">100</option>
+				</select>
+				<p>页</p>
+				<a class="first" href="###">首页</a>
+				<a class="before" href="###">上一页</a>
+				第<input type="text" id="txt" value="1" />页
+				<a class="next" href="###">下一页</a>
+				<a class="last" href="###">尾页</a>
+				共<span class="pages"></span>页
+				<input type="button" id="btn" value="跳转" />
+			</div>
+		</div>
+	</body>
+	<script src="js/jQuery-3.2.1.js"></script>
+	<script type="text/javascript">
+		var ocontent = document.getElementsByClassName('content')[0];
+		var oheight = ocontent.offsetHeight;
+		var oselect = document.getElementById('select');
+		var ospan = document.getElementsByClassName('pages')[0];
+		var before = document.getElementsByClassName('before')[0];
+		var next = document.getElementsByClassName('next')[0];
+		var otxt = document.getElementById('txt');
+		var first = document.getElementsByClassName('first')[0];
+		var last = document.getElementsByClassName('last')[0];
+		var btn =document.getElementById('btn');
+		var value1 = 0;
+		var olength = 0;
+		var opage = 0;
+		var num = 0;
+		var inow = 0;
+		function addDate(){
+			ocontent.innerHTML = '';
+			var ojson;
+			if(window.XMLHttpRequest){
+				ojson = new XMLHttpRequest();
+			}else{
+				ojson = new ActiveXObject();
+			}
+			ojson.open("GET","ajax/18.1.json",true);
+			ojson.send();
+			ojson.onreadystatechange = function(){
+				if(ojson.readyState == 4 && ojson.status == 200){
+					var otext = JSON.parse(ojson.responseText);
+					olength = otext.arr.length;
+					value1 = oselect.options[oselect.selectedIndex].innerHTML;
+					opage = Math.ceil(olength / value1);
+					ospan.innerHTML = opage;
+					for(var i=0;i<opage;i++){
+						var aul = document.createElement('ul');
+						if(i == 0){
+							aul.className = 'show';
+						}
+						aul.style.width = '100%';
+						aul.style.height = '100%';
+						aul.style.position = 'absolute';
+						aul.style.top = '0px';
+						aul.style.left = '0px';
+						aul.index = i;
+						ocontent.appendChild(aul);
+						for(var j=0;j<parseInt(value1);j++){
+							if(num == olength - 1){
+								theul = ocontent.getElementsByTagName('ul');
+								return false;
+							}
+							var ali = document.createElement('li');
+							ali.innerHTML = otext.arr[num];
+							ali.style.height = oheight/value1 - 1 + 'px';
+							ali.style.fontSize = (oheight/value1 - 1)*0.7 + 'px';
+							ali.style.lineHeight = oheight/value1 - 1 + 'px';
+							aul.appendChild(ali);
+							num++;
+						}
+					}
+				}
+				num = 0;
+				otxt.value = 1;
+				inow = 0;
+				showthis();
+			}
+		}
+		function showthis(){
+			for(var i = 0; i < opage; i++){
+				theul[i].className = '';
+			}
+			theul[inow].className = 'show';
+			otxt.value = inow + 1;
+		}
+		before.onclick = function(){  //点击上一页
+			if(inow == 0){
+				return false;
+			}
+			inow--;
+			showthis();
+		}
+		next.onclick = function(){  //点击下一页
+			if(inow == opage - 1){
+				return false;
+			}
+			inow++;
+			showthis();
+		}
+		first.onclick = function(){   //点击首页
+			inow = 0;
+			showthis();
+		}
+		last.onclick = function(){   //点击尾页
+			inow = opage - 1;
+			showthis();
+		}
+		btn.onclick = function(){    //点击跳转
+			if(otxt.value > opage || otxt.value < 1 || parseInt(otxt.value) != otxt.value){
+				return false;
+			}
+			inow = otxt.value*1 - 1;
+			showthis();
+		}
+	</script>
+</html>

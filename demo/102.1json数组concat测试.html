@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script src="easyui/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript">
+		var json1 = [
+			{"name":111111,"height":"178cm","weight":"77kg"}
+		]
+		var json2 = [
+			{"name1":11111,"height":"177cm","weight2":"75kg","sex":"men"}
+		]
+		var oJson = json1.concat(json2);
+		console.log(oJson);
+		$(oJson).each(function(){
+			console.log(this.name1);
+		})
+	</script>
+</html>

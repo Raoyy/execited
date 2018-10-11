@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			th{
+				border-bottom: 1px solid #CCCCCC;
+				padding: 0 30px;
+				text-align: center;
+			}
+			td{
+				border-top: 1px solid #CCCCCC;
+				padding: 5px 0;
+				text-align: center;
+			}
+			span{
+				display: inline-block;
+				width: 30px;
+				height: 30px;
+				line-height: 30px;
+				text-align: center;
+				border-radius: 5px;
+				color: white;
+				background: lightblue;
+				cursor: pointer;
+			}
+			.num{
+				width: 300px;
+			}
+			#delete{
+				width: 50px;
+				height: 30px;
+				border-radius: 5px;
+				background: red;
+				color: white;
+				border: none;
+				cursor: pointer;
+			}
+		</style>
+	</head>
+	<body ng-app="myapp" onselectstart="return false">
+		<table border="0" cellspacing="0" cellpadding="0" ng-controller="table">
+			<tr>
+				<th>商品id</th>
+				<th>商品名</th>
+				<th>数量</th>
+				<th>单价</th>
+				<th>小计</th>
+				<th>编辑</th>
+			</tr>
+			<tr ng-repeat="item in goods">
+				<td>{{item.id}}</td>
+				<td>{{item.name}}</td>
+				<td class="num">
+					<span ng-click="less($index)">-</span>
+					<input type="text" ng-model="item.num" />
+					<span ng-click="add($index)">+</span>
+				</td>
+				<td>{{item.price}}</td>
+				<td>{{item.price * item.num}}</td>
+				<td><input type="button" name="" id="delete" value="移除" ng-click="deleteit($index)"/></td>
+			</tr>
+			<tr>
+				<td colspan="2">商品总价：{{sum_p()}}</td>
+				<td colspan="4">商品数量：{{sum_num()}}</td>
+			</tr>
+		</table>
+	</body>
+	<script src="js/Angular.js"></script>
+	<script type="text/javascript">
+		var app = angular.module("myapp",[]);
+		app.controller("table",function($scope){
+			$scope.goods = [
+				{id:1001,name:"手机",price:2000,num:0},
+				{id:1002,name:"电脑",price:5000,num:0},
+				{id:1003,name:"相机",price:3000,num:0},
+				{id:1004,name:"手表",price:6000,num:0}
+			];
+			$scope.less = function($index){
+				if($scope.goods[$index].num > 0){
+					$scope.goods[$index].num--;
+				}
+			};
+			$scope.add = function($index){
+				$scope.goods[$index].num++;
+			};
+			$scope.sum_p = function(){
+				var total_price = 0;
+				for(var i = 0; i < $scope.goods.length; i++){
+					total_price += $scope.goods[i].price * $scope.goods[i].num;
+				}
+				return total_price;
+			};
+			$scope.sum_num = function(){
+				var total_num = 0;
+				for(var i = 0; i < $scope.goods.length; i++){
+					 total_num += $scope.goods[i].num*1;
+				}
+				return total_num;
+			};
+			$scope.deleteit = function($index){
+				$scope.goods.splice($index,1);
+			}
+		});
+	</script>
+</html>

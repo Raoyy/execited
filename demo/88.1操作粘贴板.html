@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/jquery-2.1.4.min.js"></script>
+	</head>
+	<body>
+		<p id="p">hahahhah </p>
+		<input type="text" name="text" id="text" value="" />
+		<input type="button" name="btn" id="btn" value="复制" onclick="copy()" />
+		<input type="button" name="btn" id="btn2" value="复制2" onclick="copy2()" />
+		<input type="text" name="textcopy" id="textcopy" value="" />
+	</body>
+	<script type="text/javascript">
+		function copy(){
+			var Url2=document.getElementById("text");
+			Url2.select(); // 选择对象
+			document.execCommand("Copy"); // 执行浏览器复制命令
+			alert("已复制好，可贴粘。");
+		}
+		
+		function copy2(){
+			var txt = $("#text").value;
+			var p = $("#p").text();
+			if(window.clipboardData){
+				console.log("ie");
+				window.clipboardData.setData("Text",txt);   //ie
+			}else{
+				window.copy(txt);
+			}
+		}
+	</script>
+</html>

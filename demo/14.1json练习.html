@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<p>
+			name: <span id="name"></span><br />
+			age: <span id="age"></span><br />
+			street: <span id="street"></span>
+		</p>
+	</body>
+	<script type="text/javascript">
+		var ojson = {
+			"arr":[{"name":"name1","age":"18","street":"street1"},
+			{"name":"name2","age":"20","street":"street2"},
+			{"name":"name3","age":"22","street":"street3"}
+			],
+			"the_json":{"name":"name4","age":"24","street":"street4"}
+		}
+		for(var i=0;i<ojson.arr.length;i++){
+			document.getElementById('name').innerHTML+=ojson.arr[i].name + ' ';
+			document.getElementById('age').innerHTML+=ojson.arr[i].age + ' ';
+			document.getElementById('street').innerHTML+=ojson.arr[i].street + ' ';
+		}
+		document.getElementById('name').innerHTML+=ojson.the_json.name;
+		document.getElementById('age').innerHTML+=ojson.the_json.age;
+		document.getElementById('street').innerHTML+=ojson.the_json.street;
+	</script>
+</html>

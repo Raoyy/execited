@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="button" name="" id="" value="click" onclick="get()"/>
+		<input type="button" name="" id="" value="click2" onclick="get2()"/>
+	</body>
+	<script src="js/jQuery-3.2.1.js"></script>
+	<script type="text/javascript">
+		function get(){
+			$.getJSON("http://127.0.0.1/jsonP.php?a=123&callback=?",
+				function(json){
+					console.log(json);
+				});
+		}
+		function get2(){
+			$.ajax({
+				url:'http://127.0.0.1/jsonP.php',
+				type:'get',
+				dataType:'jsonp',
+				jsonp:'callback',
+				jsonpCallback:'callhandle',
+				success:function(data){
+					console.log(data);
+				},error:function(data){
+					console.log(data);
+				}
+			});
+		}
+	</script>
+</html>

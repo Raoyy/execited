@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#warp{
+			width: 300px;
+			margin: 0 auto;
+		}
+		.content{
+			height: 300px;
+			border: 1px solid black;
+			font-size: 18px;
+			overflow-y: scroll;
+		}
+		input{
+			cursor: pointer;
+		}
+	</style>
+	<body>
+		<div id="warp">
+			<input type="button" id="btn1" value="上移" />
+			<input type="button" id="btn2" value="下移" />
+			<div class="content">
+				点击窗口上下移动。点击窗口上下移动。点击窗口上下移动。点击窗口上下移动。点击窗口上下移动。
+				点击窗口上下移动。点击窗口上下移动。点击窗口上下移动。点击窗口上下移动。点击窗口上下移动。
+				点击窗口上下移动。点击窗口上下移动。点击窗口上下移动。点击窗口上下移动。点击窗口上下移动。
+				点击窗口上下移动。点击窗口上下移动。点击窗口上下移动。点击窗口上下移动。点击窗口上下移动。
+				点击窗口上下移动。点击窗口上下移动。点击窗口上下移动。点击窗口上下移动。点击窗口上下移动。
+				点击窗口上下移动。点击窗口上下移动。点击窗口上下移动。点击窗口上下移动。点击窗口上下移动。
+				点击窗口上下移动。点击窗口上下移动。点击窗口上下移动。点击窗口上下移动。点击窗口上下移动。
+				点击窗口上下移动。点击窗口上下移动。点击窗口上下移动。点击窗口上下移动。点击窗口上下移动。
+				点击窗口上下移动。点击窗口上下移动。点击窗口上下移动。点击窗口上下移动。点击窗口上下移动。
+				点击窗口上下移动。点击窗口上下移动。点击窗口上下移动。点击窗口上下移动。点击窗口上下移动。
+				点击窗口上下移动。点击窗口上下移动。点击窗口上下移动。点击窗口上下移动。点击窗口上下移动。
+				点击窗口上下移动。点击窗口上下移动。点击窗口上下移动。点击窗口上下移动。点击窗口上下移动。
+				点击窗口上下移动。点击窗口上下移动。点击窗口上下移动。点击窗口上下移动。点击窗口上下移动。
+			</div>
+		</div>
+	</body>
+	<script src="js/jquery.js"></script>
+	<script type="text/javascript">
+		var timer = null;
+		function up(){
+			var top = $('.content').scrollTop();
+			top-=10;
+			$('.content').scrollTop(top)
+		}
+		function down(){
+			var top = $('.content').scrollTop();
+			top+=10;
+			$('.content').scrollTop(top)
+		}
+		function move(obj,po){
+			obj.click(function(){
+				po();
+			});
+			obj.mousedown(function(){
+				timer = setInterval(function(){
+					po();
+				},100);
+			});
+			obj.mouseup(function(){
+				clearInterval(timer);
+			});
+			obj.mouseout(function(){
+				clearInterval(timer);
+			});
+		}
+		move($('#btn1'),up);
+		move($('#btn2'),down);
+	</script>
+</html>

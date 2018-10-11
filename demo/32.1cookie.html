@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="text" name="name" id="name" placeholder="set cookie name" />
+		<input type="button" name="add" id="add" value="add cookie" onclick="add()"/><br /><br />
+		<input type="text" name="time" id="time" placeholder="set cookie time(days)" />
+		<input type="button" name="add" id="add" value="set time" onclick="set_time()"/><br /><br />
+		<input type="text" name="name4" id="name4" placeholder="change cookie name" /><br />
+		<input type="text" name="content" id="content" placeholder="change cookie content" />
+		<input type="button" name="add" id="add" value="change cookie" onclick="change()"/><br /><br />
+		<input type="text" name="name2" id="name2" placeholder="get cookie name" />
+		<input type="button" name="add" id="add" value="get cookie" onclick="get()"/><br /><br />
+		<input type="text" name="name3" id="name3" placeholder="delete cookie name" />
+		<input type="button" name="add" id="add" value="delete cookie" onclick="odelete()"/>
+	</body>
+	<script src="js/jQuery-3.2.1.js"></script>
+	<script>
+		function add(){
+			var msg = document.getElementById('name').value;
+			document.cookie = msg+"=id-1!name-lily";
+			alert(msg);
+		}
+		function set_time(){
+			var msg = document.getElementById('name').value;
+			var days = document.getElementById('time').value;
+			if(days == ''){
+				days = 30;
+			}
+			var time = new Date();
+			time.setTime(time.getTime()+days*1000*60*60*24);
+			document.cookie = msg+"=id-1!name-lily;expires="+time.toGMTString();
+		}
+		function change(){
+			var name = document.getElementById('name4').value;
+			var content = document.getElementById('content').value;
+			
+		}
+		function get(){
+			var msg = document.getElementById('name2').value;
+			var arr = [];
+			var main = document.cookie.split('; '); //分号后应有一个空格
+			for(var i = 0; i < main.length; i++){
+				var c = main[i].split('=');
+				if(c[0] == msg){
+					var m = c[1].split('!');
+					for(var j = 0; j < m.length; j++){
+						var obj = m[j].split('-')[1];
+						arr.push(obj);
+					}
+					console.log(arr);
+				}
+			}
+		}
+		function odelete(){
+			var msg = document.getElementById('name3').value;
+			var time = new Date();
+			time.setTime(time.getTime()+1);
+			document.cookie = msg+"=id-1!name-lily;expires="+time.toGMTString();
+			alert('ok');
+		}
+	</script>
+</html>

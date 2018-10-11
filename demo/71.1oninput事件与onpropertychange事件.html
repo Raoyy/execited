@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		oninput:<input type="text" name="oninput" id="oninput" value="" /><br />
+		onpropertychnage:<input type="text" name="onpropertychange" id="onpropertychange" value="Text field" />
+	</body>
+	<script src="js/jQuery-3.2.1.js"></script>
+	<script type="text/javascript">
+//		$('body').on('input','#oninput',function(){   //谷歌、火狐下支持,js改变value时不触发
+//			alert($(this).val());
+//		});
+//		
+//		var oninput = document.getElementById('oninput');
+//		oninput.addEventListener("input",function(){
+//			console.log(this.value);
+//		})
+		
+		
+		//不明嚼梨的方法 
+		document.getElementById('onpropertychange').attachEvent('onpropertychange',function(o){alert('ok')});
+	</script>
+</html>

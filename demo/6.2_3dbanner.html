@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			body{
+				background: #2E2E2E;
+			}
+			#warp{
+				padding-top: 100px;
+			}
+			ul{
+				list-style: none;
+				position: relative;
+				width: 1000px;
+				height: 169px;
+				margin: 0 auto;
+			}
+			li{
+				width: 300px;
+				position: absolute;
+				cursor: pointer;
+				background: #2E2E2E;
+				transition: all 1s;
+			}
+			img{
+				display: block;
+				width: 100%;
+				transition: all 1s;
+			}
+		</style>
+		<script type="text/javascript" src="js/jquery.js"></script>
+		<script type="text/javascript">
+			window.onload = function(){
+				var oLength = document.getElementsByTagName('li').length;
+				var j = 0;
+				var num = 0;
+				var arr = [{'width':'150px','left':'0px','top':'42px','zIndex':0   //li样式
+				},{'width':'150px','left':'0px','top':'42px','zIndex':1
+				},{'width':'200px','left':'0px','top':'28px','zIndex':2
+				},{'width':'250px','left':'150px','top':'14px','zIndex':3
+				},{'width':'300px','left':'350px','top':'0px','zIndex':4
+				},{'width':'250px','left':'600px','top':'14px','zIndex':3
+				},{'width':'200px','left':'800px','top':'28px','zIndex':2
+				},{'width':'150px','left':'800px','top':'42px','zIndex':1
+				},{'width':'150px','left':'800px','top':'42px','zIndex':0
+				}];
+				var arr2 = [{'opacity':0},{'opacity':0},{'opacity':0.5},   //图片透明度
+				{'opacity':0.75},{'opacity':1,},{'opacity':0.75},
+				{'opacity':0.5},{'opacity':0},{'opacity':0}];
+				for(var i = 0; i < oLength; i++){   //设置初始值
+					$('li').eq(i).css(arr[i]);
+					$('img').eq(i).css(arr2[i]);
+				}
+				function move(){     //移动函数
+					for(var i = 0; i < oLength; i++){
+						if(i - num < 0){
+							$('li').eq(i).css(arr[i + oLength - num]);
+							$('img').eq(i).css(arr2[i + oLength - num]);
+						}else if(i - num > oLength - 1){
+							$('li').eq(i).css(arr[i - oLength - num]);
+							$('img').eq(i).css(arr2[i - oLength - num]);
+						}else{
+							$('li').eq(i).css(arr[i - num]);
+							$('img').eq(i).css(arr2[i - num]);
+						}
+					}
+				}
+				function autoPlay(){   //自动轮播函数
+					j++;
+					num = j % oLength;
+					move();
+				}
+				$('li').click(function(){      //点击轮播
+					num = $(this).index() - Math.floor(oLength/2);
+					move();
+					j = num;
+				});
+				var timer = setInterval(autoPlay,2000);    //自动轮播
+				$('li').hover(function(){                 //鼠标悬浮停止自动轮播
+					clearInterval(timer);
+				},function(){
+					timer = setInterval(autoPlay,2000);
+				});
+			}
+		</script>
+	</head>
+	<body>
+		<div id="warp">
+			<ul>
+				<li><img src="img/888.jpg"/></li>
+				<li><img src="img/30c1e84c-f7db-407b-8dbe-479269558c9d.jpg"/></li>
+				<li><img src="img/3278c1dc-f84e-4e83-bc29-4d4e7b2ef748.jpg"/></li>
+				<li><img src="img/33.jpg"/></li>
+				<li><img src="img/3798c2a7-ed4a-430b-8662-9c5d27d38db0.jpg"/></li>
+				<li><img src="img/4.jpg"/></li>
+				<li><img src="img/66.jpg"/></li>
+				<li><img src="img/69c0d609-881a-4a72-916e-390821164edf.jpg"/></li>
+				<li><img src="img/59b82b8a-1afc-43bb-80b5-c27ed9debfa4.jpg"/></li>
+			</ul>
+		</div>
+	</body>
+</html>

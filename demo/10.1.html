@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#sheng{
+				display: inline-block;
+			}
+			select{
+				display: none;
+			}
+			.show{
+				display: inline-block;
+			}
+		</style>
+	</head>
+	<body>
+		省：
+		<select id="sheng" onclick="change()">
+			<option value="1">1</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+			<option value="4">4</option>
+		</select>
+		市：
+		<select class="show">
+			<option value="1">11</option>
+			<option value="2">12</option>
+			<option value="3">13</option>
+			<option value="4">14</option>
+		</select>
+		<select>
+			<option value="">21</option>
+			<option value="">22</option>
+			<option value="">23</option>
+			<option value="">24</option>
+		</select>
+		<select>
+			<option value="">31</option>
+			<option value="">32</option>
+			<option value="">33</option>
+			<option value="">34</option>
+		</select>
+		<select>
+			<option value="">41</option>
+			<option value="">42</option>
+			<option value="">43</option>
+			<option value="">44</option>
+		</select>
+	</body>
+	<script type="text/javascript">
+		var aselect = document.getElementsByTagName('select');
+		function change(){
+			var osheng = aselect[0].options[aselect[0].selectedIndex];
+			for(var i = 1; i < aselect.length; i++){
+				aselect[i].className = '';
+			}
+			aselect[parseInt(osheng.value)].className = 'show';
+		}
+	</script>
+</html>

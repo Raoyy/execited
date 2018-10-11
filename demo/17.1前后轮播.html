@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		ul{
+			list-style: none;
+		}
+		#warp{
+			width: 800px;
+			height: 300px;
+			overflow: hidden;
+			border: 1px solid #AAAAAA;
+		}
+		ul{
+			width: 1000px;
+			height: 150px;
+		}
+		img{
+			width: 100%;
+			height: 100%;
+		}
+		li{
+			width: 200px;
+			height: 150px;
+			float: left;
+			cursor: pointer;
+		}
+		.banner2{
+			margin-left: -200px;
+		}
+		.banner2 li{
+			float: right;
+		}
+	</style>
+	<body>
+		<div id="warp">
+			<ul class="banner1">
+				<li><img src="img/30c1e84c-f7db-407b-8dbe-479269558c9d.jpg"/></li>
+				<li><img src="img/3278c1dc-f84e-4e83-bc29-4d4e7b2ef748.jpg"/></li>
+				<li><img src="img/33.jpg"/></li>
+				<li><img src="img/3798c2a7-ed4a-430b-8662-9c5d27d38db0.jpg"/></li>
+				<li><img src="img/66.jpg"/></li>
+			</ul>
+			<ul class="banner2">
+				<li><img src="img/30c1e84c-f7db-407b-8dbe-479269558c9d.jpg"/></li>
+				<li><img src="img/3278c1dc-f84e-4e83-bc29-4d4e7b2ef748.jpg"/></li>
+				<li><img src="img/33.jpg"/></li>
+				<li><img src="img/3798c2a7-ed4a-430b-8662-9c5d27d38db0.jpg"/></li>
+				<li><img src="img/66.jpg"/></li>
+			</ul>
+		</div>
+	</body>
+	<script src="js/jQuery-3.2.1.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			var olength = $('.banner1 li').length;
+			var timer = null;
+			function move(obj1,obj2){
+				obj1.eq(olength-1).css({'width':0});
+				obj2.prepend(obj1.eq(olength-1));
+				obj1.eq(olength-1).animate({'width':'200px'},1000,function(){});
+			}
+			timer = setInterval(function(){
+				move($('.banner1 li'),$('.banner1'));
+				move($('.banner2 li'),$('.banner2'));
+			},2000);
+		});
+	</script>
+</html>

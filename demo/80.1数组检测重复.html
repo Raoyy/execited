@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		Array.prototype.checkRepeat = function(){
+			var hash = {}; 
+			for(var i in this) { 
+				if(hash[this[i]]) return true; 
+				hash[this[i]] = true; 
+			} 
+			return false; 
+		}
+		var arr = ["111",222,3333,44,555,11];
+		console.log(arr.checkRepeat());
+	</script>
+</html>

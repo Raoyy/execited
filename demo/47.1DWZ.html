@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<script src="js/jQuery-3.2.1.js"></script>
+	<body>
+		<div id="warp">
+			<a href="###" target="ajaxTodo" title="confirm">click</a>
+			<a href="###" target="ajaxTodo" title="confirm2">click2</a>
+			<a href="###" target="ajaxTodo" title="confirm3">click3</a>
+		</div>
+	</body>
+	<script>
+		var $p = $('#warp');
+		$("a[target=ajaxTodo]", $p).click(function(){
+			var $this = $(this);
+			var title = $this.attr("title");
+			if(title){
+				alert(title);
+			}
+			event.preventDefault();
+		});
+		$("a[target=ajaxTodo]", $p).each(function(){
+			$(this).click(function(event){
+				var $this = $(this);
+				var title = $this.attr("title");
+				if (title) {
+					alert(title);
+//					alertMsg.confirm(title, {
+//						okCall: function(){
+//							ajaxTodo($this.attr("href"));
+//						}
+//					});
+				}else {
+					alert(title);
+//					ajaxTodo($this.attr("href"));
+				}
+				event.preventDefault();
+			});
+	});
+	</script>
+</html>

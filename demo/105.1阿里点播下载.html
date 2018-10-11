@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="http://gosspublic.alicdn.com/aliyun-oss-sdk-4.4.4.min.js"></script>
+	</head>
+	<body>
+		<input type="button" id="download" value="Download" />
+	</body>
+	<script src="js/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			document.getElementById('download').addEventListener('click', function (e) {
+		      	var objectKey = 'test/download_file';
+		      	var saveAs = 'download_file';
+		      	console.log(objectKey + ' => ' + saveAs);
+		      	OSS.urllib.request("http://192.168.31.72:8080/pt_cms/app/V1.0/api.json?module=livemodule&appToken=8888&action=getsts",
+		      	{method: 'GET'},
+		      	function (err, response) {
+		          	if (err) {
+		            	return alert(err);
+		          	}
+		          	try{
+		            	result = JSON.parse(response);
+		          	}catch (e) {
+		            	return alert('parse sts response info error: ' + e.message);
+		          	}
+		          	var client = new OSS.Wrapper({
+			            accessKeyId: result.AccessKeyId,
+			            accessKeySecret: result.AccessKeySecret,
+			            stsToken: result.SecurityToken,
+			            endpoint: 'http://oss-cn-shanghai.aliyuncs.com',
+			            bucket: 'xiaonixunshi-video'
+		          	});
+		          	
+		          	client.list({                     //获取下载列表
+			        	'max-keys': 10
+			      	}).then(function (result) {
+			        	console.log(result);
+			      	}).catch(function (err) {
+			        	console.log(err);
+			      	});
+		          	
+		          	var result = client.signatureUrl(objectKey,{expires: 3600,response: {
+		              		'content-disposition': 'attachment; filename="' + saveAs + '"'
+		            	}
+		          	});
+		          	console.log(result);
+		          	window.location = result;
+		        });
+		    });
+		});
+	</script>
+</html>

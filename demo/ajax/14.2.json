@@ -1,0 +1,7 @@
+{
+	"arr":[{"name":"name1","age":"18","street":"street1"},
+	{"name":"name2","age":"20","street":"street2"},
+	{"name":"name3","age":"22","street":"street3"}
+	],
+	"the_json":{"name":"name4","age":"24","street":"street4"}
+}

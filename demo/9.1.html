@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+  <input type="button" value="创建电视机对象" onclick="create_obj('长虹电视机',998)">
+  <input type="button" value="显示电视剧对象" onclick="show()">
+  <input type="button" value="创建洗衣机对象" onclick="create_xyj('长虹洗衣机',250)">
+  <input type="button" value="显示洗衣机对象" onclick="show_xyj()">
+<script>
+    var mygoods;//电视机对象
+    var xyj;
+    function create_obj(name,price){//创建电视机
+        mygoods=create_goods(name,price);
+        alert("ok")
+    }
+    function show(){
+        mygoods.tv();//显示方法
+    }
+    function create_xyj(name,price){
+        xyj=create_goods(name,price);
+        alert("ok")
+    }
+    function show_xyj(){
+        xyj.tv();
+    }
+    //封装创建对象的属性和方法
+    function create_goods(name,price){
+        var goods=new Object();//创建对象
+        goods.name=name;//对象添加属性
+        goods.price=price;
+        goods.tv=function(){//添加方法
+            alert("\n商品的名称:\n"+this.name+"\n商品的价格"+this.price);
+        }
+        return goods;//返回对象
+    }
+//	function create_obj(name,price){
+//		var goods = new Object();
+//		goods.name = name;
+//		goods.price = price;
+//		goods.show1 = function(){
+//			alert("\n商品的名称:\n"+this.name+"\n商品的价格"+this.price);
+//		}
+//		return goods;
+//	}
+//	function show(){
+//		this.show1();
+//	}
+</script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="warp" width="500" height="300" style="border: 1px solid black;"></canvas>
+		<input onclick="change()" type="button" name="" id="" value="click" />
+	</body>
+	<script type="text/javascript">
+		var canvas = document.getElementById('warp');
+		var c = canvas.getContext('2d');
+//		alert(canvas.offsetHeight);
+		var color = 'black';
+		function change(){
+			color = 'red';
+			alert(color);
+		}
+		canvas.onmousedown = function(ev){
+			var ev = ev || window.event;
+			ev.preventDefault();
+			var X = ev.clientX, Y = ev.clientY;
+			c.beginPath();
+			c.moveTo(X,Y);
+			c.strokeStyle = color;
+			canvas.onmousemove = function(ev){
+				var ev = ev || window.event;
+				var x = ev.clientX, y = ev.clientY;
+				c.lineTo(x,y);
+				c.stroke();
+				document.onmouseup = function(){
+					c.closePath();
+					canvas.onmousemove = null;
+				}
+			}
+		}
+	</script>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		div{
+			position: absolute;
+			top:0px;
+			left: 0px;
+		}
+	</style>
+	<body>
+		<div id="warp1">
+			<canvas id="mycanvas" width="1200" height="600" style="border: 1px solid black;"></canvas>
+		</div>
+		<div id="warp2">
+			<canvas id="mycanvas2" width="1200" height="600" style="border: 1px solid black;"></canvas>
+		</div>
+	</body>
+	<script type="text/javascript">
+		var c = document.getElementById('mycanvas').getContext('2d');
+		var c2 = document.getElementById('mycanvas2').getContext('2d');
+		function getdeg(x){
+			var deg = Math.PI/180*x;
+			return deg;
+		}
+		function drawcircle(obj,x,y,r){
+			obj.beginPath();
+			obj.fillStyle = 'black';
+			obj.arc(x,y,r,0,getdeg(360),false);
+			obj.fill();
+			obj.closePath();
+		}
+		
+		function drawhuxing(obj,x,y,r,a,b,bool){
+			obj.beginPath();
+			obj.lineWidth = 5;
+			obj.strokeStyle = 'darkgrey';
+			obj.arc(x,y,r,getdeg(a),getdeg(b),bool);
+			obj.stroke();
+		}
+		var steps = 1;
+		var steps2 = 1;
+		function clearit(obj,x,y,r){
+			var width = r - steps;  
+			var height = Math.sqrt(r*r - width*width);
+			var x_clear = x - width;   //清除的开始坐标
+			var y_clear = y;
+			var width_clear = width*2;  //清除的宽度
+			var height_clear = height;
+			if(steps <= r){
+				obj.clearRect(x_clear,y_clear,width_clear,height_clear);
+				steps+=4;
+				clearit(obj,x,y,r);
+			}
+		}
+		function clearit2(obj,x,y,r){
+			var width = r - steps2;  
+			var height = Math.sqrt(r*r - width*width);
+			var x_clear = x - width;   //清除的开始坐标
+			var y_clear = y - height;
+			var width_clear = width*2;  //清除的宽度
+			var height_clear = height*2;
+			if(steps2 <= r){
+				obj.clearRect(x_clear,y_clear,width_clear,height_clear);
+				steps2+=4;
+				clearit2(obj,x,y,r);
+			}
+		}
+		drawcircle(c,600,20,10);
+		drawcircle(c2,600,1180,10);
+		var r = 20;
+		var timer = setInterval(function(){
+			drawhuxing(c,600,30,r,30,150,false);
+			drawhuxing(c2,600,1170,r,-30,-150,true);
+			if(r >= 120){
+				clearit(c,600,38,r-100);
+				clearit2(c2,600,1170,r-90);
+				steps = 1;
+				steps2 = 1;
+			}
+			r+=20;
+		},300);
+	</script>
+</html>

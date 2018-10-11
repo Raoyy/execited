@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div style="width: 1200px; margin: 0 auto;">
+			<canvas id="mycanvas" width="1200" height="600" style="background: #F0F1F1;margin: 0 auto;"></canvas>
+		</div>
+	</body>
+	<script type="text/javascript">
+		var c = document.getElementById('mycanvas').getContext('2d');
+		function getdeg(x){
+			var deg = Math.PI/180*x;
+			return deg;
+		}
+		function getcolor(){
+			var col = parseInt(Math.random()*255);
+			return col;
+		}
+		c.translate(600,300);
+		function drawit(obj,color){
+			obj.fillStyle = color;  //半圆
+			obj.beginPath();
+			obj.arc(0,200,50,0,Math.PI,true);
+			obj.fill();
+			obj.save();
+			obj.restore();
+			obj.fillRect(-3,200,6,60);  //线
+			obj.beginPath();    //勾
+			obj.strokeStyle = color;
+			obj.lineWidth = 6;
+			obj.arc(-12,260,12,0,Math.PI,false);
+			obj.stroke();
+			obj.rotate(getdeg(40));
+		}
+		function clearit(obj){
+			obj.clearRect(-50,150,100,130);
+			obj.rotate(getdeg(40));
+		}
+		var i = 1;
+		var j = 1;
+		var timer1 = null;
+		var timer2 = null;
+		function autoPlay1(obj){
+			timer1 = setInterval(function(){
+				drawit(obj,'rgb('+getcolor()+','+getcolor()+','+getcolor()+')');
+				i++;
+				if(i == 10){
+					clearInterval(timer1);
+					autoPlay2(obj);
+					i = 1;
+				}
+			},300);
+		}
+		function autoPlay2(obj){
+			timer2 = setInterval(function(){
+				clearit(obj);
+				j++;
+				if(j == 10){
+					clearInterval(timer2);
+					autoPlay1(obj);
+					j = 1;
+				}
+			},300);
+		}
+		autoPlay1(c);
+	</script>
+</html>

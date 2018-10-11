@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		省：<select id="sheng" onclick="change_sheng()"></select>
+		市：<select id="shi" onclick="change_shi()"></select>
+		乡：<select id="xiang"></select>
+	</body>
+	<script type="text/javascript">
+		var sheng = [0,1,2,3,4];
+		var shi1 = [0,1,2,3,4,5];
+		var shi2 = [0,2,1,3];
+		var shi3 = [0,3,2,3,4,5,6];
+		var shi4 = [0,4,2,3,4];
+		var arr_sheng = [0,shi1,shi2,shi3,shi4];
+		var shi1_xiang1 = [0,1,2,3];
+		var shi1_xiang2 = [0,2,2,3,4];
+		var shi1_xiang3 = [0,3,2,3,33,4,55,67,111];
+		var shi1_xiang4 = [0,4,2];
+		var shi1_xiang5 = [0,5,2,7,1,2,35];
+		var shi1_xiang = [0,shi1_xiang1,shi1_xiang2,shi1_xiang3,shi1_xiang4,shi1_xiang5];
+		var shi2_xiang1 = [0,2,2,3];
+		var shi2_xiang2 = [0,2,2,3,4];
+		var shi2_xiang3 = [0,2,2,3,33,4,55,67,2222];
+		var shi2_xiang = [0,shi2_xiang1,shi2_xiang2,shi2_xiang3];
+		var shi3_xiang1 = [0,3,2,3];
+		var shi3_xiang2 = [0,3,2,3,4];
+		var shi3_xiang3 = [0,3,2,3,33,4,55,67,3333];
+		var shi3_xiang4 = [0,3,2];
+		var shi3_xiang5 = [0,3,2,7,1,2,35];
+		var shi3_xiang5 = [0,3,2,7,1,2,35,6];
+		var shi3_xiang6 = [0,3,32,33,45,6];
+		var shi3_xiang = [0,shi3_xiang1,shi3_xiang2,shi3_xiang3,shi3_xiang4,shi3_xiang5,shi3_xiang6];
+		var shi4_xiang1 = [0,4,2,3];
+		var shi4_xiang2 = [0,4,2,3,4];
+		var shi4_xiang3 = [0,4,2,3,33,4,55,67,4444];
+		var shi4_xiang4 = [0,4,2];
+		var shi4_xiang = [0,shi4_xiang1,shi4_xiang2,shi4_xiang3,shi4_xiang4];
+		var shi_xiang = [0,shi1_xiang,shi2_xiang,shi3_xiang,shi4_xiang];
+		var osheng = document.getElementById('sheng');
+		var oshi = document.getElementById('shi');
+		var oxiang = document.getElementById('xiang');
+		var now = [];
+		var k = null;
+		add(osheng,sheng);
+		function resetit(){
+			oshi.options.length = 0;
+			oxiang.options.length = 0;
+			oshi.options.add(new Option(0));
+			oxiang.options.add(new Option(0));
+		}
+		resetit();
+		function add(name,arr){
+			for(var x = 0; x < arr.length; x++){
+				name.options.add(new Option(arr[x]));
+			}
+		}
+		function change_sheng(){
+			var sheng_html = osheng.options[osheng.selectedIndex].innerHTML;
+			var sheng_length = osheng.length;
+			resetit();
+			oshi.options.length = 0;
+			if(sheng_html == 0){
+				oshi.options.add(new Option(0));
+			}
+			for(var i = 1; i < sheng_length; i++){
+				if(sheng_html == sheng[i]){
+					add(oshi,arr_sheng[i]);
+					now = arr_sheng[i];
+					k = sheng[i];
+				}
+			}
+		}
+		function change_shi(){
+			var shi_html = oshi.options[oshi.selectedIndex].innerHTML;
+			var shi_length = oshi.length;
+			oxiang.options.length = 0;
+			if(shi_html == 0){
+				oxiang.options.add(new Option(0));
+				return false;
+			}
+			for(var j = 0; j < osheng.length; j++){
+				if(k == sheng[j]){
+					for(var i = 0; i < oshi.length; i++){
+						if(shi_html == now[i]){
+							oxiang.options.length = 0;
+							add(oxiang,shi_xiang[j][i]);
+						}
+					}
+				}
+			}
+		}
+	</script>
+</html>

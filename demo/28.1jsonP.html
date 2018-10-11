@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			body{
+				background: #f8f5ed;
+			}
+			ul{
+				width: 80%;
+				list-style: none;
+				column-count: 4;
+				column-gap:20px;
+				margin: 0 auto;
+			}
+			h4{
+				padding-left: 20px;
+				line-height: 50px;
+			}
+			li{
+				column-width: 250px;
+				margin: 0 0 20px 0;
+				border: 1px solid #CCCCCC;
+				box-shadow: 0 0 10px #CCCCCC;
+				background: white;
+			}
+			img{
+				width: 100%;
+			}
+			#msg{
+				background: transparent;
+				color: black;
+				border: 1px solid black;
+			}
+			.clear{
+				clear: both;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="text" name="msg" id="msg" placeholder="输入搜索内容" />
+		<input type="button" name="btn" id="btn" value="搜索" />
+		<h3></h3>
+		<ul id="list">
+			
+		</ul>
+	</body>
+	<script src="js/jQuery-3.2.1.js"></script>
+	<script>
+		$('#btn').click(function(){
+			var newscript = document.createElement('script');
+			newscript.src = 'https://api.douban.com/v2/book/search?q='+$('#msg').val()+'&callback=show&count=50';
+			$(newscript).appendTo($('html'));
+		});
+		function show(data){
+			$('h3').html('搜索结果共'+data.total+'条');
+			var html = '';
+			for(var i = 0; i < data.books.length; i++){
+				html += '<li><img src = "'+data.books[i].images.large+'" /><h4>作者：'+data.books[i].author+'</h4></li>';
+			}
+			$('#list').html(html+'<div class="clear"></div>');
+		}
+	</script>
+</html>

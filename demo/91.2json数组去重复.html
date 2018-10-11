@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="easyui/jquery-1.7.2.min.js"></script>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		var str ='[{"id":2,"name":"乐器"},{"id":2,"name":"乐器"},{"id":1,"name":"舞蹈"}]';
+		Array.prototype.unique = function(){
+			var res = [];
+			var json = {};
+			for(var i = 0; i < this.length; i++){
+				if(!json[this[i]]){
+					res.push(this[i]);
+					json[this[i]] = 1;
+				}
+			}
+			return res;
+		}
+		var courses = JSON.parse(str);
+		var str2 = "";
+		$(courses).each(function(index){
+			str2 += "!"+JSON.stringify(courses[index]);
+		});
+		str2 = str2.substring(1);
+		courses = "["+str2.split("!").unique().join(",")+"]";
+		courses = JSON.parse(courses);
+		console.log(courses);
+	</script>
+</html>

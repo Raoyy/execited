@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			body, html,#allmap {width: 100%;height: 100%;overflow: hidden;margin:0;font-family:"微软雅黑";}
+		</style>
+		<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=ibRaZKN3fC1DvD8I6DYiw90x736r3XQd"></script>
+	</head>
+	<body>
+		<div id="allmap"></div>
+	</body>
+	<script type="text/javascript">
+		var map = new BMap.Map("allmap",{minZoom:4,maxZoom:16});  //设置地图最大最小显示级别
+		map.centerAndZoom(new BMap.Point(116.4035,39.915), 14);  // 初始化地图,设置中心点坐标和地图级别
+		map.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
+		
+		//添加城市列表控件
+		var size = new BMap.Size(10, 20);
+		map.addControl(new BMap.CityListControl({
+		    anchor: BMAP_ANCHOR_TOP_LEFT,
+		    offset: size,
+		    // 切换城市之间事件
+		    // onChangeBefore: function(){
+		    //    alert('before');
+		    // },
+		    // 切换城市之后事件
+		    // onChangeAfter:function(){
+		    //   alert('after');
+		    // }
+		}));                    //结论：和下方代码冲突
+		
+		//	var b = new BMap.Bounds(new BMap.Point(116.027143, 39.772348),new BMap.Point(116.832025, 40.126349));
+		//	try {	
+		//		BMapLib.AreaRestriction.setBounds(map, b);
+		//	} catch (e) {
+		//		alert(e);
+		//	}
+	</script>
+</html>

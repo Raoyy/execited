@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			p{
+				display: inline-block;
+			}
+		</style>
+		<script type="text/javascript">
+		window.onload = function(){
+			var input_yueshu = document.getElementById('yueshu');
+			var input_tijiao = document.getElementById('tijiao');
+			var yueshu = 0;
+			var x = 2;
+			var y = 2;
+			var z = 2;
+			input_tijiao.onclick = function(){
+				yueshu = input_yueshu.value;
+				for(var j = 0; j < yueshu - 2; j++){
+					z = x + y;
+					x = y;
+					y = z;
+					console.log(z);
+				}
+				alert(z);
+				x = 2;
+				y = 2;
+				z = 2;
+			}
+		}
+		</script>
+	</head>
+	<body>
+		<p>请输入月数：</p>
+		<input type="text" id="yueshu" value="" />
+		<input type="button" id="tijiao" value="提交" />
+		<div id="tuzi"></div>
+	</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		var moneyf = 10;
+		var moneyo = 2;
+		var p = Math.floor(moneyf / moneyo);
+		var sum = p;
+		var ping = p;
+		var gai = p;
+		var num = 0;
+		while(ping/2 >= 1 || gai/4 >= 1){
+			sum += Math.floor(ping/2);
+			sum += Math.floor(gai/4);
+			num = Math.floor(ping/2) + Math.floor(gai/4);
+			ping = ping - Math.floor(ping/2)*2;
+			gai = gai - Math.floor(gai/4)*4;
+			ping += num;
+			gai += num;
+		}
+		console.log(sum);
+	</script>
+</html>

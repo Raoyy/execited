@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		ul{
+			list-style: none;
+			width: 100%;
+		}
+		li{
+			margin-bottom: 10px;
+			border: 1px solid black;
+			height: 300px;
+			line-height: 300px;
+			text-align: center;
+		}
+		p{
+			font-size: 50px;
+			font-weight: bolder;
+			position: relative;
+			opacity: 0;
+			left: -70px;
+			transition: all 2s;
+		}
+	</style>
+	<body>
+		<ul id="warp">
+			<li><p>1</p></li>
+			<li><p>2</p></li>
+			<li><p>3</p></li>
+		</ul>
+	</body>
+	<script type="text/javascript">
+		var owarp = document.getElementById('warp');
+		var ali = document.getElementsByTagName('li');
+		var screen_height = window.innerHeight;
+		var li_height = ali[0].offsetHeight;
+		var aP = document.getElementsByTagName('p');
+		var j = 0;
+		function show(){
+			if(j <= ali.length - 1){
+				aP[j].style.left = '0px';
+				aP[j].style.opacity = 1;
+			}
+			j++;
+			setTimeout(show,300);
+		}
+		show();
+			
+		window.onscroll = function(){
+			var scolltop = document.body.scrollTop ? document.body.scrollTop : document.documentElement.scrollTop;
+			if(scolltop + screen_height >= owarp.offsetHeight){
+				var new_li = document.createElement('li');
+				owarp.appendChild(new_li);
+				var new_p = document.createElement('p');
+				new_p.style.left = '-70px';
+				new_p.innerHTML = ali.length;
+				new_li.appendChild(new_p);
+				setTimeout(function(){
+					new_p.style.left = '0px';
+					new_p.style.opacity = 1;
+				},300);
+			}
+		}
+	</script>
+</html>

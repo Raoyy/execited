@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input onclick="closeit()" type="button" name="" id="close" value="关闭此窗口" />
+	</body>
+	<script src="js/jQuery-3.2.1.js"></script>
+	<script type="text/javascript">
+		function closeit(){   //关闭当前窗口
+			window.close();
+		}
+		var timeout = null;
+		$(window).blur(function(){
+			timeout = setTimeout(function(){
+				console.log('blur');
+			},10000);
+		});
+		$(window).focus(function(){
+			clearTimeout(timeout);
+		});
+	</script>
+</html>

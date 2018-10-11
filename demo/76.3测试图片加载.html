@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+	</head>
+	<script src="js/jquery-2.1.4.min.js"></script>
+	<style type="text/css">
+		.test{
+			width: 500px;
+			height: 500px;
+			background: url(http://pic1.win4000.com/wallpaper/f/51c3bb99a21ea.jpg);
+		}
+	</style>
+	<body>
+		<img src="http://pic1.win4000.com/wallpaper/f/51c3bb99a21ea.jpg"/>
+		<div class="test">
+			
+		</div>
+		<script>
+		// 方法一：图片已经下载完
+//		var length = document.getElementsByTagName("img").length;
+//		document.getElementsByTagName('img')[length-1].onload = function(e){
+//			e.stopPropagation();
+//			alert(1);
+//		}
+		$(window).load(function(){
+			alert("ok");
+		});
+//		var timer = setInterval(function(){
+//			var completeNum = 0;
+//			var picLength = document.getElementsByTagName("img").length;
+//			console.log(picLength);
+//			for(var i=0; i<picLength; i++){
+//				if(document.getElementsByTagName("img")[i].complete){
+//					completeNum++;
+//					console.log(completeNum);
+//				}
+//			}
+//			if (completeNum == picLength){
+//				clearInterval(timer);
+//				alert(1);
+//				console.log(document.getElementById('img1').complete);
+//			}
+//		}, 1000);
+
+//	var timer = setInterval(function(){
+//		var completeNum = 0;
+//		var picLength = document.getElementsByTagName("img").length;
+//		console.log(picLength);
+//		for(var i=0; i<picLength; i++){
+//			if(document.getElementsByTagName("img")[i].complete){
+//				completeNum++;
+//				console.log(completeNum);
+//			}
+//		}
+//		if (completeNum == picLength){
+//			clearInterval(timer);
+//		}
+//	}, 1000);
+
+		
+		</script>
+	</body>
+</html>

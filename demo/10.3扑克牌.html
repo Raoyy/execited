@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		div>div{
+			display: inline-block;
+			height: 200px;
+			width: 150px;
+			line-height: 200px;
+			border: 1px solid black;
+			text-align: center;
+		}
+	</style>
+	<body>
+		电脑：
+		<div id="computer">
+			<div class="card1"></div>
+			<div class="card2"></div>
+			<div class="card2"></div>
+		</div>
+		我：
+		<div id="mycard">
+			<div class="card1"></div>
+			<div class="card2"></div>
+			<div class="card2"></div>
+		</div>
+		<input type="button" id="deal" value="发牌" onclick="deal()" />
+		<input type="button" id="inquiry" value="查询" onclick="inquiry()"/>
+	</body>
+	<script type="text/javascript">
+		var ocomputer = get('computer');
+		var omycard = get('mycard');
+		var odeal = get('deal');
+		var oinquiry = get('inquiry');
+		var acolor = ['黑桃','红桃','梅花','方块'];
+		var anumber = [3,4,5,6,7,8,9,10,'J','Q','K','A'];
+		var anumber2 = [3,4,5,6,7,8,9,10,11,12,13,14];
+		var cj1 = 0;
+		var cj2 = 0;
+		var color1 = null;
+		var color2 = null;
+		var color3 = null;
+		var text_color = null;
+		var nums = 0;
+		function get(id){
+			return document.getElementById(id);
+		}
+		function a(name,obj){    //为name方发牌
+			var adiv = name.getElementsByTagName('div');
+			var olength = adiv.length;
+			for(var i = 0; i < olength; i++){
+				adiv[i].innerHTML = suffle(obj);
+				adiv[i].style.color = k;
+			}
+			color1 = null;  //清除color的颜色
+			color2 = null;
+			nums = 0;       //清除成绩的值
+		}
+		function deal(){
+			a(ocomputer,'电脑');  //为电脑方发牌
+			a(omycard,'我');  //为己方发牌
+		}
+		function suffle(obj){
+			color3 = color2;     //把上上一张牌的花色赋值给color3
+			color2 = color1;     //把上一张牌的花色赋值给color2
+			var card = new Object();
+			var j = Math.floor(Math.random()*acolor.length);   //随机生成花色下标
+			if(j%2 == 0){     //判断花色应有的颜色
+				k = 'black';
+			}else{
+				k = 'red';
+			}
+			card.color = acolor[j];   //随机生成花色
+			color1 = card.color;    //把该张牌的花色赋值给color1
+			if(color1 == color2 && color2 == color3){   //如果花色相同则成绩+100
+				nums += 100;
+			}
+			var i = Math.floor(Math.random()*anumber.length);    //随机生成数值下标
+			card.num = anumber[i];
+			nums += anumber2[i];   //成绩累加该张牌数值
+			if(obj == '电脑'){
+				cj1 = nums;   //把电脑方成绩赋值给cj1
+			}else{
+				cj2 = nums;   //把己方成绩赋值给cj2
+			}
+			return card.color + card.num;
+		}
+		function inquiry(){   //判断双方成绩，判断输赢或平局
+			if(cj1 > cj2){   
+				alert('你输咯~')
+			}else if(cj1 < cj2){
+				alert('你赢了！')
+			}else{
+				alert('平局')
+			}
+		}
+	</script>
+</html>

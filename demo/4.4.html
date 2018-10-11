@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>字符串倒序</title>
+		<script type="text/javascript">
+			window.onload = function(){
+				var txt = document.getElementById('txt');
+				var btn = document.getElementById('btn');
+				var result = document.getElementById('result');
+				btn.onclick = function(){
+					var str = txt.value;
+					var arr = str.split('');
+					var arr2 = [];
+					for(var i = 0; i < arr.length; i++){
+						arr2[i] = arr[arr.length - i - 1]
+					}
+					for(var i = 0; i < arr2.length; i++){
+						result.value = result.value + arr2[i];
+					}
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<input type="text" id="txt" value="" />
+		<input type="button" id="btn" value="点击倒序" />
+		<input type="text" id="result" value="" />
+	</body>
+</html>

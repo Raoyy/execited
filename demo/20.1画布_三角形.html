@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<canvas id="canvas" width="200" height="200" style="border: 1px solid black;"></canvas>
+	</body>
+	<script type="text/javascript">
+		var c = document.getElementById('canvas').getContext('2d');
+		c.moveTo(0,200);
+		c.lineTo(200,200);
+     	c.moveTo(0,200);
+		c.lineTo(100,0);
+     	c.moveTo(200,200);
+		c.lineTo(100,0);
+		c.strokeStyle='#ff0000';
+     	c.stroke();
+	</script>
+</html>

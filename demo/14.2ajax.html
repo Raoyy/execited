@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<p>
+			name: <span id="name"></span><br />
+			age: <span id="age"></span><br />
+			street: <span id="street"></span>
+		</p>
+	</body>
+	<script src="js/jquery.js"></script>
+	<script type="text/javascript">
+//		var xmlhttp;
+//		if (window.XMLHttpRequest){// code for IE7+, Firefox, Chrome, Opera, Safari
+//			xmlhttp=new XMLHttpRequest();
+//		}else{// code for IE6, IE5
+//			xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+//		}
+//		xmlhttp.open("GET","ajax/14.2.json",true);
+//		xmlhttp.send();
+//		xmlhttp.onreadystatechange=function(){
+//			if (xmlhttp.readyState==4 && xmlhttp.status==200){
+//		    	var otext=JSON.parse(xmlhttp.responseText);
+//			    for(var i=0;i<otext.arr.length;i++){
+//			    	document.getElementById('name').innerHTML+=otext.arr[i].name + ' ';
+//					document.getElementById('age').innerHTML+=otext.arr[i].age + ' ';
+//					document.getElementById('street').innerHTML+=otext.arr[i].street + ' ';
+//			    }
+//		    }
+//		}
+		var thejson;
+		if(window.XMLHttpRequest){
+			thejson = new XMLHttpRequest();
+		}else{
+			thejson = new ActiveXObject();
+		}
+		thejson.open("GET","ajax/14.2.json","true");
+		thejson.send();
+		thejson.onreadystatechange = function(){
+			if(thejson.readyState == 4 && thejson.status == 200){
+				var otext = JSON.parse(thejson.responseText);
+				for(var i=0;i<otext.arr.length;i++){
+			    	document.getElementById('name').innerHTML+=otext.arr[i].name + ' ';
+					document.getElementById('age').innerHTML+=otext.arr[i].age + ' ';
+					document.getElementById('street').innerHTML+=otext.arr[i].street + ' ';
+			    }
+			}
+		}
+//		$.ajax({
+//			type:"get",
+//			url:"ajax/14.2.json",
+//			async:true,
+//			data:{},
+//			dataType:"json",
+//			success:function(otext){
+//			    for(var i=0;i<otext.arr.length;i++){
+//			    	$('#name').html($('#name').html()+otext.arr[i].name + ' ');
+////				    document.getElementById('name').innerHTML+=otext.arr[i].name + ' ';
+//					document.getElementById('age').innerHTML+=otext.arr[i].age + ' ';
+//					document.getElementById('street').innerHTML+=otext.arr[i].street + ' ';
+//			    }
+//			}
+//		});
+	</script>
+</html>

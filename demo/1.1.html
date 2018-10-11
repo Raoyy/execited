@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		div{
+			border: 1px solid #8F8F8F;
+		}
+		a{
+			padding-left: 10px;
+			text-decoration: none;
+			display: block;
+			color: black;
+			height: 40px;
+			font-size: 18px;
+			line-height: 40px;
+			background: lightgray;
+			font-weight: bold;
+		}
+		img{
+			display: block;
+			width: 636px;
+			height: 0px;
+			transition: height .3s;
+		}
+		:target{
+			height: 338px;
+		}
+	</style>
+	<body>
+		<div>
+			<a href="#div1">百度新闻</a>
+			<img id="div1" src="img/1.JPG"/>
+		</div>
+		<div>
+			<a href="#div2">财经</a>
+			<img id="div2" src="img/2.JPG"/>
+		</div>
+		<div>
+			<a href="#div3">体育</a>
+			<img id="div3" src="img/3.JPG"/>
+		</div>
+	</body>
+</html>

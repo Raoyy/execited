@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			li{
+				font-size: 15px;
+				line-height: 24px;
+			}
+			.head{
+				text-align: center;
+				padding: 20px;
+			}
+			#main{
+				width: 300px;
+				margin: 0 auto;
+			}
+		</style>
+	</head>
+	<body>
+		<h1 id="title" :class="[head]">{{title}}</h1>
+		<div id="main">
+			<input @keydown.enter="setmsg" ref="input" type="text" name="msg" id="msg" placeholder="输入任务" v-model="value"/>
+			<input type="button" name="" id="" value="clear" @click="clear"/>
+			<ul>
+				<li v-for="item in amsg">
+					{{item}}
+				</li>
+			</ul>
+		</div>
+	</body>
+	<script src="js/vue.js"></script>
+	<script type="text/javascript">
+		var arr_msg = [];
+		var head = new Vue({
+			el:'#title',
+			data:{
+				title:'Work memo',
+				head:'head'
+			}
+		});
+		var main = new Vue({
+			el:'#main',
+			data:{
+				value:'',
+				amsg:[]
+			},
+			methods:{
+				setmsg:function(){
+					var omsg = this.$refs.input.value;
+					var reg = /[ ]/;
+					if(reg.test(omsg)){
+						alert('留言信息不能有空格！');
+						return false;
+					}
+					omsg = omsg.replace(',',' ');
+					var the_msg = window.localStorage.getItem('message');
+					if(the_msg != null){
+						arr_msg = the_msg.split(',');
+						for(var i = 0; i < arr_msg.length; i++){
+							arr_msg[i] = arr_msg[i].replace(' ',',');
+						}
+					}
+					arr_msg.push(omsg);
+					window.localStorage.setItem('message',arr_msg);
+					this.amsg = arr_msg;
+					this.value = '';
+				},
+				clear:function(){
+					window.localStorage.clear();
+					alert('清除完成！');
+				}
+			},
+			mounted:function(){
+				var the_msg = window.localStorage.getItem('message');
+				if(the_msg != null){
+					arr_msg = the_msg.split(',');
+					for(var i = 0; i < arr_msg.length; i++){
+						arr_msg[i] = arr_msg[i].replace(' ',',');
+					}
+				}
+				this.amsg = arr_msg;
+			}
+		});
+	</script>
+</html>

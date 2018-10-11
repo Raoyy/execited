@@ -1,0 +1,42 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+ul {
+  list-style: none;
+}
+#warp {
+  width: 300px;
+  height: 300px;
+  border: 1px solid black;
+  margin: 0 auto;
+}
+#warp .nav {
+  width: 300px;
+  height: 30px;
+  text-align: center;
+  border-bottom: 1px solid black;
+}
+#warp .nav li {
+  width: 100px;
+  height: 30px;
+  float: left;
+  cursor: pointer;
+}
+#warp .nav .now {
+  background: lightblue;
+}
+#warp .content {
+  width: 300px;
+  height: 270px;
+  position: relative;
+}
+#warp .content li {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: none;
+}
+#warp .content .show {
+  display: block;
+}

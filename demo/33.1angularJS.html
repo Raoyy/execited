@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/Angular.js"></script>
+	</head>
+	<body>
+		<!--<div ng-app="myapp" ng-controller="person1">
+			<p>职业：{{job}}</p>
+			<input type="text" name="" id="" value="" ng-model="msg"/>
+			<p>{{msg}}</p>
+			<div ng-controller="person2">
+				<p>姓名：{{name}}</p>
+				<p>年龄：{{age}}</p>
+				<p>职位：{{myjob}}</p>
+				<input type="button" name="btn" id="btn" value="change" ng-click="change()"/>
+				<input type="button" name="tog" id="tog" value="toggle" ng-click="toggle()"/>
+				<p ng-show="isshow">toggle</p>
+			</div>
+		</div>-->
+		<div ng-app="myapp2" ng-controller="form">
+			<form ng-submit="submit()" name="myform">
+				<p>
+					用户名：
+					<input type="text" name="name" ng-model="user.name" ng-minlength="4" required/>
+					<span ng-show="myform.name.$error.required">用户名不能为空！</span>
+					<span ng-show="myform.name.$error.minlength">用户名长度必须大于4位</span>
+				</p>
+				<p>
+					邮箱：
+					<input type="email" name="email" ng-maxlength="15" ng-model="user.email" required/>
+					<span ng-show="myform.email.$error.email">非法的邮箱</span>
+					<span ng-show="myform.email.$error.required">邮箱不能为空！</span>
+				</p>
+				<textarea name="txtarea" rows="10" cols="40" ng-model="user.text" ng-maxlength="500"></textarea><br />
+				<input type="submit" value="提交" ng-disabled="myform.$invalid"/>
+			</form>
+			<!--<form ng-submit="submit()" name="myForm"  novalidate>
+				 <p>用户名:
+				 <input type="text" name="name" ng-model="user.name" ng-minlength="4" required>
+				 <span ng-show="myForm.name.$error.required">用户名是必须的</span>
+				 <span ng-show="myForm.name.$error.minlength">用户名长度必须大于4位</span>
+				 </p>
+				 <p>邮箱:
+				 <input type="email" name="email" ng-model="user.email" required>
+				 <span ng-show="myForm.email.$error.email">非法的邮箱</span>
+				 <span ng-show="myForm.email.$error.required">邮箱是必须的</span>
+				 </p>
+				 <input type="submit" value="提交" ng-disabled="myForm.$invalid">
+			</form>-->
+		</div>
+	</body>
+	<script type="text/javascript">
+		var form = angular.module('myapp2',[]);
+		form.controller('form',function($scope){
+			$scope.submit = function(){
+				alert(JSON.stringify($scope.user));
+			}
+		});
+		
+		
+//		var app = angular.module('myapp',[]);
+//		app.controller('person1',function($scope){
+//			$scope.job = 'web前端';
+//			$scope.msg = 'aaaaaa';
+//		});
+//		app.controller('person2',function($scope){
+//			$scope.name = 'lily';
+//			$scope.age = 18;
+//			$scope.myjob = $scope.job;
+//			$scope.change = function(){
+//				$scope.name = 'jeck';
+//				$scope.age = 23;
+//			}
+//			$scope.isshow = true;
+//			$scope.toggle = function(){
+//				$scope.isshow = !$scope.isshow;
+//			}
+//		});
+	</script>
+</html>

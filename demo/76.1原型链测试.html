@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="button" name="" id="click" value="click" />
+	</body>
+	<script type="text/javascript">
+		var arr = new Array();
+		console.log(arr);
+		Array.prototype.removeStr = function(str){
+			for(var i=0; i<this.length; i++){
+				if(this[i] == str){
+					this.splice(i,1);
+				}
+			}
+		}
+		arr = ["aaaaa","bbbbb","ccccccc","dddddddddd","ccccccc"];
+		console.log(arr);
+		arr.removeStr("ccccccc");
+		console.log(arr);
+		console.log("-----------------------------------------------------------------");
+		function proFn(){
+			this.num1 = 1;
+			this.fn1 = function(){
+				console.log("fn1调用");
+			}
+			this.add = function(num){
+				var sum = 0
+				for(var i=0; i<=num; i++){
+					sum+=i;
+				}
+				return sum;
+			}
+		}
+		var obj = new proFn();
+		console.log(obj);
+		console.log(obj.num1);
+		console.log(obj.add(10));
+		console.log("----------------------------------------------------------------");
+		function AClass(){   
+	       	this.Property = 1;   
+	       	this.Method = function(){   
+	        	console.log(1);   
+	       	}   
+		}   
+		
+		function AClass2(){   
+	    	this.Property2 = 2;   
+	       	this.Method2 = function(){   
+	            console.log(2);   
+	       	}   
+		}   
+		AClass2.prototype = new AClass();   
+		
+		var obj = new AClass2();
+		console.log(obj)
+		console.log(obj.Property);   
+		obj.Method();   
+		console.log(obj.Property2);   
+		obj.Method2();
+	</script>
+</html>

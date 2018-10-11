@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<canvas id="canvas" width="200" height="200"></canvas>
+	</body>
+	<script type="text/javascript">
+		var c = document.getElementById('canvas').getContext('2d');
+		var r = 20;
+		var o = Math.PI/4;   
+		//o 为45度；
+		c.beginPath();
+		c.fillStyle = 'blue';
+		c.arc(100,195,5,0,o*8,true);
+		c.fill();
+		function circle(){
+			c.beginPath();
+			c.strokeStyle = 'blue';
+			c.arc(100,200,r,-o,-o*3,true);
+			c.stroke();
+			r+=20;
+		}
+		function autoPlay(){
+			var timer = setInterval(function(){
+				circle();
+				if(r == 120){
+					clearInterval(timer);
+					c.clearRect(0,0,200,190);
+					autoPlay();
+					r = 20;
+				}
+			},1500);
+		}
+		autoPlay();
+	</script>
+</html>

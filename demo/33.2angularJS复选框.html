@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<script src="js/Angular.js"></script>
+<body ng-app="myApp" ng-controller="person">
+	 <form ng-submit="submit()" name="myForm">
+		 <p>职业:
+		 <input type="checkbox" ng-model="user.jobs.engineer">工程师
+		 <input type="checkbox" ng-model="user.jobs.designer">设计师
+		 <input type="checkbox" ng-model="user.jobs.teacher">教师
+		 </p>
+		 <input type="submit" value="提交">
+		 <input type="button" value="选中教师" ng-click="select_teacher()">
+	</form>
+ </body>
+
+<script>
+    var app=angular.module("myApp",[]);
+    app.controller("person",function($scope){
+		 $scope.user={jobs:{engineer:true,designer:false,teacher:false}};
+		 $scope.submit=function(){
+			 alert(JSON.stringify($scope.user));
+		 };
+		 $scope.select_teacher=function(){
+			 $scope.user.jobs.teacher=true;
+		 }
+	 });
+ </script>
+
+<!--<body ng-app="myApp" ng-controller="person">
+	 <form ng-submit="submit()" name="myForm"  novalidate>
+		 <p>用户名:
+		 <input type="text" name="name" ng-model="user.name" ng-minlength="4" required>
+		 <span ng-show="myForm.name.$error.required">用户名是必须的</span>
+		 <span ng-show="myForm.name.$error.minlength">用户名长度必须大于4位</span>
+		 </p>
+		 <p>邮箱:
+		 <input type="email" name="email" ng-model="user.email" required>
+		 <span ng-show="myForm.email.$error.email">非法的邮箱</span>
+		 <span ng-show="myForm.email.$error.required">邮箱是必须的</span>
+		 </p>
+		 <input type="submit" value="提交" ng-disabled="myForm.$invalid">
+	</form>
+ </body>-->
+ <!--<script>
+    var app=angular.module("myApp",[]);
+  	 app.controller("person",function($scope){
+		 $scope.submit=function(){
+			 alert(JSON.stringify($scope.user));
+		 }
+	 });
+ </script>-->
+
+
+</html>

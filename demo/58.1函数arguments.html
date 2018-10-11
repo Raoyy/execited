@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		Array.prototype.testArg = "test";
+		function funcArg() {
+		    alert(funcArg.arguments.testArg);  
+		    alert(funcArg.arguments[0]);
+		    console.log(arguments);
+		    console.log(arguments.callee);
+		}
+		
+		alert(new Array().testArg); // result: "test"
+		funcArg(10);                // result: "undefined"  "10"
+	</script>
+</html>

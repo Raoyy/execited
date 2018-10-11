@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="text" value="" onblur="md5(this)"/>
+	</body>
+	<script src="js/jquery-2.1.4.min.js"></script>
+	<script src="js/md5.js"></script>
+	<script type="text/javascript">
+		function md5(obj){
+			var md5 = $.md5($(obj).val());
+			console.log(md5);
+		}
+	</script>
+</html>

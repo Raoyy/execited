@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+				font-size: 14px;
+			}
+			ul{
+				list-style: none;
+			}
+			#store{
+				border: 1px solid #cccccc;
+				width: 700px;
+				margin: 0 auto;
+			}
+			li{
+				height: 80px;
+				padding: 20px 0px 17px;
+				background: #fcfcfc;
+				border-bottom: 1px solid #e7e7e7;
+			}
+			li input{
+				line-height: 80px;
+				float: left;
+				margin-right: 10px;
+				margin-left: 15px;
+			}
+			li a{
+				line-height: 80px;
+				text-decoration: none;
+				color: black;
+				float: left;
+				margin-right: 10px;
+			}
+			li a:hover{
+				text-decoration: underline;
+				color: #ff6600;
+			}
+			li .delet{
+				line-height: 80px;
+				margin-right: 20px;
+				float: right;
+			}
+			li .pic{
+				border: 1px solid #eeeeee;
+				display: inline-block;
+				width: 80px;
+				height: 80px;
+			}
+			#cart{
+				padding-bottom: 20px;
+				border: 2px solid #CCCCCC;
+				width: 700px;
+				margin: 0 auto;
+				margin-top: 20px;
+			}
+			.nav{
+				width: 100%;
+				height: 30px;
+				line-height: 30px;
+				border-bottom: 2px solid #CCCCCC;
+			}
+			.nav input{
+				margin-left: 15px;
+			}
+			span{
+				padding-left: 10px;
+			}
+			.nav a{
+				text-decoration: none;
+				margin-right: 20px;
+				color: black;
+				float: right;
+			}
+			.nav a:hover{
+				text-decoration: underline;
+				color: #ff6600;
+			}
+			img{
+				width: 80px;
+				height: 80px;
+				display: inline-blockblock;
+			}
+			#point_all{
+				margin-left: 15px;
+			}
+			#join_all{
+				float: right;
+				text-decoration: none;
+				color: black;
+				margin-right: 20px;
+			}
+			#join_all:hover{
+				text-decoration: underline;
+				color: #ff6600;
+			}
+			.nav2{
+				width: 100%;
+				height: 30px;
+				line-height: 30px;
+				border-bottom: 2px solid #CCCCCC;
+			}
+			h3{
+				margin: 0; 
+				display: inline-block; 
+				margin-left: 240px;
+			}
+		</style>
+	</head>
+	<body>
+		<ul id="store">
+			<div class="nav2">
+				<input type="checkbox" id="point_all" /><span>全选</span>
+				<h3>商品栏</h4>
+				<a id="join_all" href="###">加入购物车</a>
+			</div>
+			<li>
+				<input type="checkbox" class="goods" onclick="test()" />
+				<a href="###" class="pic"><img src="img/TB2CXBUjpXXXXaLXXXXXXXXXXXX_!!1088194209.jpg_80x80.jpg"/></a>
+				<a href="###">阿萨新 黑岩射手短袖衬衫动漫二次元周边衬衣服纯棉夏季男T恤服装</a>
+				<a href="###" class="delet">加入购物车</a>
+			</li>
+			<li>
+				<input type="checkbox" class="goods" onclick="test()"/>
+				<a href="###" class="pic"><img src="img/888.jpg"/></a>
+				<a href="###">阿萨新 黑岩射手短袖衬衫动漫二次元周边衬衣服纯棉夏季男T恤服装</a>
+				<a href="###" class="delet">加入购物车</a>
+			</li>
+		</ul>
+		<ul id="cart">
+			<div class="nav">
+				<input type="checkbox" class="check_all" /><span>全选</span>
+				<h3>购物车</h4>
+				<a id="delet_all" href="###">删除</a>
+			</div>
+			<li>
+				<input type="checkbox" class="goods" onclick="test()" />
+				<a href="###" class="pic"><img src="img/30c1e84c-f7db-407b-8dbe-479269558c9d.jpg"/></a>
+				<a href="###">阿萨新 黑岩射手短袖衬衫动漫二次元周边衬衣服纯棉夏季男T恤服装</a>
+				<a href="###" class="delet">删除</a>
+			</li>
+			<li>
+				<input type="checkbox" class="goods" onclick="test()"/>
+				<a href="###" class="pic"><img src="img/33.jpg"/></a>
+				<a href="###">阿萨新 黑岩射手短袖衬衫动漫二次元周边衬衣服纯棉夏季男T恤服装</a>
+				<a href="###" class="delet">删除</a>
+			</li>
+			<li>
+				<input type="checkbox" class="goods" onclick="test()"/>
+				<a href="###" class="pic"><img src="img/66.jpg"/></a>
+				<a href="###">阿萨新 黑岩射手短袖衬衫动漫二次元周边衬衣服纯棉夏季男T恤服装</a>
+				<a href="###" class="delet">删除</a>
+			</li>
+		</ul>
+	</body>
+	<script type="text/javascript">
+		var deletall = getId('delet_all');
+		var joinall = getId('join_all');
+		var checkall = document.getElementsByClassName('check_all')[0];
+		var pointall = getId('point_all');
+		var ostore = getId('store');
+		var ocart = getId('cart');
+		var span1 = document.getElementsByClassName('nav')[0].getElementsByTagName('span')[0];
+		var span2 = document.getElementsByClassName('nav2')[0].getElementsByTagName('span')[0];
+		var adelet = getClass(ocart,'delet');
+		var bdelet = getClass(ostore,'delet');
+		var agoods = getClass(ocart,'goods');
+		var bgoods = getClass(ostore,'goods');
+		var all_goods = getClass(document,'goods');
+		var all_input = document.getElementsByTagName('input');
+		function getId(obj){
+			var k = document.getElementById(obj);
+			return k;
+		}
+		function getClass(parent,obj){
+			var k = parent.getElementsByClassName(obj);
+			return k;
+		}
+		function check(a,b,c){   //全选不选
+			if(a.checked){
+				for(var i = 0; i < b.length; i++){
+					if(b[i].parentNode.style.display != 'none'){    //防止全选选中已经隐藏的li
+						b[i].checked = true;
+					}
+				}
+				c.innerText = '不选';
+			}else{
+				for(var i = 0; i < b.length; i++){
+					b[i].checked = false;
+					
+				}
+				c.innerText = '全选';
+			}
+		}
+		function color_change(){
+			for(var i = 0; i < all_goods.length; i++){
+				var ali = all_goods[i].parentNode;
+				if(all_goods[i].checked){
+					ali.style.background = '#fff8e1';
+				}else{
+					ali.style.background = '#fcfcfc';
+				}
+			}
+		}
+		function test(){
+			color_change();
+		}
+		checkall.onclick = function(){
+			check(checkall,agoods,span1);
+			color_change();
+		}
+		pointall.onclick = function(){
+			check(pointall,bgoods,span2);
+			color_change();
+		}
+		function deletethis(obj,moveto,txt){
+			var oli = obj.parentNode;            //找到删除键的父级li
+			var oli2 = document.createElement('li');    //创建一个li
+			oli2.innerHTML = oli.innerHTML;        //在创建的li中赋值应删除的li中的html
+			moveto.appendChild(oli2);              //将创建的li加入商品栏中
+			oli2.getElementsByClassName('delet')[0].innerText = txt;   //改变操作键
+			oli.style.display = 'none';            //隐藏应删除的li
+			clickb();        //调用自身，刷新商品栏和购物车中货品的index值
+			clicka();
+		}
+		function clicka(){       //点击购物车货品删除
+			for(var i = 0; i < adelet.length; i++){
+				adelet[i].onclick = function(){
+					deletethis(this,ostore,'加入购物车');
+				}
+			}
+		}
+		function clickb(){				//点击商品栏货品删除
+			for(var i = 0; i < bdelet.length; i++){
+				bdelet[i].onclick = function(){
+					deletethis(this,ocart,'删除');
+				}
+			}
+		}
+		clickb();
+		clicka();
+		deletall.onclick = function(){      //点击购物车批量删除
+			checkall.checked = false;
+			checkall.parentNode.getElementsByTagName('span')[0].innerText = '全选';
+			for(var i = 0; i < agoods.length; i++){
+				if(agoods[i].checked){    //如果选中则执行删除
+					agoods[i].checked = false;
+					deletethis(agoods[i],ostore,'加入购物车');
+				}
+			}
+		}
+		joinall.onclick = function(){          //点击商品栏批量加入
+			pointall.checked = false;
+			pointall.parentNode.getElementsByTagName('span')[0].innerText = '全选';
+			for(var i = 0; i < bgoods.length; i++){
+				if(bgoods[i].checked){
+					bgoods[i].checked = false;
+					deletethis(bgoods[i],ocart,'删除');
+				}
+			}
+		}
+	</script>
+</html>

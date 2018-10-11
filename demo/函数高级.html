@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+ <script>
+   /* var name="张三";
+     function changename(othername){
+         function swapname(){
+             var tempname=othername;
+             othername=name;
+         name=tempname;
+         //此处可以访问name、tempname、othername
+     }
+         swapname();
+         //此处swapname()已执行完毕，被销毁，因此不能访问tempname
+     }
+     changename("李四");
+     //此处changename()已执行完毕，被销毁，因此不能访问othername
+
+     alert(name);      //显示“李四”*/
+
+   /* function setname(){
+        var name="李四";
+    }
+    setname();
+    alert(name);    //显示为空*/
+
+  /*  var name='张三';
+    function setname(){
+        var name="李四";
+        return function(){
+            return name;
+        }
+    }
+    var a=setname();
+    alert(a());     //显示"李四"*/
+
+   /* function setname(){
+        var name="李四";
+        return name;
+    }
+    var a=setname();
+    alert(a);     //显示"李四"*/
+
+   /*var total=0;
+   function add(t){
+       total+=t;
+       alert(total);
+   }
+   total=2;
+   add(3);        //显示5
+   add(5);        //显示10
+   add(1);        //显示11*/
+
+   var total=10;
+   function add(s){//2
+       var total=0;
+        //function(t){//3
+           total+=s;//5
+           return total;
+       //}
+   }
+   var a=add(2);
+   alert(a)
+     a+=add(3);        //显示5
+   alert(a);
+      a+=add(5);        //显示10
+      alert(a)
+   a+=add(1);        //显示11
+   alert(a)
+
+// function add(s){//2
+//     var total=s;//2
+//     return function(t){//3
+//         total+=t;
+//         alert(total);
+//     }
+// }
+// var a=add(2);
+// a(3);        //显示5(a=function())
+// a(5);        //显示10
+// a(1);        //显示11
+ </script>
+</body>
+</html>

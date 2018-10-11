@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		(function(w,undefined){
+                var keys = {},compositeKey;
+                var keydownHandle = function(e) {
+                    e.preventDefault();
+                    if (keys.hasOwnProperty(e.keyCode) && keys[e.keyCode])
+                        return;
+                    keys[e.keyCode] = true;
+                    compositeKey=[];
+                    for(var i in keys){
+                        if (keys.hasOwnProperty(i) && keys[i])
+                            compositeKey.push(i);
+                    }
+                    console.info("按下键：" + compositeKey.join("|"));
+                }
+                var keyupHandle = function(e) {
+                    e.preventDefault();
+                    if (keys.hasOwnProperty(e.keyCode) && keys[e.keyCode])
+                        keys[e.keyCode] = false;
+//                      console.info("放开键：" + e.keyCode);
+                }
+                 
+                w.keypressInit = function(el){
+                    this.el = el || document;
+                    this.el.addEventListener("keydown", keydownHandle);
+                    this.el.addEventListener("keyup", keyupHandle);
+                }
+            })(window)
+             
+            keypressInit();
+	</script>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		th{
+			width: 100px;
+			text-align: center;
+			font-size: 20px;
+		}
+		td{
+			text-align: center;
+			font-size: 20px;
+		}
+	</style>
+	<body>
+		<table border="1px" cellspacing="0" cellpadding="0" id="otable">
+			<tr>
+				<th>商品名</th><th>数量</th><th>价格</th><th>操作栏</th>
+			</tr>
+			<tr id="row20">
+				<td>鞋子</td><td>1</td><td>&yen;200</td><td><input type="button" value="删除" onclick="delte(20)" /></td>
+			</tr>
+			<tr id="row20">
+				<td colspan="4"><input type="button" value="添加订单" id="tijiao" onclick="new_row()"/></td>
+			</tr>
+		</table>
+	</body>
+	<script type="text/javascript">
+		var i = 0;
+		function new_row(){
+			var otable = document.getElementById('otable');
+			var row_index = otable.rows.length;
+			var newrow = otable.insertRow(row_index++ - 1);
+			newrow.id = 'row' + row_index + i;
+			var newcell1 = newrow.insertCell(0);
+			newcell1.style.position = 'relative';
+			newcell1.innerHTML = '新商品'+(row_index-2) + '<div id = "name' + row_index + i +'" onclick="change1(' + row_index + i +')" style="width: 100px;height: 38px;position: absolute;z-index: 1;cursor: pointer;top: 0px"></div>';
+			var newcell2 = newrow.insertCell(1);
+			newcell2.style.position = 'relative';
+			newcell2.innerHTML = 1 + '<div id = "num' + row_index + i +'" onclick="change2(' + row_index + i +')" style="width: 100px;height: 38px;position: absolute;z-index: 1;cursor: pointer;top: 0px"></div>';
+			var newcell3 = newrow.insertCell(2);
+			newcell3.id = 'number' + row_index + i;
+			newcell3.innerHTML = '&yen;'+200;
+			var newcell4 = newrow.insertCell(3);
+			newcell4.innerHTML = '<input type="button" value="删除" onclick="delte(' + row_index + i +')" />';
+		}
+		function change1(n){
+			var otd = document.getElementById('name'+n).parentNode;
+			var oldhtml = otd.innerHTML;
+			otd.innerHTML = '<input type="text" style="width: 96px; height: 28px;" />';
+			var oinput = otd.getElementsByTagName('input')[0];
+			oinput.focus();
+			oinput.onblur = function(){
+				var txt = oinput.value;
+				if(txt == ''){
+					otd.innerHTML = oldhtml;
+				}else{
+					otd.innerHTML = txt + '<div id = "name'+n+'" onclick="change1('+n+')" style="width: 100px;height: 38px;position: absolute;z-index: 1;cursor: pointer;top: 0px"></div>';
+				}
+			}
+		}
+		function change2(m){
+			var otd = document.getElementById('num'+m).parentNode;
+			var oldhtml = otd.innerHTML;
+			otd.innerHTML = '<input type="text" style="width: 96px; height: 28px;" />';
+			var oinput = otd.getElementsByTagName('input')[0];
+			oinput.focus();
+			var jiage = document.getElementById('number'+m);
+			oinput.onblur = function(){
+				var txt = oinput.value;
+				if(parseInt(txt) == txt){
+					j = parseInt(txt);
+					jiage.innerHTML = '&yen;'+ 200*j;
+					otd.innerHTML = txt + '<div id = "num'+m+'" onclick="change2('+m+','+j+')" style="width: 100px;height: 38px;position: absolute;z-index: 1;cursor: pointer;top: 0px"></div>';
+				}else{
+					otd.innerHTML = oldhtml;
+				}
+			}
+		}
+		function delte(k){
+			var row = document.getElementById('row'+k).rowIndex;
+			document.getElementById('otable').deleteRow(row);
+			i++;
+		}
+	</script>
+</html>

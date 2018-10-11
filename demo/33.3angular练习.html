@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body ng-app="myapp">
+		<ul ng-controller="part1">
+			<li ng-repeat="item in goods">
+				编号：{{item.id}},商品名：{{item.name}},价格：{{item.price}}
+			</li>
+		</ul>
+		<div ng-controller="part2">
+			<input type="text" name="" id="" ng-model="num1" placeholder="0"/> +
+			<input type="text" name="" id="" ng-model="num2" placeholder="0"/>
+			<span>={{num1*1 + num2*1}}</span>
+		</div>
+		<div ng-controller="part3">
+			<p>{{date | date:"yyyy-MM-dd hh:mm:ss"}}</p>
+			<p>{{getdate().year}}-{{getdate().month}}-{{getdate().day}} {{getdate().h}}:{{getdate().m}}:{{getdate().s}}</p>
+		</div>
+	</body>
+	<script src="js/Angular.js"></script>
+	<script src="js/angular-route.min.js"></script>
+	<script type="text/javascript">
+		var app = angular.module("myapp",[]);
+		app.controller("part1",function($scope){
+			$scope.goods = [
+				{id:1,name:'苹果',price:28},
+				{id:2,name:'香蕉',price:18},
+				{id:3,name:'桃子',price:24},
+				{id:4,name:'西瓜',price:37}
+			];
+		});
+		app.controller("part2",function($scope){
+			$scope.num1 = null;
+			$scope.num2 = null;
+		});
+		app.controller("part3",function($scope){
+			$scope.date = new Date();
+			$scope.time = new Date(2017,9,4,0,0,0);
+			setInterval(function(){
+				$scope.$apply(function(){
+					$scope.date = new Date();
+				});
+			},1000);
+			$scope.getdate = function(){
+				$scope.date = new Date();
+				$scope.year = $scope.date.getFullYear();
+				$scope.mon = $scope.date.getMonth()+1;
+				$scope.day = $scope.date.getDay();
+				$scope.h = $scope.date.getHours();
+				$scope.m = $scope.date.getMinutes();
+				$scope.s = $scope.date.getSeconds();
+				$scope.thedate = {
+					year:$scope.year,
+					month:$scope.mon,
+					day:$scope.day,
+					h:$scope.h,
+					m:$scope.m,
+					s:$scope.s
+				};
+				return $scope.thedate;
+			}
+		});
+	</script>
+</html>

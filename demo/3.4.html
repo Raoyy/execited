@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			window.onload = function(){
+				var gaodu = document.getElementById('gaodu');
+				var cishu = document.getElementById('cishu');
+				var btn = document.getElementById('chaxun');
+				var lucheng = 0;
+				var last_gaodu = 0;
+				var num = 0;
+				btn.onclick = function(){
+					num = cishu.value;
+					last_gaodu = gaodu.value*1;
+					for(var i = 0; i < num; i++){
+						last_gaodu = last_gaodu / 2;
+						lucheng = lucheng + last_gaodu;
+					}
+					alert('路程为：' + (lucheng*2 + (gaodu.value)*1));
+					alert('最后一次的高度为：' + last_gaodu);
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<p>高度：</p>
+		<input type="text" id="gaodu" value="" />
+		<p>弹落次数：</p>
+		<input type="text" id="cishu" value="" />
+		<input type="button" id="chaxun" value="点击查询" />
+	</body>
+</html>

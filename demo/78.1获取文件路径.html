@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			li{
+				list-style: none;
+				float: left;
+			}
+			img{
+				width: 300px;
+			}
+		</style>
+	</head>
+	<body>
+		<ul class="imgUl">
+			<li><img src=""/></li>
+		</ul>
+		<input type="file" name="file" id="file" value="" multiple="multiple" />
+	</body>
+	<script src="js/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript">
+		$("#file").change(function(event){
+			files = event.target.files;
+			var arrurl = getFileUrl(files);
+			var imgs = "";
+			for(var i=0; i<arrurl.length; i++){
+				imgs += '<li><img src="'+arrurl[i]+'"/></li>';
+			}
+			$(".imgUl").append(imgs);
+		});
+		function getFileUrl(files){   //获取文件路径
+			var filesLength = files.length;
+			var urlArray = [];
+			console.log(filesLength);
+			for(var i=0; i<filesLength; i++){
+				var url = null;
+				if(window.createObjectURL != undefined){
+					url = window.createObjectURL(files[i]);
+				}else if(window.URL != undefined){
+					url = window.URL.createObjectURL(files[i]);
+				}else if(window.webkitURL != undefined){
+					url = window.webkitURL.createObjectURL(files[i]);
+				}
+				urlArray.push(url);
+			}
+			return urlArray;
+		}
+	</script>
+</html>

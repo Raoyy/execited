@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script src="easyui/jquery-1.7.2.min.js"></script>
+<script type="text/javascript">
+	function callback(data){
+		console.log("ok");
+		console.log(data)
+	}
+	$.ajax({
+		type:"post",
+		url:"https://api.weibo.com/oauth2/access_token?client_id=0524833391&client_secret=YOUR_CLIENT_SECRET&grant_type=authorization_code&redirect_uri=YOUR_REGISTERED_REDIRECT_URI&code=CODE",
+		async:true,
+		success:function(data){
+			console.log(data);
+		},error:function(err){
+			console.log(err);
+		}
+	});
+</script>
+<script src="https://api.weibo.com/oauth2/access_token?client_id=0524833391&client_secret=YOUR_CLIENT_SECRET&grant_type=authorization_code&redirect_uri=YOUR_REGISTERED_REDIRECT_URI&code=CODE"></script>

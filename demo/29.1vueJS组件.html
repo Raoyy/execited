@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<template id="head">
+			<div>
+				<h1>{{title}}</h1>
+				<p>{{content}}</p>
+			</div>
+		</template>
+		<div id="warp">
+			<app-head></app-head>
+			<input @click="getmsg" type="button" name="" id="" value="click" />
+			<input @click="local" type="button" name="" id="" value="本地" />
+			<ul>
+				<li v-for="item in books">
+					<img :src="item.image"/>
+					<h4>{{item.title}}</h4>
+				</li>
+			</ul>
+		</div>
+		<div id="warp2">
+			<app-head></app-head>
+		</div>
+	</body>
+	<script type="text/javascript" src="js/jQuery-3.2.1.js"></script>
+	<script src="js/vue.js"></script>
+	<script src="js/vue-resource.js"></script>
+	<script type="text/javascript">
+		Vue.component('app-head',{
+			template:'#head',
+			data:function(){
+				return {
+					title:'组件1',
+					content:'组件内容1'
+				}
+			}
+		});
+		var vm = new Vue({
+			el:'#warp',
+			data:{
+				title:'组件1',
+				content:'组件内容1',
+				books:[]
+			},
+			methods:{
+				getmsg:function(){
+					this.$http.jsonp('https://api.douban.com/v2/book/search',{
+						q:'php',
+						count:5
+					},{jsonp:'callback'}).then(function(res){
+						this.books=res.data.books;
+					},function(){
+						
+					});
+				},
+				local:function(){
+					alert('ok')
+					$.getJSON("http://127.0.0.1/jsonP.php?a=123&callback=?",
+					function(json){
+						console.log(json);
+					});
+				}
+			}
+		});
+		var vm = new Vue({
+			el:'#warp2',
+			data:{
+				title:'组件2',
+				content:'组件内容2'
+			}
+		});
+	</script>
+</html>

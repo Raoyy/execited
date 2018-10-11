@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/jquery-2.1.4.min.js"></script>
+	</head>
+	<body>
+		<input type="button" onclick="query.end();" name="" id="" value="" />
+	</body>
+</html>
+<script type="text/javascript">
+	function Query(){
+		var _this = this;
+		this.timer = null;
+		this.num = 0;
+		this.start = function(orderId){
+			_this.timer = setInterval(function(){
+				console.log(_this.num+":"+orderId);
+				_this.num++;
+				if(_this.num > 10){
+					_this.end();
+				}
+			},1000);
+		}
+		this.end = function(){
+			clearInterval(_this.timer);
+		}
+	}
+	var query = new Query();
+	query.start(1231);
+</script>

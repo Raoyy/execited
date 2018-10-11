@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#box{
+				width: 200px;
+				height: 200px;
+				position: relative;
+				margin: 200px 0px 0px 300px;
+				transform-style: preserve-3d;
+				perspective: 2000px;
+				transition: 2s;
+			}
+			#box:hover{
+				transform: rotateX(45deg) rotateY(75deg);
+			}
+			#box>div{
+				line-height: 200px;
+				text-align: center;
+				color: white;
+				font-size: 20px;
+				width: 200px;
+				height: 200px;
+				background: rgba(0,0,0,0.3);
+				border: 2px solid red;
+				position: absolute;
+				
+			}
+			.div1{
+				transform: translateZ(100px);
+			}
+			.div2{
+				transform: translateZ(-100px);
+			}
+			.div3{
+				transform: translateX(-100px) rotateY(90deg);
+			}
+			.div4{
+				transform: translateX(100px) rotateY(-90deg);
+			}
+			.div5{
+				transform: translateY(-100px) rotateX(90deg);
+			}
+			.div6{
+				transform: translateY(100px) rotateX(-90deg);
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<div class="div1">1</div>
+			<div class="div2">2</div>
+			<div class="div3">3</div>
+			<div class="div4">4</div>
+			<div class="div5">5</div>
+			<div class="div6">6</div>
+		</div>
+	</body>
+</html>

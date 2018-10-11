@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		li{
+			list-style: none;
+		}
+	</style>
+	<body>
+		<div id="warp">
+			<ul>
+				<li><a href="javascript:" onclick="delThis(this)">delete</a></li>
+				<li>1</li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+			<ul>
+				<li><a href="javascript:" onclick="delThis(this)">delete</a></li>
+				<li>2</li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+			<ul>
+				<li><a href="javascript:" onclick="delThis(this)">delete</a></li>
+				<li>3</li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+			<ul>
+				<li><a href="javascript:" onclick="delThis(this)">delete</a></li>
+				<li>4</li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+		</div>
+	</body>
+	<script src="js/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript">
+		function delThis(ele){
+			$(ele).parents("ul").remove();
+		}
+	</script>
+</html>

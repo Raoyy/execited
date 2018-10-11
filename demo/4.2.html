@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>完数</title>
+		<script type="text/javascript">
+			window.onload = function(){
+				var onum = document.getElementById('txt');
+				var btn = document.getElementById('btn');
+				var result = document.getElementById('result');
+				btn.onclick = function(){
+					var num = onum.value * 1;
+					for(var i = 1; i < num; i++){
+						var sum = 0;
+						for(var j = 0; j < i; j++){
+							if(i/j == parseInt(i/j)){
+								sum += j;
+							}
+						}
+						if(sum == i){
+							var aresult = document.createElement('p');
+							aresult.innerHTML = sum;
+							result.appendChild(aresult);
+						}
+					}
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<input type="text" id="txt" />
+		<input type="button" id="btn" value="判断" />
+		<div id="result" style="padding-top: 30px;">完数有：</div>
+	</body>
+</html>

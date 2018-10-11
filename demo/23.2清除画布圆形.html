@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#canvas_warp{
+			margin: 50px 100px;
+			background: url(img/rainning.jpg) no-repeat;
+			background-size: auto 365px;
+		}
+		#mycanvas{
+			border: 1px solid red;
+		}
+	</style>
+	<body>
+		<div id="canvas_warp">
+			<canvas id="mycanvas" width="649" height="365"></canvas>
+		</div>
+	</body>
+	<script type="text/javascript">
+		var c = document.getElementById('mycanvas').getContext('2d'); //获取元素
+		var warp = document.getElementById('canvas_warp');
+		var img=new Image();//填充背景画布
+	    img.onload=function(){
+	    	c.globalAlpha =0.7;
+	        c.drawImage(img,0,0,650,400);
+	    }
+	    img.src='img/rain2.jpg';
+		function getOffsetLeft(obj){
+		    var tmp = obj.offsetLeft;
+		    var val = obj.offsetParent;
+		    while(val != null){
+			    tmp += val.offsetLeft;
+			    val = val.offsetParent;
+		    }
+			return tmp;
+		}
+		function getOffsetTop(obj){
+		    var tmp = obj.offsetTop;
+		    var val = obj.offsetParent;
+		    while(val != null){
+			    tmp += val.offsetTop;
+			    val = val.offsetParent;
+		    }
+			return tmp;
+		}
+		var steps = 1;
+		function clearit(obj,x,y,r){
+			var width = r - steps;
+			var height = Math.sqrt(r*r - width*width);
+			var x_clear = x - width;   //清除的开始坐标
+			var y_clear = y - height;
+			var width_clear = width*2;  //清除的宽度
+			var height_clear = height*2;
+			if(steps <= r){
+				obj.clearRect(x_clear,y_clear,width_clear,height_clear);
+				steps++;
+				clearit(obj,x,y,r);
+			}
+		}
+		document.onmousedown = function(){
+			document.onmousemove = function(ev){
+				oev = ev ||event;
+				var box_x = get5OffsetLeft(warp);
+				var box_y = getOffsetTop(warp);
+				var X = oev.clientX;  //鼠标坐标
+				var Y = oev.clientY;
+				var x1 = X - box_x;
+				var y1 = Y - box_y;
+				steps = 1;
+				clearit(c,x1,y1,25);
+			}
+			document.onmouseup = function(ev){
+				document.onmousemove = null;
+			}
+			return false;
+		}
+	</script>
+</html>

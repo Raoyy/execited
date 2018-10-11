@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		select{
+			width: 150px;
+			height: 200px;
+			list-style: none;
+			overflow-y: scroll;
+			display: inline-block;
+			border: 1px solid black;
+			padding: 0;
+		}
+		div{
+			float: left;
+		}
+		#warp1{
+			width: 150px;
+			height: 200px;
+			margin-right: 200px;
+		}
+		option{
+			text-align: center;
+			background: #FCFCFC;
+			border-bottom: 1px solid black;
+			cursor: pointer;
+		}
+		a{
+			display: block;
+			text-decoration: none;
+			background: #CCCCCC;
+			color: white;
+			font-size: 13px;
+			text-align: center;
+			border: 1px solid black;
+			margin-bottom: 3px;
+		}
+	</style>
+	<body>
+		<div id="warp1">
+			<select id="select1" SIZE="7" multiple="multiple">
+				<option value="">1</option>
+				<option value="">2</option>
+				<option value="">3</option>
+				<option value="">4</option>
+				<option value="">5</option>
+				<option value="">6</option>
+				<option value="">7</option>
+			</select>
+			<a href="###">选中添加到右边>></a>
+			<a href="###">全部添加到右边>></a>
+		</div>
+		<div id="warp2">
+			<select id="select2" size="7" multiple="multiple">
+				<option value="">8</option>
+			</select>
+			<a href="###"><<选中添加到左边</a>
+			<a href="###"><<全部添加到左边</a>
+		</div>
+	</body>
+	<script src="js/jquery.js"></script>
+	<script type="text/javascript">
+		$('#select1').dblclick(function(){
+			$('option:selected',this).appendTo($('#select2'));
+		});
+		$('#select2').dblclick(function(){
+			$('option:selected',this).appendTo($('#select1'));
+		});
+		$('#warp1 a').eq(0).click(function(){
+			$('#select1 option:selected').appendTo($('#select2'));
+		});
+		$('#warp2 a').eq(0).click(function(){
+			$('#select2 option:selected').appendTo($('#select1'));
+		});
+		$('#warp1 a').eq(1).click(function(){
+			$('#select1 option').appendTo($('#select2'));
+		});
+		$('#warp2 a').eq(1).click(function(){
+			$('#select2 option').appendTo($('#select1'));
+		});
+	</script>
+</html>

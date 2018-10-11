@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			ul{
+				list-style: none;
+			}
+			#header{
+				background: #d8d7d3;
+			}
+			.logo{
+				width: 190px;
+				height: 86px;
+				background: #00bcd5 url(img/30.1logo.png) no-repeat center center;
+			}
+			#header ul{
+				background: #e7d126;
+				margin-bottom: 0px;
+				padding-left: 190px;
+			}
+			#header ul li{
+				line-height: 86px;
+				font-size: 13px;
+				color: white;
+				position: relative;
+			}
+			#header ul li:hover span{
+				height: 100%;
+			}
+			#header ul li span{
+				position: absolute;
+				top: 0;
+				left: 0;
+				display: block;
+				width: 100%;
+				height: 0%;
+				background: #00bcd5;
+				transition: all 1s;
+				z-index: 0;
+			}
+			#header ul li a{
+				position: relative;
+				z-index: 1;
+			}
+			#header a{
+				color: white;
+			}
+			#header .now a{
+				color: #22838a;
+			}
+			.clear{
+				clear: both;
+			}
+			#main .nav{
+				padding: 47px 0;
+				margin-top: 35px;
+			}
+			#main .nav button{
+				margin-right: 25px;
+				border-radius: 0px;
+			}
+			#main .nav button:hover{
+				background: #00bcd5;
+				color: white;
+				border: 1px solid #00bcd5;
+			}
+			#main .nav .now{
+				background: #00bcd5;
+				color: white;
+				border: 1px solid #00bcd5;
+			}
+			#main .content ul{
+				position: relative;
+			}
+			#main .content li{
+				margin-bottom: 23px;
+				transition: all 1s;
+				cursor: pointer;
+			}
+			#main .content li img{
+				width: 100%;
+			}
+			#main .pages button{
+				font-size: 11px;
+				background: rgba(126,140,140,0.9);
+				color: white;
+				border-color: #6d7979;
+			}
+			#main .pages button:hover{
+				background: rgba(126,140,140,1);
+			}
+			#main .msg{
+				width: 359px;
+				margin: 0 auto;
+				background: #e9cd00;
+				margin-top: 70px;
+				padding-bottom: 125px;
+			}
+			#main .msg h3{
+				font-size: 21px;
+				color: white;
+				padding: 45px 0 90px;
+			}
+			#main .msg p{
+				font-size: 17px;
+				color: white;
+			}
+			#footer{
+				height: 150px;
+				color: white;
+				background: #393939;
+				line-height: 150px;
+				font-size: 13px;
+			}
+			#footer a{
+				color: white;
+				text-decoration: underline;
+			}
+			#fixed{
+				width: 672px;
+				height: 0px;
+				position: fixed;
+				top: 50%;
+				left: 50%;
+				transform: translateX(-50%) translateY(-50%);
+				overflow: hidden;
+				z-index: 99;
+				transition: all 1s;
+			}
+			#fixed ul{
+				position: absolute;
+				top: 0;
+				left: 0;	
+			}
+			#fixed li{
+				background: white;
+				float: left;
+				border: 1px solid #CCCCCC;
+				border-radius: 5px;
+				overflow: hidden;
+			}
+			#fixed img{
+				padding: 10px;
+			}
+			#fixed a{
+				position: absolute;
+				top: 50%;
+				transform: translateY(-50%);
+				display: block;
+				background: #CCCCCC;
+				color: white;
+				width: 50px;
+				height: 30px;
+				line-height: 30px;
+				text-align: center;
+				z-index: 2;
+			}
+			#fixed .left{
+				left: 0;
+			}
+			#fixed .right{
+				right: 0;
+			}
+			#fixed span{
+				display: block;
+				width: 30px;
+				height: 30px;
+				line-height: 30px;
+				text-align: center;
+				background: #000000;
+				color: white;
+				border-radius: 50%;
+				border: 1px solid white;
+				position: absolute;
+				right: 0;
+				z-index: 99;
+				cursor: pointer;
+			}
+			#header .navbar{
+				margin-bottom: 0px;
+			}
+			@media only screen and (max-width: 405px) {
+				#main .msg{
+					width: 100%;
+				}
+			}
+			@media only screen and (max-width: 768px) {
+				#header ul{
+					padding-left: 0px;
+				}
+				#header ul li{
+					line-height: 46px;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div id="header">
+			<div class="container">
+				<nav class="navbar navbar-default" role="navigation">
+			      <div class="navbar-header">
+			          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+			              <span class="sr-only">Toggle navigation</span>
+			              <span class="icon-bar"></span>
+			              <span class="icon-bar"></span>
+			              <span class="icon-bar"></span>
+			          </button>
+			          <a class="navbar-brand logo" href="#"></a>
+			      </div>
+			      
+			      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			      	<ul class="row text-center">
+			      		<li class="col-lg-1 col-md-1 col-sm-1"></li>
+						<li class="col-lg-2 col-md-2 col-sm-2"><span></span><a href="###">HOME</a></li>
+						<li class="col-lg-2 col-md-2 col-sm-2"><span></span><a href="###">ABOUT</a></li>
+						<li class="col-lg-2 col-md-2 col-sm-2"><span></span><a href="###">SERVICES</a></li>
+						<li class="now col-lg-2 col-md-2 col-sm-2"><span></span><a href="###">PORTFOLIO</a></li>
+						<li class="col-lg-2 col-md-2 col-sm-2"><span></span><a href="###">CONTACT</a></li>
+						<li class="col-lg-1 col-md-1 col-sm-1"></li>
+					</ul>
+			      </div>
+			    </nav>
+			</div>
+		</div>
+		<div id="main">
+			<div class="container">
+				<div class="nav">
+					<button type="button" class="btn btn-default now">ALL</button>
+					<button type="button" class="btn btn-default">APP</button>
+					<button type="button" class="btn btn-default">CARD</button>
+					<button type="button" class="btn btn-default">ICON</button>
+					<button type="button" class="btn btn-default">WEB</button>
+				</div>
+				<div class="content">
+					<ul class="row">
+						<li class="col-lg-4 col-md-4 col-sm-6"><img num="1" src="img/30c1e84c-f7db-407b-8dbe-479269558c9d.jpg"/></li>
+						<li class="col-lg-4 col-md-4 col-sm-6"><img num="2" src="img/3278c1dc-f84e-4e83-bc29-4d4e7b2ef748.jpg"/></li>
+						<li class="col-lg-4 col-md-4 col-sm-6"><img num="3" src="img/33.jpg"/></li>
+						<li class="col-lg-4 col-md-4 col-sm-6"><img num="4" src="img/3798c2a7-ed4a-430b-8662-9c5d27d38db0.jpg"/></li>
+						<li class="col-lg-4 col-md-4 col-sm-6"><img num="5" src="img/4.jpg"/></li>
+						<li class="col-lg-4 col-md-4 col-sm-6"><img num="6" src="img/59b82b8a-1afc-43bb-80b5-c27ed9debfa4.jpg"/></li>
+						<li class="col-lg-4 col-md-4 col-sm-6"><img num="7" src="img/66.jpg"/></li>
+						<li class="col-lg-4 col-md-4 col-sm-6"><img num="8" src="img/69c0d609-881a-4a72-916e-390821164edf.jpg"/></li>
+					</ul>
+					<div class="pages">
+						<div class="btn-group">
+							<button class="btn btn-default">Prev</button>
+							<button class="btn btn-default">1</button>
+							<button class="btn btn-default">2</button>
+							<button class="btn btn-default">3</button>
+							<button class="btn btn-default">4</button>
+							<button class="btn btn-default">5</button>
+							<button class="btn btn-default">6</button>
+							<button class="btn btn-default">7</button>
+							<button class="btn btn-default">Next</button>
+						</div>
+					</div>
+				</div>
+				<div class="msg text-center">
+					<h3>Inkd.<span>Totam Aperiam</span></h3>
+					<p><img src="img/30.1_icon1.png"/> 119N Salisbury NC 2760</p>
+					<p><img src="img/30.1_icon2.png"/> mail(at)inkd.com</p>
+					<p><img src="img/30.1_icon3.png"/> 223-323-232-3232</p>
+				</div>
+			</div>
+		</div>
+		<div id="footer">
+			<div class="container text-center">
+				<p>© 2015 All Rights Reseverd Desin by <a>W3layouts</a></p>
+			</div>
+		</div>
+		<div id="fixed">
+			<span>X</span>
+			<a class="left" href="###">left</a>
+			<a class="right" href="###">right</a>
+			<ul>
+				<!--<li><img src="img/33.jpg"/></li>-->
+			</ul>
+		</div>
+	</body>
+	<script src="js/jQuery-3.2.1.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script type="text/javascript">
+		var length = $('.content li').length;
+		var owidth = 0;
+		var length2 = 0;
+		var height2 = 0;
+		var inow = 0;
+		var ALL = [1,2,3,4,5,6,7,8];
+		var APP = [4,5,6,7,8];
+		var CARD = [1,2,7,8];
+		var ICON = [3,4,5,6];
+		var WEB = [2,8];
+		var arr = [ALL,APP,CARD,ICON,WEB];
+		var pos = [];
+		setposition();
+		$(window).resize(function(){
+			$('.content ul').height('auto');
+			$('.content li').css({'position':'static'});
+			setTimeout(function(){
+				setposition();
+			},1000);
+		});
+		$('.nav button').click(function(){
+			inow = 0;
+			length2 = arr[$(this).index()].length;
+			$(this).addClass('now').siblings().removeClass('now');
+			$('.content li').css({'opacity':0});
+			var html = '';
+			for(var i = 0; i < length2; i++){
+				html += '<li>'+$('.content li').eq(arr[$(this).index()][i]-1).html()+'</li>'
+				$('.content li').eq(arr[$(this).index()][i]-1).css({'opacity':1,'left':pos[i].left,'top':pos[i].top});
+			}
+			$('#fixed ul').html(html);
+			setbanner($(this).index());
+		});
+		$('.right').click(function(){
+			inow++;
+			move();
+		});
+		$('.left').click(function(){
+			if(inow == 0){
+				inow = length2;
+			}
+			inow--;
+			move();
+		});
+		$('#fixed span').click(function(){
+			$('#fixed').css({'height':0});
+		});
+		$('.content li').click(function(){
+			var num = $(this).find('img').attr('num');
+			for(var i = 0; i < length2; i++){
+				if(arr[obj_num][i] == num){
+					inow = i;
+					$('#fixed ul').css({'left':-owidth*inow});
+				}
+			}
+			$('#fixed').css({'height':height+'px'});
+		});
+		setbanner(0);
+		function setposition(){
+			pos = [];
+			var height = $('.content ul').height();
+			$('.content ul').height(height);
+			for(var i = 0; i < length; i++){
+				var obj = $('.content li').eq(i);
+				var oleft = obj[0].offsetLeft;
+				var otop = obj[0].offsetTop;
+				var obj = {'left':oleft+'px','top':otop+'px'};
+				pos.push(obj);
+			}
+			for(var i = 0; i < length; i++){
+				$('.content li').eq(i).css({'position':'absolute','left':pos[i].left,'top':pos[i].top});
+			}
+		}
+		function move(){
+			$('#fixed ul').animate({'left':-owidth*(inow%length2)},function(){});
+		}
+		function setbanner(j){
+			obj_num = j;
+			length2 = arr[j].length;
+			var html = '';
+			for(var i = 0; i < length2; i++){
+				html += '<li>'+$('.content li').eq(arr[j][i]-1).html()+'</li>';
+			}
+			$('#fixed ul').html(html);
+			owidth = $('#fixed ul li img').width() + 22;
+			$('#fixed ul').width(owidth*length2);
+			height = $('#fixed img').height();
+		}
+	</script>
+</html>

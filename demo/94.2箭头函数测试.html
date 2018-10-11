@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		let testFun = () => {
+			return "c测试";
+		}
+		let str = testFun();
+		console.log(str);
+		
+		let fn2 = (x) => x * x;
+		console.log(fn2(2));
+		
+		var fn3 =(num1=2 , num2=2) => {
+			console.log(num1 + num2);
+		}
+		fn3();   //4
+		fn3(2,4);   //6
+	</script>
+</html>

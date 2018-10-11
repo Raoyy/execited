@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#nav{
+			position: fixed;
+			right: 30px;
+			top: 40px;
+			width: 100px;
+			list-style: none;
+			border-radius: 8px;
+			border: 1px solid #e5e9ef;
+			overflow: hidden;
+		}
+		#nav li{
+			height: 60px;
+			line-height: 60px;
+			text-align: center;
+			background: #f6f9fa;
+			cursor: pointer;
+		}
+		#nav .now{
+			color: white;
+			background: #00a1d6;
+		}
+		img{
+			display: block;
+			height: 400px;
+			margin: 20px 20px;
+			border-radius: 30px;
+			box-shadow: 0px 0px 20px black;
+			cursor: pointer;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			var olength = $('li').length;
+			var img_top = [];
+			var i_top = [];
+			var k = 0;
+			$(window).on('scroll',function(){
+				var scolltop = document.body.scrollTop ? document.body.scrollTop : document.documentElement.scrollTop;
+				for(var i = 0; i < olength; i++){
+					i_top[i] = $('img').eq(i).offset().top;
+					img_top[i] = $('img').eq(i).offset().top - $(window).scrollTop();
+					if(scolltop <= 100){
+						$('li').eq(0).addClass('now').siblings().removeClass();
+						k = 0;
+					}else{
+						if(img_top[i] + 100 < 0){
+							$('li').eq(i+1).addClass('now').siblings().removeClass();
+							k = i+1;
+						}
+					}
+				}
+			});
+			for(var j = 0; j < olength; j++){
+				i_top[j] = $('img').eq(j).offset().top;
+				$('li').eq(j).click(function(){
+					_this = this;
+					var num = $(this).index() - k;
+					clearInterval(timer1);
+					clearInterval(timer2);
+					if(num > 0){
+						var timer1 = setInterval(function(){
+							document.body.scrollTop = document.body.scrollTop + 20;
+							document.documentElement.scrollTop = document.documentElement.scrollTop + 20;
+							if(document.body.scrollTop >= i_top[$(_this).index()] - 10 || document.body.scrollTop >= i_top[olength-1]-250){
+								clearInterval(timer1);
+							}else if(document.documentElement.scrollTop >= i_top[$(_this).index()] - 10 || document.documentElement.scrollTop >= i_top[olength-1]-250){
+								clearInterval(timer1);
+							}
+						},2);
+					}else{
+						var timer2 = setInterval(function(){
+							document.body.scrollTop = document.body.scrollTop - 20;
+							document.documentElement.scrollTop = document.documentElement.scrollTop - 20;
+							if((document.body.scrollTop <= i_top[$(_this).index()] - 10) && (document.documentElement.scrollTop <= i_top[$(_this).index()] - 10)){
+								clearInterval(timer2);
+							}
+						},2);
+					}
+					k = $(this).index();
+				});
+			}
+			
+			
+		});
+	</script>
+	<body>
+		<ul id="nav">
+			<li class="now">图片1</li>
+			<li>图片2</li>
+			<li>图片3</li>
+			<li>图片4</li>
+			<li>图片5</li>
+			<li>图片6</li>
+			<li>图片7</li>
+			<li>图片8</li>
+			<li>图片9</li>
+		</ul>
+		<img src="img/30317df2-4a83-4400-95ee-23a8ffeb6e78.jpg"/>
+		<img src="img/30c1e84c-f7db-407b-8dbe-479269558c9d.jpg"/>
+		<img src="img/3278c1dc-f84e-4e83-bc29-4d4e7b2ef748.jpg"/>
+		<img src="img/33.jpg"/>
+		<img src="img/3798c2a7-ed4a-430b-8662-9c5d27d38db0.jpg"/>
+		<img src="img/4.jpg"/>
+		<img src="img/59b82b8a-1afc-43bb-80b5-c27ed9debfa4.jpg"/>
+		<img src="img/613a17aa-60a8-41a1-a9d2-470421e9ebb4.jpg"/>
+		<img src="img/66.jpg"/>
+	</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+//		var obj = {"hahah":"kokoko"};
+//		var dd = obj.aaaa;
+//		console.log(dd);
+		
+		var obj = null;
+		try{
+			console.log(obj);
+		}catch(err){
+			console.log("err:",err);
+		}finally{
+			console.log("finally")  //总是执行
+		}
+	</script>
+</html>

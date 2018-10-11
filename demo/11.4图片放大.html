@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#main{
+			width: 1000px;
+			height: 450px;
+			margin: 0 auto;
+		}
+		table{
+			border-collapse:collapse;
+		}
+		table *{
+			text-align: center;
+		}
+		th{
+			border: 1px solid #676767;
+			height: 25px;
+		}
+		.th1,.th3{
+			width: 100px;
+		}
+		.th2{
+			width: 800px;
+		}
+		td{
+			border: 1px solid #676767;
+			height: 80px;
+		}
+		img{
+			display: block;
+			height: 100%;
+			margin: 0 auto;
+			cursor: pointer;
+		}
+		#show_pic{
+			width: 200px;
+			height: 200px;
+			position: absolute;
+			border: 1px solid #006ed7;
+			display: none;
+		}
+	</style>
+	<body>
+		<div id="main">
+			<table border="0px" cellspacing="0px" cellpadding="0px">
+				<tr>
+					<th class="th1">商品图片</th><th class="th2">商品名称</th><th class="th3">商品价格</th>
+				</tr>
+				<tr>
+					<td><img src="img/small_1.jpg" onmouseover="show(1)"/></td><td>Data</td><td>Data</td>
+				</tr>
+				<tr>
+					<td><img src="img/small_2.jpg" onmouseover="show(2)"/></td><td>Data</td><td>Data</td>
+				</tr>
+				<tr>
+					<td><img src="img/small_3.jpg" onmouseover="show(3)"/></td><td>Data</td><td>Data</td>
+				</tr>
+				<tr>
+					<td><img src="img/small_4.jpg" onmouseover="show(4)"/></td><td>Data</td><td>Data</td>
+				</tr>
+				<tr>
+					<td><img src="img/small_5.jpg" onmouseover="show(5)"/></td><td>Data</td><td>Data</td>
+				</tr>
+			</table>
+			<div id="show_pic"></div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		var show_div = document.getElementById('show_pic');
+		document.onmousemove = function(ev){
+			oev = ev || event;
+			var x = oev.clientX;
+			var y = oev.clientY;
+			show_div.style.left = x + 3 + 'px';
+			show_div.style.top = y + 3 + 'px';
+		}
+		function show(k){
+			show_div.style.background = 'url(img/big_'+k+'.jpg) no-repeat';
+			show_div.style.backgroundSize = '100%';
+			show_div.style.display = 'block';
+			this.addEventListener('mouseout',function(){
+				show_div.style.display = 'none';
+			},false);
+		}
+	</script>
+</html>

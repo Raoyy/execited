@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			ul{
+				list-style: none;
+			}
+			.nav{
+				background-color: #8f8f8f;
+				height: 48px;
+				width: 900px;
+				border: 1px solid #6e6e6e;
+				border-radius: 24px;
+			}
+			li{
+				cursor: pointer;
+			}
+			.nav>li{
+				color: #3d3f32;
+				margin-top: 9px;
+				margin-right: 10px;
+				background: #e2e2e2;
+				border-radius: 15px;
+				padding: 0px 20px;
+				height: 33px;
+				line-height: 32px;
+				float: left;
+				font-size: 16px;
+				background: url(img/bg1.gif) repeat-x;
+			}
+			.news{
+				width: 61px;
+			}
+			.news ul{
+				border: 1px solid #b5b5b5;
+				background: #d3d3d3;
+				border-radius: 7px;
+				padding-left: 0px;
+				width: 187px;
+				position: relative;
+				box-shadow: 2px 3px 3px #d3d3d3;
+				display: none;
+				background: url(img/bg2.gif) repeat-x;
+			}
+			.news ul ul{
+				position: absolute;
+				top: 41px;
+				left: 182px;
+			}
+			.news>ul>li:hover{
+				background: #0294cd;
+				color: white;
+			}
+			.news1>ul>li:hover{
+				background: #0294cd;
+				color: white;
+			}
+			.news2>ul>li:hover{
+				background: #0294cd;
+				color: white;
+			}
+			.news li{
+				padding-left: 18px;
+				border-radius: 7px;
+				color: #626470;
+			}
+			.news:hover>ul{
+				display: block;
+			}
+			.news1:hover>ul{
+				display: block;
+			}
+			.news2:hover>ul{
+				display: block;
+			}
+			.nav .non{
+				background: transparent;
+				color: #e3e5e4;
+			}
+		</style>
+	</head>
+	<body>
+		<ul class="nav">
+			<li>首页</li>
+			<li class="news">
+				新闻>>
+				<ul>
+					<li>国际新闻</li>
+					<li class="news1">
+						国内新闻>>
+						<ul>
+							<li>
+								地方新闻
+							</li>
+							<li class="news2">
+								科技新闻>>
+								<ul>
+									<li>移动互联网发展趋势</li>
+									<li>云计算</li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+			<li class="non">论坛</li>
+			<li class="non">微博</li>
+		</ul>
+	</body>
+</html>

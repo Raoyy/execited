@@ -1,0 +1,41 @@
+<!DOCTYPE html>  
+<html>  
+<head>  
+    <meta charset="utf-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">  
+    <title></title>  
+<style>  
+    html{overflow-x:hidden;min-height:100%;width:100%;}  
+    body{margin:0;overflow-x:hidden;min-height:100%;}  
+    .slipping-area{position:relative;}  
+    .slipping-imgbox{overflow-x:hidden;width:9999px;}  
+    .slipping-imgbox>img{height:300px;float:left;}  
+  
+        /*点样式*/  
+    .slipping-dot{position:absolute;bottom:6px;left: 50%;-webkit-transform: translate(-50%,0);transform: translate(-50%,0);-moz-transform: translate(-50%,0);-ms-transform: translate(-50%,0);-o-transform: translate(-50%,0);}  
+    .slipping-dot>em>i{display:inline-block;width:8px;height:8px;background-clip:padding-box;border-radius:50%;background-color:transparent;position:absolute;top: 50%;left: 50%;margin:-4px 0 0 -4px;}  
+    .slipping-dot>em.active>i{background-color:#4C62D6;}  
+    .slipping-dot>em{display:inline-block;width:14px;height:14px;background-clip:padding-box;border-radius:50%;background-color:rgba(0,0,0,0.2);position:relative;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;float:left;margin-left:2px;}  
+</style>  
+</head>  
+<body>  
+<div class="slipping-area">  
+    <div class="slipping-imgbox">  
+        <img src="img/banner1.jpg" alt="">  
+        <img src="img/banner1.jpg" alt="">  
+        <img src="img/banner1.jpg" alt="">  
+    </div>  
+</div>  
+</body>  
+<script src="jquery-1.7.1.min.js"></script>  
+<script src="js/slip.js"></script>  
+<script>  
+  /**  
+   * [slip description]  
+   * 调用方法  slip('.slipping-area')||slip(1000)||slip('.slipping-area',1000)  
+   * @param  {[jq选择器]} selector [jq选择器,默认'.slipping-area']  
+   * @param  {[int]} time     [轮播时间，默认0,0则代表不开启自动轮播]  
+   */  
+  slip.iniT('.slipping-area',2000);  
+</script>  
+</html>  

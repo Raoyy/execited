@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="easyui/jquery-1.7.2.min.js"></script>
+	</head>
+	<body>
+		<input type="file" name="file" id="file" value="" onchange="log()"/>
+	</body>
+	<script type="text/javascript">
+		function log(){
+			var fileval = $("#file").val().split("\\");
+			var arr = fileval.split("\\");
+			console.log(fileval);
+			console.log(arr[arr.length - 1]);
+		}
+	</script>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<p>1</p><p>2</p><p>3</p>
+		<div>1</div><div>2</div><div>3</div>
+	</body>
+	<script type="text/javascript">
+//		var ap = document.getElementsByTagName('p');
+//		var adiv = document.getElementsByTagName('div');
+//		function change(){
+//			return function(ind){
+//				for(var j = 0; j < ap.length; j++){
+//					ap[j].style.color = 'black';
+//				}
+//				ap[ind].style.color = 'red';
+//			}
+//		}
+//		var a = change();
+//		for(var i = 0; i < adiv.length; i++){
+//			adiv[i].index = i;
+//			adiv[i].onclick = function(){
+//				a(this.index);
+//			}
+//		}
+		var num = 3;
+		function bibao(){
+			var num = 1;
+			return function(num2){
+				var sum = 0;
+				for(num ; num <= num2; num++){
+					sum += num;
+				}
+				console.log(sum);
+			}
+		}
+		var a = bibao();
+		a(5);
+		a(6);
+	</script>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		登陆名：<input type="text" id="input1" onblur="textit(1)"/><span id="m1"></span><br />
+		登陆密码：<input type="password" id="pas1" /><br />
+		确认密码：<input type="password" id="pas2" onblur="check()"/><span id="c2"></span><br />
+		身份证号码：<input type="text" id="input2" onblur="textit(2)"/><span id="m2"></span><br />
+		固定电话：<input type="text" id="input3" onblur="textit(3)"/><span id="m3"></span><br />
+		手机号码：<input type="text" id="input4" onblur="textit(4)"/><span id="m4"></span><br />
+		电子邮箱：<input type="text" id="input5" onblur="textit(5)"/><span id="m5"></span><br />
+	</body>
+	<script type="text/javascript">
+		function check(){
+			var password1 = document.getElementById('pas1').value;
+			var password2 = document.getElementById('pas2').value;
+			var show = document.getElementById('c2');
+			if(password1 == password2 && password1 != ''){
+				show.innerHTML = '验证通过';
+				show.style.color = 'green';
+			}else{
+				show.innerHTML = '请确认你的密码';
+				show.style.color = 'red';
+			}
+		}
+		function textit(k){
+			var ainput = document.getElementById('input'+k);
+			var otext = ainput.value;
+			var show = document.getElementById('m'+k);
+			var reg1 = /[\u4E00-\u9FA5\uF900-\uFA2D(A-Za-z0-9_)]/;
+			var reg2 = /^\d{14,17}[A-Za-z0-9]$/;
+			var reg3 = /^\d{3}[-]\d{8}$/;
+			var reg4 = /^1\d{10}$/;
+			var reg5 = /^[A-Za-z0-9]{3,10}@[a-z0-9]{2,7}[.](?:(com|cn|net))$/;
+			var arr = [reg1,reg2,reg3,reg4,reg5];
+			if(arr[k-1].test(otext)){
+				show.innerHTML = '验证通过';
+				show.style.color = 'green';
+			}else{
+				show.style.color = 'red';
+				switch (k){
+					case 1:
+					show.innerHTML = '登陆名只能是中文字符、英文字母、数字及下划线';
+					break;
+					case 2:
+					show.innerHTML = '省份证号码只能由15或18位的数字组成';
+					break;
+					case 3:
+					show.innerHTML = '固定电话不正确，例如010-54845216';
+					break;
+					case 4:
+					show.innerHTML = '手机号码不正确。例如18432456678';
+					break;
+					case 5:
+					show.innerHTML = 'email格式不正确，例如web@126.com'
+					break;
+				}
+			}
+		}
+	</script>
+</html>

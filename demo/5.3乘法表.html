@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+		window.onload = function(){
+			var body = document.getElementsByTagName('body')[0];
+			body.style.marginLeft = '0px';
+			var oinput = document.createElement('input');
+			oinput.type = 'button';
+			oinput.value = '九九乘法表';
+			body.appendChild(oinput);
+			function bg(){
+				var bg = parseInt(Math.random()*255);
+				return bg;
+			}
+			for(var i = 0; i < 9; i++){
+				for(var j = 0; j < 9; j++){
+					if(i <= j){
+						var sum = (i+1) * (j+1);
+						var aP = document.createElement('p');
+						aP.style.position = 'absolute';
+						aP.style.height = '28px';
+						aP.style.width = '88px';
+						aP.style.left = i*89 + 'px';
+						aP.style.top = j*29 + 30 + 'px';
+						aP.style.textAlign = 'center';
+						aP.style.lineHeight = '28px';
+						aP.style.border = '1px solid black';
+						aP.style.background = 'rgba('+bg()+','+bg()+','+bg()+',1)';
+						aP.style.color = 'white';
+						aP.innerHTML = (i+1) + '*' + (j+1) + '=' + sum;
+						body.appendChild(aP);
+					}
+				}
+			}
+		}
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<a href="ajax/test.txt"  download="test11">click</a>
+		
+		<p>&#44;--,</p>
+		<input type="text" name="aaa" id="aaa" value="aaaa" />
+		<input type="button" name="" id="" value="click" onclick="replaceIt()" />
+	</body>
+</html>
+<script src="js/jQuery-3.2.1.js"></script>
+<script>
+	var str = '闪对吧设计费八连杀，沙发发,sfasf,safasf,sfasfssf';
+	var otr = /,/g;
+	var	str2 = str.replace(otr,'&#44;');
+	console.log(str2);
+	function replaceIt(){
+		$('#aaa').val(str2);
+	}
+</script>

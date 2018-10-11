@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		#warp{
+			width: 100px;
+			height:100px;
+			border: 1px solid black;
+		}
+		#warp2{
+			width: 100px;
+			height:100px;
+			border: 1px solid red;
+		}
+		.con{
+			width: 50px;
+			height: 50px;
+			margin: 0 auto;
+			background: red;
+		}
+	</style>
+	<body>
+		<div id="warp" @click="fn2">
+			<div class="con" @click.stop="fn1"></div>
+		</div>
+		<div id="warp2" onclick="fun2()">
+			<div class="con" ></div>
+		</div>
+		<form action="abc.php" method="post">
+			
+			<input id="int" type="submit" value="提交"/>
+		</form>
+	</body>
+	<script src="js/jQuery-3.2.1.js"></script>
+	<script type="text/javascript" src="js/vue.js"></script>
+	<script type="text/javascript">
+		var obj = new Vue({   //vueJS阻止事件冒泡
+			el:'#warp',
+			data:{},
+			methods:{
+				fn1:function(){
+					alert('1111');
+				//	ev.cancelBubble = true;
+				},
+				fn2:function(){
+					alert('2222');
+				}
+			}
+		});
+//		function fun1(){
+//			alert('1111');
+//			event.cancelBubble = true;
+//		}
+		$('#warp2 .con').click(function(e){   //传统方法
+			ev = e || event;
+			alert('1111');
+			ev.stopPropagation();
+		});
+		function fun2(){
+			alert('2222');
+		}
+		$('form').submit(function(e){  //组织浏览器默认事件
+			ev = e || event;
+			alert('ok');
+			ev.preventDefault();
+		//	return false;
+		});
+	</script>
+</html>

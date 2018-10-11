@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<p></p>
+	</body>
+	<script src="js/jQuery-3.2.1.js"></script>
+	<script type="text/javascript">
+		function getServerDate(){
+			var times = new Date($.ajax({async: false}).getResponseHeader("Date"));
+			var year = times.getFullYear();
+			var month = times.getMonth();
+			var day = times.getDay();
+			document.getElementsByTagName('p')[0].innerHTML = year+'年'+month+'月'+day+'日';
+//			return html = year+'年'+month+'月'+day+'日';
+		}
+		getServerDate();
+//		document.getElementsByTagName('p')[0].innerHTML=getServerDate();
+		
+//		var xmlhttp = new ActiveXObject("MSXML2.XMLHTTP.3.0");
+//		xmlhttp.open("GET", "http://bjtime.cn", false);
+//		xmlhttp.setRequestHeader("If-Modified-Since", "bjtime");
+//		xmlhttp.send();
+//		var dateStr = xmlhttp.getResponseHeader("Date");
+//		var date = new Date(dateStr);
+//		var year = date.getFullYear();
+//		var month = date.getMonth() + 1;
+//		var date1 = date.getDate();
+//		var hour = date.getHours();
+//		var minutes = date.getMinutes();
+//		var second = date.getSeconds();
+//		alert(date + "  |  " + year + "年" + month + "月" + date1 + "日" + hour + "时" + minutes + "分" + second + "秒");
+		
+		
+	</script>
+</html>

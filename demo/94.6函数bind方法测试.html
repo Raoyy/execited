@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		function add(a,b){    
+		    return a + b;
+		}
+		var a = 3;
+		var b = 4;
+		var newFoo = add.bind(this,a, b);
+		a = 6;
+		b = 7;
+		console.log(newFoo());
+		
+		function consoleLog(i){  
+		  console.log(i);
+		}
+//		for(var j=0; j<10; j++){
+//			console.log(j);
+//		}
+		for(var i = 0;i < 10;i++){
+		    setTimeout(consoleLog.bind(this,i),1000);
+		}
+		
+		
+	</script>
+</html>

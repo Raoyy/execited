@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<a href="javascript:;" onclick="oDownLoad('http://192.168.31.3/voy/web/site_1/importErrorLog/aaaa.txt',this,'哈哈哈哈哈');">下载</a>
+	</body>
+	<script type="text/javascript">
+		var txtUrl = "http://192.168.31.3/voy/web/site_1/importErrorLog/%E9%BE%99%E5%AD%A6%E6%A0%87%EF%BC%88%E6%96%B0%EF%BC%89(1)%E5%AF%BC%E5%85%A5%E9%94%99%E8%AF%AF%E6%8A%A5%E5%91%8A.txt";
+		function myBrowser(){  
+	        var userAgent = navigator.userAgent;   //取得浏览器的userAgent字符串   
+	        if (userAgent.indexOf("Opera") > -1) {   //判断是否Opera浏览器  
+	            return "Opera"  
+	        };
+	        if (userAgent.indexOf("Firefox") > -1) {   //判断是否Firefox浏览器  
+	            return "FF";  
+	        }
+	        if (userAgent.indexOf("Chrome") > -1){  
+	            return "Chrome";  
+	        }  
+	        if (userAgent.indexOf("Safari") > -1) {   //判断是否Safari浏览器  
+	            return "Safari";  
+	        }
+	        if (userAgent.indexOf("compatible") > -1 && userAgent.indexOf("MSIE") > -1 && !isOpera) {   //判断是否IE浏览器  
+	            return "IE";  
+	        };
+	        if (userAgent.indexOf("Trident") > -1) {  //判断是否Edge浏览器  
+	            return "Edge";  
+	        } 
+		}  
+	    function oDownLoad(url,obj,name) {     //调用此方法下载
+	        if (myBrowser()==="IE" || myBrowser()==="Edge"){  
+	            download(url,name);
+	        }else{
+	        	obj.href = url;   //!IE  
+	        	obj.download = name;
+	        }  
+	    }
+	    function download(src,name) {
+		    var $a = document.createElement('a');
+		    $a.setAttribute("href", src);
+		    $a.setAttribute("download", name);
+		    var evObj = document.createEvent('MouseEvents');
+		    evObj.initMouseEvent( 'click', true, true, window, 0, 0, 0, 0, 0, false, false, true, false, 0, null);
+		    $a.dispatchEvent(evObj);
+		};
+	</script>
+</html>

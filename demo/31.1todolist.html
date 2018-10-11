@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#main{
+			width: 300px;
+			margin: 0 auto;
+			text-align: center;
+		}
+		.finished{
+			text-decoration: line-through;
+		}
+		li{
+			cursor: pointer;
+			line-height: 30px;
+		}
+	</style>
+	<body>
+		<div id="main">
+			<h1>todoList</h1>
+			<input @keyup.enter="setmsg" v-model="ovalue" type="text" name="input" id="input" placeholder="输入任务" />
+			<input @click="clear" type="button" name="clear" id="clear" value="clear all" />
+			<ul>
+				<li v-for="item in pro" :class="{finished:item.finished}" @click="didit(item)">
+					{{item.project}}
+				</li>
+			</ul>
+		</div>
+	</body>
+	<script src="js/vue.js"></script>
+	<script type="text/javascript">
+		var vm = new Vue({
+			el:'#main',
+			data:{
+				ovalue:'',
+				finished:'finished',
+				pro:[]
+			},
+			methods:{
+				setmsg:function(){
+					var obj = this.ovalue;
+					var ojson = {project:obj,finished:false};
+					this.pro.push(ojson);
+					this.ovalue = '';
+					var str_json = JSON.stringify(this.pro);
+					window.localStorage.setItem('project',str_json);
+				},
+				didit:function(obj){
+					obj.finished = !obj.finished;
+					var str_json = JSON.stringify(this.pro);
+					window.localStorage.setItem('project',str_json);
+				},
+				clear:function(){
+					window.localStorage.clear();
+				}
+			},
+			beforeMount:function(){
+				var obj = window.localStorage.getItem('project');
+				if(obj != null){
+					this.pro = JSON.parse(obj);
+				}
+			}
+		});
+	</script>
+</html>

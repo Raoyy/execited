@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body ng-app="myapp" ng-controller="part1">
+		<p>倒计时：{{timer()}}</p>
+		<p>倒计时2：<span id="warp"></span></p>
+	</body>
+	<script src="js/jQuery-3.2.1.js"></script>
+	<script src="js/Angular.js"></script>
+	<script type="text/javascript">
+		var app = angular.module('myapp',[]);
+		app.controller('part1',function($scope,$interval){
+			$scope.timer = function(y,m,d){              //倒计时
+				var year = 0;
+				var mon = 0;
+				var day = 0;
+				if(y*1 == y && m*1 == m && d*1 == d){
+					year = y;
+					mon = m;
+					day = d;
+			        $scope.ts = (new Date(year, mon-1, day, 0, 0, 0)) - (new Date());//计算剩余的毫秒数
+			        $scope.dd = parseInt($scope.ts / 1000 / 60 / 60 / 24, 10);//计算剩余的天数  
+			        $scope.hh = parseInt($scope.ts / 1000 / 60 / 60 % 24, 10);//计算剩余的小时数  
+			        $scope.mm = parseInt($scope.ts / 1000 / 60 % 60, 10);//计算剩余的分钟数  
+			        $scope.ss = parseInt($scope.ts / 1000 % 60, 10);//计算剩余的秒数  
+			        $scope.dd = checkTime($scope.dd);
+			        $scope.hh = checkTime($scope.hh);  
+			        $scope.mm = checkTime($scope.mm);  
+			        $scope.ss = checkTime($scope.ss);
+			        $scope.time = $scope.dd + "天" + $scope.hh + "时" + $scope.mm + "分" + $scope.ss + "秒"; 
+				}
+				return $scope.time;
+			}
+			$interval(function(){
+				$scope.timer(2017,9,1);
+			},1000);
+		});
+		function checkTime(i){    //倒计时外部函数
+		   if (i < 10 && i >= 0) {
+		       i = "0" + i;    
+		    }
+		   return i;  
+		}
+		function timer(y,m,d){
+			var year = 0;
+			var mon = 0;
+			var day = 0;
+			var warp = document.getElementById('warp');
+			if(y*1 == y && m*1 == m && d*1 == d){
+				year = y;
+				mon = m;
+				day = d;
+		        ts = (new Date(year, mon-1, day, 0, 0, 0)) - (new Date());//计算剩余的毫秒数
+		        dd = parseInt(ts / 1000 / 60 / 60 / 24, 10);//计算剩余的天数  
+		        hh = parseInt(ts / 1000 / 60 / 60 % 24, 10);//计算剩余的小时数  
+		        mm = parseInt(ts / 1000 / 60 % 60, 10);//计算剩余的分钟数  
+		        ss = parseInt(ts / 1000 % 60, 10);//计算剩余的秒数  
+		        dd = checkTime(dd);
+		        hh = checkTime(hh);
+		        mm = checkTime(mm);
+		        ss = checkTime(ss);
+		        if(dd<=0&&hh<=0&&mm<=0&&ss<=0){
+		        	warp.innerHTML = '活动已结束！';
+		        	isfinish = true;
+		        	return false;
+		        }
+		        warp.innerHTML = dd + "天" + hh + "时" + mm + "分" + ss + "秒"; 
+			}
+		}
+		var isfinish = false;
+		var timer2 = setInterval(function(){
+			timer(2017,9,1);
+			if(isfinish){
+				clearInterval(timer2);
+			}
+		},1000);
+		$.ajax({type:"OPTIONS",url:"/",complete:function(x){console.log(x.getResponseHeader("Date"))}})
+	</script>
+</html>

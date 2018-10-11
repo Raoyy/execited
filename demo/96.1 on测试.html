@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+	</body>
+	<script src="js/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript">
+		$("body").on("click","#aaa",function(){
+			console.log("ok");
+		});
+		setTimeout(function(){
+			$("body").append('<div id="aaa">aaaa</div>');
+		},1000);
+	</script>
+</html>

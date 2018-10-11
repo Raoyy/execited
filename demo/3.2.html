@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			window.onload = function(){
+				var txt1 = document.getElementById('text1');
+				var txt2 = document.getElementById('text2');
+				var btn = document.getElementById('tijiao');
+				var min = 0;
+				var max = 0;
+				var num = 0;
+				btn.onclick = function(){
+					min = txt1.value;
+					max = txt2.value;
+					for(var i = min; i <= max; i++){
+						var baiwei = parseInt(i/100);
+						var shiwei = parseInt((i-(baiwei*100))/10);
+						var gewei = parseInt(i - (baiwei*100) - shiwei*10);
+						var k = baiwei*baiwei*baiwei + shiwei*shiwei*shiwei + gewei*gewei*gewei;
+						if(i == k){
+							arr = i;
+							var jieguo = document.createElement('p');
+							jieguo.style.display = 'block';
+							jieguo.innerHTML = i;
+							document.getElementById('jieguo').appendChild(jieguo);
+						}
+					}
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<input type="text" id="text1" value="" />
+		<input type="text" id="text2" value="" />
+		<input type="button" id="tijiao" value="提交" />
+		<div id="jieguo" style="padding-top: 30px;">
+			结果：
+		</div>
+	</body>
+</html>

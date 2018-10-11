@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<link rel="stylesheet" type="text/css" href="css/16.2.css"/>
+	<body>
+		<div id="warp">
+			<ul class="nav">
+				<li class="now">新闻</li>
+				<li>时尚</li>
+				<li>军事</li>
+			</ul>
+			<ul class="content">
+				<li class="show">新闻</li>
+				<li>时尚</li>
+				<li>军事</li>
+			</ul>
+		</div>
+	</body>
+	<script src="js/jquery.js"></script>
+	<script type="text/javascript">
+		$('.nav li').click(function(){
+			$(this).addClass('now').siblings().removeClass();
+			$('.content li').eq($(this).index()).addClass('show').siblings().removeClass();
+		});
+	</script>
+</html>

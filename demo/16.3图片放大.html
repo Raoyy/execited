@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		ul{
+			width: 480px;
+			height: 75px;
+			list-style: none;
+			margin: 20px auto 0;
+		}
+		li{
+			width: 100px;
+			height: 75px;
+			float: left;
+			padding: 0 10px;
+		}
+		img{
+			border: 1px solid #8F8F8F;
+			cursor: pointer;
+		}
+		#move_pic{
+			position: absolute;
+			top: 0;
+			left: 0;
+			border: 2px solid #8F8F8F;
+		}
+	</style>
+	<body>
+		<ul>
+			<li><img src="img/apple_1.jpg" onmouseover="init(1)"/></li>
+			<li><img src="img/apple_2.jpg" onmouseover="init(2)"/></li>
+			<li><img src="img/apple_3.jpg" onmouseover="init(3)"/></li>
+			<li><img src="img/apple_4.jpg" onmouseover="init(4)"/></li>
+		</ul>
+		<img id="move_pic" src="img/apple_1_bigger.jpg"/>
+	</body>
+	<script src="js/jquery.js"></script>
+	<script type="text/javascript">
+		$(window).on('mousemove',function(ev){
+			var x = ev.clientX;
+			var y = ev.clientY;
+			$('#move_pic').css({'top':y+5+'px','left':x+5+'px'});
+		});
+		$('#move_pic').hide();
+		function init(i){
+			$('#move_pic').attr('src','img/apple_'+i+'_bigger.jpg').show();
+			$(this).on('mouseout',function(){
+				$('#move_pic').hide();
+			});
+		}
+	</script>
+</html>

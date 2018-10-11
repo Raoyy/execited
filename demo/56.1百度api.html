@@ -1,0 +1,342 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+		<style type="text/css">
+			body, html,#allmap {width: 100%;height: 100%;overflow: hidden;margin:0;font-family:"微软雅黑";}
+		</style>
+		<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=ibRaZKN3fC1DvD8I6DYiw90x736r3XQd"></script>
+		<title>根据中心点关键字周边搜索</title>
+	</head>
+	<body>
+		<input type="button" value="clear" onclick="localStorage.clear();"/>
+		<!--<div id="warp">
+			大地址：<input type="text" id="lg" value="成都市" />
+			详细地址：<input type="text" id="sm" />
+			<input type="button" name="searchClick" id="searchClick" value="search" onclick="search()" />
+		</div>-->
+		<div id="allmap"></div>
+	</body>
+</html>
+<script type="text/javascript">
+	
+// 百度地图API功能
+	var map = new BMap.Map("allmap",{minZoom:4,maxZoom:18});  //设置地图最大最小显示级别
+	map.centerAndZoom(new BMap.Point(106.073995,30.557859), 8);  // 初始化地图,设置中心点坐标和地图级别
+	
+	map.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
+//	map.enableKeyboard();         // 开启键盘控制    
+//	map.enableContinuousZoom();   // 开启连续缩放效果    
+//  map.enableInertialDragging(); // 开启惯性拖拽效果
+//	map.addControl(new BMap.MapTypeControl());   //添加地图类型控件
+	
+//	setTimeout(function(){
+//		map.panTo(new BMap.Point(104.073995,30.557859));   //两秒后移动到天祥广场
+//	}, 10);
+	
+//	setTimeout(function(){
+//		map.setZoom(14);   
+//	}, 2000);  //2秒后放大到14级，需要开启鼠标滚轮缩放
+	
+//	map.centerAndZoom("成都",15);      // 初始化地图,用城市名设置地图中心点
+	
+	function myFun(result){    //根据ip定位
+		var cityName = result.name;
+		map.setCenter(cityName);
+		console.log("当前定位城市:"+cityName);
+	}
+	var myCity = new BMap.LocalCity();
+	myCity.get(myFun);
+	
+	// 创建地址解析器实例
+	function search(){
+		var lg = document.getElementById('lg').value;
+		var sm = document.getElementById('sm').value;
+		map.clearOverlays();  //清除全部marker
+		var myGeo = new BMap.Geocoder();
+		// 将地址解析结果显示在地图上,并调整地图视野
+		myGeo.getPoint(sm, function(point){
+			if (point) {
+				console.log(point);
+				map.centerAndZoom(point, 19);
+				var oMarker = new BMap.Marker(point);
+				map.addOverlay(oMarker);
+				oMarker.setLabel(new BMap.Label(point.lng+','+point.lat,{offset:new BMap.Size(20,-10)}));
+			}else{
+				console.log("您选择地址没有解析到结果!");
+			}
+		}, lg);
+	}
+	
+	
+	//批量添加地图点
+//	var adds = [
+//		new BMap.Point(116.307852,40.057031),
+//		new BMap.Point(116.313082,40.047674),
+//		new BMap.Point(116.328749,40.026922),
+//		new BMap.Point(116.347571,39.988698),
+//		new BMap.Point(116.316163,39.997753),
+//		new BMap.Point(116.345867,39.998333),
+//		new BMap.Point(116.403472,39.999411),
+//		new BMap.Point(116.307901,40.05901)
+//	];
+//	for(var i = 0; i<adds.length; i++){
+//		var marker = new BMap.Marker(adds[i]);
+//		map.addOverlay(marker);
+//		marker.setLabel(new BMap.Label("我是商圈:"+(i+1),{offset:new BMap.Size(20,-10)}));
+//	}
+
+	//地图上创建标注
+//	var marker = new BMap.Marker(new BMap.Point(116.307852,40.057031));
+//	map.addOverlay(marker);
+//	marker.setLabel(new BMap.Label("我是商圈:",{offset:new BMap.Size(20,-10)}));
+//	marker.disableDragging();           // 不可拖拽
+//	marker.enableDragging();			// 可拖拽
+	
+	//添加城市列表控件
+	var size = new BMap.Size(10, 20);
+	map.addControl(new BMap.CityListControl({
+	    anchor: BMAP_ANCHOR_TOP_LEFT,
+	    offset: size,
+	    //切换城市之间事件
+	    onChangeBefore: function(){
+	       console.log('before');
+	    },
+	    //切换城市之后事件
+	    onChangeAfter:function(){
+	       console.log('after');
+	    }
+	}));
+	
+	//为点添加点击事件
+//	var marker = new BMap.Marker(new BMap.Point(116.404, 39.915)); // 创建点
+//	marker.addEventListener("click",attribute);
+//	map.addOverlay(marker);    //增加点
+//	
+//	function attribute(){
+//		var p = marker.getPosition();  //获取marker的位置
+//		alert("marker的位置是" + p.lng + "," + p.lat);    
+//	}
+	
+	//为地图添加加载完成事件
+//	map.addEventListener("tilesloaded",function(){alert("地图加载完毕");});
+	
+	//为地图添加点击事件
+//	function showInfo(e){
+//		alert(e.point.lng + ", " + e.point.lat);
+//	}
+//	map.addEventListener("click", showInfo);
+	
+	function loadMarks(){   //加载地图时添加本地存储的点
+		var points = [];
+		var viewpoints = [];
+		if(localStorage.getItem("pointStr") != null){
+			points = JSON.parse(localStorage.getItem("pointStr")); 
+		}
+		for(var i=0; i<points.length; i++){
+			var oPoint = new BMap.Point(points[i].lng,points[i].lat);
+			var marker = new BMap.Marker(oPoint);
+			map.addOverlay(marker);
+			marker.setLabel(new BMap.Label(points[i].label,{offset:new BMap.Size(20,-10)}));
+			marker.id = points[i].id;
+			marker.addEventListener("click",attribute);
+			viewpoints.push(marker.getPosition());
+			function attribute(e){
+				var p = marker.getPosition();             //获取marker的位置
+				alert("marker的位置是" + p.lng + "," + p.lat);
+				e.domEvent.stopPropagation();             //百度地图阻止事件冒泡
+			}
+			
+			var removeMarker = function(e,ee,marker){
+				map.removeOverlay(marker);
+				for(var j=0; j<points.length; j++){
+					if(marker.id == points[j].id){
+						points.splice(j,1);
+					}
+				}
+				var pointStr = JSON.stringify(points);
+				localStorage.setItem("pointStr",pointStr);
+			}
+			var markerMenu=new BMap.ContextMenu();
+			markerMenu.addItem(new BMap.MenuItem('删除',removeMarker.bind(marker)));
+			marker.addContextMenu(markerMenu);	
+		}
+		map.setViewport(viewpoints);   //默认地图上显示所有的点
+	}
+	loadMarks();
+	//逆地址解析   点击地图店家点并添加提示信息
+	var geoc = new BMap.Geocoder();    
+
+	map.addEventListener("click", function(e){  
+		var pt = e.point;
+		geoc.getLocation(pt, function(rs){
+			var addComp = rs.addressComponents;
+			var point = rs.point;
+			console.log(addComp.province + ", " + addComp.city + ", " + addComp.district + ", " + addComp.street + ", " + addComp.streetNumber);
+			console.log('该地址坐标为：'+point.lng+','+point.lat);
+			addMark(point.lng,point.lat,e);
+		});
+	});
+	
+	function addMark(lng,lat,e){
+		var msg = prompt("请输入地址描述信息:");
+		if(msg == null){
+			console.log("您已取消添加！");
+			return false;
+		}
+		var oPoint = new BMap.Point(lng,lat);
+		var marker = new BMap.Marker(oPoint);
+		map.addOverlay(marker);
+		marker.setLabel(new BMap.Label(msg,{offset:new BMap.Size(20,-10)}));
+		
+		var points = [];
+		var oJson = {id:0,lng:lng,lat:lat,label:msg};
+		if(localStorage.getItem("pointStr") != null && localStorage.getItem("pointStr") != '[]'){
+			points = JSON.parse(localStorage.getItem("pointStr")); 
+			var oid = points[points.length-1].id;
+			oid++;
+			oJson = {id:oid,lng:lng,lat:lat,label:msg};
+		}
+		marker.id = oJson.id;
+		points.push(oJson);
+		var pointStr = JSON.stringify(points);
+		localStorage.setItem('pointStr',pointStr);
+		marker.addEventListener("click",attribute);
+		function attribute(e){
+			var p = marker.getPosition();             //获取marker的位置
+			alert("marker的位置是" + p.lng + "," + p.lat);
+			e.domEvent.stopPropagation();             //百度地图阻止事件冒泡
+		}
+		
+		//创建移除菜单
+		var removeMarker = function(e,ee,marker){
+			map.removeOverlay(marker);
+			
+//			for(var k=0; k<points.length; k++){          //bug
+//				if(marker.id == points[k].id){
+//					console.log(marker.id+'--'+points[k].id+'--'+k);
+//					points.splice(k,1);
+//					console.log(points);
+//				}
+//			}
+//			var pointStr = JSON.stringify(points);
+//			localStorage.setItem("pointStr",pointStr);
+		}
+		var markerMenu=new BMap.ContextMenu();
+		markerMenu.addItem(new BMap.MenuItem('删除',removeMarker.bind(marker)));
+		marker.addContextMenu(markerMenu);	
+	}
+	
+	//自定义控件类
+	
+	// 定义一个控件类,即function
+	function ZoomControl(){
+	  // 默认停靠位置和偏移量
+	  this.defaultAnchor = BMAP_ANCHOR_TOP_LEFT;
+	  this.defaultOffset = new BMap.Size(100, 10);
+	}
+
+	// 通过JavaScript的prototype属性继承于BMap.Control
+	ZoomControl.prototype = new BMap.Control();
+
+	// 自定义控件必须实现自己的initialize方法,并且将控件的DOM元素返回
+	// 在本方法中创建个div元素作为控件的容器,并将其添加到地图容器中
+	ZoomControl.prototype.initialize = function(map){
+		// 创建一个DOM元素
+		var div = document.createElement("div");
+		div.innerHTML = '大地址：<input type="text" id="lg" value="成都市" />'
+			+'详细地址：<input type="text" id="sm" />';
+		
+		// 添加文字说明
+//		div.appendChild(document.createTextNode("放大2级"));
+		// 设置样式
+		div.style.cursor = "pointer";
+		div.style.border = "1px solid gray";
+		div.style.backgroundColor = "white";
+		// 绑定事件,点击一次放大两级
+//		div.onclick = function(e){
+//			map.setZoom(map.getZoom() + 2);
+//		}
+		// 添加DOM元素到地图中
+		map.getContainer().appendChild(div);
+		
+		document.getElementById('sm').addEventListener("input",search);
+		
+		
+		// 将DOM元素返回
+		return div;
+	}
+	// 创建控件
+	var myZoomCtrl = new ZoomControl();
+	// 添加到地图当中
+	map.addControl(myZoomCtrl);
+	
+	//设置地图显示范围，地图移除该范围后，自动跳回范围内
+//	var b = new BMap.Bounds(new BMap.Point(116.027143, 39.772348),new BMap.Point(116.832025, 40.126349));
+//	try {	
+//		BMapLib.AreaRestriction.setBounds(map, b);
+//	} catch (e) {
+//		alert(e);
+//	}
+
+	//地图增加覆盖物
+//	var marker = new BMap.Marker(new BMap.Point(116.404, 39.915)); // 创建点
+//	map.addOverlay(marker);            //增加点
+//	marker.addEventListener("click",overlay_style);
+//	
+//	var polyline = new BMap.Polyline([
+//		new BMap.Point(116.383752, 39.91334),
+//		new BMap.Point(116.38792, 39.920866),
+//		new BMap.Point(116.390867, 39.906532)
+//	], {strokeColor:"blue", strokeWeight:6, strokeOpacity:0.5});   //创建折线
+//	map.addOverlay(polyline);          //增加折线
+//	polyline.addEventListener("click",overlay_style);
+//		
+//	var circle = new BMap.Circle(new BMap.Point(116.415157, 39.914004),500,{strokeColor:"blue", strokeWeight:6, strokeOpacity:0.5}); //创建圆
+//	map.addOverlay(circle);            //增加圆
+//	circle.addEventListener("click",overlay_style);
+//	
+//	//获取marker的属性
+//	function overlay_style(e){
+//		console.log(e.target);
+//		var p = e.target;
+//		console.log(BMap.Marker);
+//		if(p instanceof BMap.Marker){
+//			alert("该覆盖物是点，点的坐标是：" + p.getPosition().lng + "," + p.getPosition().lat);   
+//		}else if(p instanceof BMap.Circle){
+//			alert("该覆盖物是圆，圆的半径是：" + p.getRadius() + "，圆的中心点坐标是：" + p.getCenter().lng + "," + p.getCenter().lat);   
+//		}else if(p instanceof BMap.Polyline){
+//			alert("该覆盖物是折线，所画点的个数是：" + p.getPath().length);   
+//		}else{
+//			alert("无法获知该覆盖物类型");
+//		}
+//	}
+
+//	var local = new BMap.LocalSearch(map, {
+//		renderOptions:{map: map}
+//	});
+//	local.searchNearby("银行",new BMap.Point(104.073995,30.557859),1000);  //在坐标周围搜索
+
+//	local.searchInBounds("银行", map.getBounds()); //定位点周围搜索
+	
+//	var strictBounds=map.getBounds();
+//	map.addEventListener("dragend", function(){
+//		var c=map.getCenter();
+//	   	if(strictBounds.containsPoint(c)) return;   //判断新的地图中心是否在范围内
+//	   	x=c.lng,
+//      y=c.lat,
+//      maxX=strictBounds.getNorthEast().lng,
+//      maxY=strictBounds.getNorthEast().lat,
+//      minX=strictBounds.getSouthWest().lng,
+//      minY=strictBounds.getSouthWest().lat;
+//		if (x < minX) x = minX;
+//		if (x > maxX) x = maxX;
+//		if (y < minY) y = minY;
+//		if (y > maxY) y = maxY;
+//		console.log(new BMap.Point(x,y));
+//		map.centerAndZoom(new BMap.Point(x,y),map.getZoom());
+//	});
+
+
+	
+</script>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		.flexcontainer{
+			display: -moz-box;
+			display: -webkit-box;
+			width: 500px;
+			height: 100px;
+			border: 1px solid black;
+			-moz-box-direction: reverse;
+			-webkit-box-direction: reverse;
+			-moz-box-orient: horizontal;
+			-webkit-box-orient: horizontal;
+		}
+		.red{
+			border: 1px solid red;
+			-webkit-box-flex: 1.0;
+			-moz-box-flex: 1.0;
+		}
+		.blue{
+			border: 1px solid blue;
+			-webkit-box-flex: 4.0;
+			-moz-box-flex: 4.0;
+		}
+		.green{
+			border: 1px solid green;
+			-webkit-box-flex: 2;
+			-moz-box-flex: 2;
+		}
+	</style>
+	<body>
+		<div class="flexcontainer">
+			<div class="red">
+				red
+			</div>
+			<div class="blue">
+				blue
+			</div>
+			<div class="green">
+				green
+			</div>
+		</div>
+	</body>
+</html>

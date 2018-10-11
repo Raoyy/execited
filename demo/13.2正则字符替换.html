@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<p>Welcome to Microsoft! We are proud to announce that Microsoft has one of the largest Web Developers sites in the world.</p>
+		<input type="button" id="btn" value="replace" />
+	</body>
+	<script type="text/javascript">
+		var op = document.getElementsByTagName('p')[0];
+		var otext = op.innerHTML;
+		var btn = document.getElementById('btn');
+		btn.onclick = function(){
+			op.innerHTML = otext.replace(/Microsoft/g,'新替换的词');
+		}
+	</script>
+</html>

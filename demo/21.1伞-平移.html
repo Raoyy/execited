@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div style="width: 1150px; margin: 0 auto;">
+			<canvas id="mycanvas" width="1150" height="600" style="background: #F0F1F1;margin: 0 auto;"></canvas>
+		</div>
+	</body>
+	<script type="text/javascript">
+		var c = document.getElementById('mycanvas').getContext('2d');
+		function getcolor(){
+			var col = parseInt(Math.random()*255);
+			return col;
+		}
+		function drawit(obj,color){
+			obj.fillStyle = color;  //半圆
+			obj.beginPath();
+			obj.arc(70,70,50,0,Math.PI,true);
+			obj.fill();
+			obj.save();
+			obj.restore();
+			obj.fillRect(67,70,6,60);  //线
+			obj.beginPath();    //勾
+			obj.strokeStyle = color;
+			obj.lineWidth = 6;
+			obj.arc(58,130,12,0,Math.PI,false);
+			obj.stroke();
+			obj.translate(110,50);
+		}
+		for(var i = 0; i < 10; i++){
+			drawit(c,'rgb('+getcolor()+','+getcolor()+','+getcolor()+')');
+		}
+	</script>
+</html>

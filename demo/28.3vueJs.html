@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div class="warp">
+			<h3 @click="h3_click('ok')">{{title}}</h3>
+			<p v-if="show" v-on:click="p_click">{{content}}</p>
+			<input type="text" name="msg" id="msg" v-model="content" />
+			<ul v-show="true">
+				<li v-for="(item,index) in user">
+					<h5>第{{index+1}}名：{{item.name}}</h5>
+					<p>年龄：{{item.age}}</p>
+				</li>
+			</ul>
+			<input type="button" name="btn" id="btn" value="click" @contextmenu.prevent="fn3"/>  <!--组织浏览器默认事件-->
+			<img v-bind:src="url" :width="width"/>
+			<p>{{price|setp('￥')}}</p>     <!--自定义过滤器-->
+			<p>{{price|setp2()}}</p>
+			<input @keydown.ar="keydn($event)" type="text" name="" id="" value="" />  <!--键盘事件-->
+		</div>
+	</body>
+	<script src="js/vue.js"></script>
+	<script type="text/javascript">
+		var show1 = true;
+		var show2 = false;
+		var otitle = 'vueJS练习1标题';
+		Vue.filter('setp2',function(d){  //自定义过滤器
+			d=d.toFixed(2);
+			d=d<10?'0'+d:d;
+			return d;
+		});
+		Vue.config.keyCodes={   //自定义键盘事件
+			a:65,
+			b:66,
+			enter:13,
+			ar:[67,68]
+		}
+		var obj = new Vue({
+			el:'.warp',
+			data:{
+				title:otitle,
+				content:'vueJS练习1内容',
+				show:show1||show2,
+				user:[{name:'小张',age:14},
+				{name:'小李',age:16},
+				{name:'小华',age:17}
+				],
+				url:'https://cn.vuejs.org/images/upyun-main-3.jpg',
+				width:'200px',
+				price:8
+			},
+			methods:{   //方法
+				p_click:function(){
+					alert(this.content);
+				},
+				h3_click:function(x){
+					alert(x);
+				},
+				fn3:function(){
+					alert('ok');
+				},
+				keydn:function(ev){
+					alert(ev.keyCode)
+				}
+			},
+			mounted:function(){   //文档加载完成时执行
+				alert(this.content);
+			},
+			filters:{   //自定义过滤器
+				'setp':function(data,str){
+					data = data.toFixed(2);
+					str = str==undefined?'$':str;
+					return str+data;
+				}
+			}
+		});
+	</script>
+</html>

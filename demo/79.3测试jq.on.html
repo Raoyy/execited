@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="button" name="click" id="click" value="+" />
+		<ul>
+			
+		</ul>
+	</body>
+	<script src="js/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript">
+		var number = 0;
+		$("body").on("click","#click",function(){
+			var li = "<li>"+number+"</li>"
+			$("ul").append(li);
+			number++;
+		});
+		$("body").on("click","li",function(){
+			console.log($(this).html());
+		});
+	</script>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<script src="js/Angular.js"></script>
+	<!--<body ng-app="myApp" ng-controller="person">
+		<form ng-submit="submit()" name="myForm">
+			<p>职业:
+				<input type="radio" name='job' value='engineer' ng-model="user.job">工程师
+				<input type="radio" name='job' value='designer'  ng-model="user.job">设计师
+				<input type="radio" name='job' value='teacher' ng-model="user.job">教师
+			</p>
+				<input type="submit" value="提交">
+				<input type="button" value="选中教师" ng-click="select_teacher()">
+		</form>
+	</body>
+	<script>
+	    var app=angular.module("myApp",[]);
+	    app.controller("person",function($scope){
+			$scope.user={job:'designer'};
+			$scope.submit=function(){
+				alert(angular.toJson($scope.user));
+			};
+			$scope.select_teacher=function(){
+				$scope.user.job="teacher";
+			}
+		 });
+	</script>-->
+	<body ng-app="myApp" ng-controller="person">
+		<form ng-submit="submit()" name="myForm">
+			<span ng-repeat="job in jobs">
+			<input type="radio" name='job' ng-value='job.value' ng-model="user.job">{{job.label}}
+			</span><br>
+			<input type="submit" value="提交">
+			<input type="button" value="选中教师" ng-click="select_teacher()">
+		</form>
+ 	</body>
+	<script>
+	    var app=angular.module("myApp",[]);
+	  	 app.controller("person",function($scope){
+			$scope.jobs=[
+						{label:'工程师',value:'engineer'},
+			            {label:'设计师',value:'designer'},
+			            {label:'教师',value:'teacher'}
+			        ];
+	        $scope.user={job:'designer'};
+			$scope.submit=function(){
+				alert(JSON.stringify($scope.user));
+			};
+			 $scope.select_teacher=function(){
+				$scope.user.job="teacher";
+			}
+		 });
+	</script>
+
+</html>

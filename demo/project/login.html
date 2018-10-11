@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#main{
+			width: 430px;
+			height: 330px;
+			box-shadow: 0px 0px 5px black;
+			margin: 10px auto;
+			border-radius: 1px;
+			background: #ebf2f9;
+			position: relative;
+		}
+		#main>img{
+			cursor: pointer;
+		}
+		#warp_top{
+			width: 100%;
+			height: 182px;
+			background: url(img/qq_bg1.gif) no-repeat 0 -1px;
+			background-size: 431px;
+		}
+		#warp_bottom{
+			padding-top: 12px;
+			position: relative;
+		}
+		.img1{
+			position: absolute;
+			bottom: 8px;
+			left: 8px;
+		}
+		.img2{
+			position: absolute;
+			bottom: 8px;
+			right: 8px;
+		}
+		#warp_bottom>div{
+			float: left;
+		}
+		.left{
+			width: 80px;
+			height: 80px;
+			border-radius: 50%;
+			background-image: url(img/2.jpg);
+			background-position: -30px 0;
+			background-repeat: no-repeat;
+			background-size: auto 100%;
+			position: absolute;
+			top: 11px;
+			left: 42px;
+		}
+		.middle{
+			margin-left: 133px;
+		}
+		ul{
+			width: 255px;
+		}
+		li{
+			width: 192px;
+			height: 28px;
+			border: 1px solid #d1d1d1;
+			list-style: none;
+			float: left;
+			overflow: hidden;
+		}
+		li:nth-child(1){
+			border-bottom: none;
+			border-radius: 3px 3px 0 0;
+		}
+		li:nth-child(3){
+			border-radius: 0px 0px 3px 3px;
+		}
+		#main input{
+			border: none;
+			padding-left: 5px;
+			width: 187px;
+			height: 100%;
+		}
+		#account{
+			background: white url(img/qq-bg-icon1.gif) no-repeat 170px 0;
+		}
+		#password{
+			background: white url(img/qq-bg-icon2.gif) no-repeat 170px 0;
+		}
+		a{
+			text-decoration: none;
+			font-size: 11px;
+			line-height: 29px;
+			color: #2685e3;
+			margin-left: 12px;
+		}
+		.bot{
+			padding-left: 1px;
+			padding-right: 1px;
+			width: 192px;
+			font-size: 11px;
+			
+		}
+		.bot>div{
+			display: inline-block;
+			height: 29px;
+			line-height: 29px;
+		}
+		.bot>div *{
+			float: left;
+		}
+		.bot span{
+			display: block;
+			width: 11px;
+			height: 11px;
+			line-height: 11px;
+			text-align: center;
+			border: 1px solid #b2b2b2;
+			margin-right: 5px;
+			border-radius: 1px;
+			font-family: "gloucester mt extra condensed";
+			cursor: pointer;
+			margin-top: 8px;
+			background: white;
+		}
+		.bot .choosed{
+			border: 1px solid #3076c1;
+			background: #3076c1;
+			color: white;
+		}
+		.bot p{
+			display: inline-block;
+			color: #656565;
+		}
+		.btn_warp2{
+			float: right;
+		}
+		.loadon{
+			width: 194px;
+			height: 30px;
+			background: #09a3dc;
+			color: white;
+			text-align: center;
+			line-height: 30px;
+			border-radius: 5px;
+			letter-spacing: 9px;
+			cursor: pointer;
+			position: absolute;
+			top: 105px;
+			left: 134px;
+		}
+		.loadon:hover{
+			opacity: 0.8;
+		}
+	</style>
+	<body>
+		<input type="button" id="clear" value="clear"/>
+		<div id="main">
+			<img class="img1" src="img/icon3.gif"/>
+			<img class="img2" src="img/icon4.gif"/>
+			<div id="warp_top"></div>
+			<div id="warp_bottom">
+				<div class="left"></div>
+				
+				<div class="middle">
+				
+				<form action="login.php" method="post">
+					<ul>
+						<li><input type="text" id="account" name="username"/></li> <a href="register.html" >注册账号</a>
+						<li><input type="password" id="password" name="userpass"/></li> <a href="###" onclick="changepass()">找回密码</a>
+					</ul>
+					<div class="bot">
+							<div class="btn_warp1">
+								<span></span>
+								<p>记住密码</p>
+							</div>
+							<div class="btn_warp2">
+								<span></span>
+								<p>自动登录</p>
+						</div>
+					</div>
+					<p class="loadon"><input type="submit" value="登录" /></p>
+				</form>
+					
+				</div>
+				
+			</div>
+		</div>
+	</body>
+</html>

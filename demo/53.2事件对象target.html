@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		#div1,#div2{
+			width: 100px;
+			height: 100px;
+			border: 1px solid black;
+		}
+		#warp{
+			width:200px;
+			border:1px solid red;
+		}
+	</style>
+	<body>
+		<div id="warp">
+			<div id="div1"></div>
+			<div id="div2"></div>
+			<div class="div3"></div>
+		</div>
+	</body>
+	<script>
+		var warp = document.getElementById('warp');
+		warp.onclick = function(event){
+			console.log(event.target.id);
+			console.log(event.target.className);
+		}
+		
+	</script>
+</html>

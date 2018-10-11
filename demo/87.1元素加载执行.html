@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<script src="js/jquery-2.1.4.min.js"></script>
+	<body>
+		<div id="div" onload="hahha(this)">hahha()</div>
+	</body>
+	<script type="text/javascript">
+		function hahha(){
+			var str = "hahahahhahahahah";
+			return str;
+		}
+		$("#div").load(function(){
+			var str = "hahahahhahahahah";
+			console.log("ok");
+		});
+	</script>
+</html>

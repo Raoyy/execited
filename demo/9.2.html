@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		用户名：<input type="text" id="name" /><br /><br />
+		密码：<input type="password" id="password" /><br /><br />
+		确认密码：<input type="password" id="queren" /><br /><br />
+		出生年月：
+		<select id="year">
+		</select><br /><br />
+		<input type="button" id="zhuce" value="注册" onclick="zhuce()" />
+	</body>
+	<script type="text/javascript">
+		var aname = document.getElementById('name');
+		var opassword = document.getElementById('password');
+		var oqueren = document.getElementById('queren');
+		var year = document.getElementById('year');
+		var odate = new Date().getFullYear();
+		var people1;
+		for(var i = 1991; i <= 2017; i++){
+//			year.innerHTML+= '<option value="'+i+'">'+i+'</option>';
+			year.options.add(new Option(i));
+			year.options[year.length-1].selected = 1;// = true;
+		}
+		function zhuce(){
+			if(opassword.value != oqueren.value){
+				alert('请确认你的密码是否正确！');
+			}else{
+				people1 = register();
+				people1.show();
+			}
+		}
+		function register(){
+			var cs_year = year.options[year.selectedIndex].innerHTML;
+			var nianl = odate - cs_year;
+			var obj = new Object();
+			obj.name = aname.value;
+			obj.pass = opassword.value;
+			obj.show = function(){
+				alert('用户名：'+ this.name+ '\n密码：'+ this.pass + '\n年龄：' + nianl);
+			}
+			return obj;
+		}
+	</script>
+</html>

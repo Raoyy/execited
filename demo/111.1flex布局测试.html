@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		#container{
+			width: 300px;
+			height: 300px;
+			display: flex;
+			
+			/*flex-direction   //控制主轴的布局方式（子元素的排列方向*/
+			
+			flex-direction: row;    /*子元素从水平方向的左端开始排列   （默认值）*/
+			/*flex-direction: row-reverse;      //子元素从水平方向的右端开始排列
+			flex-direction: column;           //子元素布局从垂直方向，从上往下
+			flex-direction: column-reverse;      //子元素布局从垂直方向，从下往上*/
+			
+			/*flex-wrap //子元素的布局排列的换行设定*/
+			
+			flex-wrap: nowrap;     /*不换行  （默认值）*/
+			/*flex-wrap: wrap;         换行，第一行在上方
+			flex-wrap: wrap-reverse;         换行，第一行在下方*/
+		}
+		.div{
+			background: gray;
+			border: 1px solid #000000;
+		}
+		#div1{
+			order: 1;   /*//定义各个子元素的排列顺序，数值越小，排列越靠前，默认为0，可为负数*/
+			width: 100px;
+			margin-left: 20px;
+		}
+		#div2{
+			order: 0;
+			flex:0 1 calc(50% - 104px);   /*flex  //是flex-grow、flex-shrink、flex-basis的组合，默认值flex:0 1 auto;*/
+		}
+	</style>
+	<body>
+		<div id="container">
+			<div class="div" id="div1">div1</div>
+			
+			<div class="div" id="div2">div2</div>
+		</div>
+	</body>
+</html>

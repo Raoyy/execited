@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script type="text/javascript">
+	//方法1
+	var date1 = Date.parse(new Date());      //返回毫秒数，默认返回值后三位为000
+	console.log(date1);
+	
+	//方法2
+	var date2 = new Date().getTime();       //返回数值的单位是毫秒
+	console.log(date2);
+	
+	//方法3
+	var date3 = (new Date()).valueOf();     //同上方法
+	console.log(date3);
+</script>

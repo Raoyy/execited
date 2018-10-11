@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>入栈出栈</title>
+		<script type="text/javascript">
+			window.onload = function(){
+				var ocharu = document.getElementById('charu');
+				var ru = document.getElementById('ru');
+				var chu = document.getElementById('chu');
+				var ruzhan = document.getElementById('ruzhan');
+				var chuzhan = document.getElementById('chuzhan');
+				var duizhan = document.getElementById('duizhan');
+				var arr1 = [];
+				var arr2 = [];
+				var arr3 = [];
+				ru.onclick = function(){
+					var charu = ocharu.value;
+					arr1.push(charu);
+					ruzhan.value = arr1;
+					ocharu.value = '';
+					duizhan.value = arr1;
+				}
+				chu.onclick = function(){
+					arr2 = arr1;
+					if(arr2.length != 0){
+						arr3.push(arr2.pop());
+						chuzhan.value = arr3;
+						duizhan.value = arr2;
+					}
+				}
+			}
+		</script>
+	</head>
+	<body>
+		插入数据：<input type="text" id="charu"/>
+		<input type="button" id="ru" value="入栈" />
+		<input type="button" id="chu" value="出栈" /><br />
+		入栈数据：<input type="text" id="ruzhan"/><br />
+		出栈数据：<input type="text" id="chuzhan"/><br />
+		堆栈数据：<input type="text" id="duizhan"/>
+	</body>
+</html>
