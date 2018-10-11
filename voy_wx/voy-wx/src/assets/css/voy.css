@@ -1,0 +1,1556 @@
+*{margin: 0px;padding: 0px;}
+html{font-size: 62.5%!important;}
+body{font-family:"微软雅黑",Helvetica Neue, Helvetica, Arial, sans-serif;max-width: 600px;margin: 0 auto;position: relative;}
+li{list-style: none;}
+a:link,a:visited,a:hover,a:active{color:#666666; text-decoration:none; outline:none;}
+img{border:none;display: block;width: 100%;height: auto;}
+input{font-family: "微软雅黑";font-size: 1.4rem; -webkit-appearance: none;}
+.clear:after{clear: both;display: block;content: ".";visibility: hidden;height: 0;zoom: 1;}
+.f-fl{float: left;}
+.f-fr{float: right;}
+.upTo{cursor: pointer;width: 45px;display: none;height: 45px;position: fixed;bottom: 100px;right: 10px;background:url("../volunimages/top.png") no-repeat center;background-size: cover;z-index: 1; }
+.involA{cursor: pointer;width: 70px;height: 70px;position: fixed;bottom: 210px;right: -5px;background:url("../volunimages/invol.png") no-repeat center;background-size: cover;z-index: 1; }
+.involP{cursor: pointer;width: 70px;height: 70px;position: fixed;bottom: 210px;right: -5px;background:url("../volunimages/reOrg.png") no-repeat center;background-size: cover;z-index: 1; }
+.padtop{padding-top: 44px; }
+.padbott{padding:44px 0px 5.5rem;}
+.yellow{background: #f15b00;color: #fff!important;}
+.yell{border: 1px solid #f15b00;color: #f15b00!important}
+.yellowbutt{margin: 0px auto;background: #f15b00;color: #fff!important;width: 120px;font-size: 1.4rem;line-height: 30px;text-align: center;font-size: 1.4rem;}
+.ye{color: #ffba00}
+.or{color: #f15b00}
+.re{color: #ef2321}
+.pgray{padding: 1rem;font-size: 1.2rem;color: #93999F}
+.garyS{margin-left: 10px;color: #fff;}
+.loading{line-height: 3rem;text-align: center;font-size: 1.4rem;text-align: center;display: none;}
+.newsul p{word-break: break-all;width: 100%;height: auto;line-height: initial;white-space: initial !important;}
+.radius{-webkit-border-radius: 50%; -moz-border-radius: 50%; -ms-border-radius: 50%; -o-border-radius: 50%; border-radius: 50%;}
+.vhead{height: 44px;line-height: 44px;display: -webkit-box;display: -moz-box;display: -ms-flexbox;display:-webkit-flex;display:flex;text-align: center;background: #e60211;color: #fff;font-size: 1.8rem;position: fixed;top: 0px;left: 0px;width: 100%;z-index: 5;}
+#myOffset{width: 70px;height: 30px;position: fixed;top: 150px;right: 0px;z-index: 3;background: #fff;border:1px solid red;}
+.vhead a{color: #fff}
+.vhead .vhleft{width: 30px;-webkit-box-flex: 0.0;-webkit-flex-grow: 0;flex-grow: 0;-webkit-flex-shrink: 0;flex-shrink: 0;overflow: hidden;background: url("../volunimages/back.png") no-repeat 8px center;background-size: 10px;cursor:pointer;position: relative;left: 5px;z-index: 999;}
+.vhead .headul,.vhead .vcenter{-webkit-box-flex: 1;-webkit-flex-grow: 1;flex-grow: 1;-webkit-flex-shrink: 1;flex-shrink: 1;    overflow: hidden;}
+.voyTwo{
+  justify-content: center;
+}
+.vhead .headul li{display: inline-block;width: 25%;margin: 0px 1%;cursor: pointer;}
+.vhead .headul li a{display: block;line-height: 30px;font-size: 1.4rem;}
+.vhead .headul li.active a{font-size: 1.6rem;font-weight: bold;}
+.vhead .headul li.active a:after{content:"";display: block;width: 100%;height: 2px;border-radius: 1px;background: #fff;}
+.vhead .vhright{
+	width: 30px;
+	height: 30px;
+    -webkit-box-flex: 0.0;
+    -webkit-flex-grow: 0;
+    flex-grow: 0;
+    -webkit-flex-shrink: 0;
+    flex-shrink: 0;
+    overflow: hidden;
+    background-image: url("../volunimages/2.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 23px;
+    cursor: pointer;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 10px;
+    font-size: 1.4rem;
+}
+.vhsereach{
+	background: #fff;
+	padding: 7px 0px 10px;
+	border-bottom: 10px solid #f9f9f9;
+}
+.vhsereach .vhserBox{
+	margin: 0px 16px;position: relative;
+  -webkit-border-radius:3px;
+  -moz-border-radius:3px;
+  -ms-border-radius:3px;
+  -o-border-radius:3px;
+  height: 28px;
+  line-height: 28px;
+  padding: 0;
+  overflow: hidden;
+}
+#pageActshow #zyhead{float: left;width: 25%;box-shadow: none;padding: 0 5px;}
+#pageActshow #zyhead li a{line-height: 28px;height: 28px;font-size: 1.2rem;}
+#pageActshow #zyhead li a span:nth-child(2){padding-left: 2px;}
+#pageActshow #zyhead .welIcon{width: 28px;height: 28px;}
+#pageActshow .vhserBox{width: calc(100% - 32px);margin: 0 auto;}
+#pageActshow:after{content: "";display: block;clear: both;}
+
+.vhserButt{position: absolute;top: 0px;right: 0px;width: 20%;height: 100%; border-radius: 4px;background: url("../volunimages/search.png") #e60211 no-repeat center;background-size: 14px;
+  border: none;outline: none;cursor: pointer;
+}
+.clearButt{position: absolute;top: 3px;right: 25%;width: 30px;height: 85%; background: url("../volunimages/close.png") no-repeat center;background-size: 15px;
+  border: none;outline: none;border-left: 1px solid rgba(0,0,0,.1);display: none;cursor: pointer;}
+.vhserBox .vhserIn{width: 75%;background: #f2f3f5;line-height: 26px;border-radius: 4px !important;border: 1px solid #ebebeb;text-indent: 20px;outline: none;font-size: 1.2rem;}
+.vhSelect~.vhserIn{text-indent: 90px;}
+.vhSelect{position: absolute;top: 0px;left: 0px;z-index: 1;width: 7rem;height: 35px;overflow: hidden;line-height: 35px;text-align: center;border-right: 1px solid #eee;}
+.vhSelect.active{overflow: visible;}
+.vhSelect li{height: 35px;background: #fff;cursor: pointer;}
+.vhSelect li:nth-child(1){background: url(../volunimages/down.png) no-repeat 57px center;background-size: 10px;}
+.ruleButt{cursor: pointer;position: absolute;right: 10px;height: 2.8rem;top: 0px;background:url(../volunimages/que.png) no-repeat right center;background-size: 17px;font-size: 1.2rem;width: 3em; }
+.voyList{}
+.voyList li{
+    padding: 10px 0px;
+    margin: 0 16px;
+    background: #fff;
+    position: relative;
+    border-bottom: 1px solid #eee; 
+    cursor:pointer;
+    min-height: 52px;
+ }
+ .voyList li a{height: auto;display: block;overflow: hidden;}
+.voyList li .voyLL{
+  padding: 0px 0px 0px 66px;cursor:pointer;
+}
+.voyList li.active:after{content: "当前排名";display: block;position: absolute;top: 50%;transform: translateY(-50%);right: 16px;line-height: 18px;border: 1px solid #E60211;text-align: center;padding: 0 8px;border-radius: 10px;color: #E60211;}
+.voyLL .voyLLmess{font-size: 1.4rem;overflow: hidden;height: 17px;line-height: 1.7rem;margin-top: 1px;color: rgb(51,51,51);cursor:pointer;}
+.voyList li .voyLr{height: 52px;width: 52px;overflow: hidden;position: absolute;top: 10px;left: 0px;border-radius: 4px;
+background-repeat: no-repeat;background-size: cover;background-position: center;background-image: url("../volunimages/vol.png")
+}
+.voyLtitile{margin-bottom: 11px;line-height: 20px;font-size: 1.4rem;overflow: hidden;margin-top: 2px;color: rgb(51,51,51);}
+.voyLL .voyLLtime{display: block;font-size: 1.2rem;color: rgb(151,151,151);overflow: hidden;line-height: 17px;}
+.invols span{display: inline-block;margin-left:1rem;text-align: center;}
+.invols span:nth-child(1){text-indent: 1.2rem;background: url(../volunimages/p1.png) no-repeat left center;background-size: 1rem;}
+.invols span:nth-child(2){text-indent: 1.2rem;background: url(../volunimages/inz1.png) no-repeat left center;background-size: 1rem;}
+.voyLL .gary{
+	background: #bfbfbf;color: #fff;
+}
+.vhS{padding: 1rem;background: #fff;border-bottom: 1px solid #eee;}
+.vhS .vher{width: 55px;background: url("../volunimages/3.png") no-repeat right center;background-size: 18px;font-size: 1.4rem;}
+.adrr{white-space: nowrap;font-size: 1.2rem;color: rgb(153,153,153);text-overflow:ellipsis;overflow: hidden;width: 70px;overflow: hidden;line-height: 17px;}
+.volTile{width: 100%;color: #ccc;font-size: 1.4rem;}
+.vActul{background: #fff;line-height: 40px;text-align: center;font-size: 1.4rem;border-bottom: 5px solid #f1f5f8;border-top: 5px solid #f1f5f8;}
+.vActul li{cursor:pointer;display: inline-block;width: 30%;margin: 0px 1%}
+.vActul li a{display: block;line-height: 38px;border-bottom: 2px solid #fff}
+.vActul li.more{background: url("../volunimages/up.png") no-repeat right center;background-size: 10px;}
+.vActul li.more.active{background: url("../volunimages/down.png") no-repeat right center;background-size: 10px;}
+.vActul li.active a{border-bottom-color: #e60211}
+.myactL{margin-bottom: 10px !important;box-shadow: none !important;}
+.myactBox{font-size: 1.2rem !important;}
+ul.myactBox li.active a{font-size: 1.3rem;}
+.myactBox li:after{content: "";display: block;width: 1px;height: 16px;position: absolute;right: -1px;top: 50%;transform: translateY(-50%);background: url(../volunimages/checkLine.png) no-repeat center / 100% 100%;}
+.myactBox li:last-child:after{content: "";display: none;}
+
+#actshowRank{cursor: none;}
+#actshowRank .rankImg{display: inline-block;width:86px;height: 60px;background: url(../volunimages/rankImg.png) no-repeat center / 100% auto;}
+.headulact li{
+   -webkit-box-flex: 1;
+ -webkit-flex: 1 1 100%;
+     -ms-flex: 1 1 100%;
+         flex: 1 1 100%; 
+          cursor: pointer;
+          position: relative;
+    color: #333333;
+ }
+#actshowRank a{display: inline-block;width: 49px;height: 24px;margin-left: 24px;vertical-align: middle;background: url(../volunimages/toRank.png) no-repeat center / 100% auto;}
+#actshowRank span{display: inline-block;vertical-align: middle;}
+.headulact{text-align: center;
+  display: -webkit-box; /* 老版本语法: Safari,  iOS, Android browser, older WebKit browsers.  */
+  display: -moz-box;  /* 老版本语法: Firefox (buggy) */
+  display: -ms-flexbox;  /* 混合版本语法: IE 10 */
+  display: -webkit-flex;  /* 新版本语法： Chrome 21+ */
+  display: flex;   /* 新版本语法： Opera 12.1, Firefox 22+ */
+  -webkit-flex-flow: row nowrap;
+  -ms-flex-flow: row nowrap;
+  flex-flow: row nowrap;
+  font-size:1.3rem;
+  margin-bottom: 1px;
+  padding: 0px 16px;
+  background: #fff;
+}
+.headulact li{
+   -webkit-box-flex: 1;
+ -webkit-flex: 1 1 100%;
+     -ms-flex: 1 1 100%;
+         flex: 1 1 100%; 
+          cursor: pointer;
+          position: relative;
+ }
+.headulact li a{display: block;line-height: 33px;color: rgb(153,153,153);}
+.headulact li.active a{color: rgb(230,2,17);font-size: 1.4rem;}
+.headulact li a span{display: inline-block;vertical-align: middle;}
+.CicleNum{width: 14px;height: 14px;line-height: 14px;position: absolute;z-index: 1;top: 4px;right: 50%;transform: translateX(39px);background: #e60211;color: #fff;font-size: 1rem;
+ -webkit-border-radius:50%;
+ -moz-border-radius:50%;
+ -ms-border-radius:50%;
+ -o-border-radius:50%;
+ border-radius:50%;display: none;
+}
+.welIcon{width: 40px;height: 40px;background: url(../volunimages/wel.png) no-repeat center;background-size: 25px;}
+.pserchbox{position: fixed;top: 44px;left: 0px;width: 100%;height: auto;overflow: hidden;z-index: 2;background: #f9f9f9;}
+.pserchbbg{position: fixed;top: 0px;left: 0px;width: 100%;height: 100%;overflow: hidden;z-index: 1;background: rgba(0,0,0,.3);display: none;}
+.vAwindows{width: 100%;height: 100%;z-index: 2;font-size: 1.4rem;padding-bottom: 1px;}
+.vAwindows .clear{background: #fff;height: 60%;text-align: center;}
+.vAwindows .vAwleft{background: #fff;box-shadow: 0 1px 0 #ebebeb;}
+.vAwindows .vAwleft li span{display: inline-block;vertical-align: middle;margin-left: 2px;}
+.cicle{width: 15px;height: 15px;background: url(../volunimages/up.png) no-repeat center;background-size: 10px;
+transition: 1s;
+-moz-transition: 1s; /* Firefox 4 */
+-webkit-transition: 1s; /* Safari and Chrome */
+-o-transition: 1s; /* Opera */
+}
+.vAwindows .vAwright{display: none; }
+.vAwright ul{display: none;height: auto;overflow: hidden;height: 168px;overflow-y:scroll;}
+.vAwright ul.active{display:block;}
+.vAwindows .vAwleft li.active{color: #e60211}
+.vAwindows .vAwleft li.active .cicle{
+  transform:rotate(180deg);
+-ms-transform:rotate(180deg);   /* IE 9 */
+-moz-transform:rotate(180deg);  /* Firefox */
+-webkit-transform:rotate(180deg); /* Safari 和 Chrome */
+-o-transform:rotate(180deg);
+
+}
+.vAwindows .vAwleft ul{
+  display: -webkit-box; /* 老版本语法: Safari,  iOS, Android browser, older WebKit browsers.  */
+  display: -moz-box;  /* 老版本语法: Firefox (buggy) */
+  display: -ms-flexbox;  /* 混合版本语法: IE 10 */
+  display: -webkit-flex;  /* 新版本语法： Chrome 21+ */
+  display: flex;   /* 新版本语法： Opera 12.1, Firefox 22+ */
+  -webkit-flex-flow: row nowrap;
+  -ms-flex-flow: row nowrap;
+  flex-flow: row nowrap;font-size:1.3rem; 
+  justify-content: space-around;  
+}
+.vAwindows .vAwleft .orgSearch{
+	background: url(../volunimages/checkLine.png) no-repeat center center / auto 56%;
+}
+.vAwindows .vAwleft .actSearch{
+	background: url(../volunimages/checkLine.png) no-repeat 36% center / auto 56% , url(../volunimages/checkLine.png) no-repeat 66% center / auto 56%;
+}
+.vAwindows .vAwleft ul li{
+         line-height: 38px;
+         height:38px;
+}
+.typybutt{width: 90%;line-height: 4rem;margin: 4rem auto 10px;text-align: center;font-size: 1.6rem;background: #e60211;color: #fff!important;
+-webkit-border-radius:4px;
+-moz-border-radius:4px;
+-ms-border-radius:4px;
+-o-border-radius:4px;
+border-radius:4px;cursor: pointer;display: block;
+}
+
+.vAwindows .vAwright li{border-bottom: 2px solid #fff;float: left;cursor: pointer;width: 33.33%;line-height: 38px;height: 40px;overflow: hidden;}
+.vAwindows .vAwright li.active{border-bottom-color: #e60211}
+.vAwindows li{float: left;cursor: pointer;}
+
+.vlhead{padding: 12px;}
+.vltitle{border-left: 5px solid #f1743c;font-size: 1.4rem;text-indent: 20px;line-height: 28px;position: relative;background: #fff}
+.vltitleb{border-left: 5px solid #3d9ff1;font-size: 1.4rem;text-indent: 20px;line-height: 28px;position: relative;background: #fff}
+.vltitleb a{float: right;}
+.vlUl{margin: 10px 0px;}
+.vlUl li{width: 33%;float: left;text-align: center;}
+.vlUl li .vlImg{overflow: hidden;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -ms-border-radius: 8px;
+  -o-border-radius: 8px;
+  border-radius: 8px;
+}
+.vlUl li .vlNum{font-size: 1.4rem;line-height: 27px;}
+.vlUl li .vlNum span{padding-right: 5px;}
+
+.vposi{padding: 14px;}
+.vposi li{float: left;width: 50%;}
+.vposi li .postop{height: 140px;}
+.vposi li .posbutt{}
+.vposi li{}
+
+.posList{}
+.posList li{
+ border-bottom:1px solid #eee; 
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+    display:-webkit-flex;
+  display:flex;
+  align-items:center;
+  padding: 5px;background: #fff;
+  line-height: 4rem;font-size: 1.4rem;
+  cursor: pointer;
+}
+.posList li .pface{
+  width: 3rem;
+  height: 3rem;
+     -webkit-box-flex: 0.0;
+     -webkit-flex-grow: 0;
+     flex-grow: 0;
+     -webkit-flex-shrink: 0;
+    flex-shrink: 0;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    border-radius: 50%;
+    overflow: hidden;
+    background-position: center;background-size: cover;background-repeat: no-repeat;background-image: url("../volunimages/vol.png")
+}
+.posList li .pname{
+    overflow: hidden;
+     width: 9.5rem;
+     -webkit-box-flex: 0.0;
+     -webkit-flex-grow: 0;
+     flex-grow: 0;
+     -webkit-flex-shrink: 0;
+    flex-shrink: 0;
+    text-align: right;white-space: nowrap;text-overflow:ellipsis;overflow: hidden;
+}
+.posList li .ppos{
+ -webkit-box-flex: 1;
+    -webkit-flex-grow: 1;
+    flex-grow: 1;
+    -webkit-flex-shrink: 1;
+    flex-shrink: 1;    
+    text-align: left;
+    text-indent: 10px;white-space: nowrap;text-overflow:ellipsis;overflow: hidden;
+}
+.vposp{
+  position: fixed;
+  top: 50%;
+  right:25px;
+  z-index: 5;
+  -webkit-transform: translate(0%,-50%);
+    -ms-transform: translate(0%,-50%);
+    -o-transform: translate(0%,-50%);
+    transform: translate(0%,-50%);
+    text-align: center;
+    font-size: 1.4rem;
+}
+.vsigned{
+  padding: 10px;background: #fff;
+}
+.vsigned p{line-height: 27px;font-size: 1.4rem;width: 100%;overflow: hidden;height: 27px;}
+.map{width: 100%;height: 300px;}
+.vjoinbox{padding: 10px;background: #fff;margin-bottom: 15px;}
+.vjoinbox .yell{padding: 3px 10px;
+ -webkit-border-radius:3px;
+ -moz-border-radius:3px;
+ -ms-border-radius:3px;
+ -o-border-radius:3px;
+ border-radius:3px;
+}
+.joinp{
+  text-align: center;margin: 10px 0px;
+}
+.joinp li{width: 50px;height: 50px;margin: 0px 4px;overflow: hidden;float: left;position: relative;
+ -webkit-border-radius:50%;
+ -moz-border-radius:50%;
+ -ms-border-radius:50%;
+ -o-border-radius:50%;
+ border-radius:50%;background: url("../volunimages/vol.png") no-repeat center;background-size: 60px;
+}
+.signlogin{margin: 10px auto;width: 100px;line-height: 27px;background: #ff9933;color: #fff;text-align: center;}
+.voyc{height: 50px;background: #E60211;position: relative;top: -1px;margin-bottom:70px; }
+.voycbox{width: 92%;margin: 0px auto;}
+.voycbox ul{
+   background: #fff;padding: 20px 10px; text-align: center;   
+ 
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+    display:-webkit-flex;
+  display:flex;
+    -webkit-flex-flow: row nowrap;
+        -ms-flex-flow: row nowrap;
+            flex-flow: row nowrap; height: 70px;
+}
+.voycbox ul li{
+  -webkit-box-flex: 1;
+  -webkit-flex: 1 1 100%;
+      -ms-flex: 1 1 100%;
+          flex: 1 1 100%; height: 70px;width: 55px;color: #bcbcbc;padding: 0px 2px;
+}
+.voycbox ul li img{height: 55px;width: auto!important;margin: 0px auto}
+.voyul3{margin: 10px 0px 0px;background: #fff;text-align: center;border-bottom: 1px solid #eee;
+ display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+    display:-webkit-flex;
+  display:flex;
+    -webkit-flex-flow: row nowrap;
+        -ms-flex-flow: row nowrap;
+            flex-flow: row nowrap;
+}
+.voyul3 li{line-height: 32px;display: inline-block;font-size: 1.4rem;
+ -webkit-box-flex: 1;
+  -webkit-flex: 1 1 100%;
+      -ms-flex: 1 1 100%;
+          flex: 1 1 100%; 
+}
+.voyul3 li a{line-height: 30px;border-bottom: 2px solid #fff;display: block;}
+.voyul3 li.active a{border-bottom-color:#E95D10;color: #E95D10!important }
+.vsx{line-height: 30px;text-align: center;position: relative;background: #fff;border-bottom: 1px solid #eee;}
+.vsx img{height: 20px;width: auto!important;margin-right: 10px;display: inline-block;vertical-align: middle;}
+.vsx span{display: inline-block;vertical-align: middle;}
+.vsxButt{position: absolute;right: 15px;top: 0px;width: 44px;background: url("../volunimages/up.png") no-repeat right center;background-size: 10px;text-indent: 0px}
+.voldes{padding: 10px;font-size: 1.4rem;background: #fff;}
+.voldes p{text-indent: 20px;}
+.signmap{width: 100%;height: 200px;}
+.actMessbox{
+  display: none;width: 100%;height: 100%;background: #fff;position: fixed;top: 0px;left: 0px;overflow: scroll;z-index: 6;
+ }
+.actMessbox .actMess{width: 100%;position: relative;padding:50px 0px 6.5rem; }
+.actMessbox .actMess .vhright,.vhead div.vcenter~.vhright{background: transparent;}
+.actDes{
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display:-webkit-flex;
+  display:flex;
+  padding: 1rem;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  position: relative;
+  height: 200px;
+  border-bottom: 10px solid  #f9f9f9;
+}
+.actDes .actleft{
+  -webkit-box-flex: 1;
+     -webkit-flex-grow: 1;
+     flex-grow: 1;
+     -webkit-flex-shrink: 1;
+     flex-shrink: 1;    
+     overflow: hidden;
+     font-size: 1.4rem;
+     line-height: 24px;
+     padding-left: 1rem;
+ }
+ .actDes .actright{
+    width: 110px;
+    height: 84px;
+    -webkit-box-flex: 0.0;
+    -webkit-flex-grow: 0;
+    flex-grow: 0;
+    -webkit-flex-shrink: 0;
+    flex-shrink: 0;
+    border: 1px solid #ebebeb;
+    border-radius: 4px;
+    background-position: center;background-size: cover;background-repeat: no-repeat;background-image: url("../volunimages/vol.png");
+ }
+.actDes .actDleft{position: absolute;bottom: 0px;left:0px;width:100%;background: rgba(0,0,0,.4);color: #fff;text-align: center;font-size: 1.2rem;}
+.actDes .actleft p{width: 100%;color: rgb(51,51,51);text-align: left;line-height: 25px;height: 25px;text-indent: 0px;font-size: 1.4rem;}
+.actdT{text-indent: 1rem;background: url("../volunimages/top.png") no-repeat left center;background-size: 10px;}
+.actAddr{height: 30px;overflow: hidden;line-height:30px;text-align: left;width: 62%;display: inline-block;vertical-align: middle;text-indent: 1.8rem;background: url("../volunimages/4.png") no-repeat left center;background-size: 1.5rem;}
+.actleft .actTime>span{display: inline-block;}
+.actTime{height: 30px;overflow: hidden;line-height:30px;text-align: left;width: 30%;text-indent: 1.8rem;display: inline-block;vertical-align: middle;overflow: hidden;background: url("../volunimages/time.png") no-repeat left center;background-size: 1.5rem;}
+.actleft .actTime{background: transparent;text-indent: 0.5rem;}
+
+.actleft .actTime .time{}
+.actleft .actTime .pnum{text-indent: 2.5rem;background: url("../volunimages/per.png") no-repeat left 5px;background-size: 21px;}
+.actleft .actTime .thumb{text-indent: 1.8rem;background: url("../volunimages/thumb.png") no-repeat left 5px;background-size: 15px;margin-left: 17px;}
+.actZB{text-indent: 1rem;text-align: right;line-height: 23px;position: relative;overflow: hidden;}
+.actOrg{float: left;}
+.actOrg span{vertical-align: middle;color: #333333;font-size: 1.4rem;}
+.getComm{cursor: pointer;position: absolute;left: 0px;top: 0px;line-height: 25px;font-size: 1.2rem;padding-right: 1rem;background: url(../volunimages/p1.png) no-repeat left center;background-size: 18px;text-indent: 19px;}
+#getComm{color: rgb(153,153,153);}
+.actZB span{display: inline-block;vertical-align: middle;cursor: pointer;}
+.schoolbg{display: inline-block;width: 40px;height: 40px;margin-right: 8px;background-repeat: no-repeat;background-position: center;background-size: cover;background-image: url("../volunimages/vol.png")}
+.actCon{padding: 1.6rem;border-bottom: 10px solid #f9f9f9;}
+.actCon .actCt{line-height: 24px;font-size: 1.4rem;color: #333333;margin-bottom: 5px;}
+.actCon .actCdes{line-height: 24px;font-size: 1.4rem;color: rgb(153,153,153);}
+.actCon .actCdes:after{content: "";display: block;clear: both;}
+.actCon .actCdes .detailwarp{color: #333333;}
+.actCon .actCdes:after{content: "";display: block;clear: both;}
+.actCon .actCdes>span{float: left;line-height: 40px;color: #333333;margin-right: 10px;}
+.actCon .actCdes .mList{float: left;width: 144px;height: 40px;overflow: hidden;}
+.actCon .actCdes .mList:after{content: "";display: block;clear: both;}
+.actCon .actCdes .mList li{float: left;width: 40px;height: 40px;border-radius: 50%;overflow: hidden;margin-right: 8px;background-repeat: no-repeat;background-size: cover;background-position: center;background-image: url(../volunimages/own_photo.png);}
+.actCon .actCdes .poi{float: left;background: url(../volunimages/poi.png) no-repeat center / 100% auto;width: 30px;height: 40px;}
+
+.actCon .actCdes .mCount{float: right;font-size: 1.2rem;padding-right: 12px;line-height: 40px;background: url(../volunimages/right.png) no-repeat right / 8px auto;}
+.actCon .actCdes .mCount>span{color: #CA2924;text-align: right;}
+
+.actCon .actCdes .topWarp:after{content: "";display: block;clear: both;}
+.actCon .actCdes .topWarp p{color: #333333;float: left;}
+.actCon .actCdes .topWarp #getComm{color: #999;font-size: 1.4rem;float: right;line-height: 24px;}
+.commentul li{padding:10px 0 10px 54px;position: relative;}
+.commentul .avaBg{width: 44px;height: 44px;position: absolute;top: 10px;left: 0px;border-radius: 50%;overflow: hidden;background-image: url(../volunimages/own_photo.png);background-repeat: no-repeat;background-size: cover;background-position: center;}
+.commentul .top p:nth-child(1){float: left;color: #4A90E2;}
+.commentul .top p:nth-child(2){float: right;font-size: 1.2rem;color: #333333;padding-left: 18px;line-height: 20px;background: url(../volunimages/thumb_false.png) no-repeat left / 14px auto;}
+.commentul .top p.active{background: url(../volunimages/thumb.png) no-repeat left / 14px auto;}
+.actCon .actCdes .commentul li>p{color: #333333;}
+.commentul .bottom{border-bottom: 1px solid #eee;}
+.commentul .bottom p{color: #999999;font-size: 1.2rem;}
+.commentul .bottom p:nth-child(1){float: left;}
+.commentul .bottom p:nth-child(2){float: right;}
+
+.actCon .actCdes .orgTitle{font-size: 1.6rem;color: rgb(51,51,51);padding-top: 3px;}
+.actCon .actCdes span{color: rgb(51,51,51);padding-left: 5px;}  
+.actCon .actCdes .actZan{font-size: 1.2rem;color: rgb(153,153,153);}
+#bot{padding: 0 1.6rem;height: 48px;}
+#bot span{font-size: 1.2rem;color: rgb(153,153,153);}
+#posComment{padding-top: 0px;}
+#newsWarp{background: #F4F7F8;padding: 0px 16px;border-radius: 4px;margin-top: 10px;}
+#newsWarp li{padding: 10px 0px;line-height: 20px;color: #333333;border-bottom: 1px solid #ebebeb;}
+#newsWarp li:last-child{border-bottom: none;}
+
+
+.actPer{padding: 0.5rem 1.6rem;position: relative;border-bottom: 10px solid #f9f9f9}
+.actPer span{display: inline-block;vertical-align: middle;font-size: 1.4rem;line-height: 3rem;}
+.actPer ul{display: inline-block;vertical-align: middle;width: 144px;height: 40px;overflow: hidden;margin-left: 10px;}
+.actPer ul li{display: inline-block;vertical-align: middle;height: 40px;width: 40px;overflow: hidden;
+ -webkit-border-radius:50%;
+ -moz-border-radius:50%;
+ -ms-border-radius:50%;
+ -o-border-radius:50%;background-image: url(../volunimages/own_photo.png);
+ background-size: cover;background-repeat: no-repeat;background-position: center;margin-right: 8px;
+}
+.actPer .poi{display: inline-block;vertical-align: middle;background: url(../volunimages/poi.png) no-repeat center / 100% auto;width: 30px;height: 40px;}
+.actbm{cursor:pointer;width: 100%;line-height: 4.4rem;text-align: center;font-size: 1.4rem;color: #fff;background: #e60211;position: fixed;bottom: 0px;left: 0px;z-index: 3}
+.actbm.waiting,.hassign{background: #FFF!important;color: #e60211;box-shadow: 0 -1px 0px #ebebeb;}
+.vwelTitle{padding: 1rem;font-size: 1.4rem;background: #fff;}
+.perbang{display: inline-block;text-indent: 20px;background: url("../volunimages/vol.png") no-repeat left center;background-size: 20px}
+.posbang{display: inline-block;text-indent: 20px;background: url("../volunimages/vol.png") no-repeat left center;background-size: 20px;}
+.vwelSinglebox{border-top: 10px solid #f1f5f8;border-bottom: 10px solid #f1f5f8}
+.vwelPbox{position: relative;}
+.vwemMore{position: absolute;right: 0px;top: 0px;width: 20px;height: 100%;z-index: 1;background: url("../volunimages/right.png") no-repeat center;background-size: 10px;}
+.vwelPul{padding: 0.5rem 2rem 0.5rem 1rem;background: #fff;text-align: center;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display:-webkit-flex;
+  display:flex;
+}
+.vwelPul li{display: inline-block;
+ -webkit-box-flex: 1;
+    -webkit-flex-grow: 1;
+    flex-grow: 1;
+    -webkit-flex-shrink: 1;
+    flex-shrink: 1;    
+    overflow: hidden;
+}
+.vwelPul li div{margin: 0px auto;width: 50px;height: 50px;background-size: cover;background-repeat: no-repeat;background-position: center;overflow: hidden;
+  -webkit-border-radius:50%;
+ -moz-border-radius:50%;
+ -ms-border-radius:50%;
+ -o-border-radius:50%;
+}
+.vwelPul li p{}
+.vwelPosUl{padding: 1rem;
+  background: #fff;}
+.vwelPosUl li{width: 49%;float: left;margin-bottom: 1rem;}
+.vwelPosUl li:nth-child(2n+1){margin-right: 2%}
+.vwelTop{
+    display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display:-webkit-flex;
+  display:flex;
+  justify-content: space-between;
+}
+.vwelTop .vwelTl{
+    width: 5.2rem;
+    height: 5.2rem;
+    -webkit-box-flex: 0;
+    -webkit-flex-grow: 0;
+    flex-grow: 0;
+    -webkit-flex-shrink: 0;
+    flex-shrink: 0;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 50%;
+    background-image: url(../volunimages/own_photo.png);
+}
+.posTl{background-image: url(../volunimages/vol.png);border-radius: 4px;}
+.ownTl{background-image: url(../volunimages/own_photo.png);border-radius: 50%;}
+
+.rankTime{margin-top: 7px;font-size: 1rem;color: #999;line-height: 1.4rem;}
+.vwelTop .vwelTr{
+ -webkit-box-flex: 1;
+    -webkit-flex-grow: 1;
+    flex-grow: 1;
+    -webkit-flex-shrink: 1;
+    flex-shrink: 1;    
+    overflow: hidden;
+    padding-left:1rem;
+}
+.serveTime{
+	float: right;
+	font-size:10px;
+	color:rgba(153,153,153,1);
+	line-height:14px;
+	padding-top: 5px;
+}
+.centerHead{font-size: 1.8rem;line-height: 4.4rem;transform: translateX(-12px);}
+.blank{height: 6px;}
+.orgName{font-size: 1.2rem;}
+.persort{position: absolute;top: 0px;right: 7px;text-align: center;font-size: 1.4rem;width: 30px;height: 30px;background:#e60211;color: #fff; }
+.vwelTop .vwelTr p{width: 100%;overflow: hidden;position: relative;}
+.vwelTrname{font-size: 1.4rem;line-height: 20px;white-space: nowrap;text-overflow:ellipsis;overflow: hidden;color: #333;}
+.Usertel{font-size: 1.2rem;color: #8a8585;display: block;line-height: 1.7rem;padding-top: 5px;}
+.Usertel span{float: right;}
+.vwelTrzi{color: #666;line-height: 25px;height: 25px;white-space: nowrap;text-overflow:ellipsis;overflow: hidden;font-size: 1.4rem;}
+.vperson{color: #666;line-height: 25px;font-size: 1.4rem;}
+ .vwelBott{font-size: 1.4rem;padding: 0.5rem;text-indent: 15px;background: url("../volunimages/1.png")  no-repeat left center;background-size: 15px;height: 20px;
+  white-space: nowrap;text-overflow:ellipsis;overflow: hidden;}
+.morePerson{cursor:pointer;display: block;position: absolute;top: 0.5rem;right: 1.6rem;line-height: 40px;height: 40px;padding-right: 21px;background: url(../volunimages/right.png) no-repeat right center;background-size: 8px;font-size: 1.3rem;}
+.listLoadingEmpty,.listLoadingTpl,.LoadingMoreTpl{text-align:center;margin-top: 15px;line-height:4rem;border-bottom:0;font-size: 1.4rem;cursor: pointer;color: rgb(153,153,153);position: relative;}
+.listLoadingEmpty:before,.listLoadingEmpty:after{border-bottom: 1px solid #ebebeb;  content: "";  height: 1px;  position: absolute;  top: 50%;  width: 30%;}
+.listLoadingEmpty:before{left: 5%;}
+.listLoadingEmpty:after{right: 5%;}
+
+.pagebox{background: white;}
+.pagebox .page{display: none;}
+.pagebox .page.active{display: block;}
+  .comm-content{padding: 0px 16px;}
+.comm-new{font-size: 1.4rem;padding: 5px;border-bottom: 2px solid #FF6600; }
+.comm-cUl{margin-top: -3px;}
+.comm-cUl>li{
+   position: relative;  
+  overflow: hidden;
+  display: -ms-flexbox;
+    display:-webkit-flex;
+  display:flex;
+  padding: 14px 0px;
+  border-bottom: 1px solid #eee;
+}
+.comm-cUl>li:nth-child(1){
+  border-top: none;
+}
+.comm-cUl>li .comm-cLeft{
+  background: url(../volunimages/own_photo.png) no-repeat center;
+  background-size: cover;
+   width: 4.4rem;
+   height: 4.4rem;
+     -webkit-box-flex: 0.0;
+     -webkit-flex-grow: 0;
+     flex-grow: 0;
+     -webkit-flex-shrink: 0;
+    flex-shrink: 0;
+    overflow: hidden;
+    -webkit-border-radius: 50%;
+    -moz-border-radius:  50%;
+    -ms-border-radius: 50%;
+    -o-border-radius:  50%;
+    border-radius: 50%;
+    margin-top: 4px;
+
+}
+.comm-cLeft img{display: block;width: 100%;}
+.comm-cUl>li .comm-cRight{
+  -webkit-box-flex: 1;
+     -webkit-flex-grow: 1;
+     flex-grow: 1;
+     -webkit-flex-shrink: 1;
+    flex-shrink: 1;
+    overflow: hidden;
+    padding-left: 10px;
+    font-size: 1.4rem;
+    line-height: 2rem;
+}
+.blue{color: #3366CC}
+.comm-cRight .comm-cRtop{margin: 3px 0px;}
+.comm-rName{color: #3366CC;display: inline-block;}
+.comm-zan,.comm-hate{display: inline-block;margin-left: 30px;cursor: pointer;}
+.comm-zannum,.comm-hatenum{display: inline-block;vertical-align: middle;line-height: 1.2rem;font-size: 1.2rem;color: #333333;}
+.comm-zanPic{vertical-align: middle;width: 1.4rem;height: 1.6rem;background: url(../volunimages/thumb_false.png) no-repeat center top;background-size: 1.5rem;display: inline-block;}
+.comm-hatePic{vertical-align: middle;width: 2rem;height: 2rem;background: url(../volunimages/thumb.png) no-repeat center;background-size: 1.6rem;display: inline-block;}
+.comm-zan.active .comm-zanPic{background: url(../volunimages/thumb.png) no-repeat center;background-size: 1.5rem;}
+.comm-hate.active .comm-hatePic{background: url(../volunimages/b06.png) no-repeat center;background-size: 1.5rem;}
+.comm-cRight .comm-cRcontent{line-height: 2rem;color: #333;}
+.comm-cRight .comm-cRbott{font-size: 1.2rem;color: #999999;margin-bottom: 0.5rem;height: auto;overflow: hidden;width: 100%}
+.comm-cRbott .comm-cRback,.comm-cRbott .comm-report {margin-right: 24px;cursor: pointer;cursor: pointer;line-height: 1.7rem;}
+.comm-sonul{background-color: #fff;padding: 0px 10px;}
+.comm-sonul>li{
+   position: relative;  
+  overflow: hidden;
+  display: -ms-flexbox;
+    display:-webkit-flex;
+  display:flex;
+  padding: 5px 0px;
+  border-top: 1px dashed #eee;
+}
+.zanNum{padding-left: 0px !important;}
+.comm-sonul>li:nth-child(1){
+  border:none;
+}
+.m-buttNav ul li.m-back{
+  width: 3rem;
+  background: url(../volunimages/mback.png) no-repeat center 0.7rem;
+  background-size: 3rem;
+  text-indent: 0.6rem;
+ }
+.m-buttNav ul li.m-back a{display: block;font-size: 1rem;text-align: center;color: #CFCFCF}
+.commentDiv{position: fixed;top: 0px;left: 0px;width: 100%;z-index: 5;height: 100%;background: rgba(0,0,0,.4);display: none;}
+.commentPhone li,.comm1-cancel{width: 100%;line-height: 3rem;text-align: center;font-size: 1.4rem;background-color: #fff;margin-top: 0.5rem;}
+.comm-reson{text-align: center;line-height: 2.8rem;background-color: #fff;}
+.comm-reson p{font-size: 1.6rem;}
+.commentbox{position: fixed;bottom: 0px;left: 0px;background-color: #F3F3F3;width: 100%;}
+/*底部导航*/
+.m-buttNav{height: 3.2rem;padding: 6px 16px;position: fixed;bottom: 0rem;left:0rem;width: calc(100% - 32px);display: block;background: #fff;border-top: 1px solid #ebebeb;box-shadow: 0 -1px 2px #ebebeb;}
+.m-buttNav.active{position: fixed;bottom: 0rem;}
+.m-buttNav ul{
+    position: relative; 
+  overflow: hidden;
+  display: -ms-flexbox;
+    display:-webkit-flex;
+  display:flex;
+}
+.m-buttNav ul li{font-size: 1.6rem;}
+.m-buttNav ul li.m-Ninput{
+ -webkit-box-flex: 2;
+    -webkit-flex-grow: 2;
+    flex-grow: 2;
+    -webkit-flex-shrink: 2;
+    flex-shrink: 2;    
+    overflow: hidden;
+}
+.m-buttNav ul li.m-Ninput .m-dd{
+  width: 94%;
+  height: 3.2rem;
+  background: url(../images/ting/write.png) #ececec no-repeat 4px center;
+  background-size: 1.5rem;
+  border:1px solid #ececec;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  border-radius: 4px;
+  position: relative;
+
+}
+.m-buttNav ul li.m-Ninput .m-dd input{
+  width: 100%;
+  font-size: 1.4rem;
+  line-height: 3.2rem;
+  outline: none;
+  border: none;
+  background: transparent;
+  position: absolute;
+  text-indent: 2.5rem;
+}
+.m-buttNav ul li.m-Ntalk{   
+    background: url(../images/ting/assgin.png) no-repeat 0.3rem center;
+    background-size: 2rem;
+    text-indent: 3rem;
+    color:#FF6600;
+    padding-right: 0.4rem;
+}
+.m-buttNav ul li.m-Nsave{     
+  width: 3rem;
+     -webkit-box-flex: 0.0;
+     -webkit-flex-grow: 0;
+     flex-grow: 0;
+     -webkit-flex-shrink: 0;
+    flex-shrink: 0;
+    overflow: hidden;
+    background: url(../images/ting/save.png) no-repeat center;
+    background-size: 2rem;
+}
+.m-buttNav ul li.m-Nshare{     
+	width: 7rem;
+    -webkit-box-flex: 0.0;
+    -webkit-flex-grow: 0;
+    flex-grow: 0;
+    -webkit-flex-shrink: 0;
+    flex-shrink: 0;
+    overflow: hidden;
+    font-size: 1rem;
+    text-align: center;
+    cursor: pointer;
+}
+.m-buttNav ul li.m-Nshare .input{
+   outline: none;
+   border: none;
+   background: #F47D33;
+   color: #fff;
+   width: 100%;
+   display: inline-block;
+   line-height: 3.5rem;
+   -webkit-border-radius: 3px;
+   -moz-border-radius:3px;
+   -ms-border-radius: 3px;
+   -o-border-radius:3px;
+   border-radius: 3px;
+   font-size: 1.4rem;
+}
+/* .m-buttNav ul li.m-Nactivity{
+    width: 3rem;
+     -webkit-box-flex: 0.0;
+     -webkit-flex-grow: 0;
+     flex-grow: 0;
+     -webkit-flex-shrink: 0;
+    flex-shrink: 0;
+    overflow: hidden;
+    background: url(../images/ting/activity.png) no-repeat center;
+    background-size: 2rem;
+} */
+.empty{
+  width: 300px;height: 300px;margin:0px auto;background: url(../volunimages/no_order.png) no-repeat center bottom 50px;background-size: 130px;text-align: center;line-height: 3rem;font-size: 0px;
+}
+.null{font-size: 1.4rem;text-align: center;padding: 10px;}
+.poRank{
+    width: 3rem;
+    -webkit-box-flex: 0.0;
+    -webkit-flex-grow: 0;
+    flex-grow: 0;
+    -webkit-flex-shrink: 0;
+    flex-shrink: 0;
+    overflow: hidden;
+    line-height: 80px;
+    font-size: 1.4rem;
+	text-align: center;
+	margin-right: 1.6rem;
+	color: #333;
+}
+#volRankType li a{
+	font-size: 1.2rem;
+}
+#volRankType li.active a{
+    border-bottom: 2px;
+    background: url(../volunimages/redline.png) no-repeat center bottom 4px / 5rem 3px;
+}
+.formbox{
+    position: relative; 
+	overflow: hidden;
+	display: -ms-flexbox;
+    display:-webkit-flex;
+	display:flex;
+    -webkit-flex-flow: row wrap;
+	-ms-flex-flow: row wrap;
+	flex-flow: row wrap;
+	display: inline-block;
+	border-radius: 4px;
+    overflow: hidden;
+}
+.formbox span{display: inline-block;vertical-align: middle;font-size: 1.6rem;}
+.formbox span:nth-child(1){
+	width: 5.6rem;
+	text-align: center;
+	line-height: 3.2rem;
+    -webkit-box-flex: 0.0;
+    -webkit-flex-grow: 0;
+    flex-grow: 0;
+    -webkit-flex-shrink: 0;
+    flex-shrink: 0;
+    overflow: hidden;
+}
+.formbox span:nth-child(2){line-height: 3rem;border:1px solid #eee;
+ -webkit-box-flex: 2;
+    -webkit-flex-grow: 2;
+    flex-grow: 2;
+    -webkit-flex-shrink: 2;
+    flex-shrink: 2;    
+    overflow: hidden;
+    position: relative;
+}
+.formbox span:nth-child(2) input{outline: none;border:none;text-indent: 1rem;line-height: 3.2rem;width: 7rem;}
+.formbox textarea{
+  width: 100%;overflow: hidden;height: 200px;resize:none;outline: none;border: none;text-indent: 1rem;font-size: 1.6rem;line-height: 1.8rem;
+ }
+.butt{width: 80%;line-height: 4.5rem;text-align: center;background:#e60211;color: #fff;font-size: 1.4rem;margin: 2rem auto;cursor: pointer; }
+.involAdd{position: absolute;top: 0px;right: 0px;width: 7rem;cursor: pointer; }
+.actCon .actZB .involzan{float: left;display: inline-block;height: 2.3rem;line-height: 2.3rem;text-indent: 1.5rem;background: url(../volunimages/inz1.png) no-repeat left 2px;background-size: 1.5rem;color: #999;}
+.actZB span{font-size: 1.2rem !important;}
+.involzan.active{color: #e60211;background: url(../volunimages/inz2.png) no-repeat left center;background-size: 1.5rem;}
+.involhate{float: left;display: inline-block;text-indent: 1.5rem;background: url(../volunimages/inh1.png) no-repeat left center;background-size: 1.2rem;
+  margin-left: 1rem;
+}
+.involhate.active{color: #e60211;background: url(../volunimages/inh2.png) no-repeat left center;background-size: 1.2rem;
+ 
+}
+
+.actZan{margin-right: 5px;background: url(../volunimages/inz1.png) no-repeat 5px 2px;background-size: 14px;text-indent: 20px;}
+.actZan.active{background: url(../volunimages/inz2.png) no-repeat left center;background-size: 14px;color: #e60211}
+.actHate{margin-right: 5px;background: url(../volunimages/inh1.png) no-repeat left center;background-size: 14px;text-indent: 20px;}
+.actHate.active{background: url(../volunimages/inh2.png) no-repeat left center;background-size: 14px;color: #e60211}
+.newsul{}
+.newsul li{white-space: nowrap;text-overflow:ellipsis;overflow: hidden;}
+.upPic{position: relative;width: 5.6rem!important;height: 5.6rem;text-indent: 0px!important;display: block;overflow: hidden;}
+.myPic{position: relative;width: 7.6rem!important;height: 7.6rem !important;text-indent: 0px!important;display: block;overflow: hidden;}
+.myPic input{position: absolute;top: 0px;left: 0px;z-index: 2;width: 7.6rem!important;height: 7.6rem;opacity: 0;}
+.upPic input{position: absolute;top: 0px;left: 0px;z-index: 2;width: 5.6rem!important;height: 5.6rem;opacity: 0;}
+.upImg{width: 5.6rem;height: 5.6rem;background: url(../volunimages/img52.png) no-repeat center;background-size: cover;}
+.involorg{text-align: left!important;background: url(../volunimages/img52.png) no-repeat left center;background-size: 1.5rem;margin-left: 0px!important;text-indent: 2rem;width: 150px;height: 20px;white-space: nowrap;text-overflow:ellipsis;overflow: hidden;}
+.comm-other{cursor: pointer;}
+
+ @media screen and (min-width: 480px) {
+    .adrr{width: auto}
+  }
+  @media screen and (max-width: 420px) {
+    .adrr{width: 157px}
+  }
+  @media screen and (max-width: 380px) {
+    .adrr{width: 108px}
+  }
+
+  @media screen and (max-width: 330px) {
+    .adrr{width: 60px}
+    .vhead .headul li{width: 30%;font-size: 1.4rem;margin: 0px;}
+    .involorg{width: 104px}
+  }
+.slideBox{position: fixed;top: 0px;right: 0px;width: 80%;z-index: 6;background: #fff;display: none;}
+.slideBg{width: 100%;height: 100%;position: fixed;top: 0px;left:0px;z-index: 5;background: rgba(0,0,0,.3);display: none;}
+.slideBox .slideBoxSon{position: relative;width: 100%;height: 100%;}
+.slideBox .slideBoxSon .slideCheck{padding-bottom: 60px;height: 524px;overflow: scroll;width: 100%;}
+
+.slideBoxSon .slideBott{width: 100%;position:absolute;bottom: 0px;right:0px;width: 100%;height: 60px;z-index: 1;background: #fff;}
+.slideBott li{width: 50%;line-height: 50px;text-align: center;;float: left;background: #e60211;color: #fff;}
+.slideBott li:nth-child(1){background:#EE6C29 }
+.slideTitle{padding: 1rem 1.5rem;font-size: 1.6rem;background: #eee;}
+.slideOne{padding: 0px 1rem;font-size: 1.4rem;}
+.slideOne li{line-height: 3rem;}
+.slideTwo{padding-left:1.2rem;display: none;}
+.slideTwo li{}
+
+.clearfix:after {content:"."; display:block; height:0; visibility:hidden; clear:both; } 
+.clearfix { *zoom:1; } 
+.actBoxaa{ background:#fff; }
+.actRead{width:100%;position:relative; background:#fff;overflow:hidden;} 
+.actRead ul{margin:0px; 
+	padding:0px; 
+	position:absolute; 
+	top:0px; 
+	left:0px;
+	font-size: 1.2rem;color: white;height: 50px;
+} 
+.actRead ul li{
+	list-style:none; display: inline-block;width:auto;padding:0px 10px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	height: 24px;
+	line-height: 24px;
+	background: #F11C3A;
+	border-radius: 12px;
+	margin-right: 15px;
+} 
+.actRead.active{ height:50px;}
+.actRead.active ul{line-height: 50px;}        
+.cenBox{
+	align-items: center;
+	background: #e60211;
+	color: #fff;
+	padding: 1.6rem 0 0.7rem;
+	font-size: 1.6rem;
+	line-height: 2.2rem;
+}
+.cenBox .cenFace{
+	width: 7.6rem;
+	height: 7.6rem;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    border-radius: 50%;
+    overflow: hidden;
+    background-image: url(../volunimages/own_photo.png);
+    background-position: center;
+    background-repeat:no-repeat;
+    background-size: cover;
+    margin: 0 auto;
+}
+.cenBox .cenMess{text-align: center;}
+.cenBox .cenMess p{margin-top: 7px;}
+.cenStar{padding: 0.5rem 0rem;}
+.cenStar li{width: 25px;height: 25px;display: inline-block;background-position: center;background-repeat: no-repeat;background-size: cover;}
+.cenStar li.all{background-image: url(../volunimages/all.png);}
+.cenStar li.harf{background-image: url(../volunimages/harf.png);}
+.cenStar li.no{background-image: url(../volunimages/no.png);}
+.cenUl{padding:16px 0 0 16px;font-size: 1.4rem;border-top: 10px solid #f9f9f9;}
+.cenUl li{
+	text-align: center;
+	width: calc(33% - 16px);
+	border: 1px solid #ebebeb;
+	box-shadow: 0 2px 2px #ebebeb;
+	border-radius: 4px;
+	margin-right: 16px;
+	margin-bottom: 16px;
+	height: 100px;
+	background: #fff;
+	float: left;
+	padding: 2rem 0rem;
+	border-right: 1px solid #F1F5F8;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	border-top: 1px solid #F1F5F8;
+}
+.cenUl li .icon{width: 30px;height: 30px;background-position: center;background-repeat: no-repeat;background-size: contain; margin: 0px auto 5px;}
+.cenUl li a{display: block;}
+.icon.mess{background-image: url(../volunimages/mess.png);}
+.icon.volCard{background-image: url(../volunimages/volCard1.png);}
+.icon.honor{background-image: url(../volunimages/honor.png);}
+.icon.service{background-image: url(../volunimages/service.png);}
+.icon.serviceProve{background-image: url(../volunimages/serviceProve.png);}
+
+#cenPosBox *{font-size: 1.6rem;}
+#cenPosBox input{text-align: right;}
+.Posboxul{
+    font-size: 1.4rem;
+    padding: 0 1.6rem;
+    border-bottom: 10px solid #f9f9f9;
+}
+.Posboxul li{
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display:-webkit-flex;
+    display:flex;padding: 1.3rem 0px;
+    border-top: 1px solid #F0F0F0;
+}
+.Posboxul li:nth-child(1){
+    border-top: none;
+}
+.Posboxul li label{
+    -webkit-box-flex: 0.0;
+    -webkit-flex-grow: 0;
+    flex-grow: 0;
+    -webkit-flex-shrink: 0;
+    flex-shrink: 0;
+    width: 9rem;
+    color: #999;
+}
+#cenPosBox li span:nth-child(1){
+    color: #e60211;
+}
+.Posboxul li span{
+	color: #999;
+}
+.Posboxul li div{
+ 	-webkit-box-flex: 1;
+    -webkit-flex-grow: 1;
+    flex-grow: 1;
+    -webkit-flex-shrink: 1;
+    flex-shrink: 1;
+    text-align: right;
+}
+.Posboxul li div input[type='text'],.Posboxul li div input[type='hidden']{cursor: pointer;outline: none;border:none;text-align: left;width: 100%;height: 100%;}
+.right{
+	width: 18px;
+    -webkit-box-flex: 0.0;
+    -webkit-flex-grow: 0;
+    flex-grow: 0;
+    -webkit-flex-shrink: 0;
+    flex-shrink: 0;
+    background: url(../volunimages/right.png) no-repeat right center;
+    background-size: 8px auto;
+    cursor: pointer;
+}
+.imgBox{text-align: left;}
+.imgBox li{padding: 0px;width: 7rem;height: 7rem;margin-right: 10px;display: inline-block;position: relative;background-repeat: no-repeat;background-position: center;background-size: cover;}
+.imgBox li .delePic{position: absolute;top: 0px;right: 0px;width: 20px;height: 20px;cursor: pointer;background: url(../volunimages/close-area.png) no-repeat center;background-size: 12px;}
+.buttS{cursor: pointer;width: 100%;line-height: 4.5rem;text-align: center;color: #fff;background: #e60211;font-size: 1.4rem;}
+.box,#mycanvas{position: absolute;top: 50px;left: 0px;z-index: 6}
+.cenmybox{width: 100%;margin: 0px auto;background: #E60211;padding-top: 1.6rem;padding-bottom: .2rem;overflow: hidden;text-align: center;font-size: 1.4rem;}
+.cenmybox .cenPic{width: 7.6rem !important;height: 7.6rem;background-position: center;background-repeat: no-repeat;background-size: cover; margin: 0px auto;;
+	overflow: hidden;
+	background-image: url(../volunimages/own_photo.png);
+	display: inline-block;
+	border-radius: 50%;
+}
+.cenmybox .cenName{margin: 0.7rem 0rem;color: white;font-size: 1.6rem;line-height: 2.2rem;}
+.cenmybox p{color: #fff;line-height: 2rem;}
+.radiusred{padding: 2px 0.6rem;border:1px solid #fff;color: #fff;display: inline-block;font-size: 1.2rem;margin-top: 5px;
+	-webkit-border-radius:3px;
+	-moz-border-radius:3px;
+	-ms-border-radius:3px;
+	-o-border-radius:3px;
+	border-radius:3px;
+}
+.honoBox{padding: 2rem;border-bottom: 3px solid #FAFAFA}
+.honoBox .hbTop{text-align: center;}
+.hbTop .hbPic{display: inline-block;vertical-align: middle;width: 30px;height: 30px;background: url(../volunimages/jz.png) no-repeat center;background-size: cover;}
+.hbTop .hbName{font-size: 2.4rem;font-weight: bold;display: inline-block;vertical-align: middle;}
+.hbNess{text-align: center;font-size: 1.4rem;margin: 1rem 0px;color: #716666;font-weight: bolder;letter-spacing: 1px}
+.hbBott{padding: 2rem;text-align: center;color: #9a9292}
+.hbBott li{line-height: 2rem;font-size: 1.4rem;}
+.red{color: #E60412}
+.cenUlli ul{padding-left: 1.5rem}
+.cenUlli li{padding: 1rem;line-height: 2rem;font-size: 1.4rem;border-bottom: 1px solid #eee;cursor: pointer;}
+.cenUlli li.active{color: #e60211}
+.titlevol{line-height: 25px;padding:1.3rem 1.6rem 0;color: #333333;font-size: 1.4rem;line-height: 1.4rem;}
+.volList{cursor: pointer;line-height: 25px;font-size: 1.4rem;padding-right: 1rem;background: url(../volunimages/p2.png) no-repeat 12px center;background-size: 14px;text-indent: 28px;}
+.fixBott{position: fixed;bottom: 0px;left: 0px;line-height: 4.5rem;width: 100%;font-size: 1.4rem;text-align: center;background: #e60211;color: #fff}
+.serviceWeek{
+	width: 45px;
+	-webkit-box-flex: 0.0;
+	-webkit-flex-grow: 0;
+	flex-grow: 0;
+	-webkit-flex-shrink: 0;
+    flex-shrink: 0;
+    background: url(../volunimages/sec/classadd.png) no-repeat 0px center;background-size: 27px;cursor: pointer;
+}
+  .serviceWDel,.serviceDiv div .del{background: url(../volunimages/close-area.png) no-repeat 12px center;background-size: 12px;cursor: pointer;}
+  .serviceDiv{display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display:-webkit-flex;
+      padding-left: 1rem;
+    }
+  .serviceDiv div{text-align: center!important;position: relative;}
+  .serviceDiv div .del{position: absolute;top: 0px;right: 0px;width: 30px;height: 30px;}
+  .serviceDiv div select{width: 70px}
+  .serviceDiv div input{text-align: center!important;}
+  .releative{position: relative;}
+  .pa1{position: absolute;font-size: 1rem;text-align: center;width: 100%;bottom: 28px;left: 0px;color: #fff;}
+  .flexb{
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display:-webkit-flex;
+      align-items: center;
+      font-size: 1.4rem;margin-bottom: 20px;padding: 0px 1rem;
+  }
+  .flexb li:nth-child(2){
+    width: 8rem;height: 8rem;overflow: hidden;padding: 0px;
+    text-align: center;
+ -webkit-box-flex: 0;
+    -webkit-flex-grow: 0;
+    flex-grow: 0;
+    -webkit-flex-shrink: 0;
+  }
+  .flexb li{
+    text-align: center;
+ -webkit-box-flex: 1;
+    -webkit-flex-grow: 1;
+    flex-grow: 1;
+    -webkit-flex-shrink: 1;
+    padding: 0px 1rem;
+    width: 120px;
+  }
+  .flexb li div{line-height: 3rem;white-space: nowrap;text-overflow:ellipsis;overflow: hidden;}
+  .flexb li div:nth-child(1){border-bottom: 2px solid}
+  .cendes{text-align: center;font-size: 1.4rem;line-height: 2rem;margin: 20px 0px;}
+  .cendes .inl1{}
+  .cendes .inl2{color: #000}
+  .cendes h4{font-size: 2.6rem;margin: 15px 0px}
+  .inlWord{text-align: center;font-size: 1.4rem;line-height: 2rem;margin: 20px}
+  .inl3{line-height: 3rem;}
+  .absolute{position: absolute;top: 0pc;right: 15px;z-index: 1;}
+  .inl4{position: absolute;top: 10px;left: 0px;width: 100%;text-align: center;}
+  #zlogo{position: absolute;top: -15px;right: 20px;z-index: 1;width: 80px;height: 80px;display: block;}
+  .voyCore{position: absolute;top: 7px;left: 12px;width:39px;height: 39px;background: url(../volunimages/corevol.png) no-repeat center;background-size: cover; }
+
+.ddn_logoimg{}
+.ddn_logoimg .ddn_logo{width: 96px;height: 96px;display: block;margin: 0px auto;padding: 25px 0px;border-radius: 100%;}
+.ddn_loginForm{width: 280px;height: auto;margin: 0px auto;}
+.ddn_logindiv{width: 100%;margin-bottom: 10px;border: 1px solid #eee;height: 40px;line-height: 40px;text-align: right;position: relative;}
+.ddn_logindiv input{width: 88%;height: 40px;line-height: 40px;border: none;outline: none;}
+.ddn_lofinp{height: 30px;line-height: 30px;font-size: 1.4rem;}
+.ddn_logina{text-align: right;color: #aeaeae;}
+.ddn_loginWay{width: 90%;height: 25px;margin: 0px auto 15px;border-bottom: 1px solid #dadada;position: relative;}
+.ddn_loginthree{width: 120px;height: 30px;line-height: 30px;position: absolute;top:10px;left:50%;margin-left: -60px;text-align: center;background-color: #fff;}
+.ddn_loginType{width: 90%;margin: 0 auto;height: auto;text-align: center;}
+.ddn_loginType li{width: 18%;height: auto;display: inline-block;}
+.ddn_loginType a{display: block;}
+
+.ddn_lofinp img{width: 25px;vertical-align: middle;display: inline-block;}
+
+/*登录*/
+.login_tel{background: url(../volunimages/phone.png) no-repeat 10px center;background-size: 17px;}
+.login_yzm{background: url(../volunimages/phone_verify.png) no-repeat 10px center;background-size: 17px;}
+.login_mima{background: url(../volunimages/password.png) no-repeat 10px center;background-size: 17px;}
+/*第三方账号背景图片*/
+/*.f_lbg{display: block;margin: 0 auto;background: url(../images/login.png) no-repeat;}*/
+.ddn_sbaidu{width:40px; height:40px; background-position: 0px 0px;}
+.ddn_sqq{width:40px; height:40px; background-position: -40px 0px;}
+.ddn_sweibo{width:40px; height:39px; background-position: -80px 0px;}
+.ddn_sweixin{width:40px; height:40px; background-position: -120px 0px;}
+.ddn_szhi{width:40px; height:40px;background-position: -160px 0px;}
+
+/*注册*/
+.ddn_sendyzm{position: absolute;;top:5px;right: 3px;z-index: 1;width: 100px!important;height: 30px!important;
+            color: #fff;text-align: center;;line-height: 30px!important;border-radius: 3px;background: #e60211}
+input[disabled]{
+  pointer-events: none;
+  cursor: not-allowed;
+  opacity: .65;
+  background: rgba(230,2,17,.5)
+}
+
+.homeAddr{
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display:-webkit-flex;
+      width: 100%;justify-content:space-around;
+}
+.homeAddr li{
+    text-align: center;
+	-webkit-box-flex: 1;
+    -webkit-flex-grow: 1;
+    flex-grow: 1;
+    -webkit-flex-shrink: 1;
+}
+.voyItop{position: relative;height: 50px;background: #f1f5f8;border-bottom: 10px solid #f1f5f8}
+.voyItop ul{width: 96%;position: absolute;bottom: 0px;left: 2%;height: 85px;z-index: 1;background: #fff;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+}
+.voyItop ul li{
+  width: 25%;float: left;height: 85px;
+  text-align: center;
+  position: relative;background-size: 60px;background-repeat: no-repeat;background-position: center 4px;cursor: pointer;
+}
+.voyItop ul li a{display: block;height: 100%;}
+.voyItop ul li p{position: absolute;bottom: 8px;width: 100%;text-align: center;font-size: 1.2rem;}
+.voyItop ul li.volunteer{background-image:url(../volunimages/icon/home_volunteer.png)}
+.voyItop ul li.twoClass{background-image:url(../volunimages/icon/home_second.png)}
+.voyItop ul li.volunEdu{background-image:url(../volunimages/icon/home_edu.png)}
+.voyItop ul li.eleComm{background-image:url(../volunimages/icon/home_ece_comercial.png)}
+.homeFoot{width: 100%;height: 5rem;position: fixed;bottom: 0px;left: 0px;background: #fff;}
+.homeFoot li{width: 25%;float: left;height: 5rem;position: relative;background-size: 25px;background-repeat: no-repeat;background-position: center 4px;cursor: pointer;}
+.homeFoot li a{display: block;height: 100%;}
+.homeFoot li p{position: absolute;width: 100%;bottom: 3px;text-align: center;font-size: 1.2rem;}
+.homeFoot li.active{color: #e60211}
+.homeFoot li.hHome{background-image:url(../volunimages/icon/bottom_navi_home_normal.png)}
+.homeFoot li.hMsg{background-image:url(../volunimages/icon/bottom_navi_msg_normal.png)}
+.homeFoot li.hOffice{background-image:url(../volunimages/icon/bottom_navi_office_normal.png)}
+.homeFoot li.hMe{background-image:url(../volunimages/icon/bottom_navi_me_normal.png)}
+.homeFoot li.hHome.active{background-image:url(../volunimages/icon/bottom_navi_home_selected.png)}
+.homeFoot li.hMsg.active{background-image:url(../volunimages/icon/bottom_navi_msg_selected.png)}
+.homeFoot li.hOffice.active{background-image:url(../volunimages/icon/bottom_navi_office_selected.png)}
+.homeFoot li.hMe.active{background-image:url(../volunimages/icon/bottom_navi_me_selected.png)}
+.loginOut{background-image: url(../volunimages/icon/icon_setting.png)!important;background-repeat: no-repeat!important;background-position: center!important;background-size: 25px!important}
+.voyul1{border-top:5px solid #f1f5f8;border-bottom: 5px solid #f1f5f8}
+.voyul1 li{
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display:-webkit-flex;font-size: 1.4rem;line-height: 3.5rem;
+}
+.voyul1 li span:nth-child(1){
+  width: 75px;
+   -webkit-box-flex: 0;
+    -webkit-flex-grow: 0;
+    flex-grow: 0;
+    -webkit-flex-shrink: 0;text-align: center;
+}
+.voyul1 li span:nth-child(2){
+ -webkit-box-flex: 1;
+    -webkit-flex-grow: 1;
+    flex-grow: 1;text-align: right;padding-right: 1rem;
+    -webkit-flex-shrink: 1;white-space: nowrap;text-overflow:ellipsis;overflow: hidden;
+}
+.authUl{}
+.authUl li{line-height: 3rem;text-indent: 1rem;font-size: 1.4rem;background: #fff;}
+.out{width: 96%;margin: 2rem auto;line-height: 4.5rem;text-align: center;font-size: 1.4rem;color: #fff;background: #e60211;cursor: pointer;}
+.Secul{background: #f1f5f8;font-size: 1.4rem;text-align: center;padding: 1rem 0px;
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display:-webkit-flex;
+      -webkit-flex-flow: row wrap;
+      -moz-flex-flow: row wrap;
+      -ms-flex-flow: row wrap;
+      -o-flex-flow: row wrap;
+      flex-flow: row wrap;
+      text-align: center;
+      justify-content: space-around;
+}
+.Secul li{
+    width: 31%;
+}
+.Secul li .coin{width: 100%;height: 4rem;position: relative;}
+.Secul li .sep{line-height: 2.8rem;background: #fff;}
+.coinMsg a{color: #F6BF25;}
+.coinReport a{color: #FE943E;}
+.coinClass a{color: #9C89B9;}
+.coinVolun a{color: #78C06E;}
+.coinMsg .coin{background: url(../volunimages/sec/msg.png) #F6BF25 no-repeat center;background-size: 25px;}
+.coinReport .coin{background: url(../volunimages/sec/report.png) #FE943E no-repeat center;background-size: 25px;}
+.coinClass .coin{background: url(../volunimages/sec/class.png) #9C89B9 no-repeat center;background-size: 25px;}
+.coinVolun .coin{background: url(../volunimages/sec/volun.png) #78C06E no-repeat center;background-size: 25px;}
+.coinSchool .coin{background: url(../volunimages/up.png) #5F97F6 no-repeat center;background-size: 25px;}
+.coinAcc .coin{background: url(../volunimages/up.png) #5EC8F7 no-repeat center;background-size: 25px;}
+.seNum{position: absolute;width: 20px;height: 20px;top: 50%;left: 50%;margin-top: -20px;
+ background: #E60211;color: #fff;font-size: 1.2rem;line-height: 20px;
+ -webkit-border-radius:50%;
+ -moz-border-radius:50%;
+ -ms-border-radius:50%;
+ -o-border-radius:50%;
+ border-radius:50%;
+}
+.classBox{}
+.classTitle{width: 90%;margin: 10px auto;border-left: 5px solid #3D9FF1;font-size: 1.4rem;line-height: 2.4rem;}
+.classTitle .f-fl{margin-left: 10px;}
+.classTitle .f-fr{background: #FA4A55;color: #fff;display: block;padding: 0px 5px;-webkit-border-radius:3px;
+-moz-border-radius:3px;
+-ms-border-radius:3px;
+-o-border-radius:3px;
+border-radius:3px;}
+.classUl{}
+.classUl li{border-bottom: 7px solid #f1f5f8;padding: 5px 0px 12px;}
+.classUl li a{width: 90%;margin: 0px auto;display: block;}
+.classUl li p{font-size: 1.2rem;line-height: 1.6rem;}
+.classUTop{font-size: 1.4rem;font-weight: bold;line-height: 2.7rem;}
+.classUTop span.red{color: #FA4A55;}
+.classUTop span.f-fl{}
+.classUTop span.f-fr{}
+
+.classTop{padding: 1rem;font-size: 1.4rem;border-bottom: 1px solid #E8E8E8}
+.classTop h3{line-height: 2.5rem;}
+.classTop p{line-height:2.6rem;}
+.classMess{font-size: 1.4rem;padding: 1rem;line-height: 2rem;}
+.classMess p{text-indent: 2.3rem;}
+.gray{color: #666}
+.classButt{cursor: pointer;position: fixed;bottom: 0px;left: 0px;width: 100%;background: #e60211;color: #fff;font-size: 1.4rem;text-align: center;line-height: 4.5rem;}
+.cicleC{display: inline-block;margin-left: 10px;font-size: 1.2rem;font-weight: 100;padding: 0px 5px;line-height: 1.5rem;
+-webkit-border-radius: 3px;
+-moz-border-radius: 3px;
+-ms-border-radius: 3px;
+-o-border-radius: 3px;
+border-radius: 3px;background: none;font-size: 1.2rem;font-weight: normal;
+}
+.czy{
+  border:1px solid #EFD5A0;color: #EFD5A0;
+}
+.ctx{
+  border:1px solid #E60211;color: #E60211;
+}
+.csh{
+  border:1px solid #09B0DB;color: #09B0DB;
+}
+.ccx{
+  border:1px solid #00CEBA;color: #00CEBA;
+}
+.cts{
+  border:1px solid #5F97F6;color: #5F97F6;
+}
+.cother{
+  border:1px solid #57C2FF;color: #57C2FF;
+}
+.noTime{color:#B5A8A8}
+.seleTopM{font-size: 1.6rem;font-weight: bold;margin-bottom: 7px}
+.noticeUl{}
+.noticeUl li{
+  display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display:-webkit-flex;
+      align-items: center;
+      padding: 1rem;border-bottom: 1px solid #eee;
+}
+.noticeL{
+   -webkit-box-flex: 0;
+    -webkit-flex-grow: 0;
+    flex-grow: 0;
+    -webkit-flex-shrink: 0;text-align: center;width: 40px;border: 1px solid #666;
+    margin-right:1rem;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px;
+    border-radius: 3px;
+}
+.noticeL.no{border-color: #FA4A55;color: #FA4A55}
+.noticeL.yes{border-color: #B5A8A8;color: #B5A8A8}
+.tx{color: #67739B}
+.sh{color: #5F97F6}
+.sx{color: #FF1513}
+.cx{color: #F0D7A4}
+.ts{color: #17D6C5}
+.jn{color: #ff8a00}
+.sj{color: #09B0DB}
+.other{color: #67C3FE}
+.noticeR{
+   -webkit-box-flex: 1;
+    -webkit-flex-grow: 1;
+    flex-grow: 1;
+    -webkit-flex-shrink: 1;
+  }
+  .noticeR h2{overflow: hidden;height: 3.6rem;line-height: 1.8rem;}
+.noticeLUl{margin: 5px 0px;}
+.noticeLUl p{line-height: 1.6rem;font-size: 1.4rem;margin: 0.5rem 0px;}
+.noticeLUl p span{margin-left: 5px;}
+.selUl{line-height: 5rem;text-align: center;font-size: 1.4rem;}
+.selUl li{width: 50%;float: left;}
+.selUl li.active a{color: #FA4A55}
+.vhright.add{background-image: url(../volunimages/sec/add.png)!important;background-size: 20px!important;background-repeat: no-repeat!important;background-position: center!important;}
+/* 成绩单 */
+.reportUl{font-size: 1.4rem;}
+.reportUl>li{border-bottom: 1px solid #eee;}
+.reportT{
+  display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display:-webkit-flex;
+      align-items: center;
+    width: 90%;margin: 10px auto;
+}
+.reportT .iconR{
+   -webkit-box-flex: 0;
+    -webkit-flex-grow: 0;
+    flex-grow: 0;
+    -webkit-flex-shrink: 0;
+    width: 30px;height: 30px;background-size: cover;background-repeat: no-repeat;background-position: center;margin-right: 10px;
+}
+.tgzBp{background-image: url(../volunimages/sec/tgz.png)}
+.shBp{background-image: url(../volunimages/sec/sh.png)}
+.zyBp{background-image: url(../volunimages/sec/zy.png)}
+.cxBp{background-image: url(../volunimages/sec/cx.png)}
+.zdBp{background-image: url(../volunimages/sec/zd.png)}
+.tsBp{background-image: url(../volunimages/sec/ts.png)}
+.jnBp{background-image: url(../volunimages/sec/jn.png)}
+.otherBp{background-image: url(../volunimages/sec/other.png)}
+
+.iconUp{cursor: pointer;background-image: url(../volunimages/sec/down.png);background-size: 15px!important;}
+.reportUl>li.active .iconUp{background-image: url(../volunimages/sec/up.png);background-size: 15px!important;}
+.reportUl>li.active ul{display: block;}
+.reportT .iconZ{
+   width: 145px;
+    -webkit-box-flex: 0;
+    -webkit-flex-grow: 0;
+    flex-grow: 0;
+    -webkit-flex-shrink:0;
+  }
+.reportT .iconG{
+   -webkit-box-flex: 1;
+    -webkit-flex-grow: 1;
+    flex-grow: 1;
+    -webkit-flex-shrink:1;
+  }
+  .reportUl>li ul{width: 80%;margin: 0px auto;line-height: 2.4rem;display: none;}
+  .reportUl>li ul li{border-bottom: 1px solid #eee;padding: 5px 0px;}
+  .reportUl>li ul li:nth-last-child(1){border: none;}
+  .countF{color: #e60211;font-size: 1.6rem;text-align: center;line-height: 4rem;}
+  .ewm{background-image: url(../volunimages/sec/code.png)!important;background-repeat: no-repeat!important;background-size: 23px!important;margin-right: 0px!important;background-position: center!important;}
+.secBc{text-align: right;margin-top: 8px;}
+#chooseTime li{cursor:auto }
+.secBc span{display: inline-block;padding: 2px 10px;margin-left: 10px;background:  #e60211;color: #fff;cursor: pointer;}
+.secBc span.hasDone{background: #1B9853;color: #fff}
+#ddn_swiper1 .swiper-wrapper .swiper-slide{background-repeat: no-repeat;background-size: cover;background-position: center;}
+.swiper-slide a{display: block;width: 100%;height: 100%;}
+
+.timeUl{
+  text-align: center;
+}
+#time li p{margin: 16px auto 0px;line-height: 16px;font-size: 1.6rem;}
+.timeUl li {width: 50%!important;overflow: initial !important;}
+.timeUl.active li{border: none!important;position: relative;}
+.timeUl.active li:nth-child(1):after{content: "";display: block;width: 15px;height: 1px;position: absolute;right: -8px;top: 35px;background: #ebebeb;}
+.timeUl li input{margin-top: 20px;width: 80%;text-align: center;line-height: 30px;border: 1px solid #ebebeb;border-radius: 4px;}
+ .al-toggle-button{
+            appearance: none;
+            -webkit-appearance: none;
+            position: relative;
+            width: 52px;
+            height: 32px;
+            background: #dfdfdf;
+            border-radius: 16px;
+            border: 1px solid #dfdfdf;
+            outline: 0;
+            box-sizing: border-box;
+        }
+        .al-toggle-button:checked{
+            border-color: #04be02;
+            background-color: #04be02;
+        }
+        .al-toggle-button:before, .al-toggle-button:after{
+            content: " ";
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 30px;
+            border-radius: 15px;
+            transition: transform 0.3s;
+            transition: -webkit-transform 0.3s;
+            transition: transform 0.3s, -webkit-transform 0.3s;
+            -webkit-transition: -webkit-transform 0.3s;
+        }
+        .al-toggle-button:before{
+            width: 50px;
+            background-color: #fdfdfd;
+        }
+        .al-toggle-button:after{
+            width: 30px;
+            background-color: white;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+        }
+        .al-toggle-button:checked:before{
+            transform: scale(0);
+            -webkit-transform: scale(0);
+        }
+        .al-toggle-button:checked:after{
+            transform: translateX(20px);
+            -webkit-transform: translateX(20px);
+        }
+.cardBox{position: relative;}
+.cardBox .carmea{position: absolute;top: 24%;width: 310px;;height: 100px;left: 50%;margin-left: -155px;}
+.carmeaL{background-color:#fff;background-position: center;background-repeat: no-repeat;background-size: cover;
+    width: 70px;height: 104px;border: 1px solid #ccc;float: left;
+}
+.carmear{padding-left: 85px;font-size: 1.4rem;}
+.carmear p{margin-bottom: 3px;}
+.clearTime{cursor: pointer;font-size: 13px;width: 72px!important;height: 25px;line-height: 25px;text-align: center;margin: 88px auto 0px;color: #e60211;border: 1px solid #e60211;border-radius: 4px;}
+.serviceBox{position: relative;}
+.serviceCon{position: absolute;top: 24%;left: 50%;margin-left: -100px;width: 200px;}
+.servicePic{background-color: #fff;border: 1px solid #eee;background-repeat: no-repeat;background-position: center;background-size: cover;width: 70px;height:87px;margin: 0px auto 10px;}
+.serviceMess{width: 280px;margin: 0px auto;}
+.serviceMess p{margin-bottom: 1px;font-size: 1.4rem;color: #022A61;font-family: "黑体"}
+.serviceWord{color: #022A61;font-size: 1.2rem;text-indent: 2rem;position: absolute;top: 65%;width: 80%;
+left: 10%}
+
+
+  @media screen and (min-width: 350px) {
+    .servicePic{width: 90px;height: 120px;}
+  }
+  @media screen and (min-width: 400px) {
+    .servicePic{width: 100px;height: 130px;}
+    .serviceMess p{margin-bottom: 3px;}
+  }
+
+/*春运新增*/
+#sprTop{position: relative;padding-bottom: 6px;overflow: hidden;}
+.sprBanner{position: relative;margin: 0 auto; width: 96%;height: 46px;border: 1px solid #ebebeb;border-radius: 24px;box-shadow: 0 2px 4px #ebebeb;overflow: hidden;background-size: auto 70%;background-repeat: no-repeat;background-position: 23px center;}
+.sprBannerAct{background-image: url(../volunimages/sprAct.png);}
+.sprBannerOrg{background-image: url(../volunimages/sprOrg.png);}
+.actHot{background-image: url(../volunimages/actHot.png);}
+.orgHot{background-image: url(../volunimages/orgHot.png);}
+.bannerVol{background-image: url(../volunimages/bannerVol.png);}
+.sprBannerWarp{margin: 15px 0 0 85px;position: relative;overflow: hidden;height: 20px;}
+.sprUl{position: absolute;top: 0px;}
+.sprUl li{font-size: 1.4rem;color: rgb(51,51,51);}
+
+.theLine{background: url(../volunimages/bannerLine.png) no-repeat center center;width: 2px;height: 30px;position: absolute;top: 50%;left: 69px;transform: translateY(-50%);}
+
+.marquree{padding: 10px 0px;position: relative;height: 36px;width: 10000000px;}
+.marquree .marUl{position: absolute;left: 400px;}
+.marquree li{float: left;}
+.marquree li *{float: left;}
+.marquree p{line-height: 16px;padding: 15px 0 5px 0;font-size: 1rem;color: #e60211;background: url(../volunimages/marMiddle.png) repeat-x left center;background-size: auto 100%;}
+.marquree li:before{content: "";float: left;width: 37px;height: 36px;background: url(../volunimages/marBefore.png) no-repeat;background-size: auto 100%; }
+.marquree li:after{content: "";float: left;width: 26px;height: 36px;background: url(../volunimages/marAfter.png) no-repeat left center; background-size: auto 100%;}
+
+#topThree{height: 200px;background: url(../volunimages/rankBg.png) no-repeat top / 100% auto;position: relative;text-align: center;}
+.dataNow{text-align: center;min-width: 195px;font-size: 1rem;color: #E60211;border: 1px solid #E60211;border-radius: 10px;padding: 0px 16px;line-height: 18px;position: absolute;top: 10px;left: 50%;transform: translateX(-50%);}
+#volRankType #topThree{border-bottom: 1px solid #ebebeb;text-align: center;}
+#topThree .top1{position: absolute;bottom: 1px;left: 50%;transform: translateX(-50%);width: 33.3%;height: 131px;}
+#topThree .top2{position: absolute;bottom: 1px;left: 0px;width: 33.3%;height: 117px;border-radius: 4px 4px 0px 0px;background: none;}
+#topThree .top3{position: absolute;bottom: 1px;right: 0px;width: 33.3%;height: 117px;border-radius: 4px 4px 0px 0px;background: none;}
+
+#topThree .bgWhite{border: 1px solid #ebebeb;width: 100%;height: 100%;background: #ffffff;border-radius: 4px 4px 0 0;}
+#topThree .top1 .bgWhite{}
+#topThree .top2 .bgWhite{transform-origin: 0 100%;transform: perspective(120px) rotateX(1deg);position: absolute;z-index: 0;}
+#topThree .top3 .bgWhite{transform-origin: 100% 100%;transform: perspective(120px) rotateX(1deg);position: absolute;z-index: 0;}
+
+#topThree .bgLogo{background-image: url(../volunimages/vol.png);background-size: cover;background-position: center;border-radius: 50%;overflow: hidden;margin: 0 auto 5px;}
+#topThree .top1 .bgLogo{width: 60px;height: 60px;margin-top: 18px;}
+#topThree .top2 .bgLogo,#topThree .top3 .bgLogo{width: 52px;height: 52px;margin-top: 14px;}
+
+#topThree .bgAvatar{background-image: url(../volunimages/own_photo.png);background-size: cover;background-position: center;border-radius: 50%;overflow: hidden;margin: 0 auto 5px;}
+#topThree .top1 .bgAvatar{width: 60px;height: 60px;margin-top: 18px;}
+#topThree .top2 .bgAvatar,#topThree .top3 .bgAvatar{width: 52px;height: 52px;margin-top: 14px;}
+
+#topThree .top1 .volName{font-size: 1.6rem;line-height: 22px;white-space:nowrap;}
+#topThree .top2 .volName,#topThree .top3 .volName{font-size: 1.4rem;line-height: 20px;}
+#topThree .sTime{font-size: 1.2rem;color: #999999;line-height: 1.7rem;margin-top: 2px;}
+
+#topThree .volMsg{position: absolute;z-index: 1;width: 100%;height: 100%;top: 0px;left: 0px;}
+
+#topThree .top1 .bgMedal{width: 3.5rem;height: 4.5rem;background: url(../volunimages/rankTop1.png) no-repeat center center;background-size: 100% auto;position: absolute;top: -32px;left: 50%;transform: translateX(-50%);z-index: 2;}
+#topThree .top2 .bgMedal{width: 3.3rem;height: 4.2rem;background: url(../volunimages/rankTop2.png) no-repeat center center;background-size: 100% auto;position: absolute;top: -30px;left: 50%;transform: translateX(-50%);z-index: 2;}
+#topThree .top3 .bgMedal{width: 3.3rem;height: 4.2rem;background: url(../volunimages/rankTop3.png) no-repeat center center;background-size: 100% auto;position: absolute;top: -30px;left: 50%;transform: translateX(-50%);z-index: 2;}
+
+.top1{display:block;width: 2.5rem;height: 5.2rem;background: url(../volunimages/top1.png) no-repeat right center;background-size: 100% auto;font-size: 0px;}
+.top2{display:block;width: 2.5rem;height: 5.2rem;background: url(../volunimages/top2.png) no-repeat right center;background-size: 100% auto;font-size: 0px;}
+.top3{display:block;width: 2.5rem;height: 5.2rem;background: url(../volunimages/top3.png) no-repeat right center;background-size: 100% auto;font-size: 0px;}
