@@ -107,6 +107,7 @@ export default {
   	},
   	methods:{
   		login(){
+  			let _this = this;
 			if(this.phone.length==0){
 				this.$layer.toast("手机号码不能为空");
 				return false;
@@ -119,9 +120,37 @@ export default {
 				this.$layer.toast("密码不能为空");
 				return false;
 			}
-
+			
+			
+			
 			//提交用户名密码
 			var url = this.site.http+'voy_cms/wx/api.json?module=wxusermodule&action=applogin&name='+this.phone+'&password='+this.pwd+'&apptoken=8888';
+			var url2 = 'voy_cms/wx/api.json';
+
+			this.$axios.post(url2,{
+				module:"wxusermodule",
+				action:"applogin",
+				apptoken:"8888",
+				name:this.phone,
+				password:this.pwd,
+			},function({data}){
+				console.log(data);
+				_this.logindo(data);
+			});
+			
+//			this.$axios.get(url2,{
+//				params:{
+//					module:"wxusermodule",
+//					action:"applogin",
+//					apptoken:"8888",
+//					name:this.phone,
+//					password:this.pwd,
+//				}
+//			},function(res){
+//				console.log(res);
+//			});
+			
+			return false;
 			this.$http.jsonp(url).then((msg)=>{
 				let data = msg.body;
 				console.log("登录请求：",data);

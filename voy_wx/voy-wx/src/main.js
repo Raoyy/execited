@@ -23,6 +23,8 @@ import App from './App'
 import router from './router'
 import VueResource from 'vue-resource'
 
+import axios from '@/axios/index'
+Vue.prototype.$axios = axios
 
 import "./assets/js/jquery-1.11.3.min.js"
 
