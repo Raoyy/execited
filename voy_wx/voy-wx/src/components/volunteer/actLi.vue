@@ -1,6 +1,6 @@
 <template>
 	<li>
-    	<a href="javascript:;" @click="toActmess" >
+    	<a href="javascript:;" @click="toActmess(actLi.id)" >
         	<div class="voyLr" :style="{backgroundImage:cover}"></div>
         	<div class="voyLL">
            		<div class="voyLtitile">{{actLi.title}}</div>
