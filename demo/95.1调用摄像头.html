@@ -30,10 +30,14 @@
 		window.addEventListener('DOMContentLoaded',function(){
 			var cobj=document.getElementById('myCanvas').getContext('2d');
 			var vobj=document.getElementById('myVideo');
+			console.log("ok");
 			getUserMedia({video:true},function(stream){
+				console.log(2333);
 				vobj.src=stream;
 				vobj.play();
-			},function(){});
+			},function(err){
+				console.log("error:",err);
+			});
 			document.getElementById('myButton').addEventListener('click',function(){
 				cobj.drawImage(vobj,0,0,640,480);
 				document.getElementById('myButton3').children[0].href=cobj.canvas.toDataURL("image/png");
@@ -44,6 +48,7 @@
 		},false);
 		function getUserMedia(obj,success,error){
 			if(navigator.getUserMedia){
+				console.log("谷歌");
 				getUserMedia=function(obj,success,error){
 					navigator.getUserMedia(obj,function(stream){
 						success(stream);
@@ -55,6 +60,18 @@
 						var _URL=window.URL || window.webkitURL;
 						success(_URL.createObjectURL(stream));
 					},error);
+				}
+			}else if(navigator.mediaDevices.getUserMedia){
+				console.log("火狐");
+				getUserMedia=function(obj,success,error){
+					console.log("okokoo");
+					navigator.mediaDevices.getUserMedia(obj)
+					.then(function(stream) {
+						success(window.URL.createObjectURL(stream));
+					})
+					.catch(function(err) {
+						error(err);
+					});
 				}
 			}else if(navigator.mozGetUserMedia){
 				getUserMedia=function(obj,success,error){
