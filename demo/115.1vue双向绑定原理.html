@@ -5,29 +5,31 @@
 		<title></title>
 	</head>
 	<body>
+		<input id="test" type="text" value="" />
 	</body>
 </html>
 <script type="text/javascript">
-	function pro(k){
-		var obj = {};
-		var key = k;
-		Object.defineProperty(obj, key, {
-		  	set: function (value) {
-		    	key = value;
-		    	console.log('你取了一个书名叫做' + value);
+	function pro(el,k){
+		var obj = {}, value = "";
+		el.addEventListener("keyup",function(e){
+			obj[k] = value = e.target.value;
+		});
+		Object.defineProperty(obj, k, {
+		  	set: function (v) {
+		    	el.value = value = v;
 		  	},
 		  	get: function () {
-		    	return '《' + key + '》'
+		    	return value;
 		  	}
 		})
 		return obj;
 	}
-	var obj1 = pro("name");
+	var el = document.getElementById("test");
+	var obj1 = pro(el,"name");
 	obj1.name = "2333333";
-	console.log(obj1.name);
 	
 	setTimeout(function(){
 		obj1.name = "555555555555";
 		console.log(obj1.name);
-	},2000);
+	},5000);
 </script>
