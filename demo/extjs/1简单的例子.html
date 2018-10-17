@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="./theme-classic-all.css"/>
+		<script src="./ext-all.js"></script>
+		<script type="text/javascript">
+			Ext.onReady(function(){
+				Ext.create("Ext.Panel",{
+					renderTo:'hello',
+					height:200,
+					width:'300px',
+					title:'hello world',
+					html:'my first demo'
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<div id="hello"></div>
+	</body>
+</html>
