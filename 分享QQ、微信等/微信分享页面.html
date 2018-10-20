@@ -1,0 +1,71 @@
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <script type="text/javascript" src="js/qrcode.js" charset="utf-8"></script>
+        <script type="text/javascript" charset="utf-8">
+        	
+        	//仅创建页面二维码，分享手动操作
+        	
+            window.onload = function() {
+                (function() {
+                    //获取放置微信二维码的DIV
+                    var content = document.getElementById("qrcode");
+                    //设置属性
+                    var qrcode = new QRCode(content, {
+                        width: 200,
+                        height: 200
+                    });
+                    //设置二维码内容
+                    var defaultContent =  "weixin：//wxpay/bizpayurl?appid=wx2421b1c4370ec43b&mch_id=10000100&nonce_str=f6808210402125e30663234f94c87a8c&product_id=1&time_stamp=1415949957&sign=512F68131DD251DA4A45DA79CC7EFE9D";  //window.location.href;
+                    console.log(defaultContent);
+                    qrcode.makeCode(defaultContent);
+                })();
+            }
+
+            /**
+             * 关闭微信分享窗口
+             */
+            function hideWeiXin() {
+                var weixinDiv = document.getElementById("weixinDiv");
+                weixinDiv.style.display = "none";
+            }
+
+        </script>
+        <style type="text/css">
+            #weixinDiv{
+                background-color:#FFF;
+                border: 1px solid ;
+                width:300px;
+                height:300px;
+                /*下面是页面固定居中*/
+                position:fixed;
+                *position:absolute; 
+                top:50%; 
+                left:40%; 
+                margin:-50px 0 0 -50px;
+            }
+            #hideWeiXinDiv{
+                text-align: right;
+                float: right;
+                padding-right: 10px;
+                padding-top: 2px;
+            }
+            #qrcode{
+                width:200px;
+                height:200px;
+                margin: 0px auto;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="weixinDiv">
+            <div>
+                <h3 style="float: left;">分享到微信朋友圈</h3>
+                <a id="hideWeiXinDiv" onclick="hideWeiXin()">关闭</a>
+            </div>
+            <div id="qrcode">
+                <img alt="" style="">
+            </div>
+        </div>
+    </body>
+</html>

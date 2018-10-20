@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<script src="js/jquery-2.1.4.min.js"></script>
+		<script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js?appkey=0524833391&debug=true" type="text/javascript" charset="utf-8"></script>
+		<!--appkey中，填入你的微博开发者id(替换****)-->
+	</head>
+	<body>
+		<span id="wb_connect_btn">
+			<img src="img/01.jpg"/>
+		</span>
+	</body>
+</html>
+<script>
+    WB2.anyWhere(function (W) {
+        W.widget.connectButton({
+            id: "wb_connect_btn",
+            type: '3,0',
+            callback: {
+                login: function (o) { //登录后的回调函数
+　　　　　　　　　　　console.log(o);
+                    thirdparty(null,null,o.avatar_hd, o.name ,3, o.id);//个人方法
+                    try{
+                        document.getElementsByClassName('loginout')[0].click();
+　　　　　　　　　　　　　　　//页面需求，当前页面登录完成之后，不进行跳转，所以模拟点击事件，让微博账号在当前域中退出。不影响下次登录。（元素为微博动态添加）
+　　　　　　　　　　　　　　　//微博没有提供退出方法。下面的logout为另一种开发模式调用。
+                    }catch(e){
+                        console.log(e);
+                    }
+                },
+                logout: function () { //退出后的回调函数
+                	
+                }
+            }
+        });
+    });
+//  $('#wb_connect_btn').click(function () {
+//  	console.log("ok");
+//      WB2.login(function () {
+//          WB2.anyWhere(function (W) {  
+//              W.parseCMD('/account/get_uid.json',function (oResult, bStatus){
+//	                    if (bStatus) {
+//	                        //to do something...
+//	                        console.log(oResult.uid);
+//	                    }
+//                  },{
+//                      source: 0524833391 //你的appId
+//                  },{
+//                      method: 'get',
+//                      cache_time: 30
+//              });
+//          });
+//      });
+//  });
+</script>
+

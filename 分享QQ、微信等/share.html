@@ -1,0 +1,60 @@
+<div id="share_html"></div>
+
+<script type="text/javascript">
+	var _url = "www.baidu.com";
+	var _title = "分享标题";
+	var _summary = "分享摘要";
+	var _site = '掌上名师';
+	var _pic = "http://b.hiphotos.baidu.com/image/h%3D300/sign=db34bde9b97eca800d053fe7a1229712/5fdf8db1cb1349546006f3ae5f4e9258d0094adb.jpg";
+	var SnQZone = '<input type="button" id="shareToQzone" value="sinaWB" onclick="shareToSinaWB(event)"/>'
+													 +'<input type="button" name="" id="" value="QZone" onclick="shareToQzone(event)"/>';
+	var share_html = document.getElementById("share_html");
+	
+	//QQ
+	var p = {
+		url : _url, /*获取URL，可加上来自分享到QQ标识，方便统计*/
+		desc : '', /*分享理由(风格应模拟用户对话),支持多分享语随机展现（使用|分隔）*/
+		title : _title, /*分享标题(可选)*/
+		summary : _summary, /*分享摘要(可选)*/
+		pics : _pic, /*分享图片(可选)*/
+		flash: '', /*视频地址(可选)*/
+		site : _site, /*分享来源(可选) 如：QQ分享*/
+		style:'202',
+		width:24,
+		height:24
+	};
+	var s = [];
+		for(var i in p){
+		s.push(i + '=' + encodeURIComponent(p[i]||''));
+	}
+	share_html.innerHTML = ['<a class="qcShareQQDiv" href="http://connect.qq.com/widget/shareqq/index.html?',s.join('&'),'" target="_blank">分享到QQ</a>'].join('') + SnQZone;
+
+	//QQ空间
+	function shareToQzone(event){
+        event.preventDefault();
+        var _url = "www.baidu.com";
+        var _shareUrl = 'http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?';
+        _shareUrl += 'url=' + encodeURIComponent(_url||document.location);   //参数url设置分享的内容链接|默认当前页location
+        _shareUrl += '&showcount=' + 0;      //参数showcount是否显示分享总数,显示：'1'，不显示：'0'，默认不显示
+        _shareUrl += '&desc=' + encodeURIComponent('');    //参数desc设置分享的描述，可选参数
+        _shareUrl += '&summary=' + encodeURIComponent(_summary);    //参数summary设置分享摘要，可选参数
+        _shareUrl += '&title=' + encodeURIComponent(_title || document.title);    //参数title设置分享标题，可选参数
+        _shareUrl += '&site=' + encodeURIComponent(_site);   //参数site设置分享来源，可选参数
+        _shareUrl += '&pics=' + encodeURIComponent('http://b.hiphotos.baidu.com/image/h%3D300/sign=db34bde9b97eca800d053fe7a1229712/5fdf8db1cb1349546006f3ae5f4e9258d0094adb.jpg');   //参数pics设置分享图片的路径，多张图片以＂|＂隔开，可选参数
+        window.open(_shareUrl,'_blank');
+	}
+	
+	//新浪微博
+	function shareToSinaWB(event){
+        event.preventDefault();
+        var _shareUrl = 'http://v.t.sina.com.cn/share/share.php?&appkey=895033136';     //真实的appkey，必选参数
+        _shareUrl += '&url='+ encodeURIComponent(_url||document.location);     //参数url设置分享的内容链接|默认当前页location，可选参数
+        _shareUrl += '&title=' + encodeURIComponent(_title||document.title);    //参数title设置分享的标题|默认当前页标题，可选参数
+        _shareUrl += '&source=' + encodeURIComponent(""||'');
+        _shareUrl += '&sourceUrl=' + encodeURIComponent(""||'');
+        _shareUrl += '&content=' + 'utf-8';   //参数content设置页面编码gb2312|utf-8，可选参数
+        _shareUrl += '&pic=' + encodeURIComponent( _pic || '');  //参数pic设置图片链接|默认为空，可选参数
+        window.open(_shareUrl,'_blank');
+    }
+</script>
+<!--QQ-->

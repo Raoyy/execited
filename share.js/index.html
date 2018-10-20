@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="UTF-8">
+  <title>test</title>
+  <meta name="site" content="content site">
+  <meta name="Site" content="content Site">
+  <meta name="title" content="content title">
+  <meta name="Title" content="content Title">
+  <link rel="stylesheet" href="share.min.css">
+  <style>
+		.row { padding: 20px 0 0 20px }
+		.row-pad { padding: 20px 0 0 60px }
+	</style>
+  </head>
+  <body>
+		<div class="row-pad">
+	    <h1>test</h1>
+	  </div>
+		<ol>
+		    <div class="social-share" data-sites="wechat,weibo,qq,qzone" data-title="测试标题" data-url="www.baidu.com"
+		    	data-description = "测试分享内容区" data-image="img/1.jpg"></div>
+		  <li class="row">   <!--2-->
+		    <div class="share-component" data-disabled="wechat , facebook, twitter, google"></div>
+		  </li>
+		  <li class="row">    <!--3-->
+		    <div class="social-share"></div>
+		  </li>
+		  <li class="row">    <!--4-->
+		    <div class="social-share" data-initialized="true"> <a href="#" class="social-share-icon icon-weibo"></a> <a href="#" class="social-share-icon icon-qq"></a> <a href="#" class="social-share-icon icon-qzone"></a> </div>
+		  </li>
+		  <li class="row">     <!--5-->
+		    <div class="social-share" data-mode="prepend"> <a href="javascript:" class="social-share-icon icon-heart"></a> </div>
+		  </li>
+		  <li class="row">      <!--6-->
+		    <div id="share-1"></div>
+		  </li>
+		  <li class="row">      <!--7-->
+		    <div id="share-2"></div>
+		  </li>
+		  <li class="row">         <!--8-->
+		    <div id="share-3" data-sites="weibo,qq,qzone,tencent"></div>
+		  </li>
+		  <li class="row">            <!--9-->
+		    <div id="share-4" data-disabled="wechat , facebook, twitter, google"></div>
+		  </li>
+		</ol>
+	</body>
+	<script src="jquery-2.1.4.min.js"></script>
+	<script src="jquery.share.min.js"></script>
+	<script>
+//		url                 : ''; // 网址，默认使用 window.location.href
+//		source              : ''; // 来源（QQ空间会用到）, 默认读取head标签：<meta name="site" content="http://overtrue" />
+//		title               : '测试标题'; // 标题，默认读取 document.title 或者 <meta name="title" content="share.js" />
+//		description         : '测试内容'; // 描述, 默认读取head标签：<meta name="description" content="PHP弱类型的实现原理分析" />
+//		image               : ''; // 图片, 默认取网页中第一个img标签
+//		sites               : ['qzone', 'qq', 'weibo','wechat', 'douban']; // 启用的站点
+//		disabled            : ['google', 'facebook', 'twitter']; // 禁用的站点
+//		wechatQrcodeTitle   : '微信扫一扫：分享'; // 微信二维码提示文字
+//		wechatQrcodeHelper  : '<p>微信里点“发现”，扫一下</p><p>二维码便可将本文分享至朋友圈。</p>';
+//以上选项均可通过标签 data-xxx 来设置：
+//驼峰转为中横线，如wechatQrcodeHelper 的data标签为data-wechat-qrcode-helper
+	
+		$('#share-1').share();
+		$('#share-2').share({sites: ['qzone', 'qq', 'weibo','wechat'],title:"测试"});
+		$('#share-3').share();
+		$('#share-4').share();
+	</script>
+</html>

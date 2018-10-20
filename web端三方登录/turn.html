@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="button" class="logbtn" onclick="QQ_login()" value="qq"/>
+        <input type="button" class="logbtn" onclick="weixin_login()" value="weixin"/>
+        <input type="button" class="logbtn" onclick="wb_login()" value="weibo"/>
+	</body>
+</html>
+<script src="js/jquery-2.1.4.min.js"></script>
+<script src="js/turn.js"></script>
+<script type="text/javascript">
+function QQ_login(){
+	sessionStorage.setItem("logType","qqLogin");
+	window.open('https://graph.qq.com/oauth2.0/authorize?response_type=code&'
+	+'client_id='+1106531912+'&redirect_uri=http%3a%2f%2fmfxuan.free.800m.net%2flogin.jsp'
+	+'&state=QQzg888&scope=get_user_info,get_info');
+}
+function weixin_login(){
+	sessionStorage.setItem("logType","wechartLogin");
+	window.open('https://open.weixin.qq.com/connect/qrconnect?'
+	+'appid=wxe5748488f0c944ee&redirect_uri=http%3a%2f%2fvoy.iknowcn.com%2fpt_teacher_web%2fadmin%2flogin.html'
+	+'&response_type=code&scope=snsapi_login&state=wechatzg888#wechat_redirect');
+}
+function wb_login(){
+	sessionStorage.setItem("logType","weiboLogin");
+	WB2.login(function () {
+    	WB2.anyWhere(function (W) {
+        	W.parseCMD('/account/get_uid.json',function (oResult, bStatus){
+            	if (bStatus) {
+                    //to do something...
+                	console.log(oResult.uid);
+                	sessionStorage.setItem("openid",oResult.uid);
+					$.ajax({
+						type:"post",
+						url:loginUrl,
+						async:true,
+						data:{
+							sinaAccount:oResult.uid,
+							returnUrl:"/admin/index.html"
+						},
+						dataType:"json",
+						success:function(data){
+							console.log(data);
+						},
+						error:function(err){
+							console.log("err:",err);
+						}
+					});
+                }
+    		},{
+            	source: 0524833391 //你的appId
+    		},{
+            	method: 'get',
+            	cache_time: 30
+        	});
+		});
+	});
+}
+</script>

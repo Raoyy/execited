@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#red_box{
+				width: 100px;
+				height: 100px;
+				background: red;
+				position: absolute;
+				left: 0px;
+				top: 0px;
+			}
+			#blue_box{
+				width: 200px;
+				height: 200px;
+				background: blue;
+				position: absolute;
+				left: 300px;
+				top: 200px;
+			}
+		</style>
+		<script src="js/JS_self.js"></script>
+		<script type="text/javascript">
+			window.onload = function(){
+				var oDiv1 = document.getElementById('red_box');
+				var oDiv2 = document.getElementById('blue_box');
+				var isF1 = true;
+				var isF2 = true;
+				function drag(obj){
+					var zindex = 0;
+					obj.onmouseover = function(){
+						obj.style.cursor = 'move';
+					}
+					obj.onmousedown = function(ev){
+						oev = ev || event;
+						obj.style.zIndex = 99;
+						var b_top1 = oDiv1.offsetTop;
+						var b_left1 = oDiv1.offsetLeft;
+						var b_top2 = oDiv2.offsetTop;
+						var b_left2 = oDiv2.offsetLeft;
+						var x = oev.clientX - obj.offsetLeft;
+						var y = oev.clientY - obj.offsetTop;
+						if(isF1 && isF2){
+							document.onmousemove = function(ev){
+								oev = ev || event;
+								obj.style.top = oev.clientY - y + 'px';
+								obj.style.left = oev.clientX - x + 'px';
+								obj.onmouseup = function(ev){
+									oev = ev || event;
+									document.onmousemove = null;
+									obj.style.zIndex = zindex;
+									if(listen(oDiv1,oDiv2)){
+										isF1 = isF2 = false;
+										animate(oDiv1,{'left':b_left2 ,'top':b_top2},5,function(){isF1 = true;});
+										animate(oDiv2,{'left':b_left1 ,'top':b_top1},5,function(){isF2 = true;});
+									}
+								}
+							}
+						}
+						return false;
+					}
+				}
+				drag(oDiv1);
+				drag(oDiv2);
+				function listen(obj1,obj2){
+					var t1 = obj1.offsetTop;
+					var l1 = obj1.offsetLeft;
+					var b1 = t1 + obj1.offsetHeight;
+					var r1 = l1 + obj1.offsetWidth;
+					
+					var t2 = obj2.offsetTop;
+					var l2 = obj2.offsetLeft;
+					var b2 = t2 + obj2.offsetHeight;
+					var r2 = l2 + obj2.offsetWidth;
+					
+					var t = t2 - obj1.offsetHeight;
+					var l = l2 - obj1.offsetWidth;
+					var b = b2 + obj1.offsetHeight;
+					var r = r2 + obj1.offsetWidth;
+					if(t1 > t && b1 < b && l1 > l && r1 < r){
+						return true;
+					}else{
+						return false;
+					}
+				}
+				function animate(obj,json,time,fn){
+					clearInterval(timer);
+					var timer = null;
+					timer =  setInterval(function(){
+						var finish = true;
+						for(var k in json){
+							if(k == 'opacity'){
+								var ispeed = (json[k] - getStyle1(obj,k))*100/50;
+							}else{
+								var ispeed = (json[k] - getStyle(obj,k))/50;
+							}
+							if(ispeed <= 0){
+								ispeed = Math.floor(ispeed);
+							}else{
+								ispeed = Math.ceil(ispeed);
+							}
+							if(k == 'opacity'){
+								if(getStyle(obj,k) != json[k]){
+									finish = false;
+									obj.style[k] = (getStyle1(obj,k)*100 + ispeed)/100;
+								}
+							}else{
+								if(getStyle(obj,k) != json[k]){
+									finish = false;
+									obj.style[k] = getStyle(obj,k) + ispeed + 'px';
+								}
+							}
+						}
+						if(finish){
+							clearInterval(timer);
+							if(fn){
+								fn();
+							}
+						}
+					},time);
+				}
+				//获取元素属性值（数字）
+				function getStyle(obj,name){
+					var value = obj.getCurrentType ? obj.getCurrentType[name] : getComputedStyle(obj)[name];
+					return parseInt(value);
+				}
+				//获取元素属性（字符串）
+				function getStyle1(obj,name){
+					var value = obj.getCurrentType ? obj.getCurrentType[name] : getComputedStyle(obj)[name];
+					return value;
+				}
+
+			}
+		</script>
+	</head>
+	<body>
+		<div id="red_box"></div>
+		<div id="blue_box"></div>
+	</body>
+</html>

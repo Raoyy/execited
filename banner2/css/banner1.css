@@ -1,0 +1,125 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+body{
+	font-size: 12px;
+	font-family: "Microsoft YaHei",Arial,Helvetica,sans-serif;
+	color: #222;
+}
+a{
+	text-decoration: none;
+}
+ul{
+	list-style: none;
+}
+.banner{
+	width: 440px;
+	height: 220px;
+	position: relative;
+	overflow: hidden;
+	margin: 0 auto;
+}
+.banner>a{
+	width: 50px;
+	height: 24px;
+	position: absolute;
+	right: 15px;
+	bottom: 35px;
+	color: #fff;
+	background: rgba(0,0,0,0.64);
+	line-height: 24px;
+	text-align: center;
+	border-radius: 4px;
+	z-index: 2;
+	opacity: 0;
+}
+.banner>a:hover{
+	text-shadow: 0 0 3px #fff;
+}
+.banner>a span{
+	display: inline-block;
+	width: 6px;
+	height: 12px;
+	margin: -2px 0 0 5px;
+	background: url(../img/images/ban.png) no-repeat -2px center;
+	position: relative;
+	top: 2px;
+}
+.banner .ban_bottom{
+	width: 440px;
+	height: 35px;
+	position: absolute;
+	bottom: 0px;
+	z-index: 1;
+	background: linear-gradient(transparent,rgba(0,0,0,0.1) 20%,rgba(0,0,0,0.2) 35%,rgba(0,0,0,0.5) 65%,rgba(0,0,0,0.66));
+}
+.banner .ban_bottom li{
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 440px;
+	height: 35px;
+	opacity: 0;
+}
+.banner .ban_bottom .show{
+	opacity: 1;
+}
+.banner .ban_bottom img{
+	vertical-align: middle;
+	margin-right: 5px;
+}
+.banner .ban_bottom a{
+	display: inline-block;
+	position: absolute;
+	top: 0px;
+	left: 20px;
+	color: #fff;
+	font-size: 14px;
+	line-height: 35px;
+	z-index: 1;
+}
+.banner .ban_bottom a:hover{
+	text-shadow: 0 0 3px #fff;
+}
+.banner .btn{
+	padding: 2px 5px;
+	position: absolute;
+	right: 5px;
+	bottom: 5px;
+	z-index: 2;
+}
+.banner .btn li{
+	float: left;
+}
+.banner .btn li:hover a{
+	background: url(../img/images/banicon2.png) no-repeat center center;
+}
+.banner .btn a{
+	display: block;
+	width: 18px;
+	height: 18px;
+	background: url(../img/images/banicon1.png) no-repeat center center;
+}
+.banner .btn .now a{
+	background: url(../img/images/banicon3.png) no-repeat center center;
+}
+.banner .btn .now a:hover{
+	background: url(../img/images/banicon3.png) no-repeat center center;
+}
+.banner .banner_ul{
+	height: 220px;
+	position: absolute;
+	left: 0px;
+}
+.banner .banner_ul li{
+	float: left;
+}
+.banner .banner_ul a{
+	display: inline-block;
+	width: 440px;
+	height: 220px;
+}
+.banner .banner_ul img{
+	width: 100%;
+}

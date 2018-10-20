@@ -1,0 +1,27 @@
+callback(
+	[
+		{"img":"1.jpg","text":"图片1"},
+		{"img":"2.jpg","text":"图片2"},
+		{"img":"3.jpg","text":"图片3"},
+		{"img":"4.jpg","text":"图片4"},
+		{"img":"5.jpg","text":"图片5"},
+		{"img":"6.jpg","text":"图片6"},
+		{"img":"7.jpg","text":"图片7"},
+		{"img":"8.jpg","text":"图片8"},
+		{"img":"9.jpg","text":"图片9"},
+		{"img":"10.jpg","text":"图片10"},
+		{"img":"11.jpg","text":"图片11"},
+		{"img":"12.jpg","text":"图片12"},
+		{"img":"13.jpg","text":"图片13"},
+		{"img":"14.jpg","text":"图片14"},
+		{"img":"15.jpg","text":"图片15"},
+		{"img":"16.jpg","text":"图片16"},
+		{"img":"17.jpg","text":"图片17"},
+		{"img":"18.jpg","text":"图片18"},
+		{"img":"19.jpg","text":"图片19"},
+		{"img":"20.jpg","text":"图片20"},
+		{"img":"21.jpg","text":"图片21"},
+		{"img":"22.jpg","text":"图片22"},
+		{"img":"23.jpg","text":"图片23"}
+	]
+)

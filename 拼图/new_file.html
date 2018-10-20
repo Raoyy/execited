@@ -1,0 +1,151 @@
+<!DOCTYPE html>  
+<html xmlns="http://www.w3.org/1999/xhtml">  
+<head>  
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />  
+    <title>JS拼图游戏-练习</title>  
+    <style type="text/css">  
+        #move, #show {  
+            border: 10px solid lightblue;  
+            width: 499px;  
+            height: 299px;
+            overflow: hidden;  
+            position: relative;  
+            background-color: #fafafa;  
+        }
+        #show {  
+            background-image: url(img/20110722103604-836853073.jpg);  
+            background-repeat: no-repeat;  
+        }  
+        #move p {  
+            margin: 0;  
+            cursor: pointer;  
+            width: 99px;  
+            height: 99px;  
+            position: absolute;  
+            background: url(img/20110722103604-836853073.jpg) no-repeat;  
+        }
+    </style>  
+    <script type="text/javascript">  
+        speller = {  
+            /*初始化*/  
+            init: function (level) {  
+                var html = [], i = 0;  
+                for (var y = 0; y < 3; y++)  
+                    for (var x = 0; x < 5; x++) {  
+                        var top = y * 100;  
+                        var left = x * 100;  
+                        html.push('<p onclick="speller.move(this);" id="' + i + '" class="' + i  
+                            + '" style="left:' + left + 'px;top:' + top + 'px;background-position:-'  
+                            + left + 'px -' + top + 'px;"></p>');  
+                        i++;  
+                    }  
+                document.getElementById("move").innerHTML = html.join('');  
+                this.boxs = document.getElementById("move").getElementsByTagName("p");  
+                this.blank = this.boxs.length - 1;  
+                this.hardNum = level; 
+                this.rndBox();
+            },
+            /*打乱方格布局*/  
+            rndBox: function () {
+                var count = 0;
+                while (count < this.hardNum) {  
+                    var d = parseInt(Math.random() * 4);  
+                    var posB = this.blank * 1;  
+                    var yB = parseInt(posB / 5);  
+                    var xB = parseInt(posB % 5);  
+                    var cls = -1;  
+                    if (d == 0 && yB != 0) {  
+                        cls = posB - 5;  
+                    }  
+                    else if (d == 1 && xB != 4) {  
+                        cls = posB + 1;  
+                    }  
+                    else if (d == 2 && yB != 2) {  
+                        cls = posB + 5;  
+                    }  
+                    else if (d == 3 && xB != 0) {  
+                        cls = posB - 1;  
+                    }  
+                    if (cls != -1) {  
+                        this.swapTwo(this.getByClass(this.blank), this.getByClass(cls));
+                        this.blank = cls;  
+                        count++;  
+                    }  
+                }  
+                this.getByClass(this.blank).style.display = "none";  
+            },  
+            /*点击移动*/  
+            move: function (currBox) {  
+                var pos = currBox.className * 1;  
+                var y = parseInt(pos / 5);  
+                var x = parseInt(pos % 5);  
+                var posB = this.blank * 1;  
+                var yB = parseInt(posB / 5);  
+                var xB = parseInt(posB % 5);  
+                if (Math.abs(x - xB) + Math.abs(y - yB) == 1) {  
+                    this.swapTwo(currBox, this.getByClass(posB));  
+                    this.blank = pos;  
+                }  
+                if (this.check()) {  
+                    this.getByClass(this.blank).style.display = "block";  
+                    alert("哇，你真棒！");  
+                }  
+            },  
+            /*检查是否完成*/  
+            check: function () {  
+                for (var i = 0; i < this.boxs.length; i++) {  
+                    if (this.boxs[i].className != this.boxs[i].id) return false;  
+                }  
+                return true;  
+            },  
+            /*根据className获取对象*/  
+            getByClass: function (cls) {  
+                for (var i = 0; i < this.boxs.length; i++) {  
+                    if (this.boxs[i].className == cls) return this.boxs[i];  
+                }  
+                return null;  
+            },  
+            /*交换两个方格*/  
+            swapTwo: function (boxA, boxB) {  
+                var left = boxA.style.left;  
+                var top = boxA.style.top;  
+                var cls = boxA.className;  
+                boxA.style.top = boxB.style.top;  
+                boxA.style.left = boxB.style.left;  
+                boxA.className = boxB.className;  
+                boxB.style.top = top;  
+                boxB.style.left = left;  
+                boxB.className = cls;  
+            }  
+        };  
+        window.onload = function () {  
+            speller.init(5);  
+            document.getElementById("hard").onchange = function () {  
+                speller.init(this.value);  
+            }  
+        };  
+    </script>  
+</head>  
+<body>  
+    <table border="0">  
+        <tr>  
+            <td>  
+                <div id="move"></div>  
+            </td>  
+            <td>  
+                <div id="show"></div>  
+            </td>  
+        </tr>  
+        <tr>  
+            <td>  
+                <select id="hard">  
+                    <option value="5">简单模式</option>  
+                    <option value="30">一般模式</option>  
+                    <option value="100">困难模式</option>  
+                </select>  
+            </td>  
+            <td> </td>  
+        </tr>  
+    </table>  
+</body>  
+</html>

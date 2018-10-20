@@ -1,0 +1,20 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+ul{
+	list-style: none;
+	width: 690px;
+	height: 360px;
+	border: 1px solid red;
+	margin: 0 auto;
+}
+li{
+	width: 220px;
+	height: 110px;
+	margin: 5px 5px;
+	float: left;
+}
+li img{
+	width: 100%;
+}

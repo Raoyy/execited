@@ -1,0 +1,54 @@
+##ignore this file##
+/node_modules/
+/51小demo/
+/ES6试做/
+/H5+/
+/gulp/
+/yys/
+/Swiper-4.0.5/
+/dwz富客户端框架 - jUI/
+/eCharts/
+/layer/
+/小尼寻师mobile/
+/文件上传插件/
+/购物车/
+/mui/
+/下拉刷新/
+/Eleditor-1.6/
+
+
+.classpath
+.project
+.settings      
+##filter databfile、sln file##
+*.mdb  
+*.ldb  
+*.sln    
+##class file##
+*.com  
+*.class  
+*.dll  
+*.exe  
+*.o  
+*.so  
+# compression file
+*.7z  
+*.dmg  
+*.gz  
+*.iso  
+*.jar  
+*.rar  
+*.tar  
+*.zip  
+*.via
+*.tmp
+*.err 
+# OS generated files #  
+.DS_Store  
+.DS_Store?  
+._*  
+.Spotlight-V100  
+.Trashes  
+Icon?  
+ehthumbs.db  
+Thumbs.db  

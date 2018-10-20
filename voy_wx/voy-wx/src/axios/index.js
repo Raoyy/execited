@@ -52,6 +52,9 @@ axios.interceptors.response.use(function (response) {
     return Promise.reject(error);
   });
 
+//var myInterceptor = axios.interceptors.request.use(function () {/*...*/});
+//axios.interceptors.request.eject(myInterceptor);                                   //移除拦截器
+
 export default {
 	get,
 	post,

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<span class="weixin-login">微信登录</span>
+	</body>
+</html>
+<script src="js/jquery-2.1.4.min.js"></script>
+<script type="text/javascript">
+	console.log(window.location.pathname.substr(1));
+	$('.weixin-login').on('click',function(){
+        window.location.href='https://open.weixin.qq.com/connect/qrconnect?' +
+            'appid=wxe5748488f0c944ee&redirect_uri=http%3a%2f%2fvoy.iknowcn.com%2fpt_teacher_web%2fadmin%2flogin.html&response_type=code&scope=snsapi_login&state=222#wechat_redirect';
+    });
+</script>

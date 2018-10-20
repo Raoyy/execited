@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<style type="text/css">
+		*{margin: 0;padding: 0;}
+		html{width: 100%;height: 100%;overflow: hidden;background: #eee;}
+		img{border: none;z-index: 2;}
+		#warp{position: relative;width: 100%;height: 100%;}
+		#warp>div{position: absolute;transition: all 1s;}
+		#warp .warp_3d{transform-style: preserve-3d;perspective: 2000px;}
+		#warp>div:hover{z-index: 998;}
+		#warp>div span{background: rgba(255,255,255,1);right: 8px;font-size: 14px;color: #333;transform: rotateY(180deg);backface-visibility: hidden;}
+		.centerBox{z-index: 999;}
+		.rotateWarp{padding: 8px;background: white;border: 1px solid #ccc;border-radius: 5px;box-shadow: 0 0 10px #999;top: 0px;left: 0px;transition: all 1s;transform-style: preserve-3d;}
+		.rotateWarp>*{position: absolute;}
+		.centerBox:hover .rotateWarp{transform: rotateY(180deg);}
+	</style>
+	<body>
+		<div id="warp">
+			<div>
+				<div class="warp_3d">
+					<div class="rotateWarp">
+						<img src="img/1.jpg"/>
+						<span>哈哈哈哈哈哈哈哈</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script src="js/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript">
+		var imgWid = 250;    //图片宽（单位：像素）
+		var k = 0.56;    //图片宽高比
+		var screenWidth = $(window).width();
+		var screenHeight = $(window).height();
+		var imgBor = 100;
+		function moveCenter(obj){
+			var centerTop = (screenHeight-$(obj).height())/2;
+			var centerLeft = (screenWidth-$(obj).width())/2;
+			setPosition()
+			$(obj).css({"top":centerTop+"px","left":centerLeft+"px","transform":"rotate(0deg)"});
+			$(obj).addClass("centerBox").siblings().removeClass("centerBox");
+		}
+		function setSize(){
+			$.each($("#warp img"), function(index,event) {
+				var oWidth = $(event).width();
+				var oHeight = $(event).height();
+				if(oWidth >= oHeight){
+					$(event).css({"width":imgWid+"px","height":"auto"});
+					$(event).parent().css({"width":imgWid+"px","height":imgWid*k+"px"});
+				}else{
+					$(event).css({"height":imgWid+"px","width":"auto"});
+					$(event).parent().css({"height":imgWid+"px","width":imgWid*k+"px"});
+				}
+			});
+		}
+		function checkPosition(top,left){
+			var lineLeft = (screenWidth - imgWid)/2 - imgBor - imgWid;
+			var lineRight = (screenWidth + imgWid)/2 + imgBor;
+			var lineTop = (screenHeight - imgWid)/2 - imgBor*1.2;
+			var lineBottom = (screenHeight + imgWid)/2;
+			var isTOP = false,isBottom = false,isLeft = false,isRight = false;
+			if(top < lineTop) isTOP = true;
+			if(top > lineBottom) isBottom = true;
+			if(left < lineLeft) isLeft = true;
+			if(left > lineRight) isRight = true;
+			if(isTOP || isBottom || isLeft || isRight){
+				return false;
+			}else{
+				return true;
+			}
+		}
+		function getPosition(){
+			var left = Math.ceil(Math.random()*(screenWidth-imgWid+50));
+			var top = Math.ceil(Math.random()*(screenHeight-imgWid+100));
+			var rotate = Math.ceil(Math.random()*90)-45;
+			while (checkPosition(top,left)){
+				left = Math.ceil(Math.random()*(screenWidth-imgWid+50));
+				top = Math.ceil(Math.random()*(screenHeight-imgWid+100));
+			}
+			var oJson = {"left":left+"px","top":top+"px","transform":"rotate("+rotate+"deg)"};
+			return oJson;
+		}
+		function setPosition(){
+			var imgLength = $("#warp img").length;
+			for(var i=0; i<imgLength; i++){
+				$("#warp>div").eq(i).css(getPosition());
+			}
+		}
+		function callback(data){
+			var oLength = data.length;
+			var content = "";
+			for(var i=0; i<oLength; i++){
+				content +=  '<div onclick="moveCenter(this)">'
+								+'<div class="warp_3d">'
+									+'<div class="rotateWarp">'
+										+'<img src="img/'+data[i].img+'"/>'
+										+'<span>'+data[i].text+'</span>'
+									+'</div>'
+								+'</div>'
+							+'</div>';
+			}				
+			$("#warp").html(content);
+			setSize();
+			setPosition();
+			$("#warp>div").eq(0).css({"top":(screenHeight-$("#warp div").eq(0).height())*0.5+"px","left":(screenWidth-$("#warp div").eq(0).width())*0.5+"px","transform":"rotate(0deg)"});
+			$("#warp>div").eq(0).addClass("centerBox");
+		}
+	</script>
+	<script src="file.txt"></script>
+</html>

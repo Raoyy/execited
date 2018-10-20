@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
+    <title>鼠标拾取地图坐标</title>
+    <script type="text/javascript" src="http://webapi.amap.com/maps?v=1.4.1&key=90a42d21913bdc798bda4c6061d721ff&plugin=AMap.Autocomplete"></script>
+    <style type="text/css">
+    	#container{
+    		width: 500px;
+    		height: 300px;
+    	}
+    </style>
+</head>
+<body>
+<div id="container"></div>
+<div id="myPageTop">
+	<input type="text" name="title" id="title" value="测试标题" />
+    <table>
+        <tr>
+            <td>
+                <label>按关键字搜索：</label>
+            </td>
+            <td class="column2">
+                <label>左击获取经纬度：</label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="text" placeholder="请输入关键字进行搜索" id="tipinput">
+            </td>
+            <td class="column2">
+                <input type="text" readonly="true" id="lnglat">
+            </td>
+        </tr>
+    </table>
+</div>
+<script type="text/javascript">
+	var title = document.querySelector("#title");
+	var markerList = [];
+    var map = new AMap.Map("container", {
+        resizeEnable: true
+    });
+    //为地图注册click事件获取鼠标点击出的经纬度坐标
+    var clickEventListener = map.on('click', function(e) {
+    	console.log(e);
+    	console.log(e.lnglat.O,e.lnglat.Q);
+        document.getElementById("lnglat").value = e.lnglat.getLng() + ',' + e.lnglat.getLat()
+        map.remove(markerList);
+        markerList = [];
+        setMarker(map,e.lnglat.getLng(),e.lnglat.getLat(),"测试点1");
+         map.setZoomAndCenter(14, [e.lnglat.getLng(), e.lnglat.getLat()]);
+    });
+    var auto = new AMap.Autocomplete({
+        input: "tipinput"
+    });
+    AMap.event.addListener(auto, "select", select);//注册监听，当选中某条记录时会触发
+    function select(e) {
+    	console.log(e);
+        if (e.poi && e.poi.location) {
+            map.setZoom(15);
+        //    map.setCenter(e.poi.location);
+        	console.log(e.poi.name);
+            setMarker(map,e.poi.location.O,e.poi.location.Q,e.poi.address,title.value)
+        }
+    }
+    function setMarker(oMap,lng,lat,title,label){
+    	var marker = new AMap.Marker({
+			icon: "http://webapi.amap.com/theme/v1.3/markers/n/mark_b.png",
+		    position: [lng, lat],//marker所在的位置
+		    title: title,
+		    animation:"AMAP_ANIMATION_DROP",
+		    label:{content: label, offset: new AMap.Pixel(20, -9)}
+		});
+		markerList.push(marker);
+		//也可以在创建完成后通过setMap方法执行地图对象
+		marker.setMap(oMap);
+		oMap.setCenter([lng,lat]); 
+    }
+</script>
+</body>
+</html>

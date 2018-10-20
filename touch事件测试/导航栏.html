@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+		<title></title>
+		<script src="js/jquery-2.1.4.min.js"></script>
+		<style type="text/css">
+			*{margin: 0;padding: 0;}
+			li{list-style: none;}
+			.h-nav{position: relative;width: 100%;height: 30px;border-bottom: 1px solid black;overflow: hidden;}
+			.nav{position: absolute;width:508px;}
+			.nav li{float: left;padding: 0 10px;border: 1px solid red;}
+		</style>
+	</head>
+	<body>
+		<div class="header">
+			<div class="h-nav">
+				<ul class="nav">
+					<li>选项1</li>
+					<li>选项2</li>
+					<li>选项3</li>
+					<li>选项4</li>
+					<li>选项5</li>
+					<li>选项6</li>
+					<li>选项7</li>
+					<li>选项8</li>
+				</ul>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		
+		var slide = document.querySelector(".header .h-nav"),
+	        nav = document.querySelector(".header .nav"),
+	        // 开始的偏移
+	        startX = 0,
+	        // 保存的偏移
+	        translateX = 0,
+	        // 手指坐标
+	        startFinger = 0,
+	        maxWidth = nav.offsetWidth - slide.offsetWidth,
+	        lastTime = 0; //按下的时间
+	    slide.addEventListener('touchstart',function (e) {
+	        e.stopPropagation();
+	        startFinger = e.changedTouches[0].clientX;
+	        nav.style.WebkitTransition = nav.style.transition = '';
+	        startX = translateX;
+	        lastTime = Date.now();   //按下的时间点
+	    });
+	    slide.addEventListener('touchmove',function (e) {
+	        e.stopPropagation();
+	        var nowFinger = e.changedTouches[0].clientX,
+	            distance = nowFinger - startFinger;
+	        translateX = distance + startX;
+	        // 弹性
+	        if(translateX > 0 ){ //拖动系数. 拉力的感觉
+	            translateX *= 0.4;
+	        }else if( translateX < -maxWidth){  //最后.
+	            translateX = distance*0.4 + startX;
+	        }
+	        console.log(translateX);
+	        shift(translateX);
+	    })
+	    slide.addEventListener('touchend',function (e) {
+	         /*
+	            惯性原理:
+	            产生的速度 = 移动距离 / 移动时间
+	            距离 = 松开的坐标 - 上次的坐标  (距离差)
+	            时间 = 松开的时间 - 按下的时间  (时间差)
+	         */
+	        var nowFinger = e.changedTouches[0].clientX,
+	            distance = nowFinger - startFinger,  //距离差
+	            timeDis = Date.now() - lastTime,  //时间差
+	            speed = (distance / timeDis)*100;
+//	        	console.log(speed);  //很小 *倍数
+	        // 惯性
+	        translateX += speed;
+	
+	        // 边界 ,弹回去
+	        if(translateX > 0){
+	            translateX = 0;
+	        }else if(translateX < -maxWidth){
+	            translateX = -maxWidth;
+	        }
+	        // 添加贝塞尔曲线
+	        nav.style.WebkitTransition = nav.style.transition = 'transform 500ms cubic-bezier(0.1, 0.57, 0.1, 1)';
+	        shift(translateX);
+	    })
+	    function shift(value){
+	        nav.style.WebkitTransform = nav.style.transform = 'translateX('+value+'px)';
+	    }
+	</script>
+</html>
