@@ -1,0 +1,15 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div id="header" style="text-align:center">
+  <h1>
+    欢迎进入项目{{ title }}!
+  </h1>
+  <div class="author">作者：{{author}}</div>
+  <input type="button" value="toRouter2" (click)="toRouter2()">
+  <router-outlet></router-outlet>
+</div>
+<input type="button" (click)="addHero()" value="add new heros">
+<h2>龙之谷老四职有: </h2>
+<ul>
+  <child1-component *ngFor="let hero of heros; trackBy:setKey" [hero]="hero"></child1-component>
+</ul>
+
