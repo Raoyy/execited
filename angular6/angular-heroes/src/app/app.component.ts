@@ -1,55 +1,52 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { Router, RouterOutlet } from '@angular/router';
+import { slideInAnimation  } from './animation';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  animations: [ slideInAnimation ]
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   constructor(private router: Router) { }
 
   title = 'angular-heroes';
   author = '饶银银';
-  heros = [
-    { id: 1, name: '战士' },
-    { id: 2, name: '牧师' },
-    { id: 3, name: '弓箭手' },
-    { id: 4, name: '法师' }
-  ];
 
-  addHero(){
-    let newHeros = [
-      {id:5,name:"萌骑士"},
-      {id:6,name:'兽娘'},
-      {id:7,name:'刺客'}
-    ]
-    console.log(newHeros);
-    this.heros = this.heros.concat(newHeros);
-    console.log(this.heros);
+  get timeNow() {
+    return new Date();
   }
 
-  setKey(index,obj): number{
-    console.log(index,obj);
-    return obj.id;
+  toRouter2(): void {
+    // this.router.navigateByUrl('router2/2');
+    this.router.navigate(['router2'], {
+      queryParams: {
+          productId: '1',
+          title: 'moon'
+      }
+    });
   }
 
-  toRouter2():void{
-    this.router.navigateByUrl("router2/2")
-    // this.router.navigate(['router2'], {
-    //   queryParams: {
-    //       productId: '1',
-    //       title: 'moon'
-    //   }
-    // });
+  toRHook() {
+    this.router.navigate(['hook'], {
+      queryParams: {
+        productId: '1',
+        title: 'moon'
+      }
+    });
   }
-  
-  ngOnInit(){
+
+  logIt (msg: string) {
+    console.log(`${msg}`);
+  }
+
+  getAnimationData(outlet: RouterOutlet) {
+    return outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation'];
+  }
+
+  ngOnInit(): void {
     this.logIt('onInit');
   }
 
-  logIt(msg: string) {
-    console.log(`${msg}`);
-  }
-    
 }
