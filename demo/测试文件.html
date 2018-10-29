@@ -9,6 +9,20 @@
 		<div id="block"></div>
 	</body>
 	<script type="text/javascript">
-		
+		var flag = false;
+		function test(){
+			if(!flag){
+				flag = true;
+				$.ajax({
+					url:'',
+					success(){
+						setTimeout(()=>{
+							flag = false;
+						},3000);
+					}
+				});
+			}
+			
+		}
 	</script>
 </html>

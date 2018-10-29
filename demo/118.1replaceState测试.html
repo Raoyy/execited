@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="button" onclick="goChildPage();" value="goChildPage">
+</body>
+<script type="text/javascript">
+    function goChildPage(){
+        var data = {
+            author: 'ryy'
+        }
+        title = 'PushState test page';
+        url = '118.2replaceState-child.html';
+        window.history.replaceState(data, title, url);         // 谷歌需要在服务环境下使用，且该方法只是切换了浏览器地址，并没有刷新页面(可配合location.reload使用)
+        location.reload(true);
+    //    window.history.pushState(data, url);
+    }
+    window.onpopstate  = function(data){
+        console.log(data);
+    }
+</script>
+</html>

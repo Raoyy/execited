@@ -1,7 +1,20 @@
-<p>
-  http-test works!
-</p>
-<div *ngIf="config">
-  <p>{{config.heroesUrl}}</p>
-  <p>{{config.textfile}}</p>
+<h2> http-test works!</h2>
+<div class="area" *ngIf="config">
+  <h4>showConfig area</h4>
+  <p>heroesUrl:{{config.heroesUrl}}</p>
+  <p>textfile:{{config.textfile}}</p>
 </div>
+<div class="area" *ngIf="error">
+  <p>error:{{error.status}}</p>
+</div>
+
+<div class="area" *ngIf="config">
+  <h4>showConfigResponse area</h4>
+  <p></p>
+</div>
+
+<div class="area" *ngIf="config">
+  <h4>showText area</h4>
+  <p>{{text}}</p>
+</div>
+
