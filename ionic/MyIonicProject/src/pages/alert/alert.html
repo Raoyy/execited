@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-navbar>
+    <button menuToggle *ngIf="!selectedItem">
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>action sheet</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="action-sheets-basic-page">
+  <button ion-button block (click)="showAlert()">
+    Show Alert
+  </button>
+  <button ion-button block (click)="showPrompt()">
+    Show showPrompt
+  </button>
+  <button ion-button block (click)="showConfirm()">
+    Show showConfirm
+  </button>
+  <button ion-button block (click)="showRadio()">
+    Show showRadio
+  </button>
+  <button ion-button block (click)="showCheckbox()">
+    Show showCheckbox
+  </button>
+</ion-content>

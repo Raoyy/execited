@@ -2,25 +2,23 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<title></title>
 		<script src="js/jquery-2.1.4.min.js"></script>
 	</head>
 	<body>
 		<div id="block"></div>
+		<input type="button" value="click" onclick="test();" />
 	</body>
 	<script type="text/javascript">
 		var flag = false;
 		function test(){
 			if(!flag){
 				flag = true;
-				$.ajax({
-					url:'',
-					success(){
-						setTimeout(()=>{
-							flag = false;
-						},3000);
-					}
-				});
+				console.log("ok");
+				setTimeout(()=>{
+					flag = false;
+				},3000);
 			}
 			
 		}

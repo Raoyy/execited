@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-navbar>
+    <button menuToggle *ngIf="!selectedItem">
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>action sheet</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="action-sheets-basic-page">
+  <button ion-button block (click)="openMenu()">
+    Show Action Sheet
+  </button>
+  <button ion-button block (click)="showAlert()">
+    Show Alert
+  </button>
+</ion-content>
