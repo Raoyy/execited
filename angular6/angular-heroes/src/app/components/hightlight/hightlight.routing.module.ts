@@ -4,10 +4,11 @@ import { HightlightComponent } from './hightlight.component';
 
 const routes: Routes = [
     {
-        path: 'highlight',
+        path: '',                           // 此处使用'',默认路由
         component: HightlightComponent
     }
 ];
+
 @NgModule({
     imports: [RouterModule.forChild(routes)],
     exports: [RouterModule],
