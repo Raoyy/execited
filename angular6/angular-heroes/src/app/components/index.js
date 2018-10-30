@@ -15,7 +15,7 @@ const componentList = [
   NotFoundComponent,
   Router1Component,
   Router2Component,
-  HightlightComponent,
+//  HightlightComponent,
   HerosComponent,
   HeroDetailComponent,
   HttpTestComponent,

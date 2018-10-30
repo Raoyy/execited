@@ -31,8 +31,8 @@ const  appRoutes: Routes = [
         path: 'hook',
         component: HookComponent
     }, {
-        path: 'highlight',
-        component: HightlightComponent
+        path: '',               // 此处使用'',因为使用loadChildren后，在子路由模块中会存在path定义，总路径由当前路径和子路由路径拼接而成
+        loadChildren: './components/hightlight/hightlight.module#HightlightModule'
     }, {
         path: 'http-test',
         component: HttpTestComponent
