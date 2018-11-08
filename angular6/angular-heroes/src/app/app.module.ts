@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule , } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -13,6 +13,12 @@ import { RoutingModule } from './routes.module';             // 路由模块
 
 import { HightlightDirective } from './directive/hightlight.directive';           // 自定义属性指令，根模块中使用则在此处引入，若在子模块中使用则在对应的模块引入
 
+
+import { NgZorroAntdModule, NZ_I18N, zh_CN } from 'ng-zorro-antd';          // NgZorro UI框架引入
+import { registerLocaleData } from '@angular/common';
+import zh from '@angular/common/locales/zh';
+registerLocaleData(zh);
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,11 +29,13 @@ import { HightlightDirective } from './directive/hightlight.directive';         
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     RoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    NgZorroAntdModule,
   ],
-  providers: [],
+  providers: [{ provide: NZ_I18N, useValue: zh_CN }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

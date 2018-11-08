@@ -8,6 +8,7 @@ import { HerosComponent } from './heros/heros.component';
 import { HeroDetailComponent } from './hero-detail/hero-detail.component';
 import { HttpTestComponent } from './http-test/http-test.component';
 import { FormsComponent } from './forms/forms.component';
+import { LoginComponent } from './login/login.component';
 
 const componentList = [
   ChildComponent,
@@ -19,7 +20,8 @@ const componentList = [
   HerosComponent,
   HeroDetailComponent,
   HttpTestComponent,
-  FormsComponent
+  FormsComponent,
+  LoginComponent
 ]
 
 export default componentList;

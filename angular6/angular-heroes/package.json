@@ -1,14 +1,34 @@
 {
   "name": "angular-heroes",
   "version": "0.0.0",
+  "description": "A minimal Electron application",
+  "main": "main.js",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "npm run postinstall:electron && npm-run-all -p ng:serve electron:serve",
+    "ng:serve": "ng serve",
+    "postinstall": "npm run postinstall:electron && npx electron-builder install-app-deps",
+    "postinstall:web": "node postinstall-web",
+    "postinstall:electron": "node postinstall",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "electron:serve-tsc": "tsc -p tsconfig-serve.json",
+    "electron:serve": "wait-on http-get://localhost:4200/ && npm run electron:serve-tsc &&  electron . --serve"
   },
+  "keywords": [
+    "electron",
+    "quick",
+    "start",
+    "tutorial",
+    "demo",
+    "angular",
+    "angular 6",
+    "typescript",
+    "sass"
+  ],
+  "license": "CC0-1.0",
   "private": true,
   "dependencies": {
     "@angular/animations": "~7.0.0",
@@ -21,14 +41,29 @@
     "@angular/platform-browser-dynamic": "~7.0.0",
     "@angular/router": "~7.0.0",
     "core-js": "^2.5.4",
+    "electron-reload": "^1.2.5",
+    "ng-zorro-antd": "^1.8.0",
+    "npm-run-all": "^4.1.3",
+    "postinstall": "^0.4.2",
     "rxjs": "~6.3.3",
-    "zone.js": "~0.8.26"
+    "wait-on": "^3.2.0",
+    "zone.js": "~0.8.26",
+    "less": "^2.7.3"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.10.0",
     "@angular/cli": "~7.0.2",
     "@angular/compiler-cli": "~7.0.0",
     "@angular/language-service": "~7.0.0",
+    "@angular/animations": "^6.1.10",
+    "@angular/common": "6.1.2",
+    "@angular/compiler": "6.1.2",
+    "@angular/core": "6.1.2",
+    "@angular/forms": "6.1.2",
+    "@angular/http": "6.1.2",
+    "@angular/platform-browser": "6.1.2",
+    "@angular/platform-browser-dynamic": "6.1.2",
+    "@angular/router": "6.1.2",
     "@types/node": "~8.9.4",
     "@types/jasmine": "~2.8.8",
     "@types/jasminewd2": "~2.0.3",
@@ -43,6 +78,7 @@
     "protractor": "~5.4.0",
     "ts-node": "~7.0.0",
     "tslint": "~5.11.0",
-    "typescript": "~3.1.1"
+    "typescript": "~3.1.1",
+    "electron": "^3.0.4"
   }
 }

@@ -11,6 +11,7 @@ import { HerosComponent } from './components/heros/heros.component';
 import { HightlightComponent } from './components/hightlight/hightlight.component';
 import { HeroDetailComponent } from './components/hero-detail/hero-detail.component';
 import { HttpTestComponent } from './components/http-test/http-test.component';
+import { LoginComponent } from './components/login/login.component';
 
 const  appRoutes: Routes = [
     {
@@ -30,6 +31,9 @@ const  appRoutes: Routes = [
     }, {
         path: 'hook',
         component: HookComponent
+    }, {
+        path: 'login',
+        component: LoginComponent
     }, {
         path: 'highlight',
         loadChildren: './components/hightlight/hightlight.module#HightlightModule'
