@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<script src="js/jquery-2.1.4.min.js"></script>
+	</head>
+	<body>
+		<input type="file" id="file" onchange="file(this);" value="upload">
+	</body>
+	<script type="text/javascript">
+		// function test(params) {
+		// 	return new Promise((resolve, reject) => {
+		// 		let num = params;
+		// 		setTimeout(() => {
+		// 			num = 2000;
+		// 			resolve(num);
+		// 		}, 3000);
+		// 	});
+		// }
+		// console.log(test);
+		// test(1000).then((thisNum) => {
+		// 	console.log(thisNum);
+		// });;
+		// console.log(2333);
+
+
+		async function test2() {
+			let num = 2000;
+			let timeOut = new Promise((resolve) => {
+				setTimeout(() => {
+					resolve(num + 1000);
+				}, 2000);
+			});
+			let num2 = await timeOut;
+			console.log('num2', num2);
+			
+			let solveNum = new Promise((resolve, reject) => {
+				setTimeout(() => {
+					resolve(num + 2000);
+				}, 2000);
+			});
+			return await solveNum;
+		}
+		test2().then((num) => {
+			console.log(num);
+		});
+		console.log("ok");
+	</script>
+</html>
