@@ -1,4 +1,11 @@
 #header{
+  h1{
+    -webkit-app-region: drag;
+    -webkit-user-select: none;
+  }
+  [nz-button]{
+    -webkit-app-region: no-drag;
+  }
   .author{
     text-align: right;
   }

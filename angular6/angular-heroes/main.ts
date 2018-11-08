@@ -1,4 +1,4 @@
-import { app, BrowserWindow, screen } from 'electron';
+import { app, globalShortcut, BrowserWindow, screen, ipcMain } from 'electron';
 import * as path from 'path';
 import * as url from 'url';
 
@@ -13,10 +13,21 @@ function createWindow() {
 
   // Create the browser window.
   win = new BrowserWindow({
-    x: 0,
-    y: 0,
-    width: size.width,
-    height: size.height
+    title: 'RYY-project',           // 设置标题（无效）
+    darkTheme: true,              // 黑色背景（无效）
+    resizable: false,             // 可调整代销（默认为trues）
+    // x: 0,
+    // y: 0,
+    width: size.width / 5 * 4,
+    height: size.height / 5 * 4,
+    show: false,
+    backgroundColor: '#2e2c29',
+//    frame: false,             // 设置无框窗口
+//    transparent: true           // 设置窗口透明
+  });
+
+  win.once('ready-to-show', () => {
+    win.show();
   });
 
   if (serve) {
@@ -44,12 +55,45 @@ function createWindow() {
 
 }
 
+ipcMain.on('master-close', (e, msg) => {          // 进程之间的通信
+  // 关闭master进程
+  app.quit();
+});
+ipcMain.on('master-minimize', (e, msg) => {
+  // 最小化  master进程
+  win.minimize();
+  // 主进程向 渲染进程发送消息
+  e.sender.send('index-minimize', 'master');
+});
+ipcMain.on('master-maximize', (e, msg) => {
+  // 最大化  master进程
+  if (win.isMaximized()) {
+    win.unmaximize();
+  } else {
+    win.maximize();
+  }
+});
+ipcMain.on('window-reload', (e, msg) => {
+  win.reload();
+});
+
+
+
+
 try {
 
   // This method will be called when Electron has finished
   // initialization and is ready to create browser windows.
   // Some APIs can only be used after this event occurs.
-  app.on('ready', createWindow);
+
+  app.on('ready', () => {
+    createWindow();
+    // Register a 'CommandOrControl+Y' shortcut listener.
+    globalShortcut.register('CommandOrControl+Y', () => {              // 注册快捷键
+      // Do stuff when Y and either Command/Control is pressed.
+      app.quit();
+    });
+  });
 
   // Quit when all windows are closed.
   app.on('window-all-closed', () => {

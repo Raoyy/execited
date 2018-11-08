@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
 import { slideInAnimation  } from './animation';
+import { ipcRenderer } from 'electron';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +10,12 @@ import { slideInAnimation  } from './animation';
   animations: [ slideInAnimation ]
 })
 export class AppComponent implements OnInit {
-  constructor(private router: Router) { }
+  constructor(private router: Router) {
+    ipcRenderer.on('index-minimize', (e, msg) => {
+      // 监听主进程发来的事件...
+      console.log('主进程', msg);
+    });
+  }
 
   title = 'angular-heroes';
   author = '饶银银';
@@ -18,7 +24,7 @@ export class AppComponent implements OnInit {
     return new Date();
   }
 
-  toRouter2(): void {
+  open(): void {
     // this.router.navigateByUrl('router2/2');
     this.router.navigate(['router2'], {
       queryParams: {
@@ -26,6 +32,19 @@ export class AppComponent implements OnInit {
           title: 'moon'
       }
     });
+  }
+
+  reload() {
+    ipcRenderer.send('window-reload', 'render-index');
+  }
+  close() {
+    ipcRenderer.send('master-close', 'render-index');
+  }
+  maximize() {
+    ipcRenderer.send('master-maximize', 'render-index');
+  }
+  minimize() {
+    ipcRenderer.send('master-minimize', 'render-index');
   }
 
   toRHook() {

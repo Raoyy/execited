@@ -12,6 +12,7 @@ import { HightlightComponent } from './components/hightlight/hightlight.componen
 import { HeroDetailComponent } from './components/hero-detail/hero-detail.component';
 import { HttpTestComponent } from './components/http-test/http-test.component';
 import { LoginComponent } from './components/login/login.component';
+import { FilePathComponent } from './components/file-path/file-path.component';
 
 const  appRoutes: Routes = [
     {
@@ -34,6 +35,9 @@ const  appRoutes: Routes = [
     }, {
         path: 'login',
         component: LoginComponent
+    }, {
+        path: 'file-path',
+        component: FilePathComponent
     }, {
         path: 'highlight',
         loadChildren: './components/hightlight/hightlight.module#HightlightModule'

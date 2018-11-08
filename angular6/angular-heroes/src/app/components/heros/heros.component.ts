@@ -46,14 +46,6 @@ export class HerosComponent implements OnInit {
   ngOnInit() {
     // console.log(this.activatedRoute.snapshot.data);         // 此方式获取data中的数据
     // this.activatedRoute.snapshot.params                     //此方式可以直接获取动态匹配参数
-    const myNotification = new Notification('标题', {
-      body: '通知正文内容'
-    });
-
-    console.log(Notification.prototype);
-    myNotification.onshow = () => {
-      console.log('通知被点击');
-    };
   }
 
   pushevent() {
