@@ -11,13 +11,16 @@
 	</body>
 	<script type="text/javascript">
 		const arr = [1, 2, 3, 4, 5, 6];
-
-		function filterit(ar) {
-			let array = new Array(...ar);
-			array.splice(2, 1);
-			return array;
+		function rarr(array) {
+			let e = null;
+			array.forEach(element => {
+				if (element == 3) {
+					e = element;
+					return element;   // 无法返回值
+				}
+			});
+			return e;
 		}
-		console.log(filterit(arr));
-		console.log(arr);
+		console.log(rarr(arr));
 	</script>
 </html>
