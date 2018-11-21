@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var electron_1 = require("electron");
 var path = require("path");
 var url = require("url");
+var fs = require('fs');
 var win, serve;
 var args = process.argv.slice(1);
 serve = args.some(function (val) { return val === '--serve'; });
@@ -20,6 +21,8 @@ function createWindow() {
         height: size.height / 5 * 4,
         show: false,
         backgroundColor: '#2e2c29',
+        frame: false,
+        transparent: true // 设置窗口透明
     });
     win.once('ready-to-show', function () {
         win.show();
@@ -46,6 +49,22 @@ function createWindow() {
         win = null;
     });
 }
+electron_1.ipcMain.on('file', function (e, pathObj) {
+    var appPath = electron_1.app.getAppPath();
+    console.log('appPath', appPath);
+    electron_1.app.getFileIcon(pathObj, { size: 'large' }, function (err, icon) {
+        console.log('pathObj', pathObj);
+        // if (!err) callback && callback(icon.toPNG());
+        var imgData = icon.toJPEG(1); // Buffer编码
+        // // 将编码的buffer对象生成二进制保存成图片
+        // tslint:disable-next-line:no-shadowed-variable
+        fs.writeFile(path.resolve('E:/' + 'img23333' + '.jpg'), imgData, function (err) {
+            if (err) {
+                return console.log(err);
+            }
+        });
+    });
+});
 electron_1.ipcMain.on('master-close', function (e, msg) {
     // 关闭master进程
     electron_1.app.quit();
@@ -68,10 +87,6 @@ electron_1.ipcMain.on('master-maximize', function (e, msg) {
 electron_1.ipcMain.on('window-reload', function (e, msg) {
     win.reload();
 });
-electron_1.ipcMain.on('set-menu', function (e, tmp) {
-    console.log(tmp);
-    win.setProgressBar(null);
-});
 try {
     // This method will be called when Electron has finished
     // initialization and is ready to create browser windows.
@@ -79,7 +94,7 @@ try {
     electron_1.app.on('ready', function () {
         createWindow();
         // Register a 'CommandOrControl+Y' shortcut listener.
-        electron_1.globalShortcut.register('CommandOrControl+Y', function () {
+        electron_1.globalShortcut.register('CommandOrControl+Q', function () {
             // Do stuff when Y and either Command/Control is pressed.
             electron_1.app.quit();
         });

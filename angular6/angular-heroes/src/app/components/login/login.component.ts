@@ -5,6 +5,7 @@ import {
   FormGroup,
   Validators
 } from '@angular/forms';
+import less from 'less';
 
 @Component({
   selector: 'app-login',
@@ -31,5 +32,11 @@ export class LoginComponent implements OnInit {
       password: [ null, [ Validators.required ] ],
       remember: [ true ]
     });
+
+    console.log('less', less);
+    less.modifyVars({
+      '@primary-color': '#f5222d',
+    });
+    console.log('ok');
   }
 }

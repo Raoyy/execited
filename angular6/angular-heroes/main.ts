@@ -1,6 +1,7 @@
 import { app, globalShortcut, BrowserWindow, screen, ipcMain } from 'electron';
 import * as path from 'path';
 import * as url from 'url';
+const fs = require('fs');
 
 let win, serve;
 const args = process.argv.slice(1);
@@ -22,8 +23,8 @@ function createWindow() {
     height: size.height / 5 * 4,
     show: false,
     backgroundColor: '#2e2c29',
-//    frame: false,             // 设置无框窗口
-//    transparent: true           // 设置窗口透明
+    frame: false,             // 设置无框窗口
+    transparent: true           // 设置窗口透明
   });
 
   win.once('ready-to-show', () => {
@@ -54,6 +55,26 @@ function createWindow() {
   });
 
 }
+
+ipcMain.on('file', (e, pathObj) => {          // 进程之间的通信
+  const appPath = app.getAppPath();
+  console.log('appPath', appPath);
+  app.getFileIcon(pathObj, {size: 'large'}, function (err, icon) {
+
+    console.log('pathObj', pathObj);
+
+    // if (!err) callback && callback(icon.toPNG());
+    const imgData = icon.toJPEG(1); // Buffer编码
+
+    // // 将编码的buffer对象生成二进制保存成图片
+    // tslint:disable-next-line:no-shadowed-variable
+    fs.writeFile(path.resolve('E:/' + 'img23333' + '.jpg'), imgData, function(err) {
+      if (err) {
+        return console.log(err);
+      }
+    });
+  });
+});
 
 ipcMain.on('master-close', (e, msg) => {          // 进程之间的通信
   // 关闭master进程
@@ -89,7 +110,7 @@ try {
   app.on('ready', () => {
     createWindow();
     // Register a 'CommandOrControl+Y' shortcut listener.
-    globalShortcut.register('CommandOrControl+Y', () => {              // 注册快捷键
+    globalShortcut.register('CommandOrControl+Q', () => {              // 注册快捷键
       // Do stuff when Y and either Command/Control is pressed.
       app.quit();
     });
