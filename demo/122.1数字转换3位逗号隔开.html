@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<script src="js/jquery-2.1.4.min.js"></script>
+	</head>
+	<body>
+		
+	</body>
+	<script type="text/javascript">
+		let num = 123;
+
+		function turn(numb) {
+			let numStr = numb + '';
+			let numArr = numStr.split('');
+			let length = numArr.length;
+			let pointNum = Math.ceil(length / 3) - 1;
+			
+			for (let i = 0; i < pointNum; i++) {
+				length = length - 3;
+				numArr.splice(length, 0, ',');
+			}
+			return numArr.join('');
+		}
+		console.log(turn(num));
+	</script>
+</html>
