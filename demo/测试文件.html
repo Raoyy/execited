@@ -7,17 +7,13 @@
 		<script src="js/jquery-2.1.4.min.js"></script>
 	</head>
 	<body>
-		
+		<textarea name="23333" id="textarea" cols="30" rows="10" onfocus="get()" onblur="get()">sdsdasdasdasfdgwrgdsgsadgsd</textarea>
+		<button onclick="get()">click</button>
 	</body>
 	<script type="text/javascript">
-		const arr = [1, 2, 3, 4, 5, 6];
-
-		function filterit(ar) {
-			let array = new Array(...ar);
-			array.splice(2, 1);
-			return array;
+		const textarea = document.getElementById('textarea');
+		function get() {
+			console.log(document.activeElement);
 		}
-		console.log(filterit(arr));
-		console.log(arr);
 	</script>
 </html>
