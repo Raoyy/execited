@@ -9,7 +9,6 @@ import { HeroDetailComponent } from './hero-detail/hero-detail.component';
 import { HttpTestComponent } from './http-test/http-test.component';
 import { FormsComponent } from './forms/forms.component';
 import { LoginComponent } from './login/login.component';
-import { FilePathComponent } from './file-path/file-path.component';
 
 const componentList = [
   ChildComponent,
@@ -23,7 +22,6 @@ const componentList = [
   HttpTestComponent,
   FormsComponent,
   LoginComponent,
-  FilePathComponent
 ]
 
 export default componentList;

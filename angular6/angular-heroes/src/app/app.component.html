@@ -2,16 +2,14 @@
 <div id="header" style="text-align:center">
   <h1>
     欢迎进入项目{{ title }}!
-    <nz-button-group style="float: right;">
-      <button nz-button (click)="reload()"><i nz-icon type="sync" theme="outline"></i></button>
-      <button nz-button nzType="default" (click)="minimize()">minimize</button>
-      <button nz-button nzType="default" (click)="maximize()">maximize</button>
-      <button nz-button nzType="danger" (click)="close()">close</button>
-    </nz-button-group>
+    <button nz-button (click)="reload()"><i nz-icon type="sync" theme="outline"></i></button>
+    <button nz-button nzType="default" (click)="minimize()">minimize</button>
+    <button nz-button nzType="default" (click)="maximize()">maximize</button>
+    <button nz-button nzType="danger" (click)="close()">close</button>
   </h1>
   <div class="author">作者：{{author}}  {{ timeNow | timeFormater }}</div>
   <input type="button" value="open other page" (click)="open()">
-  <input type="button" value="see hook" (click)="toRHook()">  
+  <input type="button" value="see hook" (click)="toRHook()">
   <div class="routeBar">
     <a class="bar" routerLink="heroes" routerLinkActive="active">heroes</a>
     <a class="bar" routerLink="router1" routerLinkActive="active">router1</a>

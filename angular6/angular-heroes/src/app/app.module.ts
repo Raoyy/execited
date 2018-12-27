@@ -13,8 +13,6 @@ import { RoutingModule } from './routes.module';             // 路由模块
 
 import { HightlightDirective } from './directive/hightlight.directive';           // 自定义属性指令，根模块中使用则在此处引入，若在子模块中使用则在对应的模块引入
 
-
-import { NgZorroAntdModule, NZ_I18N, zh_CN } from 'ng-zorro-antd';          // NgZorro UI框架引入
 import { registerLocaleData } from '@angular/common';
 import zh from '@angular/common/locales/zh';
 registerLocaleData(zh);
@@ -33,9 +31,8 @@ registerLocaleData(zh);
     RoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    NgZorroAntdModule,
   ],
-  providers: [{ provide: NZ_I18N, useValue: zh_CN }],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
