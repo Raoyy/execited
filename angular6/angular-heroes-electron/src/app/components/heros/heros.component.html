@@ -1,0 +1,10 @@
+<div id="mainBox">
+  <input type="button" (click)="addHero()" value="add new heros">
+  <h2>龙之谷老四职有: </h2>
+  <div class="content">
+    <ul>
+      <app-child1-component *ngFor="let hero of heros; trackBy:setKey" [hero]="hero" (myEvent)="fatherFun($event)"></app-child1-component>
+    </ul>
+    <router-outlet [class.hero-route]="true"></router-outlet>
+  </div>
+</div>

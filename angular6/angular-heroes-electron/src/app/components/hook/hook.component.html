@@ -1,0 +1,14 @@
+<div id="hookWarp">
+  <div class="msgBox">
+    <input type="text" placeholder="name" #eleName (keyup)="keyup('name',eleName.value)">
+    <input type="text" placeholder="height" #eleHeight (keyup)="keyup('name',eleHeight.value)"> <br>
+    name:{{name}} <br>
+    height:{{height}} <br>
+    {{ timeNow | timeFormater }} <br>
+    <input type="text" placeholder="changeMsg" [(ngModel)]="changeMsg">  <br>
+  </div>
+  <ul class="logUl">
+    <li *ngFor="let item of logMsg">{{item}}</li>
+  </ul>
+</div>
+

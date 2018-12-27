@@ -1,0 +1,13 @@
+#mainBox{
+    .content{
+        display: flex;
+        ul{
+            border: 1px solid #ebebeb;
+            padding: 20px;
+            flex-basis : 1;
+        }
+        .hero-route{
+            flex-basis: 5;
+        }
+    }
+}

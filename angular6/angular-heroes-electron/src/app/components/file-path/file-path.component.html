@@ -1,0 +1,7 @@
+<p>
+  file-path works!
+</p>
+<div id="file-drag" (drop)="dragIn($event)" (dragover)="dragover($event)">
+  {{path ? path : '拖拽至此处可获取文件真实路径'}}
+</div>
+<input type="file" (change)="file($event)">

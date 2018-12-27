@@ -1,0 +1,28 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div id="header" style="text-align:center">
+  <h1>
+    欢迎进入项目{{ title }}!
+    <button (click)="reload()">reload</button>
+    <button (click)="minimize()">minimize</button>
+    <button (click)="maximize()">maximize</button>
+    <button (click)="close()">close</button>
+  </h1>
+  <div class="author">作者：{{author}}  {{ timeNow | timeFormater }}</div>
+  <input type="button" value="open other page" (click)="open()">
+  <input type="button" value="see hook" (click)="toRHook()">
+  <div class="routeBar">
+    <a class="bar" routerLink="heroes" routerLinkActive="active">heroes</a>
+    <a class="bar" routerLink="router1" routerLinkActive="active">router1</a>
+    <a class="bar" routerLink="router2/3/moon" routerLinkActive="active">router2</a>
+    <a class="bar" routerLink="hook" routerLinkActive="active">hook</a>
+    <a class="bar" routerLink="highlight" routerLinkActive="active">highlight</a>
+    <a class="bar" routerLink="http-test" routerLinkActive="active">http-test</a>
+    <a class="bar" routerLink="file-path" routerLinkActive="active">file-path</a>
+    <a class="bar" routerLink="login" routerLinkActive="active">login</a>
+    <a class="bar" routerLink="404" routerLinkActive="active">404Page</a>
+  </div>
+  <div [@routeAnimation]="getAnimationData(routerOutlet)">
+      <router-outlet #routerOutlet="outlet"></router-outlet>
+  </div>
+</div>
+
