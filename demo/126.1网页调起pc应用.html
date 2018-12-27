@@ -7,33 +7,40 @@
 	<title>Document</title>
 </head>
 <body>
-	<a href="JihuApp:id=2333333&name=ryy3">打开记乎</a> <br />
+	<a href="JihuApp:id=2333333&name=ryy">打开记乎</a> <br />
 	注册表内容： <br />
 	"C:\Users\Administrator\AppData\Local\Programs\recall-editor\记乎app.exe" "%1" <br />
+	
+	<input type="text" name="" id="inputele" value="" />
 </body>
 <script>
-	// 1、主线程中写入注册表
-	if (!app.isDefaultProtocolClient('JihuApp')) {
-		app.setAsDefaultProtocolClient('JihuApp', process.execPath);
-	}
-	// 2、页面中调起
-	// <a href="JihuApp:id=2333333&name=ryy">打开记乎</a>
-
-	// 3、主线程中传递参数
-	win.webContents.on('did-finish-load', function() {
-		win.webContents.send('launchInfo', {'argv': process.argv});
+// 	// 1、主线程中写入注册表
+// 	if (!app.isDefaultProtocolClient('JihuApp')) {
+// 		app.setAsDefaultProtocolClient('JihuApp', process.execPath);
+// 	}
+// 	// 2、页面中调起
+// 	// <a href="JihuApp:id=2333333&name=ryy">打开记乎</a>
+// 
+// 	// 3、主线程中传递参数
+// 	win.webContents.on('did-finish-load', function() {
+// 		win.webContents.send('launchInfo', {'argv': process.argv});
+// 	});
+// 
+// 	// 4、支线程中接收参数
+// 	ipcRenderer.on('launchInfo', function(event, message) {
+// 	  console.log(message);
+// 	//   message:
+// 	//   {
+// 	// 	argv: [
+// 	// 		'C:\Users\Administrator\AppData\Local\Programs\recall-editor\记乎app.exe',
+// 	// 		'jihuapp:id=2333333&name=ryy',
+// 	// 	]
+// 	//   }
+//     });
+	
+	document.getElementById('inputele').addEventListener('input', (ele) => {
+		console.log(ele.target.value);
+		console.log('ok');
 	});
-
-	// 4、支线程中接收参数
-	ipcRenderer.on('launchInfo', function(event, message) {
-	  console.log(message);
-	//   message:
-	//   {
-	// 	argv: [
-	// 		'C:\Users\Administrator\AppData\Local\Programs\recall-editor\记乎app.exe',
-	// 		'jihuapp:id=2333333&name=ryy',
-	// 	]
-	//   }
-    });
 </script>
 </html>

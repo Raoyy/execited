@@ -3,7 +3,6 @@
 	<head>
 		<meta charset="UTF-8">
 		<title></title>
-		<script src="js/jquery-2.1.4.min.js"></script>
 	</head>
 	<body>
 		<p id="p">hahahhah </p>
@@ -21,12 +20,13 @@
 		}
 		
 		function copy2(){
-			var txt = $("#text").value;
-			var p = $("#p").text();
+			var txt = document.getElementById('text').value;
+			console.log(txt);
 			if(window.clipboardData){
 				console.log("ie");
 				window.clipboardData.setData("Text",txt);   //ie
 			}else{
+				console.log('2321231');
 				window.copy(txt);
 			}
 		}
