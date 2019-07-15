@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>ckplayer</title>
+</head>
+<body>
+</body>
+</html>
+<script type="text/javascript">
+	const dotw = [/Sun/gi, /Mon/gi, /Tue/gi, /Wed/gi, /Thu/gi, /Fri/gi, /Sat/gi];
+	
+	function getAllDays() {
+		const date = new Date(2019, 6, 1);
+		const days = [];
+		while (date.getMonth() + 1 === 7) {
+			const dayToPush = new Date(date);
+			days.push(dayToPush);
+			date.setDate(date.getDate() + 1);
+		}
+		return days;
+	}
+	
+	const allDays = getAllDays();
+	
+	for (let i = 0; i < allDays.length; i++) {
+		allDays[i] = allDays[i].toString();
+    }
+
+    let stopNow = false, counter = 0;
+
+    for (let i = 0; i < dotw.length; i++) {
+		if (allDays[0].match(dotw[i])) {
+			stopNow = true;
+		} else {
+			if (!stopNow) {
+				counter += 1;
+			}
+		}
+    }
+
+	
+    for (let i = 0; i < counter; i++) {
+		allDays.unshift('');
+    }
+	
+	for (let i = 0; i < allDays.length; i++) {
+		if (allDays[i]) {
+			const dayOTW = allDays[i].split(' ')[2];
+			const dayName = dayOTW.charAt(0) === '0' ? dayOTW.replace(/0/gi, '') : dayOTW;
+		
+			allDays[i] = dayName;
+		}
+    }
+	console.log(allDays);
+</script>
