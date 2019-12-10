@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<style type="text/css">
+			
+			.container{
+				perspective: 1000;
+				-webkit-perspective: 1000;
+				transform-style: preserve-3d;
+				border: 1px solid black;
+			}
+			.container, .front, .back{
+				width:380px;
+				height:270px;
+			}
+			.flip{
+				position: relative;
+				transition: 2s;
+				transform-style: preserve-3d;
+			}
+			.front,.back{
+				position:absolute;
+				top: 0px;
+				left: 0px;
+				backface-visibility: hidden;
+			}
+			.front{
+				z-index: 2;
+			}
+			.back {
+				transform: rotateY(-180deg);
+			}
+			.container:hover .flip{
+				transform: rotateY(180deg);
+			}
+			img {
+				width: 100%;
+				height: 100%;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<div class="flip">
+				<div class="front">
+					<img src="img/30c1e84c-f7db-407b-8dbe-479269558c9d.jpg" alt="">
+				</div>
+				<div class="back">
+					<img src="img/3798c2a7-ed4a-430b-8662-9c5d27d38db0.jpg" alt="">
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

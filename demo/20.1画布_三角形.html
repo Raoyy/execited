@@ -17,5 +17,18 @@
 		c.lineTo(100,0);
 		c.strokeStyle='#ff0000';
      	c.stroke();
+		
+		// c.moveTo(3, 3);
+		// c.lineTo(3, 50);
+		// c.lineTo(50, 50);
+		// c.lineTo(50, 3);
+		// c.lineTo(3, 3);
+		c.fillStyle = '#9f9';
+		c.strokeRect(3, 3, 50, 50);
+		
+		setTimeout(() => {
+			c.fillStyle = '#9f9';
+			c.fillRect(50, 50, 20, 20);
+		}, 4000)
 	</script>
 </html>
