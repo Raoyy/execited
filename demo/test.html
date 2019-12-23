@@ -1,29 +1,50 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta charset="utf-8">
 		<title></title>
-		<script src="js/jQuery-3.2.1.js"></script>
 	</head>
-	<style type="text/css">
-		@font-face {
-		    font-family: "pingfangsc regular";
-		    src: url("./fonts/PingFang Medium_downcc.otf");
-		}
-		html {
-			font-family: "楷体";
-		}
-		p {
-			font-family: "pingfangsc regular";
-		}
-	</style>
 	<body>
-		<p>
-			2323232
-			<p>12121121</p>
-			<p>sdasdkldad按时大大撒所多所</p>
-			<div>sdasdkldad按时大大撒所多所</div>
-		</p>
 	</body>
+	<script type="text/javascript">
+		let str111 = 'sdasda <img class="image" src="2222" alt="11111alt">';
+			
+		
+		filterImage(str111)
+		
+		function filterImage(str) {
+			str = str.replace('\\', '\/');
+			console.log(str);
+			const regImage = /<img.*?(?:>|\/>)/gi;
+			const regSrc = /\<img .*src=\"(.*)\"\s*.*\/*\>/;
+			const imgArr = str.match(regImage);
+			console.log(1, imgArr);
+			if (imgArr) {
+			  for (const img of imgArr) {
+				const srcObj = img.match(regSrc);
+				console.log(srcObj);
+				if (srcObj) {
+				  console.log(srcObj[1]);
+				}
+			  }
+			}
+			return str;
+		}
+		filter2(str111);
+		function filter2(str) {
+			let imgReg = /<img.*?(?:>|\/>)/gi //匹配图片中的img标签
+			let srcReg = /src=[\'\"]?([^\'\"]*)[\'\"]?/i // 匹配图片中的src
+			let arr = str.match(imgReg)  //筛选出所有的img
+			let srcArr = []
+			console.log(2, arr);
+			if (arr) {
+				for (let i = 0; i < arr.length; i++) {
+					let src = arr[i].match(srcReg)
+					// 获取图片地址
+					srcArr.push(src[1])
+				}
+			}
+			console.log(srcArr);
+		}
+	</script>
 </html>

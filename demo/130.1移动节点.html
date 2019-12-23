@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		#top-box {
+			width: 400px;
+			height: 400px;
+			position: relative;
+			border: 1px solid red;
+		}
+		#bottom-box {
+			width: 400px;
+			height: 400px;
+			position: relative;
+			border: 1px solid blue;
+		}
+		.cell {
+			width: 30px;
+			height: 30px;
+			background: black;
+			transition: 1s;
+		}
+	</style>
+	<body>
+		<div id="top-box">
+		</div>
+		<div id="bottom-box">
+			<div class="cell"></div>
+		</div>
+		<button type="button" onclick="move()">click</button>
+	</body>
+	<script type="text/javascript">
+		function move() {
+			const cell = document.getElementsByClassName('cell')[0];
+			console.log(cell);
+			
+			const topBox = document.getElementById('top-box');
+			const bottomBox = document.getElementById('bottom-box');
+			topBox.insertBefore(cell, topBox.childNodes[0]);
+		}
+	</script>
+</html>
