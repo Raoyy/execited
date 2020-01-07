@@ -7,44 +7,7 @@
 	<body>
 	</body>
 	<script type="text/javascript">
-		let str111 = 'sdasda <img class="image" src="2222" alt="11111alt">';
-			
-		
-		filterImage(str111)
-		
-		function filterImage(str) {
-			str = str.replace('\\', '\/');
-			console.log(str);
-			const regImage = /<img.*?(?:>|\/>)/gi;
-			const regSrc = /\<img .*src=\"(.*)\"\s*.*\/*\>/;
-			const imgArr = str.match(regImage);
-			console.log(1, imgArr);
-			if (imgArr) {
-			  for (const img of imgArr) {
-				const srcObj = img.match(regSrc);
-				console.log(srcObj);
-				if (srcObj) {
-				  console.log(srcObj[1]);
-				}
-			  }
-			}
-			return str;
-		}
-		filter2(str111);
-		function filter2(str) {
-			let imgReg = /<img.*?(?:>|\/>)/gi //匹配图片中的img标签
-			let srcReg = /src=[\'\"]?([^\'\"]*)[\'\"]?/i // 匹配图片中的src
-			let arr = str.match(imgReg)  //筛选出所有的img
-			let srcArr = []
-			console.log(2, arr);
-			if (arr) {
-				for (let i = 0; i < arr.length; i++) {
-					let src = arr[i].match(srcReg)
-					// 获取图片地址
-					srcArr.push(src[1])
-				}
-			}
-			console.log(srcArr);
-		}
+		const time = new Date().getTime();
+		console.log(time);
 	</script>
 </html>
