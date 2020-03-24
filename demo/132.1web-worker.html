@@ -1,18 +1,637 @@
 <!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="utf-8">
-		<title></title>
-	</head>
-	<body>
-	</body>
-	<script type="text/javascript">
-		var myWorker = new Worker('./js/web-worker.js');
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>记乎APP</title>
+    <link rel="stylesheet" type="text/css" href="https://geefoo.cn/css/bootstrap-3.3.7.css"/>
+    <style>
+        html, body {
+            height: 100%;
+            width: 100%;
+			font-size: 62.5%;
+			background: #F5F5F5;
+			color: #333333;
+        }
+		p {
+			margin: 0;
+		}
+        button {
+            -webkit-touch-callout:none;  /*系统默认菜单被禁用*/
+            -webkit-user-select:none; /*webkit浏览器*/
+            -khtml-user-select:none; /*早期浏览器*/
+            -moz-user-select:none;/*火狐*/
+            -ms-user-select:none; /*IE10*/
+            user-select:none;
+        }
+        button:active {
+            opacity: 0.8;
+        }
+		.overflow-text {
+		  overflow: hidden;
+		  text-overflow: ellipsis;
+		  white-space: nowrap;
+		}
+		.clear:after {
+			content: '';
+			display: block;
+			clear: both;
+		}
 		
-		myWorker.postMessage(23333);
+		/* 悬浮下载提示 */
+		.fix-tip {
+			display: flex;
+			justify-content: space-between;
+			position: fixed;
+			z-index: 999;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 5rem;
+			padding: 1rem 1.5rem;
+			background: #FFFFFF;
+			box-shadow: 0 0 3px #ebebeb;
+		}
+		.fix-tip > div {
+			display: flex;
+		}
+		.fix-tip img {
+			width: 2rem;
+			height: 2rem;
+			border-radius: .3rem;
+			margin-right: .5rem;
+			margin-top: .5rem;
+		}
+		.fix-tip p {
+			font-size: 1.4rem;
+			line-height: 1.6rem;
+			color: #333333;
+			align-self: center;
+		}
+		.fix-tip button {
+			border: none;
+			height: 3rem;
+			padding: 0 1.5rem;
+			border-radius: 1.5rem;
+			font-size: 1.4rem;
+			color: #FFFFFF;
+			letter-spacing: .1rem;
+			background: #25bea2;
+		}
 		
-		myWorker.onmessage = function (oEvent) {
-		  console.log("Worker said : " + oEvent.data);
-		};
-	</script>
+		/* 提示遮罩层 */
+		.tips-cover {
+			position: absolute;
+			padding: 32px 15px 0px;
+			width: 100%;
+			height: 100%;
+			left: 0px;
+			top: 0px;
+			background: rgba(0, 0, 0, .8);
+			z-index: 9999;
+			text-align: right;
+			display: none;
+		}
+		.tips-cover img.tips-pointer {
+			width: auto;
+			height: 88px;
+		}
+		.tips-cover .tips-warp {
+			text-align: center;
+		}
+		.tips-cover .tips-box {
+			display: inline-block;
+		}
+		.tips-cover .tips-item {
+			line-height: 40px;
+			margin: 0px;
+			font-size: 17px;
+			color: #FFFFFF;
+			display: flex;
+		}
+		.tips-cover .tips-item > span {
+			align-self: center;
+		}
+		.tips-cover .tips-index {
+			width: 20px;
+			line-height: 20px;
+			text-align: center;
+			border-radius: 50%;
+			background: #5cbba3;
+			margin-right: 5px;
+			font-size: 15px;
+		}
+		.tips-cover .tips-bg {
+			border-radius: 2px;
+			height: 25px;
+			margin: 0 5px;
+			color: #000000;
+		}
+		.tips-cover .tips-points {
+            width: 44px;
+            background: #FFFFFF url(https://geefoo.cn/images/share/points.png) no-repeat center / 23px auto;
+        }
+		.tips-cover .tips-phone {
+			background-color: #FFFFFF;
+			background-repeat: no-repeat;
+			background-position: 7px center;
+			background-size: 16px auto;
+			padding: 4px 7px 4px 25px;
+			line-height: 18px;
+			display: none;
+		}
+		.tips-cover .tips-android {
+            background-image: url(https://geefoo.cn/images/share/browser.png);
+        }
+        .tips-cover .tips-ios {
+            background-image: url(https://geefoo.cn/images/share/safari.png);
+        }
+		/* 底部立即学习 */
+		.footer {
+			position: fixed;
+			width: 100%;
+			height: 5rem;
+			bottom: 0;
+			left: 0;
+		}
+		.footer button {
+			border: none;
+			background: #25bea2;
+			width: 100%;
+			height: 100%;
+			font-size: 1.8rem;
+			color: #FFFFFF;
+		}
+		
+		/* 内容区 */
+		.content {
+			padding-top: 5rem;
+			padding-bottom: 5rem;
+		}
+		.content img.banner {
+			display: block;
+			width: 100%;
+		}
+		.content .top-info {
+			background: #FFFFFF;
+			padding: 1.5rem;
+			box-shadow: 0 0 .3rem #ebebeb;
+		}
+		.content .submit-box {
+			background: #FFFFFF;
+			padding: 0 1.5rem;
+		}
+		.content .submit-box .submit-content {
+			padding: 2.5rem 4.2rem;
+			background: #f5f5f5;
+			border-radius: .4rem;
+		}
+		.content .submit-box .submit-content input {
+			display: block;
+			margin: 0;
+			padding: 0;
+			outline: none;
+			border-radius: .3rem;
+			width: 100%;
+			height: 3.8rem;
+			border: none;
+		}
+		.content .submit-box .submit-content #phone {
+			background: #FFFFFF;
+			color: #999999;
+			margin-bottom: 1rem;
+			text-align: center;
+			font-size: 1.4rem;
+		}
+		.content .submit-box .submit-content #submit {
+			background: #25bea2;
+			color: #ffffff;
+			text-align: center;
+			font-size: 1.4rem;
+		}
+		.content .pkg-name {
+			display: flex;
+		}
+		.content .pkg-name .name {
+			max-width: 100%;
+			font-size: 1.8rem;
+			line-height: 2.2rem;
+			font-weight: 600;
+		}
+		.content .pkg-name .tag {
+			align-self: center;
+			min-width: 3rem;
+			color: #999999;
+			font-size: 1.2rem;
+			line-height: 2rem;
+			height: 2rem;
+			margin-left: 1rem;
+			background: #e9e9e9;
+			padding: 0 .5rem;
+			border-radius: 3px;
+		}
+		.content .count {
+			margin-top: .5rem;
+		}
+		.content .count span {
+			color: #666666;
+			font-size: 1.3rem;
+			margin-right: 1.2rem;
+		}
+
+		.content .bottom-info {
+			background: #FFFFFF;
+			padding: .3rem 0;
+		}
+		.content .bottom-info pre {
+			border: none;
+			background: transparent;
+			margin: 0;
+			padding: 0;
+			white-space: pre-wrap;
+			word-break: break-all;
+			font-size: 1.5rem;
+			line-height: 2.3rem;
+			color: #666666;
+		}
+		.content .bottom-info .title {
+			font-size: 1.8rem;
+			line-height: 5rem;
+			font-weight: 600;
+			margin-top: .8rem;
+			padding-left: 1.5rem;
+			position: relative;
+		}
+		.content .bottom-info .title.catalog {
+			border-top: 1px solid #dadada;
+			border-bottom: 1px solid #dadada;
+		}
+		.content .bottom-info .title::before {
+			content: '';
+			display: block;
+			position: absolute;
+			left: 0px;
+			top: 50%;
+			transform: translateY(-50%);
+			width: 4px;
+			height: 18px;
+			background: #5cbba3;
+		}
+		.content .bottom-info .catalog-warp {
+			border-bottom: 1px solid #dadada;
+		}
+		.content .bottom-info .catalog-warp .catalog-item {
+			margin-left: 1.5rem;
+			line-height: 4.4rem;
+			font-size: 1.6rem;
+			border-bottom: 1px solid #dadada;
+			display: flex;
+			justify-content: space-between;
+			padding-right: 1.5rem;
+		}
+		.content .bottom-info .catalog-warp .catalog-item:last-child {
+			border: none;
+		}
+		.content .bottom-info .catalog-warp .catalog-item > span {
+			display: flex;
+		}
+		.content .bottom-info .catalog-warp .catalog-item > span:last-child {
+			color: #666666;
+		}
+		.content .bottom-info .catalog-warp .catalog-item .icon-video {
+			margin-left: .5rem;
+			width: 1.5rem;
+			align-self: center;
+		}
+		.content .bottom-info .description-warp {
+			padding-left: 1.5rem;
+		}
+		.content .conment-item {
+			margin-bottom: 1rem;
+			padding-left: 1.5rem;
+			display: flex;
+		}
+		.content .conment-item .avatar {
+			width: 4.4rem;
+			height: 4.4rem;
+			border-radius: 50%;
+			overflow: hidden;
+		}
+		.content .conment-item .avatar img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+		.content .conment-item .right-box {
+			width: calc(100% - 5.4rem);
+			margin-left: 1rem;
+		}
+		.content .conment-item .top-box {
+			display: flex;
+			justify-content: space-between;
+			margin-bottom: .5rem;
+			padding-top: .8rem;
+			padding-right: 1.5rem;
+		}
+		.content .conment-item .user-name {
+			font-size: 1.5rem;
+		}
+		.content .conment-item .star-warp {
+			display: flex;
+		}
+		.content .conment-item .star-warp .star {
+			align-self: center;
+			width: 1.5rem;
+			height: 1.5rem;
+		}
+		.content .conment-item .star-warp span {
+			font-size: 1.2rem;
+			line-height: 1.5rem;
+			align-self: center;
+			color: #25bea2;
+		}
+		.content .conment-item .coment-content {
+			font-size: 1.4rem;
+			color: #666666;
+			padding-right: 1.5rem;
+		}
+		.content .conment-item .time {
+			color: #999999;
+			font-size: 1.2rem;
+			margin-top: .3rem;
+		}
+		.content .empty-box {
+			padding-bottom: 2rem;
+			text-align: center;
+		}
+		.content .empty-box img {
+			width: 10rem;
+		}
+		.content .empty-box p {
+			font-size: 1.4rem;
+			color: #666666;
+			margin-top: .5rem;
+		}
+    </style>
+    <script src="https://geefoo.cn/js/jquery.js"></script>
+    <script>
+        $(function() {
+            var appLink = "jihuapp://cardstore/pkg/258";
+            var androidClient = "https://jihu-public-images.oss-cn-beijing.aliyuncs.com/app_release/2.1.5/jihu-2.1.5.apk"; // Android 安装链接
+            var iosClient = "https://itunes.apple.com/cn/app/记乎/id1460634473";
+
+            var u = navigator.userAgent;
+            var isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);              // ios终端
+            var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1;  // android终端
+            var inWeixin = u.toLowerCase().indexOf('micromessenger') != -1;      // 微信
+
+            var baseUrl = "https://geefoo.cn";
+			var apiBaseUrl = baseUrl + '/api-v2';
+			var webBaseUrl = baseUrl + '/app';
+            var href = 'https://geefoo.cn/app/pkg/258';
+            var regPkgId = /pkg\/(\d*)/;
+            var pkgId = href.match(regPkgId)[1];
+
+			var linkData = getWindowUrlData(href);
+
+			// 若没有stk则不展示卡包领取
+			if (!(linkData && linkData.stk)) {
+				$('.submit-box').hide();
+			}
+
+            $('.download-btn').on('click', function() {
+                if (inWeixin) {
+                    $('.tips-cover').show();
+                    if (isIOS) {
+                        $('.tips-ios').show();
+                    } else {
+                        $('.tips-android').show();
+                    }
+                } else {
+                    window.location = appLink;
+                    var timer = setTimeout(function() {
+                        if ( isIOS ) {
+                            window.location = iosClient; //ios
+                        } else if ( isAndroid ) {
+                            window.location = androidClient; //android
+                        }
+                    }, 3000);
+					setTimeout(function() {
+						clearTimeout(timer);
+					}, 3001);
+                }
+            });
+            $('.tips-cover').on('click', function() {
+                $(this).hide();
+            });
+			$('#submit').on('click', function() {
+				var url = webBaseUrl + '/invite-submit-mobile';
+				var phone = $('#phone').val();
+				var stk = linkData.stk;
+				if (!phone) {
+					alert('请输入你的手机号！');
+				} else {
+					request(url, {
+						mobile: phone,
+						stk: stk,
+						ajax: true,
+						_token: 'gnXwNXepCn2arKvhoI9w6XpFFvGgKeYMgT97Egqs'
+					}, function() {
+						alert('领取成功！');
+					}, 'post');
+				}
+			});
+
+            getPkgInfo();
+            getComments();
+
+            // 获取卡包信息
+            function getPkgInfo() {
+                var url = apiBaseUrl + '/card_store/pkgs/'+ pkgId;
+                request(url, null, function(data) {
+                    var tags = data.category ? '<span class="tag">' + data.category.title + '</span>' : '';
+                    var topInfo = '<div class="pkg-name">'
+                        +'<span class="name overflow-text">' + data.name + '</span>'
+                        + tags
+                        +'</div>'
+                        +'<div class="count">'
+                        +'<span>' + data.release.cards_count + ' 张卡牌</span>'
+                        +'<span>' + data.users_count + ' 人正在学习</span>'
+                        +'</div>';
+                    var banner = '<img class="banner" src="' + data.banner_url + '" >';
+                    var catalog = '';
+					if (data.release && data.release.categories && data.release.categories.length) {
+						catalog = data.release.categories.map(function(category) {
+							var videoIcon = category.video ? '<img class="icon-video" src="https://geefoo.cn/images/share/icon-video.png">' : '';
+							return '<div class="catalog-item">'
+							+ '<span>' + category.name + videoIcon + '</span>'
+							+ '<span>' + category.cards_count + '张</span>'
+							+ '</div>';
+						});
+					}
+                    // 渲染banner图
+                    $('.banner-warp').html(banner);
+                    // 渲染顶部信息
+                    $('.top-info').html(topInfo);
+                    // 渲染卡包介绍
+                    $('pre').html(data.description);
+                    // 渲染卡包目录
+					if (catalog) {
+						$('.catalog-warp').html(catalog.join(''));
+					} else {
+						$('.catalog').hide();
+						$('.catalog-warp').hide();
+					}
+                });
+            }
+
+            // 获取评论
+            function getComments() {
+                var url = apiBaseUrl + '/card_store/pkgs/' + pkgId + '/comments';
+                request(url, {
+                    page: 1,
+                    page_size: 5
+                }, function(data) {
+                    if (data.data && data.data.length) {
+                        var comments = data.data.map(function(comment) {
+                            return '<div class="conment-item">'
+                                +'<div class="avatar">'
+                                +'<img src="' + (comment.author.avatar_url || 'https://geefoo.cn/images/share/avatar.jpg') + '" >'
+                                +'</div>'
+                                +'<div class="right-box">'
+                                +'<div class="top-box">'
+                                +'<div class="user-name">' + comment.author.nickname + '</div>'
+                                +'<div class="star-warp">' + transformStart(comment.star) + '</div>'
+                                +'</div>'
+                                +'<div class="coment-content">'+ comment.content +'</div>'
+                                +'<div class="time">' + transformTime(comment.created_at * 1000) + '</div>'
+                                +'</div>'
+                                +'</div>';
+                        });
+                        $('.comment-warp').html(comments.join(''));
+                    }
+                });
+            }
+
+            /// 请求
+            function request(url, data, callBack, type) {
+                $.ajax(url,{
+                    data: data,
+                    dataType: 'json',
+                    type: type || 'get',
+                    timeout: 10000,
+                    success: function(data){
+                        callBack(data);
+                    },
+                    error: function(error) {
+                        if (error.responseJSON && error.responseJSON.message) {
+							alert(error.responseJSON.message);
+						}
+                    }
+                });
+            }
+
+            // 转换星级
+            function transformStart(star) {
+                var starNum = star;
+                var starHtml = '';
+                for (var i = 0; i < 5; i++) {
+                    var starType = (starNum > 0) ? 'https://geefoo.cn/images/share/star1.png' : 'https://geefoo.cn/images/share/star2.png';
+                    starHtml += '<img class="star" src="' + starType + '" >';
+                    starNum--;
+                }
+                return starHtml + '<span>' + star + '星</span>';
+            }
+
+            // 转换时间
+            function transformTime(timesec) {
+                var date = new Date(timesec);
+                var year = date.getFullYear();
+                var month = date.getMonth() + 1;
+                var day = date.getDate();
+                var hour = date.getHours();
+                var min = date.getMinutes();
+                return year + '/' + month + '/' + day + ' ' + hour + ':' + min;
+            }
+
+			// 获取链接中的参数
+			function getWindowUrlData(linkUrl) {
+				var dataStr = linkUrl.split('?')[1];
+				if (dataStr) {
+					var obj = {};
+					var dataArr = dataStr.split('&');
+					dataArr.forEach(function (str) {
+						var arr = str.split('=');
+						obj[arr[0]] = arr[1];
+					});
+					return obj;
+				} else {
+					return null;
+				}
+			}
+        });
+    </script>
+</head>
+<body>
+<!-- 遮罩 -->
+<div class="tips-cover">
+    <img class="tips-pointer" src="https://geefoo.cn/images/share/pointer.png" >
+    <div class="tips-warp">
+        <div class="tips-box">
+            <p class="tips-item">
+                <span class="tips-index">1</span>
+                <span>点击右上角</span>
+                <span class="tips-bg tips-points"></span>
+            </p>
+            <p class="tips-item">
+                <span class="tips-index">2</span>
+                <span>选择</span>
+                <span class="tips-bg tips-phone tips-android">在浏览器打开</span>
+                <span class="tips-bg tips-phone tips-ios">在Safari中打开</span>
+            </p>
+        </div>
+    </div>
+</div>
+
+<!-- 悬浮提示 -->
+<div class="fix-tip">
+    <div>
+        <img src="https://geefoo.cn/images/share/logo.png" >
+        <p>记乎，学霸利器</p>
+    </div>
+    <button class="download-btn" type="button">打开</button>
+</div>
+
+<!-- 内容区域 -->
+<div class="content">
+    <div class="banner-warp"></div>
+    <div class="top-info"></div>
+	<div class="submit-box">
+		<div class="submit-content">
+			<input id="phone" type="text" value="" placeholder="请输入手机号" />
+			<input id="submit" type="button" value="领取卡包" />
+		</div>
+	</div>
+    <div class="bottom-info">
+        <div class="title">卡包介绍</div>
+        <div class="description-warp"><pre></pre></div>
+        <div class="title catalog">卡包目录</div>
+        <div class="catalog-warp"></div>
+        <div class="title">卡包评论</div>
+        <div class="comment-warp">
+            <div class="empty-box">
+                <img src="https://geefoo.cn/images/share/EmptyList.png" >
+                <p>暂无评论</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="footer">
+    <button class="download-btn" type="button">立即学习</button>
+</div>
+</body>
+<script type="text/javascript" src="https://v1.cnzz.com/z_stat.php?id=1278221976&web_id=1278221976"></script>
 </html>
+
