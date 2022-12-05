@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		const exampleArr = [];
+		for (let i = 0; i < 100; i++) {
+			exampleArr.push(i);
+		}
+
+		console.log(JSON.parse(JSON.stringify(exampleArr)));
+
+		while (exampleArr.length) {
+			const itemArr = exampleArr.splice(0, 10);
+			console.log(itemArr);
+		}
+	</script>
+</html>
