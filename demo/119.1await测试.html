@@ -26,26 +26,46 @@
 		// console.log(2333);
 
 
-		async function test2() {
-			let num = 2000;
-			let timeOut = new Promise((resolve) => {
-				setTimeout(() => {
-					resolve(num + 1000);
-				}, 2000);
-			});
-			let num2 = await timeOut;
-			console.log('num2', num2);
+		// async function test2() {
+		// 	let num = 2000;
+		// 	let timeOut = new Promise((resolve) => {
+		// 		setTimeout(() => {
+		// 			resolve(num + 1000);
+		// 		}, 2000);
+		// 	});
+		// 	let num2 = await timeOut;
+		// 	console.log('num2', num2);
 			
-			let solveNum = new Promise((resolve, reject) => {
-				setTimeout(() => {
-					resolve(num + 2000);
-				}, 2000);
-			});
-			return await solveNum;
+		// 	let solveNum = new Promise((resolve, reject) => {
+		// 		setTimeout(() => {
+		// 			resolve(num + 2000);
+		// 		}, 2000);
+		// 	});
+		// 	return await solveNum;
+		// }
+		// test2().then((num) => {
+		// 	console.log(num);
+		// });
+		// console.log("ok");
+		
+		function timeAwait(time) {
+			return new Promise((resolve, reject) => {
+				try {
+					setTimeout(() => {
+						resolve();
+					}, time);
+				} catch (error) {
+					reject(error);
+				}
+			});							
 		}
-		test2().then((num) => {
-			console.log(num);
-		});
-		console.log("ok");
+		
+		async function test3() {
+			console.log('start');
+			await timeAwait(3000);
+			console.log('over');
+		}
+		
+		test3();
 	</script>
 </html>
