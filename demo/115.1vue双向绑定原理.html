@@ -9,14 +9,15 @@
 	</body>
 </html>
 <script type="text/javascript">
-	function pro(el,k){
+	function bind(ele,k){
 		var obj = {}, value = "";
-		el.addEventListener("keyup",function(e){
+
+		ele.addEventListener("keyup",function(e){
 			obj[k] = value = e.target.value;
 		});
 		Object.defineProperty(obj, k, {
 		  	set: function (v) {
-		    	el.value = value = v;
+		    	ele.value = value = v;
 		  	},
 		  	get: function () {
 		    	return value;
@@ -24,8 +25,10 @@
 		})
 		return obj;
 	}
+	
+
 	var el = document.getElementById("test");
-	var obj1 = pro(el,"name");
+	var obj1 = bind(el,"name");
 	obj1.name = "2333333";
 	
 	setTimeout(function(){
