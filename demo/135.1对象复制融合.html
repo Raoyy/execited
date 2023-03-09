@@ -1,0 +1,17 @@
+<script>
+    const data1 = {
+        key1: 1,
+        key2: 2,
+    };
+
+    const data2 = Object.assign({
+        key2: 4,
+        key3: 3
+    }, data1);
+
+    data2.key1 = 3;
+
+    console.log(data1);
+
+    console.log(data2);
+</script>
