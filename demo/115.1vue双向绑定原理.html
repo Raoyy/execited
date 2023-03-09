@@ -18,8 +18,11 @@
 		Object.defineProperty(obj, k, {
 		  	set: function (v) {
 		    	ele.value = value = v;
+
+				console.log('has change');
 		  	},
 		  	get: function () {
+				console.log('get')
 		    	return value;
 		  	}
 		})
@@ -30,9 +33,15 @@
 	var el = document.getElementById("test");
 	var obj1 = bind(el,"name");
 	obj1.name = "2333333";
+
+	obj1.other = {
+		mobile: 18696649585,
+		address: 'hcl'
+	};
 	
 	setTimeout(function(){
 		obj1.name = "555555555555";
+		// obj1.other.address = '海昌路';    // 无法触发Object.defineProperty数据监听
 		console.log(obj1.name);
-	},5000);
+	},2000);
 </script>
