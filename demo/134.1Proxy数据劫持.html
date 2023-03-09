@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<script>
+    function reactive(obj) {
+        const handler = {
+            get(target, prop, receiver) {
+                track(target, prop);
+                const value = Reflect.get(...arguments);
+
+                if ((typeof value).toLocaleLowerCase() === 'object') {
+                    return reactive(value)
+                } else {
+                    return value
+                }
+            },
+            set(target, key, value, receiver) {
+                trigger(target, key, value);
+                return Reflect.set(...arguments);
+            },
+        };
+        return new Proxy(obj, handler)
+    }
+    function track(data, key) {
+        console.log("sue get", data, key);
+    }
+    function trigger(data, key, value) {
+        console.log("sue set", key, ':', value);
+    }
+    const dinner = {
+        name: 'haochi1'
+    }
+    const proxy = reactive(dinner)
+    proxy.name = 'haochi2'
+    proxy.other = {
+        price: 100
+    }
+    proxy.other.price = 200
+</script>
