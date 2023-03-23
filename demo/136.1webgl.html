@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<canvas id="canvas" width="200px" height="200px"></canvas>
+	</body>
+	<script type="text/javascript">
+		// var gl = canvas.getContext('webgl'); // "webgl"字符串或"experimental-webgl" 
+		// canvas.getContext(contextType, contextAttributes);
+		// contextAttributes：
+		// Alpha                  如果它的值是true，它提供了一个alpha缓冲区到画布上。默认情况下，它的值是 true                                                  
+		// depth	              如果它的值是true，会得到一个绘图的缓冲区，其中包含至少16位的深度缓冲。默认情况下，它的值是true
+		// stencil	              如果它的值是true，会得到一个绘图的缓冲区，其中包含至少8位的模板缓存。默认情况下，它的值是false
+		// antialias	          如果它的值是true，会得到一个绘图缓冲区，执行抗锯齿。默认情况下，它的值是true
+		// premultipliedAlpha	  如果它的值是true，会得到一个绘图缓冲区，其中包含的颜色与预乘alpha。默认情况下它的值是true
+		// preserveDrawingBuffer  如果它的值是true，缓冲区将不会被清零，直到被清除或由作者改写将保留它们的值。默认情况下，它的值是false
+		
+		window.onload = () => {
+			//顶点着色器程序
+			var VSHADER_SOURCE =
+				"void main() {" +
+				//设置坐标
+				"gl_Position = vec4(0.0, 0.0, 0.0, 1.0); " +
+				//设置尺寸
+				"gl_PointSize = 10.0; " +
+				"} ";
+
+			//片元着色器
+			var FSHADER_SOURCE =
+				"void main() {" +
+				//设置颜色
+				"gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);" +
+				"}";
+			//获取canvas元素
+			var canvas = document.getElementById('canvas');
+			//获取绘制二维上下文
+			var gl = canvas.getContext('webgl');
+			if (!gl) {
+				console.log("Failed");
+				return;
+			}
+			//编译着色器
+			var vertShader = gl.createShader(gl.VERTEX_SHADER);
+			gl.shaderSource(vertShader, VSHADER_SOURCE);
+			gl.compileShader(vertShader);
+
+			var fragShader = gl.createShader(gl.FRAGMENT_SHADER);
+			gl.shaderSource(fragShader, FSHADER_SOURCE);
+			gl.compileShader(fragShader);
+			//合并程序
+			var shaderProgram = gl.createProgram();
+			gl.attachShader(shaderProgram, vertShader);
+			gl.attachShader(shaderProgram, fragShader);
+			gl.linkProgram(shaderProgram);
+			gl.useProgram(shaderProgram);
+
+			//绘制一个点
+			gl.drawArrays(gl.POINTS, 0, 1);
+		}
+	</script>
+</html>
