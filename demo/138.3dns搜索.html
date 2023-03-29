@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		function solve(grid) {
+		    // write code here
+			
+			const stepedMap = new Map();
+		
+		    for (let i = 0; i < grid.length; i++) {
+		        for (let j = 0; j < grid[i].length; j++) {
+		            if (! grid[i][j]) {
+		                continue;
+		            }
+					findAndMark({i, j}, {i, j})
+		        }
+		    }
+			
+			function findAndMark(basePoint, point, from) {
+				if (stepedMap.get(`${point.i}+${point.j}`)) {
+					// 已经走过
+					return;
+				}
+				if (!grid[point.i] || !grid[point.i][point.j]) {
+					// 是否是岛屿
+					return;
+				}
+				// mark
+				stepedMap.set(`${point.i}+${point.j}`, `${basePoint.i}+${basePoint.j}`)
+				
+				// to top
+				findAndMark(basePoint, {i: point.i - 1, j: point.j}, 'bottom')
+				// to right
+				findAndMark(basePoint, {i: point.i, j: point.j + 1}, 'left')
+				// to bottom
+				findAndMark(basePoint, {i: point.i + 1, j: point.j}, 'top')
+				// to left
+				findAndMark(basePoint, {i: point.i, j: point.j - 1}, 'right')
+			}
+			
+			let gridArray = new Array(stepedMap.values())
+			    gridArray = [...new Set(...gridArray)]
+			
+			return gridArray.length;
+		}
+		
+		const r = solve([
+			[1,1,0,0,0],
+			[0,1,0,1,1],
+			[1,1,0,1,1],
+			[0,0,0,0,0],
+			[1,0,1,1,1],
+			])
+		
+		console.log(r)
+	</script>
+</html>

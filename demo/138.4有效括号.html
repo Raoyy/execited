@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		function isValid(s) {
+		    // write code here
+			const stack = []
+			
+			const sArr = s.split('');
+			for (let item of sArr) {
+				if (item === '{') {
+					stack.push('}')
+				}
+				else if (item === '(') {
+					stack.push(')')
+				}
+				else if (item === '[') {
+					stack.push(']')
+				}
+				else if (item === stack[stack.length - 1]) {
+					stack.pop()
+				} else if (item === '}' || item === ')' || item === ']') {
+					return false;
+				}
+			}
+			
+			return !stack.length;
+		}
+		
+		
+		const r = isValid("{[]{}}}")
+		
+		console.log(r)
+	</script>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		// 上中位数：假设递增序列长度为n，若n为奇数，则上中位数为第n/2+1个数；否则为第n/2个数
+		function findMedianinTwoSortedAray(arr1, arr2) {
+			// write code here
+			// const arr = arr1.concat(arr2).sort((a, b) => a - b)
+			// return arr[arr.length / 2 - 1]
+
+			let [i, j] = [0, 0];
+			for (let index = 1; index < arr1.length; index++) {
+				arr1[i] > arr2[j] ? j++ : i++;
+			}
+			return Math.min(arr1[i], arr2[j]);
+		}
+
+		const arr1 = [1, 2, 3, 4],
+			arr2 = [3, 4, 5, 6]
+
+		console.log(findMedianinTwoSortedAray(arr1, arr2))
+	</script>
+</html>

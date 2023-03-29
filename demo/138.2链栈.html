@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		class Node {
+		  constructor(value) {
+		    this.value = value;
+		    this.next = null;
+		  }
+		}
+		
+		class LinkStack {
+		  constructor() {
+		    this.top = null;
+		    this.count = 0;
+		  }
+		  // 压栈
+		  push(item) {
+		    const node = new Node(item);
+		    node.next = this.top;
+		    this.top = node;
+		    this.count++;
+		  }
+		  // 弹栈
+		  pop() {
+		    if (this.count > 0) {
+		      const res = this.top.value;
+		      this.top = this.top.next;
+		      this.count--;
+		      return res;
+		    }
+		    return null;
+		  }
+		  // 清空栈
+		  clear() {
+		    this.top = null;
+		    this.count = 0;
+		  }
+		  // 取栈顶元素
+		  peek() {
+		    if (this.count > 0) {
+		      return this.top.value;
+		    }
+		    return null;
+		  }
+		  // 判断栈是否为空
+		  isEmpty() {
+		    return this.count === 0;
+		  }
+		}
+		
+		const stack = new LinkStack()
+		
+		stack.push(1)
+		stack.push(2)
+		stack.push(3)
+		stack.push(4)
+		stack.push(5)
+		
+		console.log(stack)
+	</script>
+</html>

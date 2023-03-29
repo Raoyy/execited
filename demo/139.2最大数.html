@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		给定一个长度为n的数组nums，数组由一些非负整数组成，
+		现需要将他们进行排列并拼接，每个数不可拆分，使得最后的结果最大，返回值需要是string类型，
+		否则可能会溢出。
+	</body>
+	<script>
+		/**
+		 * 解题思路：
+		 * 期望结果： ['8', '4', '23', '2', '21', '20', '200']
+		 * 在结果可以看出任意两个相近的元素组合 a + b > b + a
+		 * 所以从数组最后两位开始比较，后数较大则交换两者位置，第一轮外循环结束时，则把最大的数移动到了第一位
+		 * 此时第一位已经是最大数，所以i向后移动一位，继续筛选第二大数字
+		 * 直到全部排列完成
+		 */
+		function solve(nums) {
+			// write code here
+			const resultArr = [];
+
+			for (let i = 0; i < nums.length; i++) {
+				for (let j = nums.length - 1; j > i; j--) {
+					if (nums[j] + '' + nums[j - 1] > nums[j - 1] + '' + nums[j]) {
+						let s = nums[j - 1];
+						nums[j - 1] = nums[j];
+						nums[j] = s;
+					}
+				}
+			}
+			
+			let r = nums.join('');
+			if (Number(r) === 0) {
+				r = '0';
+			}
+			return r;
+		}
+
+		const d = [2, 20, 23, 4, 8, 21, 200]
+
+		console.log(solve(d))
+	</script>
+</html>

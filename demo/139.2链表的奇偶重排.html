@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		// class ListNode {
+		// 	val: number
+		// 	next: ListNode | null
+		// 	constructor(val, next) {
+		// 		this.val = (val === undefined ? 0 : val)
+		// 		this.next = (next === undefined ? null : next)
+		// 	}
+		// }
+
+		function oddEvenList(head) {
+			const obb = new ListNode()
+			const even = new ListNode()
+
+			let obbRoot = obb;
+			let evenRoot = even;
+
+			let nodeNow = head;
+			while (nodeNow) {
+				obbRoot.next = nodeNow;
+				obbRoot = nodeNow;
+
+				evenRoot.next = obbRoot.next;
+				evenRoot = evenRoot && evenRoot.next;
+
+				nodeNow = evenRoot && evenRoot.next
+			}
+
+			obbRoot.next = even.next;
+			return obb.next
+		}
+
+		const d = [1, 2, 3, 4, 5, 6]
+
+		console.log(oddEvenList(d))
+	</script>
+</html>

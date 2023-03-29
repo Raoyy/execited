@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>	
+		class SelfPromise {
+			constructor (doFn) {			
+				doFn(
+					this.resolve.bind(this),
+					this.reject.bind(this)
+				)
+			}
+			
+			resolveCallback = null
+			rejectCallback = null
+			value = null;
+			status = 'pendding';
+			
+			resolve (data) {
+				setTimeout(() => {
+					if (this.status === 'pendding') {
+						this.value = data;
+						this.status = 'fulfilled'					
+					}
+
+					this.resolveCallback(this.value)
+				}, 0)
+			}
+			
+			reject (error) {
+				if (this.status === 'pendding') {
+					this.value = error;
+					this.status = 'rejected'
+				}
+				
+				this.rejectCallback(this.value)
+			}
+			
+			then (resolve, reject) {
+				this.resolveCallback = resolve
+
+				this.rejectCallback = reject
+				
+				return this
+			}
+			
+			catch (callback) {
+				this.rejectCallback = callback
+				
+				return this
+			}
+			
+			finally (callback) {
+				callback()
+			}
+		}
+		
+		function dos () {
+			return new SelfPromise((resolve, reject) => {
+				setTimeout(() => {
+					reject('returned data')
+				}, 2000)
+			})
+		}
+
+		dos()
+		.then((data) => {
+			console.log(data)
+		})
+		.catch((error) => {
+			console.error(error)
+		})
+	</script>
+</html>

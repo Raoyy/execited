@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		function getLongestPalindrome(A) {
+			
+			const arr = A.split('')
+			
+			let max = 0;
+		    
+			for (let i = 0; i < arr.length; i++) {
+				const count = findAndCount(i)
+				if (count > max) {
+					max = count;
+				}
+			}
+
+			function findAndCount (baseIndex) {
+				let l = baseIndex;
+				let r1 = baseIndex + 1;
+				let r2 = baseIndex + 2;
+				
+				let flag1 = true;
+				let flag2 = true;
+				
+				let step = 0;
+				
+				let step1 = 0;
+				let step2 = 0;
+				
+				while (flag1 || flag2){			
+					if (flag1 && (!arr[r1 + step] || arr[l - step] != arr[r1 + step])) {
+						flag1 = false;
+						step1 = step;
+					}
+					
+					if (flag2 && (!arr[r2 + step] || arr[l - step] != arr[r2 + step] )) {
+						flag2 = false;
+						step2 = step;
+					}
+					
+					if (flag1 || flag2) {
+						step += 1;
+					}
+				}
+				
+				return Math.max(step1 * 2, step2 * 2 + 1)
+			}
+			
+			return max;
+		}
+		
+		console.log(getLongestPalindrome('abbba'))
+	</script>
+</html>

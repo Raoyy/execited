@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		function threeSum(num) {
+		    // write code here
+			const nums = num.sort((a, b) => a - b);
+			
+			let result = [];
+		
+			for (let i = 0; i < nums.length; i++) {
+				const r = findFn(i) || [];
+				result = result.concat(r);
+			}
+			
+			function findFn (baseIndex) {
+				let l = baseIndex + 1;
+				let r = nums.length - 1;
+				
+				const arr = [];
+				
+				const num = nums[baseIndex];
+				
+				while (l < r) {
+					let numl = nums[l];
+					let numr = nums[r];
+					let sum = numl + num + numr;
+					
+					if (sum === 0) {
+						arr.push([numl, num, numr].sort((a, b) => a - b));
+					} else {
+						r -= 1;
+
+						while (l < r) {
+							numr = nums[r];
+							sum = numl + num + numr;
+							
+							if (sum === 0) {
+								arr.push([numl, num, numr].sort((a, b) => a - b));
+							}
+							
+							r -= 1;
+						}
+					}
+
+					l += 1;
+					r = nums.length - 1;
+				} 
+				
+				return arr;
+			}
+			
+			// 去重
+			const unrepeatMap = new Map();
+			result.forEach(item => {
+				unrepeatMap.set(`${item[0]}+${item[1]}+${item[2]}`, item)
+			})
+			
+			result = [...Array.from(unrepeatMap.values())]
+			
+			return result;
+		}
+
+		// s = [-10, 0, 10, 20, -10, -40]
+		// s = [-2,0,0,2,2]
+		// s = [-4,-2,-2,-2,0,1,2,2,2,3,3,4,4,6,6]
+		// s = [-2,0,1,1,2]
+		// s = [-4,-2,1,-5,-4,-4,4,-2,0,4,0,-2,3,1,-5,0]
+		s = [1,2,-2,-1]
+		
+		console.log(threeSum(s))
+	</script>
+</html>
