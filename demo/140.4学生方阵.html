@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		学校组织活动，将学生排成一个矩形方阵。请在矩形方阵中找到最大的位置相连的男生数量。
+		这个相连位置在一个直线上，方向可以是水平的、的、呈对角线的或者反对角线的。
+		注:学生个数不会超过10000.
+		输入描述:
+		输入的第一行为矩阵的行数和列数，
+		接下来的n行为矩阵元素，元素间用“，分隔。
+		输出描述:
+		输出一个整数，表示矩阵中最长的位置相连的男生个数。
+		备注:
+		
+		示例1输入
+		3,4
+		F,M,M,F
+		F,M,M,F
+		F,F,F,M
+	</body>
+	<script>
+		function getResult(d) {
+			let max = 1;
+			for (let i = 0; i < d.length; i++) {
+				for (let j = 0; j < d[i].length; j++) {
+					if (d[i][j] == 'M') {
+						max = Math.max(max, findFn(i, j));
+					}
+				}
+			}
+			
+			function findFn(i, j, derection) {
+				if (!derection) {
+					let right = 1;
+					let rightBottom = 1;
+					let bottom = 1;
+					let leftBottom = 1;
+					
+					right = findFn(i, j + 1, {v: right, d: 'right'})
+					rightBottom = findFn(i + 1, j + 1, {v: rightBottom, d: 'rightBottom'})
+					bottom = findFn(i + 1, j, {v: bottom, d: 'bottom'})
+					leftBottom = findFn(i + 1, j - 1, {v: leftBottom, d: 'leftBottom'})
+					
+					return Math.max(right, rightBottom, bottom, leftBottom);
+				} else {
+					const data = d[i] && d[i][j];
+					if (!data || data !== 'M') {
+						return derection.v;
+					}
+					derection.v = derection.v + 1;
+
+					switch (derection.d) {
+						case 'right':
+							return findFn(i, j + 1, {v: derection.v, d: 'right'})
+						case 'rightBottom':
+							return findFn(i + 1, j + 1, {v: derection.v, d: 'rightBottom'})
+						case 'bottom':
+							return findFn(i + 1, j, {v: derection.v, d: 'bottom'})
+						case 'leftBottom':
+							return findFn(i + 1, j - 1, {v: derection.v, d: 'leftBottom'})
+					}
+				}
+			}
+			
+			return max;
+		}
+		
+		const F = 'F', M = 'M';
+		const d = [
+			[F,M,M,F],
+			[F,M,M,F],
+			[F,F,F,M],
+		]
+		console.log(getResult(d));
+	</script>
+</html>

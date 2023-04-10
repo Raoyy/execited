@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<!-- 
+		找到它是个小游戏，你需要在一个矩阵中找到给定的单词。假设给定单词HELLOWORLD，
+		在矩车中只要能找到H->E->L->L->O->W->O->R->L->D连成词，就算通过，
+		
+		注意区分英文字母大小写，并且你只能上下左右行走，不能走回头路。
+		输入描述:
+		始入第一行包含两个整数n、m(0<n,m<21)分别表示n行m列的矩阵，
+		第二行是长度不超过100的单词W(在整个短阵中给定单词W只会出现一次)，
+		从第3行到第 n+2行是只包含大小写英文字母的长度为m的字符串矩阵。
+		输出描述:
+		如果能在矩阵中连成给定的单词，则输出给定单词首字母在矩阵中的位置(第几行第几列)，否则输出“NO”。
+		
+		示例1:输入
+		5 5
+		HELLOWORLD
+		CPUCY
+		EKLQH
+		CHELL
+		LROWO
+		DGRBC
+		输出
+		32 
+		-->
+	</body>
+	<script>
+		function getResult(target, source) {
+			source = source.split(',').map(v => v.split(''))
+			console.log(source)
+			
+			const sourceMap = new Map();
+			for (let i = 0; i < source.length; i++) {
+				for (let j = 0; j < source[i].length; j++) {
+					const s = source[i][j];
+					let sourceData = sourceMap.get(s);
+						sourceData = {
+							count: 0,
+							tar: []
+						};
+					}
+					sourceData.count += 1;
+					sourceData.tar.push([i, j]);
+					
+					sourceMap.set(s, sourceData)
+				}
+			}
+			
+			for (let i = 0; i < target.length; i++) {
+				const t = target[i];
+				
+				const d = sourceMap.get(t);
+				if (!d || d.count === 0) {
+					return 'NO';
+				} else {
+					d.count -= 1;
+					sourceMap.set(t, d);
+				}
+			}
+			
+			const index = sourceMap.get(target[0]).tar[0];
+			
+			return [index[0] + 1, index[1] + 1]
+		}
+		
+		const t = 'HELLOWORLD';
+		const d = 'CPUCY,EKLQH,CHELL,LROWO,DGRBC'
+		console.log(getResult(t, d))
+	</script>
+</html>

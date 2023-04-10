@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<!-- 
+		斗地主起源于湖北十堰房县，据传是一位叫吴修全的年轻人根据当地流行的扑克玩法“跑得快”改编的，
+		如今已风靡整个中国，并流行于互联网上牌型:
+		单顺，又称顺子，最少5张牌，最多12张牌(3…A)，不能有2，也不能有大小王，不计花色
+		例如： 3-4-5-6-7-8，7-8-9-10-J-Q，3-4-5-6-7-8-9-10-J-Q-K-A
+		可用的牌3<4<5<6<7<8<9<10<J<Q<K<A<2 < B(小王)<C(大王)，
+		每种牌除大小王外有4种花色(共有13X4+2张牌)
+		输入
+		1.手上已有的牌
+		2.已经出过的牌(包括对手出的和自己出的牌)
+		
+		输出:
+		对手可能构成的最长的顺子(如果有相同长度的顺子,输出牌面最大的那一个)，如果无法构成顺子,则输出 NO-CHAIN
+
+		输入描述:
+		输入的第一行为当前手中的牌
+		输入的第二行为已经出过的牌
+		
+		输出描述:
+		最长的顺子
+		示例1:输入
+		3-3-3-3-4-4-5-5-6-7-8-9-10-J-Q-K-A
+		4-5-6-7-8-8-8
+		
+		输出
+		9-10-J-Q-K-A
+		 -->
+	</body>
+	<script>
+		function getResult(d1, d2) {
+			const cardKnow = [...d1.split('-'), ...d2.split('-')]
+			
+			const countMap = new Map();
+			cardKnow.forEach(v => {
+				let count = countMap.get(v)
+				count = count ? count + 1 : 1;
+				countMap.set(v, count)
+			})
+			
+			const connectedArr = [];
+			
+			const cardAll = '3-4-5-6-7-8-9-10-J-Q-K-A'.split('-');
+			
+			let leftIndex = 0;
+			let rightIndex = 0;
+			
+			let longest = [];
+			
+			for (let i = 0; i < cardAll.length; i++) {
+				const count = countMap.get(cardAll[i]);
+				const isEnd = i === cardAll.length - 1;
+				if (count === 4 || isEnd) {
+					const list = cardAll.slice(leftIndex, i + (isEnd ? 1 : 0))
+					if (list.length >= 5 && list.length >= longest.length) {
+						longest = list;
+					}
+					leftIndex = i + 1;
+				}
+			}
+			
+			return longest.length ? longest.join('-') : 'NO-CHAIN'
+		}
+		
+		const d1 = '3-3-3-3-4-4-5-5-6-7-8-9-10-J-Q-K-A'
+		const d2 = '4-5-6-7-8-8-8'
+		console.log(getResult(d1, d2));
+	</script>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		给定字符串target和source,判断target是否为source的子序列。
+		你可以认为target 和source中仅包含英文小写字母，字符串source可能会很长(长度~=500.000)，
+		而target 是个短字符事(长度<=100, 字符串的一个子序列是原始字符串删除一些(也可以不删除)字符,
+		而不改变剩余字符相对位首形成的新字符。(例如，“abc"是*aebycd”的一个子, 而“ayb”不是)。
+		请找出最后一个子序列的起始位置。
+		输入描述:
+		第一行为target，短字符串(长度<=100)
+		第二行为source，长字符串(长度~=500,000)
+		输出描述:
+		最后一个子序列的起始位置，即最后一个子序列首字母的下标
+		备注:
+		若在source中找不到target，则输出-1
+		示例1:输入
+		abc
+		abcaybec
+		输出
+		3
+	</body>
+	<script>
+		function getResult(target = '', resource = '') {
+			let tIndex = 0;
+
+			let firIndex = 0;
+			
+			let sIndex = 0;
+			let success = false;
+			
+			for (let i = 0; i < resource.length; i++) {
+				if (target[tIndex] === resource[i]) {
+					if (tIndex === 0) {
+						firIndex = i;
+					}
+					if (tIndex === target.length - 1) {
+						success = true;
+						sIndex = firIndex;
+
+						tIndex = -1;
+					}
+					
+					tIndex++
+				}
+			}
+			
+			return success ? sIndex : -1;
+		}
+		
+		console.log(getResult('abc', 'abcaybeca'))
+	</script>
+</html>

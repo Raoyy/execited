@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		双十一众多商品进行打折销售，小明想购买自己心仪的一些物品，但由于受购买资金限制，
+		所以他决定从众多心仪商品中购买三件，而且想尽可能的花完资金，现在请你设计一个程序帮助小明计算尽可能花费的最大资金数额。
+		输入描述:
+		输入第一行为一维整型数组M，数组长度小于100数组元素记录单个商品的价格，单个商品价格小于1000
+		输入第二行为购买资金的额度R，R小于100000。
+		输出描述
+		输出为满足上述条件的最大花费额度。
+		注意:如果不存在满足上述条件的商品，请返回-1。
+		备注:
+		输入格式是正确的，无需考虑格式错误的情况。
+		示例1输入
+		23,26,36.27
+		78
+		输出
+		76
+	</body>
+	<script>
+		function getResult(prices, limit) {
+			prices = prices.split(',').map(n => n * 1);
+			prices = prices.sort((a, b) => a-b);
+			
+			let max = 0;
+			
+			for (let i = 0; i < prices.length - 2; i++) {
+				let lIndex = i + 1;
+				let rIndex = lIndex + 1;
+				while (lIndex < prices.length - 1) {
+					while (rIndex < prices.length) {
+						const count = prices[i] + prices[lIndex] + prices[rIndex];
+						
+						if (count > 78 || rIndex === prices.length) {
+							break;
+						} else {
+							max = Math.max(max, count);
+							rIndex ++;
+						}
+					}
+					
+					lIndex += 1;
+					rIndex = lIndex + 1;
+				}
+			}
+			
+			return max;
+		}
+		
+		console.log(getResult('23,26,36,27', 78))
+	</script>
+</html>

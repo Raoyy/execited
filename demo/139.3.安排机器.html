@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		小Q的公司最近接到m个任务, 第i个任务需要xi的时间去完成, 难度等级为yi。
+		小Q拥有n台机器, 每台机器最长工作时间zi, 机器等级wi。
+
+		对于一个任务,它只能交由一台机器来完成, 如果安排给它的机器的最长工作时间小于任务需要的时间,
+		则不能完成,如果完成这个任务将获得200 * xi + 3 * yi收益。
+
+		对于一台机器,它一天只能完成一个任务, 如果它的机器等级小于安排给它的任务难度等级, 则不能完成。
+
+		小Q想在今天尽可能的去完成任务, 即完成的任务数量最大。如果有多种安排方案,小Q还想找到收益最大的那个方案。
+
+		小Q需要你来帮助他计算一下。
+
+
+		输入包括N + M + 1行,
+		输入的第一行为两个正整数n和m(1 <= n, m <=100000), 表示机器的数量和任务的数量。
+		 接下来n行,每行两个整数zi和wi(0 < zi < 1000, 0 <=wi <=100),
+		表示每台机器的最大工作时间和机器等级。 
+		接下来的m行,每行两个整数xi和yi(0 < xi < 1000, 0 <=yi<=100), 表示每个任务需要的完成时间和任务的难度等级。 输出两个整数,
+		分别表示最大能完成的任务数量和获取的收益。 </body>
+			<script type="text/javascript">
+				function computed(data) {
+					// 收益 200 * 任务时间 + 3 * 任务难度
+					function income(task) {
+						return 200 * task[0] + 3 * task[1];
+					}
+
+					// n：机器 m：任务
+					const t = data.splice(0, 1);
+					const n = t[0][0];
+					const m = t[0][1];
+
+					// 每台机器的性能
+					let nChr = data.splice(0, n);
+
+					// 机器时间由小到大排序
+					nChr = nChr.sort((a, b) => a[0] - b[0])
+
+					// 每个任务的时间和难度
+					let mChr = data;
+					console.log(mChr)
+					console.log(nChr)
+
+					// 将任务按受益从大到小排序
+					mChr = mChr.sort((a, b) => income(b) - income(a))
+
+					let taskCompleted = 0;
+					let allIncome = 0;
+					
+					function findIndex(task, machineList = []) {
+						
+						let ind = -1;
+						
+						for (let i = 0; i < machineList.length; machineList.length - i > 0 ? i += 3 : i++) {
+							if (machineList[i] && machineList[i][0] >= task[0]) {
+								ind = i;
+								if (machineList[i - 1] && machineList[i - 1][0] >= task[0]) {
+									ind = i - 1;
+								}
+								if (machineList[i - 2] && machineList[i - 2][0] >= task[0]) {
+									ind = i - 2;
+								}
+								break;
+							}
+						}
+						
+						console.log(ind)
+						
+						return ind;
+						
+						return machineList.findIndex((n) => {
+							return (
+								n[0] >= task[0]
+							);
+						});
+						
+						let leftIndex = 0;
+						let rightIndex = machineList.length;
+						let index = Math.floor((leftIndex + rightIndex) / 2);
+						
+						let pre = null;
+						
+						let success = false;
+						
+						if (machineList.length < 2) {
+							return 0;
+						}
+						
+						function find() {
+							if (!machineList[index - 1] || !machineList[index] || index === pre) {
+								return;
+							}
+							
+							console.log('test = ' + index, machineList[index - 1][0], task[0], machineList[index][0])
+							console.log(machineList[index][0] >= task[0] && machineList[index - 1][0] < task[0])
+
+							if (machineList[index][0] >= task[0] && machineList[index - 1][0] < task[0]) {
+								console.log('success = ' + index, machineList[index - 1][0], task[0], machineList[index][0])
+								success = true;
+								return;
+							} else if (machineList[index][0] >= task[0]) {
+								if (index - leftIndex < 3) {
+									index -= 1;
+								} else {
+									index = Math.floor((index + leftIndex) / 2)
+									rightIndex = index;
+								}
+								find();
+							} else {
+								if (rightIndex - index < 3) {
+									index += 1;
+								} else {
+									index = Math.floor((index + rightIndex) / 2)
+									leftIndex = index;									
+								}
+								find();
+							}
+						}
+						
+						find()
+						
+						return success ? index : -1;
+					}
+					
+					for (let i = 0; i < mChr.length; i++) {
+						const task = mChr[i];
+						
+						const j = findIndex(task, nChr);
+						
+						if (j === -1) {
+							continue;
+						}
+						
+
+						let machines = nChr.slice(j, nChr.length)
+												
+						let bestMachine = null;
+						
+						for (let n of machines) {
+							if (n.used || n[1] < task[1]) {
+								continue;
+							}
+							if (!bestMachine || n[1] < bestMachine[1]) {
+								bestMachine = n;
+							}
+						}
+						
+						if (bestMachine) {
+							taskCompleted += 1;
+							allIncome += income(task);
+							
+							bestMachine['used'] = true;
+						}					
+					}
+
+					// 任务数量和获取的收益
+					return [taskCompleted, allIncome];
+				}
+				
+				const d3 = [
+					[4, 3],
+					[435, 76],
+					[164, 87],
+					[759, 68],
+					[201, 16],
+					[587, 38],
+					[862, 57],
+					[753, 46]
+				]
+				
+				const d1 = [
+					[1, 2],
+					[100, 3],
+					[100, 2],
+					[100, 1],
+				]
+
+				const d2 = [
+					[77, 51],
+					[599, 10],
+					[420, 55],
+					[533, 70],
+					[969, 70],
+					[925, 12],
+					[765, 18],
+					[942, 51],
+					[483, 62],
+					[691, 74],
+					[798, 43],
+					[912, 58],
+					[807, 83],
+					[543, 80],
+					[756, 69],
+					[762, 95],
+					[62, 68],
+					[122, 8],
+					[902, 66],
+					[971, 28],
+					[308, 88],
+					[625, 76],
+					[411, 74],
+					[974, 90],
+					[229, 66],
+					[320, 98],
+					[956, 69],
+					[862, 23],
+					[613, 37],
+					[783, 21],
+					[690, 85],
+					[858, 5],
+					[698, 99],
+					[748, 50],
+					[231, 79],
+					[916, 91],
+					[221, 2],
+					[609, 57],
+					[40, 99],
+					[282, 27],
+					[281, 8],
+					[436, 16],
+					[736, 100],
+					[667, 71],
+					[314, 68],
+					[889, 26],
+					[883, 43],
+					[531, 81],
+					[989, 38],
+					[724, 23],
+					[12, 46],
+					[652, 91],
+					[978, 47],
+					[730, 67],
+					[241, 74],
+					[878, 19],
+					[619, 60],
+					[796, 73],
+					[885, 96],
+					[861, 61],
+					[187, 57],
+					[888, 69],
+					[815, 19],
+					[863, 97],
+					[816, 26],
+					[295, 93],
+					[281, 95],
+					[917, 59],
+					[820, 99],
+					[311, 15],
+					[89, 62],
+					[784, 97],
+					[6, 51],
+					
+					[653, 61],
+					[715, 98],
+					[77, 60],
+					[965, 70],
+					[748, 94],
+					[518, 69],
+					[963, 60],
+					[19, 91],
+					[125, 36],
+					[844, 97],
+					[447, 10],
+					[523, 100],
+					[778, 65],
+					[219, 25],
+					[255, 95],
+					[889, 21],
+					[27, 11],
+					[905, 14],
+					[740, 58],
+					[755, 89],
+					[531, 92],
+					[941, 58],
+					[712, 10],
+					[894, 71],
+					[837, 11],
+					[705, 77],
+					[577, 89],
+					[388, 27],
+					[64, 84],
+					[382, 5],
+					[115, 91],
+					[919, 46],
+					[885, 30],
+					[16, 91],
+					[490, 79],
+					[297, 28],
+					[870, 49],
+					[407, 65],
+					[205, 91],
+					[796, 61],
+					[624, 39],
+					[966, 91],
+					[264, 35],
+					[167, 65],
+					[177, 19],
+					[56, 16],
+					[144, 95],
+					[974, 80],
+					[49, 79],
+					[13, 99],
+					[86, 46],
+					[93, 79],
+					[354, 93],
+					[573, 12],
+					[487, 9],
+					[666, 49],
+				]
+
+				const res = computed(d2)
+
+				console.log(res)
+			</script>
+</html>

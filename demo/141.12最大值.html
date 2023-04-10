@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		给定一组整数(非负)，重排顺序后输出一个最大的整数。
+		示例 1:
+		输入: [10,9]
+		输出: 910
+		说明:输出结果可能非常大，所以你需要返回一个字符串而不是整数。输入描述:
+		数字组合
+		
+		输出描述:
+		最大的整数
+		示例1:输入
+		10 9
+		输出
+		910
+	</body>
+	<script>
+		function getResult(list) {
+			list = list.map(n => String(n));
+			console.log(list);
+			
+			for (let i = 0; i < list.length; i++) {
+				for (let j = list.length - 1; i < j; j--) {
+					if (list[j] + list[i] > list[i] + list[j]) {
+						const n = list[i];
+						list[i] = list[j];
+						list[j] = n;
+					}
+				}
+			}
+			
+			console.log(list)
+			let r = list.join('');
+			if (Number(r) === 0) {
+				r = '0';
+			}
+			return r;
+		}
+		
+		console.log(getResult([10,9]))
+	</script>
+</html>

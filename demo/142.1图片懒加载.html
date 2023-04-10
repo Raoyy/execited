@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		img {
+			display: block;
+			width: 100%;
+		}
+	</style>
+	<body>
+		<img src="" alt="">
+	</body>
+	<script>
+		const imgList = [
+			'6ab7a290-5e29-4ef1-a1c5-9139afb97ecd.jpg',
+			'7e6d8a93-c73b-4397-95ce-010569f4b5ee.jpg',
+			'30c1e84c-f7db-407b-8dbe-479269558c9d.jpg',
+			'59b82b8a-1afc-43bb-80b5-c27ed9debfa4.jpg',
+			'59cac271-ec4d-4b73-a30c-6dc5481ca6c7.jpg',
+			'69c0d609-881a-4a72-916e-390821164edf.jpg',
+			'613a17aa-60a8-41a1-a9d2-470421e9ebb4.jpg',
+			'3278c1dc-f84e-4e83-bc29-4d4e7b2ef748.jpg',
+			'3798c2a7-ed4a-430b-8662-9c5d27d38db0.jpg',
+			'7567fd2e-a5ef-4d1f-a0cf-db9460653cae.jpg',
+			'30317df2-4a83-4400-95ee-23a8ffeb6e78.jpg',
+		];
+		
+		let observe;
+		
+		const imgCallback = (entries) => {
+			console.log(entries)
+			for (let entrie of entries) {
+				if (entrie.isIntersecting) {
+					const img = entrie.target;
+					const url = img.getAttribute('data-url');
+					img.setAttribute('src', url)
+					observe.unobserve(img);
+					
+					// // DOMRect 
+					// const rect = img.getBoundingClientRect();
+					// console.log(rect)
+				}
+			}
+		}
+		
+		initDoms();
+		initImgLoader();
+		
+		function initDoms() {
+			let doms = '';
+			imgList.forEach(url => {
+				doms += `<img data-url="./img/${url}" src="./img/01.jpg">`;
+			});
+			document.body.innerHTML = doms;
+		}
+
+		function initImgLoader() {
+			const imgs = document.getElementsByTagName('img');
+			console.log(imgs)
+			
+			observe = new IntersectionObserver(imgCallback)
+			for (let img of imgs) {
+				observe.observe(img);
+			}
+		}
+	</script>
+</html>

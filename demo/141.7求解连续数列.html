@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<!-- 
+		已知连续正整数数列{K}=K1,K2,K3...Ki的各个数相加之和口为S，i=N(0<S<100000,0<N<100000),求此数列K。
+		输入描述:
+		输入包含两个参数，
+		1)连续正整数数列和S，
+		2)数列里数的个数N
+		输出描述:
+		
+		如果有解输出数列K，如果无解输出-1
+		备注:
+		
+		示例1:输入
+		525 6
+		输出
+		
+		85 86 87 88 89 90
+		-->
+	</body>
+	
+	<script>
+		function getResult(he, num) {
+			const midNum = he / num;
+			
+			// count = (a1 + an) * n / 2
+			
+			// 是奇数
+			const numIsObb = num % 2 === 1;
+			
+			const arr = [];
+			
+			console.log(midNum)
+			if (midNum % 1 === 0.5) {
+				// 说明是偶数
+				if (numIsObb) {
+					return -1;
+				}
+				for (let i = 1; i <= num / 2; i++) {
+					arr.push(midNum + i - 0.5);
+					arr.unshift(midNum - i + 0.5);
+				}
+			} else if (midNum % 1 === 0) {
+				// 说明是奇数
+				if (!numIsObb) {
+					return -1;
+				}
+				for (let i = 1; i <= (num - 1) / 2; i++) {
+					arr.push(midNum + i);
+					arr.unshift(midNum - i);
+				}
+			} else {
+				return -1;
+			}
+			
+			return arr;
+		}
+		
+		// 85 86 87 88 89 90 91
+		console.log(getResult(525, 6))
+	</script>
+</html>

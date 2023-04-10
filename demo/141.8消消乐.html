@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		游戏规则:输入一个只包含英文字母的字符串，字符串中的两个字母如果相邻且相同，就可以消除在字符串上反复执行消除的动作，
+		直到无法继续消除为止，此时游戏结束。输出最终得到的字符串长度。
+		输入描述:
+		输入原始字符串str，只能包含大小写英文字母，字母的大小写敏感，str长度不超过100。
+		输出描述:
+		输出游戏结束后，最终得到的字符串长度
+		备注:
+		输入中包含非大小写英文字母时，均为异常输入，直接返回0
+		示例1:输入
+		gg
+		输出
+		0
+	</body>
+	<script>
+		function getResult(str = '') {
+			const reg = /^[A-Za-z]+$/;
+			if (!reg.test(str)) {
+				return 0;
+			}
+			
+			let strBackup = str;
+			const strArr = str.split('');
+			
+			for (let i = 0; i < strArr.length; i++) {
+				if (strArr[i] === strArr[i + 1]) {
+					strBackup = strBackup.replace(strArr[i], '')
+					strBackup = strBackup.replace(strArr[i + 1], '')
+					
+					strArr[i] = 0;
+					strArr[i + 1] = 0;
+				}
+			}
+
+			return strBackup.length;
+		}
+		
+		console.log(getResult('ggtyyhjj'))
+	</script>
+</html>
